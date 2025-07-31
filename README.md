@@ -1,23 +1,3 @@
-<a href="https://github.com/CreoWis/next-js-launchpad/blob/master/LICENSE" target="blank"><img src="https://img.shields.io/github/license/CreoWis/next-js-launchpad?style=flat-square" alt="License" /></a>
-
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
-
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-<a href="https://github.com/CreoWis/next-js-launchpad/fork" target="blank">
-<img src="https://img.shields.io/github/forks/CreoWis/next-js-launchpad?style=flat-square" alt="next-js-launchpad forks"/>
-</a>
-<a href="https://github.com/CreoWis/next-js-launchpad/stargazers" target="blank">
-<img src="https://img.shields.io/github/stars/CreoWis/next-js-launchpad?style=flat-square" alt="next-js-launchpad stars"/>
-</a>
-<a href="https://github.com/CreoWis/next-js-launchpad/issues" target="blank">
-<img src="https://img.shields.io/github/issues/CreoWis/next-js-launchpad?style=flat-square" alt="next-js-launchpad issues"/>
-</a>
-<a href="https://github.com/CreoWis/next-js-launchpad/pulls" target="blank">
-<img src="https://img.shields.io/github/issues-pr/CreoWis/next-js-launchpad?style=flat-square" alt="next-js-launchpad pull-requests"/>
-</a>
-
 # 🚀 React Kolkata
 
 The comprehensive toolkit for developing Next.js projects.
@@ -291,44 +271,9 @@ See [CONTRIBUTING.md](https://github.com/CreoWis/next-js-launchpad/blob/main/CON
 
 Please adhere to this project's [code of conduct](https://github.com/CreoWis/next-js-launchpad/blob/main/CODE_OF_CONDUCT.md).
 
-## 🙏 Support Us
-
-This is an OSS project by team [CreoWis](https://www.creowis.com/). We need all the support we can get. Please give this project a ⭐️ to encourage and show that you liked it.
-
-If you found the project helpful, consider supporting us with a coffee.
-
-<a href="https://www.buymeacoffee.com/creowis">
-    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50px">
-</a>
 
 ## Acknowledgements
 
 - [Next.JS](https://nextjs.org/)
 - [TailwindCSS](https://tailwindcss.com/)
 
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tbody>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Rick799"><img src="https://avatars.githubusercontent.com/u/98259630?v=4?s=100" width="100px;" alt="Rajarshi"/><br /><sub><b>Rajarshi</b></sub></a><br /><a href="https://github.com/CreoWis/next-js-launchpad/commits?author=Rick799" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://nxt100.com"><img src="https://avatars.githubusercontent.com/u/11984043?v=4?s=100" width="100px;" alt="Joy Poddar"/><br /><sub><b>Joy Poddar</b></sub></a><br /><a href="https://github.com/CreoWis/next-js-launchpad/commits?author=joypoddar" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://chhakuli-zingare.netlify.app/"><img src="https://avatars.githubusercontent.com/u/103095813?v=4?s=100" width="100px;" alt="Chhakuli Zingare"/><br /><sub><b>Chhakuli Zingare</b></sub></a><br /><a href="https://github.com/CreoWis/next-js-launchpad/commits?author=chhakuli123" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Jayakumar03"><img src="https://avatars.githubusercontent.com/u/86454250?v=4?s=100" width="100px;" alt="Jaya Kumar"/><br /><sub><b>Jaya Kumar</b></sub></a><br /><a href="https://github.com/CreoWis/next-js-launchpad/commits?author=Jayakumar03" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://tapasadhikary.com"><img src="https://avatars.githubusercontent.com/u/3633137?v=4?s=100" width="100px;" alt="Tapas Adhikary"/><br /><sub><b>Tapas Adhikary</b></sub></a><br /><a href="https://github.com/CreoWis/next-js-launchpad/pulls?q=is%3Apr+reviewed-by%3Aatapas" title="Reviewed Pull Requests">👀</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://koustov.com"><img src="https://avatars.githubusercontent.com/u/7145967?v=4?s=100" width="100px;" alt="Koustov"/><br /><sub><b>Koustov</b></sub></a><br /><a href="#ideas-koustov" title="Ideas, Planning, & Feedback">🤔</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
