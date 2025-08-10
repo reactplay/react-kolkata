@@ -245,6 +245,7 @@ export default function ReactKolkataNewDesign() {
                   transition: { duration: 0.6, ease: [0.21, 1, 0.21, 1], delay: 0 },
                 }}
                 viewport={{ once: true, amount: 0.3 }}
+
               >
                 The place to
                 <span className="mx-2 inline-block bg-gradient-to-r from-[#61DAFB] via-white to-[#0A66C2] bg-clip-text text-transparent">
@@ -262,18 +263,20 @@ export default function ReactKolkataNewDesign() {
                 }}
                 viewport={{ once: true, amount: 0.3 }}
               >
+
                 A community by ReactPlay for developers in and around Kolkata. Meet peers, build
                 Plays, get feedback, and grow your skills together.
               </motion.p>
               <motion.div
                 className="mt-7 flex flex-col justify-center gap-3 sm:flex-row"
-                initial={{ opacity: 0, y: 16 }}
+               initial={{ opacity: 0, y: 16 }}
                 whileInView={{
                   opacity: 1,
                   y: 0,
                   transition: { duration: 0.6, ease: [0.21, 1, 0.21, 1], delay: 0 },
                 }}
                 viewport={{ once: true, amount: 0.3 }}
+
               >
                 <Button
                   asChild
