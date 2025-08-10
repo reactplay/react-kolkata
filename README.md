@@ -271,9 +271,7 @@ See [CONTRIBUTING.md](https://github.com/CreoWis/next-js-launchpad/blob/main/CON
 
 Please adhere to this project's [code of conduct](https://github.com/CreoWis/next-js-launchpad/blob/main/CODE_OF_CONDUCT.md).
 
-
 ## Acknowledgements
 
 - [Next.JS](https://nextjs.org/)
 - [TailwindCSS](https://tailwindcss.com/)
-
