@@ -61,12 +61,6 @@ function CountUp({ to, from = 0, duration = 2, suffix = "", className }: CountUp
   );
 }
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 16 },
-  whileInView: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.21, 1, 0.21, 1], delay } },
-  viewport: { once: true, amount: 0.3 },
-});
-
 export default function ReactKolkataNewDesign() {
   const events = [
     {
@@ -231,12 +225,26 @@ export default function ReactKolkataNewDesign() {
 
           <div className="container mx-auto px-4 pt-14 pb-20 sm:pt-20 sm:pb-28">
             <div className="mx-auto max-w-5xl text-center">
-              <motion.div {...fadeUp(0)}>
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.6, ease: [0.21, 1, 0.21, 1], delay: 0 },
+                }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
                 <Badge className="border border-white/10 bg-white/10">React • Kolkata</Badge>
               </motion.div>
               <motion.h1
                 className="mt-5 text-4xl leading-tight font-extrabold sm:text-6xl"
-                {...fadeUp(0.05)}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.6, ease: [0.21, 1, 0.21, 1], delay: 0 },
+                }}
+                viewport={{ once: true, amount: 0.3 }}
               >
                 The place to
                 <span className="mx-2 inline-block bg-gradient-to-r from-[#61DAFB] via-white to-[#0A66C2] bg-clip-text text-transparent">
@@ -244,13 +252,28 @@ export default function ReactKolkataNewDesign() {
                 </span>
                 React.
               </motion.h1>
-              <motion.p className="mx-auto mt-5 max-w-2xl text-white/80" {...fadeUp(0.1)}>
+              <motion.p
+                className="mx-auto mt-5 max-w-2xl text-white/80"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.6, ease: [0.21, 1, 0.21, 1], delay: 0 },
+                }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
                 A community by ReactPlay for developers in and around Kolkata. Meet peers, build
                 Plays, get feedback, and grow your skills together.
               </motion.p>
               <motion.div
                 className="mt-7 flex flex-col justify-center gap-3 sm:flex-row"
-                {...fadeUp(0.15)}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.6, ease: [0.21, 1, 0.21, 1], delay: 0 },
+                }}
+                viewport={{ once: true, amount: 0.3 }}
               >
                 <Button
                   asChild
@@ -276,7 +299,13 @@ export default function ReactKolkataNewDesign() {
               {/* Stats row */}
               <motion.div
                 className="mt-10 flex flex-col items-center justify-center gap-6 text-sm sm:flex-row"
-                {...fadeUp(0.2)}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.6, ease: [0.21, 1, 0.21, 1], delay: 0.2 },
+                }}
+                viewport={{ once: true, amount: 0.3 }}
               >
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur">
                   <Users className="h-4 w-4 text-[#61DAFB]" />
