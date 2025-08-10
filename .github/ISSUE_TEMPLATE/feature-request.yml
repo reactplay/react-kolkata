@@ -1,8 +1,8 @@
 name: Feature
 description: Add a feature request
-title: '[Feature Request]: '
-labels: ['enhancement']
-assignees: ['']
+title: "[Feature Request]: "
+labels: ["enhancement"]
+assignees: [""]
 body:
   - type: markdown
     attributes:
@@ -16,7 +16,7 @@ body:
       description: Tell us in details about the problem.
     validations:
       required: true
-  
+
   - type: textarea
     id: suggested-solution
     attributes:
