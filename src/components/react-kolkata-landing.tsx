@@ -19,7 +19,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 type CountUpProps = {
   to: number;
@@ -154,7 +154,8 @@ export default function ReactKolkataNewDesign() {
                   side="right"
                   className="w-[320px] border-white/10 bg-slate-950/70 backdrop-blur-xl"
                 >
-                  <div className="space-y-6 pt-6">
+                  <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                  <div className="space-y-6 p-6">
                     <Link href="#about" className="block text-white/90 hover:text-white">
                       About
                     </Link>
