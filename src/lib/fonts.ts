@@ -1,11 +1,10 @@
-import { JetBrains_Mono as FontMono, Inter as FontSans } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 
-export const fontSans = FontSans({
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["400", "600", "700"],
+  variable: "--font-poppins",
 });
 
-export const fontMono = FontMono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-});
+export { inter, poppins };

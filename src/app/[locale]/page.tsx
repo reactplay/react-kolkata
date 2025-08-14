@@ -1,5 +1,5 @@
-import ReactKolkataNewDesign from "../../components/react-kolkata-landing";
+import LandingPage from "@/modules/home";
 
-export default function Page() {
-  return <ReactKolkataNewDesign />;
+export default function HomePage() {
+  return <LandingPage />;
 }

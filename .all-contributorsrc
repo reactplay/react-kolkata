@@ -1,0 +1,71 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "Rick799",
+      "name": "Rajarshi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/98259630?v=4",
+      "profile": "https://github.com/Rick799",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "joypoddar",
+      "name": "Joy Poddar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11984043?v=4",
+      "profile": "http://nxt100.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "chhakuli123",
+      "name": "Chhakuli Zingare",
+      "avatar_url": "https://avatars.githubusercontent.com/u/103095813?v=4",
+      "profile": "http://chhakuli-zingare.netlify.app/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Jayakumar03",
+      "name": "Jaya Kumar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86454250?v=4",
+      "profile": "https://github.com/Jayakumar03",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "atapas",
+      "name": "Tapas Adhikary",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3633137?v=4",
+      "profile": "https://tapasadhikary.com",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "koustov",
+      "name": "Koustov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7145967?v=4",
+      "profile": "http://koustov.com",
+      "contributions": [
+        "ideas"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "next-js-launchpad",
+  "projectOwner": "CreoWis"
+}
