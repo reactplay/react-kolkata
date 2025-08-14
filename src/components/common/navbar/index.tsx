@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -48,13 +49,15 @@ const Navbar = () => {
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2" aria-label="React Kolkata Home">
-          <div className="h-8 w-8 rounded-md bg-gradient-to-br from-blue-500 to-sky-400" />
-          <span
-            className="font-semibold tracking-wide text-slate-100"
-            style={{ fontFamily: "var(--font-poppins)" }}
-          >
-            React Kolkata
-          </span>
+          <div className="relative h-24 w-24">
+            <Image
+              alt="react kolkata brand logo"
+              src="/logo.svg"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">

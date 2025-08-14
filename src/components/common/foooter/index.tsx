@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Github, Linkedin, Mail, Phone, Twitter } from "lucide-react";
 
@@ -15,15 +16,17 @@ const Footer = () => {
     <footer className="border-t border-white/5 bg-[#0B1220]">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
         <div>
-          <div className="flex items-center gap-2">
-            <div
-              className="h-8 w-8 rounded-md bg-gradient-to-br from-blue-500 to-sky-400"
-              aria-hidden
-            />
-            <span className="font-semibold" style={{ fontFamily: "var(--font-poppins)" }}>
-              React Kolkata
-            </span>
-          </div>
+          <Link href="/" className="flex items-center gap-1" aria-label="React Kolkata Home">
+            <div className="relative h-30 w-30">
+              <Image
+                alt="react kolkata brand logo"
+                src="/logo.svg"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </Link>
           <p className="mt-3 text-sm text-slate-400">
             A community for React developers in Kolkata. Meet, learn, and build together.
           </p>
