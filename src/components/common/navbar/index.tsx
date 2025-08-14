@@ -99,7 +99,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {open ? (
-        <div className="border-t border-white/5 md:hidden">
+        <div className="absolute w-screen border-t border-white/5 bg-[#0B1220] md:hidden">
           <nav className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6" aria-label="Mobile">
             {links.map((l) => {
               const active = l.href === "/" ? pathname === l.href : pathname.startsWith(l.href);

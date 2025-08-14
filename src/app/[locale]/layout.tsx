@@ -1,29 +1,17 @@
-import type { Metadata, Viewport } from "next";
+import React from "react";
 import { notFound } from "next/navigation";
+import { siteConfig } from "@/modules/home/meta/site";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
 import { routing } from "@/config/i18n/navigation";
 import { inter, poppins } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
-import { siteConfig } from "@/meta/site";
+import AppProvider from "@/components/providers";
 
 import "@/base/styles/globals.css";
 
-import AppProvider from "./providers";
-
-export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  icons: siteConfig.icons,
-};
-
-export const viewport: Viewport = {
-  themeColor: siteConfig.themeColor,
-};
+export const metadata = siteConfig;
 
 type RootLayoutProps = Readonly<{
   children: React.ReactNode;
@@ -34,9 +22,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as any)) {
-    notFound();
-  }
+  if (!routing.locales.includes(locale as any)) notFound();
 
   // Providing all messages to the client
   const messages = await getMessages();

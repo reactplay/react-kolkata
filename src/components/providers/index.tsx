@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { ThemeProvider } from "next-themes";
 
 import Footer from "@/components/common/foooter";
@@ -11,9 +11,6 @@ interface AppProviderProps {
 }
 
 const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
-  useEffect(() => {
-    console.log("render-provider", Footer, Navbar);
-  }, []);
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
       <div className="relative min-h-screen">

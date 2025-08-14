@@ -1,10 +1,10 @@
 import React from "react";
 
-import AboutSection from "./about-section";
-import BlogSection from "./blogs-section";
-import ContactSection from "./contact-section";
-import EventsSection from "./event-section";
-import HeroSection from "./hero-section";
+import AboutSection from "./(sections)/about";
+import BlogSection from "./(sections)/blogs";
+import ContactSection from "./(sections)/contact";
+import EventsSection from "./(sections)/event";
+import HeroSection from "./(sections)/hero";
 
 const LandingPage = () => {
   return (
