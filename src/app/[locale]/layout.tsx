@@ -4,10 +4,13 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
 import { routing } from "@/config/i18n/navigation";
-import { fontSans } from "@/lib/fonts";
+import { inter, poppins } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
 import { siteConfig } from "@/meta/site";
 
 import "@/base/styles/globals.css";
+
+import AppProvider from "./providers";
 
 export const metadata: Metadata = {
   title: {
@@ -38,9 +41,17 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   // Providing all messages to the client
   const messages = await getMessages();
   return (
-    <html lang={locale}>
-      <body className={`min-h-screen font-sans antialiased ${fontSans.variable}`}>
-        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+    <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
+      <body
+        className={cn(
+          "min-h-dvh bg-[#0B1220] text-slate-100 antialiased",
+          inter.variable,
+          poppins.variable
+        )}
+      >
+        <AppProvider>
+          <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        </AppProvider>
       </body>
     </html>
   );
