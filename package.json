@@ -6,17 +6,22 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --quiet",
-    "lint:fix": "next lint --fix",
-    "prepare": "husky install",
-    "prettier:check": "prettier --ignore-pattern .gitignore --write \"**/*.+(js|ts|json)\"",
-    "lint:check": "eslint --ext .js,.ts .",
-    "lint-prettier": "npm run lint:check && npm run prettier:check",
-    "vitest": "vitest",
-    "playwright": "npx playwright install && npx playwright install-deps && npx playwright test"
+    "lint": "eslint --ext .js,.ts,.tsx --quiet .",
+    "lint:fix": "eslint --ext .js,.ts,.tsx --fix .",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.{js,ts,tsx,json,md}\"",
+    "format:check": "prettier --ignore-path .gitignore --check \"**/*.{js,ts,tsx,json,md}\"",
+    "check:code-style": "npm run lint && npm run format:check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:setup": "playwright install && playwright install-deps",
+    "prepare": "husky install"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": "npm run lint-prettier"
+    "src/**/*.{js,jsx,ts,tsx,json,md}": [
+      "eslint --ext .js,.jsx,.ts,.tsx --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.14",
@@ -54,6 +59,7 @@
     "eslint-plugin-prettier": "^5.5.3",
     "husky": "^9.1.7",
     "jsdom": "^26.1.0",
+    "lint-staged": "^16.1.5",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^4",
