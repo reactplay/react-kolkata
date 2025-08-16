@@ -3,7 +3,7 @@
 import React from "react";
 import { ThemeProvider } from "next-themes";
 
-import Footer from "@/components/common/foooter";
+import Footer from "@/components/common/footer";
 import Navbar from "@/components/common/navbar";
 
 interface AppProviderProps {
