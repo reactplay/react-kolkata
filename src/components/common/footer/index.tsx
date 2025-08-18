@@ -62,7 +62,7 @@ const Footer = () => {
               <a
                 className="hover:text-white"
                 aria-label="Twitter"
-                href="#"
+                href="https://x.com/reactkolkata"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -71,7 +71,7 @@ const Footer = () => {
               <a
                 className="hover:text-white"
                 aria-label="GitHub"
-                href="#"
+                href="https://github.com/reactplay/react-kolkata"
                 target="_blank"
                 rel="noreferrer"
               >
