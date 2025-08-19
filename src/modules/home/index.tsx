@@ -1,5 +1,3 @@
-import React from "react";
-
 import AboutSection from "./(sections)/about";
 import BlogSection from "./(sections)/blogs";
 import ContactSection from "./(sections)/contact";
