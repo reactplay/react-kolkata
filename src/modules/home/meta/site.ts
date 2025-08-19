@@ -27,7 +27,7 @@ export const siteConfig: Metadata = {
     title: "React Kolkata — Community, Events, Resources",
     description:
       "Join React Kolkata for meetups, talks, workshops, and resources. A modern hub for React developers in Kolkata.",
-    url: "https://react-kolkata.example.com",
+    url: "https://reactkolkata.com",
     images: [
       {
         url: "react-kolkata-meetup.png",

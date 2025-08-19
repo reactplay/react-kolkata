@@ -42,7 +42,9 @@ const HeroSection = () => {
               size="lg"
               className="bg-gradient-to-r from-blue-600 to-sky-500 shadow-lg shadow-sky-900/30 transition hover:from-blue-500 hover:to-sky-400"
             >
-              <Link href="/join-us">Join the Community</Link>
+              <Link target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
+                Join the Community
+              </Link>
             </Button>
             <Button
               asChild
@@ -50,7 +52,9 @@ const HeroSection = () => {
               size="lg"
               className="border-white/10 bg-white/5 text-slate-100 hover:bg-white/10"
             >
-              <Link href="/events">See Upcoming Events</Link>
+              <Link target="_blank" href="https://lu.ma/reactkolkata">
+                See Upcoming Events
+              </Link>
             </Button>
           </div>
         </div>

@@ -1,14 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Mail, Phone, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 
 const quickLinks = [
-  { href: "/about", label: "About" },
-  { href: "/events", label: "Events" },
-  { href: "/blog", label: "Blog" },
-  { href: "/resources", label: "Resources" },
-  { href: "/contact", label: "Contact" },
-  { href: "/join-us", label: "Join Us" },
+  { href: "https://lu.ma/reactkolkata", label: "Events" },
+  { href: "https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs", label: "Join Us" },
 ];
 
 const Footer = () => {
@@ -17,7 +13,7 @@ const Footer = () => {
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
         <div>
           <Link href="/" className="flex items-center gap-1" aria-label="React Kolkata Home">
-            <div className="relative h-30 w-30">
+            <div className="relative h-25 w-25">
               <Image
                 alt="react kolkata brand logo"
                 src="/logo.svg"
@@ -27,7 +23,7 @@ const Footer = () => {
               />
             </div>
           </Link>
-          <p className="mt-3 text-sm text-slate-400">
+          <p className="text-sm text-slate-400">
             A community for React developers in Kolkata. Meet, learn, and build together.
           </p>
         </div>
@@ -37,7 +33,11 @@ const Footer = () => {
           <ul className="mt-3 space-y-2">
             {quickLinks.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="text-sm text-slate-400 hover:text-slate-200">
+                <Link
+                  href={l.href}
+                  target="_blank"
+                  className="text-sm text-slate-400 hover:text-slate-200"
+                >
                   {l.label}
                 </Link>
               </li>
@@ -50,13 +50,9 @@ const Footer = () => {
           <ul className="mt-3 space-y-2 text-sm text-slate-400">
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4" aria-hidden />{" "}
-              <a href="mailto:hello@reactkolkata.dev" className="hover:text-slate-200">
-                hello@reactkolkata.dev
+              <a href="mailto:reactkolkata@gmail.com" className="hover:text-slate-200">
+                reactkolkata@gmail.com
               </a>
-            </li>
-            <li className="flex items-center gap-2">
-              <Phone className="h-4 w-4" aria-hidden />{" "}
-              <a href="tel:+919999999999">+91 99999 99999</a>
             </li>
             <li className="mt-4 flex items-center gap-4">
               <a
@@ -80,7 +76,7 @@ const Footer = () => {
               <a
                 className="hover:text-white"
                 aria-label="LinkedIn"
-                href="#"
+                href="https://www.linkedin.com/showcase/react-kolkata"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -91,16 +87,8 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-t border-white/5">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-6 text-xs text-slate-500 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-6 text-xs text-slate-500 sm:px-6 lg:px-8">
           <p>&copy; {new Date().getFullYear()} React Kolkata. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <Link href="#" className="hover:text-slate-300">
-              Privacy
-            </Link>
-            <Link href="#" className="hover:text-slate-300">
-              Terms
-            </Link>
-          </div>
         </div>
       </div>
     </footer>
