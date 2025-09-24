@@ -1,63 +1,86 @@
+
 # 🚀 React Kolkata
 
-The comprehensive toolkit for developing Next.js projects.
+> The comprehensive Next.js starter and toolkit for building modern, scalable web apps with best practices, rapid setup, and a vibrant community.
 
-With NextJsLaunchpad, you get
+---
 
-- a robust foundation equipped with essential tools,
-- configurations, and best practices to streamline your development workflow.
+![React Kolkata Banner](public/react-kolkata-meetup.png)
 
-Say goodbye to setup headaches and hello to consistent code quality. Elevate your Next.js projects with NextJsLaunchpad.
+Welcome to **React Kolkata**! This project provides a robust foundation for Next.js applications, featuring TypeScript, Tailwind CSS, i18n, testing, and more. Whether you're building a personal project or a production-grade app, React Kolkata helps you get started quickly and maintain code quality with ease.
+
+**Join our community events:** [React Kolkata on lu.ma](https://lu.ma/reactkolkata)
+
 
 ## ✨ Features
 
-- **Next.js**: Utilize the power of Next.js for server-rendered React applications.
-- **TypeScript**: Enhance your development experience with TypeScript's static typing.
-- **Tailwind CSS**: Rapidly build custom designs with Tailwind CSS's utility-first approach.
-- **ESLint**: Enforce code quality standards and catch errors early with ESLint.
-- **Prettier**: Keep your codebase clean and consistent with automatic code formatting using Prettier.
-- **Prettier Plugin Tailwindcss**: Automatic sorting of tailwind classnames using the official prettier plugin.
-- **Prettier Plugin Sort Imports**: Organize import declarations alphabetically within groups, which can help improve readability when working on larger projects.
-- **Husky**: Ensure code quality and prevent bad commits with pre-commit hooks powered by Husky.
-- **Docker Support**: Complete Docker configuration.
+- **Next.js 15+**: Modern, server-rendered React apps
+- **TypeScript**: Static typing for safer, scalable code
+- **Tailwind CSS**: Utility-first, rapid UI development
+- **ESLint & Prettier**: Code quality and consistent formatting
+- **Prettier Plugins**: Tailwind class sorting & import sorting
+- **Husky**: Pre-commit hooks for code quality
+- **Docker Support**: Easy containerization and deployment
+- **Internationalization (i18n)**: Built-in multi-language support with next-intl
+- **Playwright & Vitest**: E2E, unit, and integration testing
+- **Community Events**: [React Kolkata on lu.ma](https://lu.ma/reactkolkata)
 
-  ```bash
-  -  Start the application using this Docker command:
 
-  docker-compose up
+---
 
-  The command will:
-  1. Build the application container
-  2. Install all dependencies
-  3. Start the development server
-  4. Make the application available on localhost
-  ```
+## 🚦 Quick Start
 
-- **Internationalization (i18n)**: Built-in support for multiple languages using next-intl, making it easy to create multilingual applications with locale-specific routing and translations.
-
-## Getting Started
-
-> Usage
+### 1. Create a New Project
 
 ```bash
-npx create-next-app -e https://github.com/reactplay/react-kolkata.git
+npx create-next-app -e https://github.com/reactplay/react-kolkata.git my-app
+cd my-app
 ```
 
-## Internationalization (i18n)
-
-NextJsLaunchpad comes with built-in internationalization support using next-intl. This integration provides:
-
-- Route-based locale handling with `/[locale]/` directory structure
-- Easy-to-use translation hooks with `useTranslations` in server and client components.
-
-Translation files are located in:
+### 2. Install Dependencies
 
 ```bash
-content/
-  ├── en.json
-  ├── fr.json
-  └── [other-locales].json
+pnpm install # or npm install or yarn install
 ```
+
+### 3. Start the Development Server
+
+```bash
+pnpm dev # or npm run dev or yarn dev
+```
+
+Visit [http://localhost:3000](http://localhost:3000) to view your app.
+
+### 4. Docker (Optional)
+
+To run the app in Docker:
+
+```bash
+docker-compose up
+```
+
+---
+
+
+## 🌍 Internationalization (i18n)
+
+Built-in support for multiple languages using [next-intl](https://next-intl-docs.vercel.app/).
+
+- Route-based locale handling: `/[locale]/`
+- Easy translation hooks: `useTranslations` in server/client components
+- Translation files: `src/config/i18n/content/`
+
+Example:
+
+```js
+import { useTranslations } from 'next-intl';
+const t = useTranslations('Home');
+<h1>{t('welcomeMessage')}</h1>
+```
+
+**Add a new language:**
+1. Add a JSON file in `src/config/i18n/content/` (e.g., `es.json`)
+2. Add the language code to the `locales` array in `src/config/i18n/navigation.ts`
 
 #### How to add a new language support:
 
@@ -103,175 +126,101 @@ To use strings from a language file in both **client and server** components, us
    <h1>{t("welcomeMessage")}</h1>
    ```
 
-## Playwright E2E Testing
 
-NextJsLaunchpad includes Playwright for robust end-to-end testing. This integration provides:
+## 🧪 Testing
 
-- **Headless and UI Testing**: Run tests in both headless mode for automation and UI mode for debugging.
-- **Cross-Browser Compatibility**: Test on Chromium, Firefox, and WebKit.
-- **API and Component Testing**: Supports API calls and frontend component interactions.
+### Playwright (E2E)
+- Headless & UI browser testing (Chromium, Firefox, WebKit)
+- Test location: `__test__/e2e/`
+- Config: `playwright.config.ts`
 
-### Running Playwright Tests
-
-To execute Playwright tests, use:
-
-```shell
-npm run playwright
+Run tests:
+```bash
+pnpm test:e2e # or npm run test:e2e
 ```
 
-### Playwright Configuration
+### Vitest (Unit & Integration)
+- Fast, parallel test runner with JSDOM
+- Config: `vitest.config.mts`
 
-Test settings are defined in:
-
-```plaintext
-/playwright.config.ts
+Run tests:
+```bash
+pnpm test # or npm run test
 ```
 
-### Test Files
 
-Playwright tests are located in:
+---
 
-```plaintext
-/__tests__/e2e/
-```
 
-## Vitest Unit & Integration Testing
-
-NextJsLaunchpad includes Vitest for fast and efficient unit and integration testing. This setup provides:
-
-- **Lightning-Fast Execution**: Runs tests in parallel for speed.
-- **JSDOM Environment**: Simulates a browser-like environment for React components.
-- **TypeScript Support**: Fully compatible with TypeScript for better type safety.
-- **Mocking & Snapshot Testing**: Supports mocking API calls and UI snapshots.
-
-### Running Vitest Tests
-
-To execute Vitest tests, use:
-
-```shell
-npm run vitest
-```
-
-### Vitest Configuration
-
-Test settings are defined in:
-
-```plaintext
-/vitest.config.mts
-```
-
-<!-- Project should be public for the above command to work -->
-
-## Folder Structure
+## 📁 Folder Structure
 
 ```bash
 .
-├── __tests__
-├── lib
-├── public
-└── src
-    ├── app
-    └── components
-        ├── footer
-        └── ui
-    ├── config
-    ├── constants
-    ├── context
-    ├── data
-    ├── db
-    ├── hooks
-    ├── modules
-    ├── queries
-    ├── services
-    ├── store
-    └── utils
-├── styles
-├── types
+├── __test__           # All tests (e2e, unit, integration)
+├── public             # Static assets (images, icons, etc.)
+├── src                # Main source code
+│   ├── app            # Next.js app directory
+│   ├── base           # Base styles, constants, data
+│   ├── components     # UI, common, custom components
+│   ├── config         # i18n and other configs
+│   ├── lib            # Utilities and shared logic
+│   ├── modules        # Feature modules/sections
+│   └── ...            # More folders (see code)
+├── styles             # Global and component styles
+├── types              # TypeScript type definitions
 ```
 
-**\_\_tests\_\_**: This folder contains all 'tests'.
+---
 
-**lib**: This folder may contain utility functions that can be converted later into packages that are used across multiple applications.
 
-**public**: Self explanatory.
+**__test__**: All tests (e2e, unit, integration)
+**public**: Static assets (images, icons, etc.)
+**src/components**: UI, common, and custom components
+**src/modules**: Feature modules/sections
+**src/config**: Config files (i18n, etc.)
+**src/base**: Base styles, constants, and data
+**src/lib**: Shared utilities and logic
+**styles**: Global and component styles
+**types**: TypeScript type definitions
 
-**src/components**: This directory contains your UI components. It's further subdivided into ui for generic UI components and shared for components that might be reused across different parts of your application.
 
-> [Conventions for src/components](#convention)
+## 📝 Conventions
 
-**src/constants**: As the name suggests this folder contains constants.
+- **Folders/files**: kebab-case (e.g., `my-folder`)
+- **Functions/variables**: camelCase (e.g., `filterProductsByType`)
+- **Constants**: UPPERCASE (e.g., `MAX_VALUE`)
+- **Component names**: PascalCase (e.g., `Footer`)
+- **Types**: `.d.ts` extension
+- **Hooks**: camelCase, start with `use` (e.g., `useFetchData`)
+- **UI components**: in `ui/` folder, each as its own folder with `index.ts`
 
-**src/context**: The context folder in React JS is a folder that stores all of the context files for the application. Context is a way to pass data through the component tree without having to pass props down manually at every level. This can be useful for data that needs to be accessed by many components, such as the current user or the current state of the application.
-
-**src/data**: The data folder in React JS is used to store data assets such as JSON files that contain information used in the application. It is similar to the assets folder, but it is specifically for storing data.
-
-**src/db**: The db folder in React JS is typically used to store database-related files, such as database configuration files, migration scripts, and seed files.
-
-**src/hooks**: This directory may house custom hooks that are used throughout your application.
-
-> [Conventions for src/hooks](#convention2)
-
-**src/modules**: Modules which is also synonymous with 'sections/features' are logical groupings of code that make up the larger pages.
-
-**src/queries**: This directory may contain GraphQL queries.
-
-**src/services**: This folder helps separate the concerns of your application by isolating data fetching and manipulation logic from the components that render the UI.
-
-**src/store**: The store folder in React JS is used to store global state data that is used throughout the application. This data can be anything from the current user's login status to the contents of a shopping cart. The store folder is typically created in the root directory of the project and contains a number of files, including the store itself, actions, and reducers.
-
-**src/utils**: This directory may contain utility functions that do not make sense to convert into packages later.
-
-**styles**: As the name suggests, this directory contains the css pages that is responsible for styling.
-
-**types**: This folder contains TypeScript type definitions.
-
-## Conventions
-
-Throughout the project, unless otherwise mentioned, we will be using the following convention:
-
-- folders and files are named in lowercase with words separated by hyphen (kebab-case). For example, `my-folder` or `my-file`.
-- Functions -> `camelCase` E.g. _filterProductsByType_ , _formatCurrency_
-- Variables -> `camelCase` E.g. _products_, _productsFiltered_
-- Global constants -> all caps `UPPERCASE`. For example: `MAX_VALUE`, `MIN_VALUE`
-- Object constants -> Singular, capitalized with const assertion and optionally satisfies type (if there is one).
-
-```js
-const ORDER_STATUS = {
-    pending: 'pending',
-    fulfilled: 'fulfilled',
-    error: 'error',
-  } as const satisfies OrderStatus;
-```
-
-- component names -> `PascalCase` E.g. _export function Footer() {}_
-- types should have `.d.ts` extension. E.g. _root.d.ts_
-- use arrow functions wherever possible.
-- ui folder can contain granular level components like _button_, _dialog_, _input_ etc which can be used to build other components.
-- use given folders for various kinds of files. E.g. _types should reside in types folder_
-
-NOTE: Check granular level conventions below for overiding rules (if any). If there are cases where industry standards over-ride the rules mentioned above, please feel free to use them. For example convention for naming hooks.
-
-> <a id="convention">Conventions for src/components</a>
-
-- ui components will go inside the ui folder
-- each component will be a folder of its own. Sub-components, if any will reside in the same folder. Each such folder will have index.ts file which will export all components. E.g. `export { Footer as default } from './footer';`
-- separate folder for routes. E.g. about-us route will have a folder by the same name inside component folder which will have other components inside it.
-
-Example: take a look at the `footer` component.
-
-> <a id="convention2">Conventions for src/hooks</a>
-
-- `camelCase` beginning with the word _use_ e.g. useFetchData: A generic fetching hook for making HTTP requests to a specified endpoint.
 
 ## 🤝 Contributing
 
 Contributions are always welcome!
 
-See [CONTRIBUTING.md](https://github.com/CreoWis/next-js-launchpad/blob/main/CONTRIBUTING.md) for ways to get started.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to get started.
 
-Please adhere to this project's [code of conduct](https://github.com/CreoWis/next-js-launchpad/blob/main/CODE_OF_CONDUCT.md).
+Please adhere to this project's [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
-## Acknowledgements
 
-- [Next.JS](https://nextjs.org/)
-- [TailwindCSS](https://tailwindcss.com/)
+## 🙏 Acknowledgements
+
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Playwright](https://playwright.dev/)
+- [Vitest](https://vitest.dev/)
+- [lu.ma Events](https://lu.ma/reactkolkata)
+
+---
+
+## 📸 Screenshots
+
+<p align="center">
+  <img src="public/tech-events-1.jpg" alt="React Kolkata Event 1" width="350"/>
+  <img src="public/tech-events-2.jpg" alt="React Kolkata Event 2" width="350"/>
+</p>
+
+---
+
+For more, join our [React Kolkata lu.ma](https://lu.ma/reactkolkata) community!
