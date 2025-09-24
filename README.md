@@ -217,8 +217,8 @@ Please adhere to this project's [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="public/tech-events-1.jpg" alt="React Kolkata Event 1" width="350"/>
-  <img src="public/tech-events-2.jpg" alt="React Kolkata Event 2" width="350"/>
+  <img src="public/images/tech-events-1.jpg" alt="React Kolkata Event 1" width="350"/>
+  <img src="public/images/tech-events-2.jpg" alt="React Kolkata Event 2" width="350"/>
 </p>
 
 ---
