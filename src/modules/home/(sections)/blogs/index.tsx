@@ -48,8 +48,8 @@ const BlogSection = () => {
     <AnimatedSection className="relative">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         {/* Blog Section */}
-        <div className="mb-16">
-          <div className="mb-8 flex items-end justify-between">
+        <div className="mb-16 flex flex-col gap-8">
+          <div className="flex items-end justify-between">
             <div>
               <h2
                 className="text-3xl font-semibold tracking-tight sm:text-4xl"
@@ -82,9 +82,16 @@ const BlogSection = () => {
 
           {/* Filter Section */}
           {showFilters && (
-            <div className="mb-6 rounded-xl border border-white/10 bg-white/5 p-4">
-              <div className="mb-3 flex items-center justify-between">
-                <h3 className="text-sm font-medium text-slate-300">Filter by tags</h3>
+            <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-4">
+              <div className="flex h-6 items-center justify-between">
+                <div className="flex items-center justify-center gap-2">
+                  <h3 className="text-sm font-medium text-slate-300">Filter by tags</h3>
+                  {selectedTags.length > 0 && (
+                    <p className="text-sm text-slate-400">
+                      (Showing {filteredArticles.length} of {articles.length} posts)
+                    </p>
+                  )}
+                </div>
                 {selectedTags.length > 0 && (
                   <Button
                     variant="ghost"
@@ -113,11 +120,6 @@ const BlogSection = () => {
                   </Badge>
                 ))}
               </div>
-              {selectedTags.length > 0 && (
-                <p className="mt-2 text-xs text-slate-400">
-                  Showing {filteredArticles.length} of {articles.length} posts
-                </p>
-              )}
             </div>
           )}
 
