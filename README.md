@@ -34,7 +34,8 @@ Say goodbye to setup headaches and hello to consistent code quality. Elevate you
   ```
 
 - **Internationalization (i18n)**: Built-in support for multiple languages using next-intl, making it easy to create multilingual applications with locale-specific routing and translations.
-- **Enhanced Blog Section**: Modern blog cards with author information, tags, read time estimation, and tag-based filtering using native JavaScript APIs.
+- **Blog Section**: Modern blog cards with author information, tags, read time estimation, and tag-based filtering using native JavaScript APIs.
+- **Events Section**: Dynamic event management with real-time status calculation, type-based filtering, and integrated calendar functionality.
 
 ## Getting Started
 
@@ -54,6 +55,18 @@ The enhanced blog section includes:
 - **Date Formatting**: ISO date support with timezone information using native `Intl` APIs
 - **Responsive Design**: Modern card layout with hover effects and cover images
 - **Fallback Images**: Graceful handling of broken images with default placeholders
+
+## Events Section
+
+The events section provides:
+
+- **Dynamic Status Calculation**: Real-time event status (upcoming, ongoing, past) based on current time
+- **Event Type Classification**: Online, offline, and hybrid event categorization with visual indicators
+- **Advanced Filtering**: Filter events by status and type with interactive UI controls
+- **Calendar Integration**: One-click "Add to Calendar" for Google Calendar, Outlook, and ICS download
+- **Type-Safe Constants**: Predefined constants for event types and statuses to prevent errors
+- **Modular Architecture**: Componentized structure with reusable EventCard, EventFilters, and CalendarButtons
+- **ISO DateTime Support**: Precise datetime handling with timezone information for accurate calendar integration
 
 ## Internationalization (i18n)
 
@@ -233,7 +246,7 @@ Test settings are defined in:
 
 **src/utils**: This directory may contain utility functions that do not make sense to convert into packages later.
 
-**src/lib**: Contains utility functions and helpers, including date formatting utilities that use native JavaScript APIs.
+**src/lib**: Contains utility functions and helpers, including date formatting utilities that use native JavaScript APIs and calendar integration functions.
 
 **styles**: As the name suggests, this directory contains the css pages that is responsible for styling.
 
