@@ -37,37 +37,117 @@ export const articles = [
   {
     id: "a-001",
     title: "React Kolkata Recap: Patterns for Scalable Apps",
-    date: "Aug 2, 2025",
+    date: "2025-08-02T10:30:00+05:30",
     excerpt:
       "Highlights from our last meetup covering modularization, performance budgets, and error boundaries. We explored real-world examples from local teams and discussed best practices for building maintainable React applications at scale.",
+    author: {
+      id: "author-1",
+      name: "Priyanka Pal",
+      avatar:
+        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+      bio: "React developer and community organizer at React Kolkata",
+      profileUrl: "https://github.com/priyankarpal",
+    },
+    tags: [
+      { id: "react", name: "React", slug: "react" },
+      { id: "patterns", name: "Patterns", slug: "patterns" },
+      { id: "performance", name: "Performance", slug: "performance" },
+    ],
+    readTime: 8,
+    coverImage: "/images/tech-events-1.jpg",
+    url: "https://reactplay.hashnode.dev/react-kolkata-recap-patterns-for-scalable-apps",
   },
   {
     id: "a-002",
     title: "RSC in Practice: What We Learned",
-    date: "Jul 18, 2025",
+    date: "2025-07-18T14:15:00+05:30",
     excerpt:
       "Real-world experience integrating Server Components and progressive data fetching. Our community members share their journey of adopting React Server Components in production applications.",
+    author: {
+      id: "author-2",
+      name: "Badal Jain",
+      avatar:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      bio: "Full-stack developer and open source contributor",
+      profileUrl: "https://github.com/badaljain",
+    },
+    tags: [
+      { id: "react", name: "React", slug: "react" },
+      { id: "rsc", name: "Server Components", slug: "server-components" },
+      { id: "nextjs", name: "Next.js", slug: "nextjs" },
+    ],
+    readTime: 6,
+    coverImage: "/images/tech-events-2.jpg",
+    url: "https://reactplay.hashnode.dev/rsc-in-practice-what-we-learned",
   },
   {
     id: "a-003",
     title: "DX Tips: Tooling, Linting, and Formatting",
-    date: "Jul 1, 2025",
+    date: "2025-07-01T09:45:00+05:30",
     excerpt:
       "Our preferred configurations for ESLint, Prettier, and TypeScript to keep teams productive. A comprehensive guide to setting up development environments that scale with your team.",
+    author: {
+      id: "author-3",
+      name: "Dev Community",
+      avatar:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      bio: "Collective wisdom from React Kolkata community",
+      profileUrl: "https://github.com/reactplay",
+    },
+    tags: [
+      { id: "dx", name: "Developer Experience", slug: "developer-experience" },
+      { id: "tooling", name: "Tooling", slug: "tooling" },
+      { id: "typescript", name: "TypeScript", slug: "typescript" },
+    ],
+    readTime: 5,
+    coverImage: "/images/tech-events-3.jpg",
+    url: "https://reactplay.hashnode.dev/dx-tips-tooling-linting-and-formatting",
   },
   {
     id: "a-004",
     title: "Community Spotlight: Open Source in Kolkata",
-    date: "Jun 20, 2025",
+    date: "2025-06-20T16:20:00+05:30",
     excerpt:
       "How local contributors are building impactful tools and libraries for the ecosystem. Meet the developers from Kolkata who are making a difference in the global React community.",
+    author: {
+      id: "author-1",
+      name: "Priyanka Pal",
+      avatar:
+        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+      bio: "React developer and community organizer at React Kolkata",
+      profileUrl: "https://github.com/priyankarpal",
+    },
+    tags: [
+      { id: "community", name: "Community", slug: "community" },
+      { id: "opensource", name: "Open Source", slug: "open-source" },
+      { id: "kolkata", name: "Kolkata", slug: "kolkata" },
+    ],
+    readTime: 7,
+    coverImage: "/images/kolkata_image.jpg",
+    url: "https://reactplay.hashnode.dev/community-spotlight-open-source-in-kolkata",
   },
   {
     id: "a-005",
     title: "Rendering Strategies: CSR, SSR, and Streaming",
-    date: "May 30, 2025",
+    date: "2025-05-30T11:00:00+05:30",
     excerpt:
       "A practical guide to choosing the right rendering mode for each page and component. Understanding the trade-offs and performance implications of different rendering strategies.",
+    author: {
+      id: "author-2",
+      name: "Badal Jain",
+      avatar:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      bio: "Full-stack developer and open source contributor",
+      profileUrl: "https://github.com/badaljain",
+    },
+    tags: [
+      { id: "react", name: "React", slug: "react" },
+      { id: "ssr", name: "Server-Side Rendering", slug: "ssr" },
+      { id: "performance", name: "Performance", slug: "performance" },
+    ],
+    readTime: 9,
+    coverImage: "/images/tech-events-1.jpg",
+    url: "https://reactplay.hashnode.dev/rendering-strategies-csr-ssr-and-streaming",
   },
 ];
 
