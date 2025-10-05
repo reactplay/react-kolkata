@@ -1,35 +1,96 @@
+import { EVENT_TYPES } from "@/types/event";
+
 export const events = [
   {
     id: "rk-001",
     title: "React Kolkata: Modern Patterns & Performance",
-    date: "Sep 7, 2025",
-    time: "11:00 AM – 1:00 PM IST",
     venue: "Startup Hub, Park Street, Kolkata",
     description:
       "Talks on React Server Components, performance profiling, and real-world case studies from local teams.",
     registrationUrl: "#",
     image: "/images/tech-events-1.jpg",
+    type: EVENT_TYPES.OFFLINE,
+    startDateTime: "2025-09-07T11:00:00+05:30",
+    endDateTime: "2025-09-07T13:00:00+05:30",
+    location: {
+      name: "Startup Hub",
+      address: "Park Street, Kolkata, West Bengal, India",
+    },
   },
   {
     id: "rk-002",
     title: "Hands-on Workshop: Type-safe React",
-    date: "Oct 12, 2025",
-    time: "10:00 AM – 2:00 PM IST",
     venue: "Tech Park, Sector V, Salt Lake",
     description: "Interactive session covering TypeScript, Zod validation, and DX best practices.",
     registrationUrl: "#",
     image: "/images/tech-events-2.jpg",
+    type: EVENT_TYPES.OFFLINE,
+    startDateTime: "2025-10-12T10:00:00+05:30",
+    endDateTime: "2025-10-12T14:00:00+05:30",
+    location: {
+      name: "Tech Park",
+      address: "Sector V, Salt Lake, Kolkata, West Bengal, India",
+    },
   },
   {
     id: "rk-003",
     title: "Lightning Talks: State Management in 2025",
-    date: "Nov 16, 2025",
-    time: "5:30 PM – 7:30 PM IST",
     venue: "Community Space, New Town",
     description:
       "Short talks on signals, context vs. stores, and caching strategies, followed by networking.",
     registrationUrl: "#",
     image: "/images/tech-events-3.jpg",
+    type: EVENT_TYPES.OFFLINE,
+    startDateTime: "2025-11-16T17:30:00+05:30",
+    endDateTime: "2025-11-16T19:30:00+05:30",
+    location: {
+      name: "Community Space",
+      address: "New Town, Kolkata, West Bengal, India",
+    },
+  },
+  {
+    id: "rk-004",
+    title: "Online React Masterclass: Advanced Hooks",
+    venue: "Zoom Meeting",
+    description:
+      "Deep dive into advanced React hooks, custom hook patterns, and performance optimization techniques.",
+    registrationUrl: "#",
+    image: "/online-react-workshop.png",
+    type: EVENT_TYPES.ONLINE,
+    startDateTime: "2025-12-05T19:00:00+05:30",
+    endDateTime: "2025-12-05T21:00:00+05:30",
+  },
+  {
+    id: "rk-005",
+    title: "React Performance Clinic",
+    venue: "Hybrid: Tech Hub + Online",
+    description:
+      "Hands-on performance debugging session with real applications. Both in-person and online participation available.",
+    registrationUrl: "#",
+    image: "/react-performance-clinic.png",
+    type: EVENT_TYPES.HYBRID,
+    startDateTime: "2026-01-20T14:00:00+05:30",
+    endDateTime: "2026-01-20T17:00:00+05:30",
+    location: {
+      name: "Tech Hub",
+      address: "Salt Lake, Kolkata, West Bengal, India",
+    },
+  },
+  {
+    id: "rk-006",
+    title: "React Kolkata Meetup: October Edition",
+    venue: "Innovation Hub, Kolkata",
+    description:
+      "Monthly community meetup with lightning talks, networking, and knowledge sharing.",
+    registrationUrl: "#",
+    image: "/react-kolkata-meetup.png",
+    type: EVENT_TYPES.OFFLINE,
+    startDateTime: "2025-10-05T18:00:00+05:30", // Today - ongoing event for demo
+    endDateTime: "2025-10-05T20:00:00+05:30",
+    location: {
+      name: "Innovation Hub",
+      address: "Sector V, Salt Lake, Kolkata, West Bengal, India",
+    },
   },
 ];
 
