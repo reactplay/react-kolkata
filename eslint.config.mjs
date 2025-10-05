@@ -1,46 +1,47 @@
-import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
-import pluginTypescript from "@typescript-eslint/eslint-plugin";
-import parserTypescript from "@typescript-eslint/parser";
-import { globalIgnores } from "eslint/config";
+import tsParser from "@typescript-eslint/parser";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+import nextPlugin from "@next/eslint-plugin-next";
+import prettierPlugin from "eslint-plugin-prettier";
+import globals from "globals";
 
-const compat = new FlatCompat({
-  baseDirectory: import.meta.dirname,
-  recommendedConfig: js.configs.recommended,
-});
-
-const eslintConfig = [
+export default [
   {
-    files: ["**/*.{ts,tsx}"],
+    files: ["**/*.{ts,tsx,js,jsx}"],
+    ignores: ["node_modules", ".next", "out", "dist", "build", "*.log*", "*.tsbuildinfo"],
     languageOptions: {
-      parser: parserTypescript,
+      parser: tsParser,
       parserOptions: {
         project: "./tsconfig.json",
         tsconfigRootDir: import.meta.dirname,
+        ecmaVersion: "latest",
+        sourceType: "module",
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
       },
     },
     plugins: {
-      "@typescript-eslint": pluginTypescript,
+      "@typescript-eslint": tsPlugin,
+      "@next/next": nextPlugin,
+      prettier: prettierPlugin,
+    },
+    rules: {
+      // TypeScript
+      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+
+      // React / Next
+      "react/react-in-jsx-scope": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "@next/next/no-img-element": "warn",
+      "@next/next/no-html-link-for-pages": "off",
+
+      // General
+      semi: ["error", "always"],
+      "no-console": ["warn", { allow: ["warn", "error"] }],
+      "prettier/prettier": "error",
     },
   },
-
-  ...compat.config({
-    plugins: ["@typescript-eslint"],
-    extends: [
-      "eslint:recommended",
-      "next/core-web-vitals",
-      "plugin:@typescript-eslint/recommended",
-      "prettier",
-    ],
-    rules: {
-      "@typescript-eslint/no-unused-vars": "error",
-      "@typescript-eslint/no-explicit-any": "off",
-      semi: ["error", "always"],
-      "react-hooks/exhaustive-deps": "off",
-    },
-  }),
-
-  globalIgnores(["node_modules/*", ".next/", "dist/", "build/", "*.log*", ".tsbuildinfo"]),
 ];
-
-export default eslintConfig;

@@ -11,12 +11,7 @@ import { Button } from "@/components/ui/button";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/events", label: "Events" },
-  { href: "/blog", label: "Blog" },
-  { href: "/resources", label: "Resources" },
-  { href: "/contact", label: "Contact" },
-  { href: "/join-us", label: "Join Us" },
+  { href: "https://lu.ma/reactkolkata", label: "Events" },
 ];
 
 const Navbar = () => {
@@ -67,6 +62,7 @@ const Navbar = () => {
               <Link
                 key={l.href}
                 href={l.href}
+                target="_blank"
                 className={cn(
                   "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                   active ? "text-sky-300" : "text-slate-300 hover:text-white"
@@ -83,7 +79,7 @@ const Navbar = () => {
             asChild
             className="bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
           >
-            <Link href="/join-us">Join the Community</Link>
+            <Link href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">Join the Community</Link>
           </Button>
         </div>
 
@@ -122,7 +118,9 @@ const Navbar = () => {
               asChild
               className="mt-2 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
             >
-              <Link href="/join-us">Join the Community</Link>
+              <Link target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
+                Join the Community
+              </Link>
             </Button>
           </nav>
         </div>

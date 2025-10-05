@@ -4,10 +4,19 @@ title: "\U0001F41B [Bug report]: "
 labels: ["bug"]
 assignees: [""]
 body:
+  - type: checkboxes
+    id: read-guidelines
+    attributes:
+      label: Contributor Guidelines
+      description: Please confirm that you have read the [Contributor Guidelines and Discussion](https://github.com/reactplay/react-kolkata/discussions/35) before submitting this issue.
+      options:
+        - label: I have read the guidelines and discussion
+          required: true
+
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        Thanks for taking the time to fill out this bug report!  
 
   - type: textarea
     id: what-happened
@@ -16,6 +25,7 @@ body:
       description: Tell us what you see!
     validations:
       required: true
+
   - type: textarea
     id: reproduce-step
     attributes:
@@ -59,6 +69,7 @@ body:
            - **OS**: [e.g. iOS8.1]
            - **Browser** [e.g. stock browser, safari]
            - **Version** [e.g. 22]
+
   - type: textarea
     id: screenshot
     attributes:
