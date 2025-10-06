@@ -36,6 +36,9 @@ export interface Event {
       lng: number;
     };
   };
+  // Recording and slide links for past events
+  recordingUrl?: string;
+  slidesUrl?: string;
 }
 
 export interface EventFilters {
