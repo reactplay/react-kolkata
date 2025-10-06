@@ -8,20 +8,28 @@ const variants: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
+// Fallback for when animations don't work
+const fallbackVariants: Variants = {
+  hidden: { opacity: 1, y: 0 },
+  show: { opacity: 1, y: 0 },
+};
+
 export default function AnimatedSection({
   children,
   className = "",
+  disableAnimation = false,
 }: {
   children: React.ReactNode;
   className?: string;
+  disableAnimation?: boolean;
 }) {
   return (
     <motion.section
       className={className}
-      variants={variants}
+      variants={disableAnimation ? fallbackVariants : variants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
     >
       {children}
     </motion.section>
