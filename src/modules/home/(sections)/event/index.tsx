@@ -64,8 +64,10 @@ export default function EventsSection() {
               Filter
             </Button>
             <Link
-              href="/events"
+              href="https://luma.com/reactkolkata"
               className="text-sm text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               View all
             </Link>

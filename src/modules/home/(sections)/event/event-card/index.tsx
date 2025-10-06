@@ -70,7 +70,9 @@ export default function EventCard({ event }: EventCardProps) {
               </Link>
             </Button>
             <Link
-              href="/events"
+              href={event.registrationUrl}
+              target="_blank"
+              rel="noreferrer"
               className="px-2 text-xs text-slate-300 underline-offset-4 hover:text-slate-100 hover:underline"
             >
               Details
