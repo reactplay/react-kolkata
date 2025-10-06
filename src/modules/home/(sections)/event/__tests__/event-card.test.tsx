@@ -1,4 +1,4 @@
-import { EVENT_TYPES } from "@/types/event";
+import { EVENT_STATUS, EVENT_TYPES } from "@/types/event";
 import { cleanup, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -98,7 +98,7 @@ describe("EventCard", () => {
     render(<EventCard event={mockEvent} />);
     const detailsLink = screen.getByText("Details");
     expect(detailsLink).toBeInTheDocument();
-    expect(detailsLink).toHaveAttribute("href", "/events");
+    expect(detailsLink).toHaveAttribute("href", "https://example.com/register");
   });
 
   it("should render EventBadges component", () => {
@@ -147,5 +147,113 @@ describe("EventCard", () => {
 
     // Should still render and pass venue as location
     expect(screen.getByTestId("calendar-buttons")).toBeInTheDocument();
+  });
+
+  describe("Recording and Slides functionality", () => {
+    it("should show recording and slides icon buttons for past events with links", async () => {
+      const { getEventStatus } =
+        await vi.importMock<typeof import("@/lib/calendar-utils")>("@/lib/calendar-utils");
+      getEventStatus.mockReturnValue(EVENT_STATUS.PAST);
+
+      const pastEventWithLinks = {
+        ...mockEvent,
+        recordingUrl: "https://youtube.com/watch?v=test",
+        slidesUrl: "https://docs.google.com/presentation/test",
+      };
+
+      render(<EventCard event={pastEventWithLinks} />);
+
+      // Check for buttons with title attributes (tooltips)
+      expect(screen.getByTitle("Watch Recording")).toBeInTheDocument();
+      expect(screen.getByTitle("View Slides")).toBeInTheDocument();
+      // Should not show register button for past events with recordings
+      expect(screen.queryByText("Register")).not.toBeInTheDocument();
+    });
+
+    it("should show only recording icon button when only recording URL is available", async () => {
+      const { getEventStatus } =
+        await vi.importMock<typeof import("@/lib/calendar-utils")>("@/lib/calendar-utils");
+      getEventStatus.mockReturnValue(EVENT_STATUS.PAST);
+
+      const pastEventWithRecording = {
+        ...mockEvent,
+        recordingUrl: "https://youtube.com/watch?v=test",
+      };
+
+      render(<EventCard event={pastEventWithRecording} />);
+
+      expect(screen.getByTitle("Watch Recording")).toBeInTheDocument();
+      expect(screen.queryByTitle("View Slides")).not.toBeInTheDocument();
+      expect(screen.queryByText("Register")).not.toBeInTheDocument();
+    });
+
+    it("should show only slides icon button when only slides URL is available", async () => {
+      const { getEventStatus } =
+        await vi.importMock<typeof import("@/lib/calendar-utils")>("@/lib/calendar-utils");
+      getEventStatus.mockReturnValue(EVENT_STATUS.PAST);
+
+      const pastEventWithSlides = {
+        ...mockEvent,
+        slidesUrl: "https://docs.google.com/presentation/test",
+      };
+
+      render(<EventCard event={pastEventWithSlides} />);
+
+      expect(screen.getByTitle("View Slides")).toBeInTheDocument();
+      expect(screen.queryByTitle("Watch Recording")).not.toBeInTheDocument();
+      expect(screen.queryByText("Register")).not.toBeInTheDocument();
+    });
+
+    it("should show register button for upcoming events even with recording links", async () => {
+      const { getEventStatus } =
+        await vi.importMock<typeof import("@/lib/calendar-utils")>("@/lib/calendar-utils");
+      getEventStatus.mockReturnValue(EVENT_STATUS.UPCOMING);
+
+      const upcomingEventWithLinks = {
+        ...mockEvent,
+        recordingUrl: "https://youtube.com/watch?v=test",
+        slidesUrl: "https://docs.google.com/presentation/test",
+      };
+
+      render(<EventCard event={upcomingEventWithLinks} />);
+
+      expect(screen.getByText("Register")).toBeInTheDocument();
+      expect(screen.queryByTitle("Watch Recording")).not.toBeInTheDocument();
+      expect(screen.queryByTitle("View Slides")).not.toBeInTheDocument();
+    });
+
+    it("should show register button for past events without recording/slides links", async () => {
+      const { getEventStatus } =
+        await vi.importMock<typeof import("@/lib/calendar-utils")>("@/lib/calendar-utils");
+      getEventStatus.mockReturnValue(EVENT_STATUS.PAST);
+
+      render(<EventCard event={mockEvent} />);
+
+      expect(screen.getByText("Register")).toBeInTheDocument();
+      expect(screen.queryByTitle("Watch Recording")).not.toBeInTheDocument();
+      expect(screen.queryByTitle("View Slides")).not.toBeInTheDocument();
+    });
+
+    it("should have correct links for recording and slides icon buttons", async () => {
+      const { getEventStatus } =
+        await vi.importMock<typeof import("@/lib/calendar-utils")>("@/lib/calendar-utils");
+      getEventStatus.mockReturnValue(EVENT_STATUS.PAST);
+
+      const pastEventWithLinks = {
+        ...mockEvent,
+        recordingUrl: "https://youtube.com/watch?v=test123",
+        slidesUrl: "https://docs.google.com/presentation/test456",
+      };
+
+      render(<EventCard event={pastEventWithLinks} />);
+
+      const recordingLink = screen.getByTitle("Watch Recording").closest("a");
+      const slidesLink = screen.getByTitle("View Slides").closest("a");
+
+      expect(recordingLink).toHaveAttribute("href", "https://youtube.com/watch?v=test123");
+      expect(recordingLink).toHaveAttribute("target", "_blank");
+      expect(slidesLink).toHaveAttribute("href", "https://docs.google.com/presentation/test456");
+      expect(slidesLink).toHaveAttribute("target", "_blank");
+    });
   });
 });
