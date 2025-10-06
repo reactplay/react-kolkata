@@ -34,6 +34,7 @@ Say goodbye to setup headaches and hello to consistent code quality. Elevate you
   ```
 
 - **Internationalization (i18n)**: Built-in support for multiple languages using next-intl, making it easy to create multilingual applications with locale-specific routing and translations.
+- **Enhanced Blog Section**: Modern blog cards with author information, tags, read time estimation, and tag-based filtering using native JavaScript APIs.
 
 ## Getting Started
 
@@ -42,6 +43,17 @@ Say goodbye to setup headaches and hello to consistent code quality. Elevate you
 ```bash
 npx create-next-app -e https://github.com/reactplay/react-kolkata.git
 ```
+
+## Blog Section
+
+The enhanced blog section includes:
+
+- **Author Information**: Display author name, avatar, and bio with GitHub profile links
+- **Tag System**: Filterable tags for better content discovery
+- **Read Time**: Estimated reading time for each article
+- **Date Formatting**: ISO date support with timezone information using native `Intl` APIs
+- **Responsive Design**: Modern card layout with hover effects and cover images
+- **Fallback Images**: Graceful handling of broken images with default placeholders
 
 ## Internationalization (i18n)
 
@@ -220,6 +232,8 @@ Test settings are defined in:
 **src/store**: The store folder in React JS is used to store global state data that is used throughout the application. This data can be anything from the current user's login status to the contents of a shopping cart. The store folder is typically created in the root directory of the project and contains a number of files, including the store itself, actions, and reducers.
 
 **src/utils**: This directory may contain utility functions that do not make sense to convert into packages later.
+
+**src/lib**: Contains utility functions and helpers, including date formatting utilities that use native JavaScript APIs.
 
 **styles**: As the name suggests, this directory contains the css pages that is responsible for styling.
 
