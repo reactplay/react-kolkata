@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Calendar, ExternalLink, User } from "lucide-react";
+import Image from "next/image";
+import { Calendar, Clock, ExternalLink, Github, User } from "lucide-react";
 
+import { formatBlogDate, formatBlogRelativeTime } from "@/lib/date-utils";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -19,7 +22,11 @@ interface BlogModalProps {
 
 export default function BlogModal({ articleId }: BlogModalProps) {
   const [open, setOpen] = useState(false);
+  const [coverImageError, setCoverImageError] = useState(false);
+  const [authorImageError, setAuthorImageError] = useState(false);
   const article = articles.find((a) => a.id === articleId);
+
+  const defaultCoverImage = "/images/tech-events-1.jpg";
 
   if (!article) return null;
 
@@ -30,7 +37,7 @@ export default function BlogModal({ articleId }: BlogModalProps) {
           Read More
         </button>
       </DialogTrigger>
-      <DialogContent className="max-w-2xl border-white/10 bg-[#0B1220] text-slate-100">
+      <DialogContent className="max-h-[90vh] max-w-3xl overflow-y-auto border-white/10 bg-[#0B1220] text-slate-100">
         <DialogHeader>
           <DialogTitle
             className="text-xl font-semibold text-sky-200"
@@ -40,15 +47,80 @@ export default function BlogModal({ articleId }: BlogModalProps) {
           </DialogTitle>
         </DialogHeader>
 
-        <div className="space-y-4">
-          <div className="flex items-center gap-4 text-sm text-slate-400">
+        <div className="space-y-6">
+          {/* Cover Image */}
+          {(article.coverImage || !coverImageError) && (
+            <div className="relative h-48 w-full overflow-hidden rounded-lg">
+              <Image
+                src={coverImageError ? defaultCoverImage : article.coverImage || defaultCoverImage}
+                alt={article.title}
+                fill
+                className="object-cover"
+                onError={() => setCoverImageError(true)}
+              />
+            </div>
+          )}
+
+          {/* Article Meta */}
+          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
             <div className="flex items-center gap-1">
               <Calendar className="h-4 w-4" />
-              <span>{article.date}</span>
+              <span>{formatBlogDate(article.date)}</span>
             </div>
             <div className="flex items-center gap-1">
-              <User className="h-4 w-4" />
-              <span>React Kolkata Team</span>
+              <Clock className="h-4 w-4" />
+              <span>{article.readTime} min read</span>
+            </div>
+            <div className="text-slate-500">{formatBlogRelativeTime(article.date)}</div>
+          </div>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2">
+            {article.tags.map((tag) => (
+              <Badge
+                key={tag.id}
+                variant="secondary"
+                className="bg-sky-500/10 text-sky-300 hover:bg-sky-500/20"
+              >
+                {tag.name}
+              </Badge>
+            ))}
+          </div>
+
+          {/* Author Section */}
+          <div className="rounded-lg border border-white/10 bg-white/5 p-4">
+            <div className="flex items-start gap-4">
+              <div className="relative h-12 w-12 overflow-hidden rounded-full">
+                {authorImageError ? (
+                  <div className="flex h-full w-full items-center justify-center bg-slate-600">
+                    <User className="h-6 w-6 text-slate-400" />
+                  </div>
+                ) : (
+                  <Image
+                    src={article.author.avatar}
+                    alt={article.author.name}
+                    fill
+                    className="object-cover"
+                    onError={() => setAuthorImageError(true)}
+                  />
+                )}
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2">
+                  <h4 className="font-medium text-slate-200">{article.author.name}</h4>
+                  {article.author.profileUrl && (
+                    <a
+                      href={article.author.profileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-400 hover:text-slate-300"
+                    >
+                      <Github className="h-4 w-4" />
+                    </a>
+                  )}
+                </div>
+                <p className="text-sm text-slate-400">{article.author.bio}</p>
+              </div>
             </div>
           </div>
 
@@ -73,13 +145,18 @@ export default function BlogModal({ articleId }: BlogModalProps) {
             </div>
           </div>
 
-          <div className="flex items-center justify-between border-t border-white/10 pt-4">
+          <div className="flex items-center justify-between gap-2 border-t border-white/10 pt-4">
             <div className="text-xs text-slate-500">Published by React Kolkata Community</div>
             <Button
               asChild
               className="bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
             >
-              <a href="#" target="_blank" rel="noreferrer" className="flex items-center gap-2">
+              <a
+                href={article.url || "https://reactplay.hashnode.dev"}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2"
+              >
                 Read Full Article
                 <ExternalLink className="h-4 w-4" />
               </a>
