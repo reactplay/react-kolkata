@@ -51,7 +51,7 @@ const ContributorCard = ({ contributor }: ContributorCardProps) => {
       )}
 
       {/* GitHub Link */}
-      <div className="flex justify-center">
+      <div className="relative z-10 flex justify-center">
         <Link
           href={contributor.html_url}
           target="_blank"
@@ -64,7 +64,7 @@ const ContributorCard = ({ contributor }: ContributorCardProps) => {
       </div>
 
       {/* Hover Effect */}
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-sky-500/5 to-blue-500/5 opacity-0 transition-opacity group-hover:opacity-100" />
+      <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-br from-sky-500/5 to-blue-500/5 opacity-0 transition-opacity group-hover:opacity-100" />
     </div>
   );
 };
