@@ -136,3 +136,16 @@
 :focus-visible {
   outline-color: rgb(56 189 248 / 0.8);
 }
+
+/* Ensure sections are visible on mobile */
+@media (max-width: 768px) {
+  section {
+    min-height: auto !important;
+  }
+
+  /* Fallback for motion components */
+  [data-motion] {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}

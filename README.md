@@ -64,9 +64,21 @@ The events section provides:
 - **Event Type Classification**: Online, offline, and hybrid event categorization with visual indicators
 - **Advanced Filtering**: Filter events by status and type with interactive UI controls
 - **Calendar Integration**: One-click "Add to Calendar" for Google Calendar, Outlook, and ICS download
+- **Event Recordings**: Access to past meetup recordings and slides for continued learning
 - **Type-Safe Constants**: Predefined constants for event types and statuses to prevent errors
 - **Modular Architecture**: Componentized structure with reusable EventCard, EventFilters, and CalendarButtons
 - **ISO DateTime Support**: Precise datetime handling with timezone information for accurate calendar integration
+
+### Event Recordings Feature
+
+For past events, the system automatically displays recording and slide links when available:
+
+- **YouTube Integration**: Direct links to event recordings with YouTube icon
+- **Slide Access**: Links to presentation slides with document icon
+- **Smart UI**: Icon-only buttons for past events with recordings, register button for upcoming events
+- **Fallback Handling**: Gracefully handles events without recordings by showing standard registration
+- **Accessibility**: Tooltips and proper ARIA labels for screen readers
+- **Long-term Learning**: Transforms past events into valuable learning resources for the community
 
 ## Internationalization (i18n)
 

@@ -12,6 +12,7 @@ export const events = [
     type: EVENT_TYPES.ONLINE,
     startDateTime: "2025-08-30T19:00:00+05:30",
     endDateTime: "2025-08-30T21:00:00+05:30",
+    recordingUrl: "https://www.youtube.com/watch?v=Zvyc3UaTCxw",
   },
   {
     id: "sup8dxf3",
@@ -24,6 +25,7 @@ export const events = [
     type: EVENT_TYPES.ONLINE,
     startDateTime: "2025-07-26T19:00:00+05:30",
     endDateTime: "2025-07-26T21:00:00+05:30",
+    recordingUrl: "https://www.youtube.com/watch?v=mK2DNgrK21E",
   },
   {
     id: "9g6knhqp",
