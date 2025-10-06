@@ -172,7 +172,7 @@ describe("EventsSection Integration", () => {
 
     const viewAllLink = screen.getByText("View all");
     expect(viewAllLink).toBeInTheDocument();
-    expect(viewAllLink).toHaveAttribute("href", "/events");
+    expect(viewAllLink).toHaveAttribute("href", "https://luma.com/reactkolkata");
   });
 
   it("should have proper component structure", () => {

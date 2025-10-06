@@ -17,7 +17,7 @@ describe("EventBadges", () => {
       expect(onlineBadge).toBeInTheDocument();
       // Check that the badge container has the green styling
       const badgeContainer = onlineBadge.closest("span");
-      expect(badgeContainer).toHaveClass("bg-green-500/10", "text-green-300");
+      expect(badgeContainer).toHaveClass("bg-green-500/60", "text-white");
     });
 
     it("should render offline event badge", () => {
@@ -27,7 +27,7 @@ describe("EventBadges", () => {
       expect(offlineBadge).toBeInTheDocument();
       // Check that the badge container has the blue styling
       const badgeContainer = offlineBadge.closest("span");
-      expect(badgeContainer).toHaveClass("bg-blue-500/10", "text-blue-300");
+      expect(badgeContainer).toHaveClass("bg-blue-500/60", "text-white");
     });
 
     it("should render hybrid event badge", () => {
@@ -37,7 +37,7 @@ describe("EventBadges", () => {
       expect(hybridBadge).toBeInTheDocument();
       // Check that the badge container has the purple styling
       const badgeContainer = hybridBadge.closest("span");
-      expect(badgeContainer).toHaveClass("bg-purple-500/10", "text-purple-300");
+      expect(badgeContainer).toHaveClass("bg-purple-500/60", "text-white");
     });
   });
 
@@ -47,7 +47,7 @@ describe("EventBadges", () => {
 
       const upcomingBadge = screen.getByText("Upcoming");
       expect(upcomingBadge).toBeInTheDocument();
-      expect(upcomingBadge).toHaveClass("bg-green-500/20", "text-green-300");
+      expect(upcomingBadge).toHaveClass("bg-green-500/60", "text-white");
     });
 
     it("should render ongoing status badge with correct styling", () => {
@@ -55,7 +55,7 @@ describe("EventBadges", () => {
 
       const ongoingBadge = screen.getByText("Ongoing");
       expect(ongoingBadge).toBeInTheDocument();
-      expect(ongoingBadge).toHaveClass("bg-orange-500/20", "text-orange-300");
+      expect(ongoingBadge).toHaveClass("bg-orange-500/60", "text-white");
     });
 
     it("should render past status badge with correct styling", () => {
@@ -63,7 +63,7 @@ describe("EventBadges", () => {
 
       const pastBadge = screen.getByText("Past");
       expect(pastBadge).toBeInTheDocument();
-      expect(pastBadge).toHaveClass("bg-gray-500/20", "text-gray-300");
+      expect(pastBadge).toHaveClass("bg-gray-500/60", "text-white");
     });
   });
 

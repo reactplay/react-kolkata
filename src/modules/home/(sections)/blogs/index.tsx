@@ -49,7 +49,7 @@ const BlogSection = () => {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         {/* Blog Section */}
         <div className="mb-16 flex flex-col gap-8">
-          <div className="flex items-end justify-between">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h2
                 className="text-3xl font-semibold tracking-tight sm:text-4xl"
@@ -123,7 +123,7 @@ const BlogSection = () => {
             </div>
           )}
 
-          <div className="grid gap-4 md:grid-cols-4 md:grid-rows-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:grid-rows-2">
             {filteredArticles.slice(0, 5).map((article, index) => (
               <BlogCard
                 key={article.id}
@@ -143,7 +143,7 @@ const BlogSection = () => {
 
         {/* Resources Section */}
         <div>
-          <div className="mb-8 flex items-end justify-between">
+          <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h2
                 className="text-3xl font-semibold tracking-tight sm:text-4xl"
@@ -163,7 +163,7 @@ const BlogSection = () => {
             </Link>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-4 md:grid-rows-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:grid-rows-2">
             {resources.slice(0, 5).map((r, index) => (
               <ResourceCard
                 key={r.id}
