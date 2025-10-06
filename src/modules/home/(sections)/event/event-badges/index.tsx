@@ -29,9 +29,9 @@ export default function EventBadges({ type, status }: EventBadgesProps) {
 
   const getEventTypeBadge = (eventType: Event["type"]) => {
     const colors: Record<string, string> = {
-      [EVENT_TYPES.ONLINE]: "bg-green-500/10 text-green-300",
-      [EVENT_TYPES.OFFLINE]: "bg-blue-500/10 text-blue-300",
-      [EVENT_TYPES.HYBRID]: "bg-purple-500/10 text-purple-300",
+      [EVENT_TYPES.ONLINE]: "bg-green-500/60 text-white",
+      [EVENT_TYPES.OFFLINE]: "bg-blue-500/60 text-white",
+      [EVENT_TYPES.HYBRID]: "bg-purple-500/60 text-white",
     };
 
     return (
@@ -46,9 +46,9 @@ export default function EventBadges({ type, status }: EventBadgesProps) {
 
   const getStatusBadge = (eventStatus: EventStatus) => {
     const statusColors: Record<string, string> = {
-      [EVENT_STATUS.UPCOMING]: "bg-green-500/20 text-green-300",
-      [EVENT_STATUS.ONGOING]: "bg-orange-500/20 text-orange-300",
-      [EVENT_STATUS.PAST]: "bg-gray-500/20 text-gray-300",
+      [EVENT_STATUS.UPCOMING]: "bg-green-500/60 text-white",
+      [EVENT_STATUS.ONGOING]: "bg-orange-500/60 text-white",
+      [EVENT_STATUS.PAST]: "bg-gray-500/60 text-white",
     };
 
     return (
