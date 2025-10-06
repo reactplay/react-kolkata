@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CalendarEvent, Event } from "@/types/event";
-import { CalendarDays, Clock3, MapPin } from "lucide-react";
+import { CalendarEvent, Event, EVENT_STATUS } from "@/types/event";
+import { CalendarDays, Clock3, FileText, MapPin, Youtube } from "lucide-react";
 
 import { getEventStatus } from "@/lib/calendar-utils";
 import { formatEventDate, formatEventTime } from "@/lib/date-utils";
@@ -59,16 +59,52 @@ export default function EventCard({ event }: EventCardProps) {
 
         {/* Action Buttons */}
         <div className="mt-4 space-y-2">
-          <div className="flex items-center gap-2">
-            <Button
-              asChild
-              size="sm"
-              className="flex-1 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
-            >
-              <Link href={event.registrationUrl} target="_blank" rel="noreferrer">
-                Register
-              </Link>
-            </Button>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              {/* For past events with recordings/slides, show icon buttons */}
+              {dynamicStatus === EVENT_STATUS.PAST && (event.recordingUrl || event.slidesUrl) ? (
+                <>
+                  {event.recordingUrl && (
+                    <Button
+                      asChild
+                      size="icon"
+                      variant="outline"
+                      className="hover:bg-white"
+                      style={{ backgroundColor: "#white" }}
+                      title="Watch Recording"
+                    >
+                      <Link href={event.recordingUrl} target="_blank" rel="noreferrer">
+                        <Youtube className="h-4 w-4" color="#FF0000" />
+                      </Link>
+                    </Button>
+                  )}
+                  {event.slidesUrl && (
+                    <Button
+                      asChild
+                      size="icon"
+                      variant="outline"
+                      className="border-green-500/20 bg-green-500/10 text-green-300 hover:bg-green-500/20 hover:text-green-200"
+                      title="View Slides"
+                    >
+                      <Link href={event.slidesUrl} target="_blank" rel="noreferrer">
+                        <FileText className="h-4 w-4" />
+                      </Link>
+                    </Button>
+                  )}
+                </>
+              ) : (
+                /* For upcoming/ongoing events, show register button */
+                <Button
+                  asChild
+                  size="sm"
+                  className="flex-1 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
+                >
+                  <Link href={event.registrationUrl} target="_blank" rel="noreferrer">
+                    Register
+                  </Link>
+                </Button>
+              )}
+            </div>
             <Link
               href={event.registrationUrl}
               target="_blank"
