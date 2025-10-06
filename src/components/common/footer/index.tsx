@@ -4,6 +4,7 @@ import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 
 const quickLinks = [
   { href: "https://lu.ma/reactkolkata", label: "Events" },
+  { href: "/contributors", label: "Contributors" },
   { href: "https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs", label: "Join Us" },
 ];
 
