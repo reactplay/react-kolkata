@@ -16,6 +16,9 @@ export const DATE_FORMATS = {
   TIME_12H: "time-12h", // "10:30 AM"
   TIME_24H: "time-24h", // "10:30"
 
+  // Event specific formats
+  EVENT_TIME_RANGE: "event-time-range", // "11:00 AM – 1:00 PM IST"
+
   // Relative time
   RELATIVE: "relative", // "2 days ago"
 } as const;
@@ -93,6 +96,12 @@ export function formatDate(isoDateString: string, format: DateFormat): string {
         hour12: false,
       });
 
+    case DATE_FORMATS.EVENT_TIME_RANGE:
+      // This format expects two dates, so we'll handle it differently
+      throw new Error(
+        "EVENT_TIME_RANGE format requires start and end dates. Use formatEventTimeRange() instead."
+      );
+
     case DATE_FORMATS.RELATIVE:
       return getRelativeTime(date);
 
@@ -139,6 +148,31 @@ function getRelativeTime(date: Date): string {
   return rtf.format(Math.floor(deltaSeconds / divisor), units[unitIndex]);
 }
 
+/**
+ * Format event time range from two ISO datetime strings
+ * @param startDateTime - ISO datetime string
+ * @param endDateTime - ISO datetime string
+ * @returns Formatted time range (e.g., "11:00 AM – 1:00 PM IST")
+ */
+export function formatEventTimeRange(startDateTime: string, endDateTime: string): string {
+  const start = new Date(startDateTime);
+  const end = new Date(endDateTime);
+
+  const startTime = start.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+
+  const endTime = end.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+
+  return `${startTime} – ${endTime} IST`;
+}
+
 // Convenience functions for common use cases
 export const formatBlogDate = (isoDateString: string) =>
   formatDate(isoDateString, DATE_FORMATS.BLOG_DATE);
@@ -146,3 +180,9 @@ export const formatBlogDateTime = (isoDateString: string) =>
   formatDate(isoDateString, DATE_FORMATS.BLOG_DATETIME);
 export const formatBlogRelativeTime = (isoDateString: string) =>
   formatDate(isoDateString, DATE_FORMATS.RELATIVE);
+
+// Event-specific convenience functions
+export const formatEventDate = (isoDateString: string) =>
+  formatDate(isoDateString, DATE_FORMATS.BLOG_DATE);
+export const formatEventTime = (startDateTime: string, endDateTime: string) =>
+  formatEventTimeRange(startDateTime, endDateTime);

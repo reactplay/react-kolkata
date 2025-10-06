@@ -1,35 +1,41 @@
+import { EVENT_TYPES } from "@/types/event";
+
 export const events = [
   {
-    id: "rk-001",
-    title: "React Kolkata: Modern Patterns & Performance",
-    date: "Sep 7, 2025",
-    time: "11:00 AM – 1:00 PM IST",
-    venue: "Startup Hub, Park Street, Kolkata",
+    id: "ze3qavyg",
+    title: "CTRL + React: Join the React Kolkata Chapter by ReactPlay",
+    venue: "Virtual",
     description:
-      "Talks on React Server Components, performance profiling, and real-world case studies from local teams.",
-    registrationUrl: "#",
+      "In this event, our speakers will share insights on topics like React, AI, and other emerging tech. Expect practical takeaways, real-world examples, and fresh perspectives from folks working hands-on in the field. Event Schedule: Welcome Notes, Intro to Web3: Bringing Blockchain to Your React App - Aditya Singh, Context is All You Need - Akash Nath, React Router v7 Is Not as Scary as You Think - Elijah Asaolu, AI is easy only if you know how to crack it - Arindam Majumdar.",
+    registrationUrl: "https://luma.com/ze3qavyg",
     image: "/images/tech-events-1.jpg",
+    type: EVENT_TYPES.ONLINE,
+    startDateTime: "2025-08-30T19:00:00+05:30",
+    endDateTime: "2025-08-30T21:00:00+05:30",
   },
   {
-    id: "rk-002",
-    title: "Hands-on Workshop: Type-safe React",
-    date: "Oct 12, 2025",
-    time: "10:00 AM – 2:00 PM IST",
-    venue: "Tech Park, Sector V, Salt Lake",
-    description: "Interactive session covering TypeScript, Zod validation, and DX best practices.",
-    registrationUrl: "#",
-    image: "/images/tech-events-2.jpg",
-  },
-  {
-    id: "rk-003",
-    title: "Lightning Talks: State Management in 2025",
-    date: "Nov 16, 2025",
-    time: "5:30 PM – 7:30 PM IST",
-    venue: "Community Space, New Town",
+    id: "sup8dxf3",
+    title: "Speak Up, Tech Up! Join the React Kolkata Chapter by ReactPlay",
+    venue: "Virtual",
     description:
-      "Short talks on signals, context vs. stores, and caching strategies, followed by networking.",
-    registrationUrl: "#",
+      "In this event, our speakers will share insights on topics like React, AI, and other emerging tech. Expect practical takeaways, real-world examples, and fresh perspectives from folks working hands-on in the field. Event Schedule: Welcome notes, What is serverless inferencing in AI? - Haimantika Mitra, From JSX to the Cosmos: Navigating the React Ecosystem - Rohit Debnath, WebRTC for Frontend Devs Who've Suffered Enough Already - Sumanth, Break Time – Quick Quiz Inside, Bringing AI to your React Apps - Wadad Parker, Vibe Smart, Code Better: Things every react developer should know before vibe coding - Sayak Saha.",
+    registrationUrl: "https://luma.com/sup8dxf3",
+    image: "/images/tech-events-2.jpg",
+    type: EVENT_TYPES.ONLINE,
+    startDateTime: "2025-07-26T19:00:00+05:30",
+    endDateTime: "2025-07-26T21:00:00+05:30",
+  },
+  {
+    id: "9g6knhqp",
+    title: "Hacktoberfest Special : Join the React Kolkata Chapter by ReactPlay",
+    venue: "Virtual",
+    description:
+      "Join React Kolkata for an engaging panel discussion with open source maintainers and contributors as we gear up for Hacktoberfest. We'll talk about the realities of maintaining projects, the challenges of contribution, and how developers of all levels can meaningfully get involved in open source. Expect candid insights from experienced maintainers, practical tips for first-time contributors, and a chance to connect with the community that powers so much of the web. Whether you're curious about making your first PR or eager to share your journey, this is your space to learn, discuss, and be inspired.",
+    registrationUrl: "https://luma.com/9g6knhqp",
     image: "/images/tech-events-3.jpg",
+    type: EVENT_TYPES.ONLINE,
+    startDateTime: "2025-10-11T19:00:00+05:30",
+    endDateTime: "2025-10-11T21:00:00+05:30",
   },
 ];
 
