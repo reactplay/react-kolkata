@@ -1,3 +1,4 @@
+import { TestWrapper } from "@/test-utils";
 import { EVENT_STATUS, EVENT_TYPES } from "@/types/event";
 import { cleanup, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -56,86 +57,142 @@ describe("EventCard", () => {
   };
 
   it("should render event title", () => {
-    render(<EventCard event={mockEvent} />);
+    render(
+      <TestWrapper>
+        <EventCard event={mockEvent} />
+      </TestWrapper>
+    );
     expect(screen.getByText("Test Event")).toBeInTheDocument();
   });
 
   it("should render event description", () => {
-    render(<EventCard event={mockEvent} />);
+    render(
+      <TestWrapper>
+        <EventCard event={mockEvent} />
+      </TestWrapper>
+    );
     expect(screen.getByText("This is a test event description.")).toBeInTheDocument();
   });
 
   it("should render event venue", () => {
-    render(<EventCard event={mockEvent} />);
+    render(
+      <TestWrapper>
+        <EventCard event={mockEvent} />
+      </TestWrapper>
+    );
     expect(screen.getByText("Test Venue")).toBeInTheDocument();
   });
 
   it("should render formatted date", () => {
-    render(<EventCard event={mockEvent} />);
+    render(
+      <TestWrapper>
+        <EventCard event={mockEvent} />
+      </TestWrapper>
+    );
     expect(screen.getByText("Oct 5, 2025")).toBeInTheDocument();
   });
 
   it("should render formatted time", () => {
-    render(<EventCard event={mockEvent} />);
+    render(
+      <TestWrapper>
+        <EventCard event={mockEvent} />
+      </TestWrapper>
+    );
     expect(screen.getByText("6:00 PM – 8:00 PM IST")).toBeInTheDocument();
   });
 
   it("should render event image", () => {
-    render(<EventCard event={mockEvent} />);
+    render(
+      <TestWrapper>
+        <EventCard event={mockEvent} />
+      </TestWrapper>
+    );
     const image = screen.getByAltText("Test Event");
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute("src", "https://example.com/event-image.jpg");
   });
 
   it("should render register button with correct link", () => {
-    render(<EventCard event={mockEvent} />);
+    render(
+      <TestWrapper>
+        <EventCard event={mockEvent} />
+      </TestWrapper>
+    );
     const registerLink = screen.getByText("Register").closest("a");
     expect(registerLink).toHaveAttribute("href", "https://example.com/register");
     expect(registerLink).toHaveAttribute("target", "_blank");
   });
 
   it("should render details link", () => {
-    render(<EventCard event={mockEvent} />);
+    render(
+      <TestWrapper>
+        <EventCard event={mockEvent} />
+      </TestWrapper>
+    );
     const detailsLink = screen.getByText("Details");
     expect(detailsLink).toBeInTheDocument();
     expect(detailsLink).toHaveAttribute("href", "https://example.com/register");
   });
 
   it("should render EventBadges component", () => {
-    render(<EventCard event={mockEvent} />);
+    render(
+      <TestWrapper>
+        <EventCard event={mockEvent} />
+      </TestWrapper>
+    );
     expect(screen.getByTestId("event-badges")).toBeInTheDocument();
   });
 
   it("should render CalendarButtons component", () => {
-    render(<EventCard event={mockEvent} />);
+    render(
+      <TestWrapper>
+        <EventCard event={mockEvent} />
+      </TestWrapper>
+    );
     expect(screen.getByTestId("calendar-buttons")).toBeInTheDocument();
     expect(screen.getByText("Calendar buttons for Test Event")).toBeInTheDocument();
   });
 
   it("should use fallback image when no image provided", () => {
     const eventWithoutImage = { ...mockEvent, image: undefined };
-    render(<EventCard event={eventWithoutImage} />);
+    render(
+      <TestWrapper>
+        <EventCard event={eventWithoutImage} />
+      </TestWrapper>
+    );
 
     const image = screen.getByAltText("Test Event");
     expect(image).toHaveAttribute("src", "/images/tech-events-1.jpg");
   });
 
   it("should pass correct calendar event data to CalendarButtons", () => {
-    render(<EventCard event={mockEvent} />);
+    render(
+      <TestWrapper>
+        <EventCard event={mockEvent} />
+      </TestWrapper>
+    );
 
     // The calendar buttons should receive the transformed event data
     expect(screen.getByTestId("calendar-buttons")).toBeInTheDocument();
   });
 
   it("should have proper article structure", () => {
-    render(<EventCard event={mockEvent} />);
+    render(
+      <TestWrapper>
+        <EventCard event={mockEvent} />
+      </TestWrapper>
+    );
 
     const article = screen.getByRole("article");
     expect(article).toHaveClass("group", "relative", "overflow-hidden", "rounded-xl");
   });
 
   it("should handle events with location object", () => {
-    render(<EventCard event={mockEvent} />);
+    render(
+      <TestWrapper>
+        <EventCard event={mockEvent} />
+      </TestWrapper>
+    );
 
     // Should pass the location address to calendar buttons
     expect(screen.getByTestId("calendar-buttons")).toBeInTheDocument();
@@ -143,7 +200,11 @@ describe("EventCard", () => {
 
   it("should handle events without location object", () => {
     const eventWithoutLocation = { ...mockEvent, location: undefined };
-    render(<EventCard event={eventWithoutLocation} />);
+    render(
+      <TestWrapper>
+        <EventCard event={eventWithoutLocation} />
+      </TestWrapper>
+    );
 
     // Should still render and pass venue as location
     expect(screen.getByTestId("calendar-buttons")).toBeInTheDocument();
@@ -161,7 +222,11 @@ describe("EventCard", () => {
         slidesUrl: "https://docs.google.com/presentation/test",
       };
 
-      render(<EventCard event={pastEventWithLinks} />);
+      render(
+        <TestWrapper>
+          <EventCard event={pastEventWithLinks} />
+        </TestWrapper>
+      );
 
       // Check for buttons with title attributes (tooltips)
       expect(screen.getByTitle("Watch Recording")).toBeInTheDocument();
@@ -180,7 +245,11 @@ describe("EventCard", () => {
         recordingUrl: "https://youtube.com/watch?v=test",
       };
 
-      render(<EventCard event={pastEventWithRecording} />);
+      render(
+        <TestWrapper>
+          <EventCard event={pastEventWithRecording} />
+        </TestWrapper>
+      );
 
       expect(screen.getByTitle("Watch Recording")).toBeInTheDocument();
       expect(screen.queryByTitle("View Slides")).not.toBeInTheDocument();
@@ -197,7 +266,11 @@ describe("EventCard", () => {
         slidesUrl: "https://docs.google.com/presentation/test",
       };
 
-      render(<EventCard event={pastEventWithSlides} />);
+      render(
+        <TestWrapper>
+          <EventCard event={pastEventWithSlides} />
+        </TestWrapper>
+      );
 
       expect(screen.getByTitle("View Slides")).toBeInTheDocument();
       expect(screen.queryByTitle("Watch Recording")).not.toBeInTheDocument();
@@ -215,7 +288,11 @@ describe("EventCard", () => {
         slidesUrl: "https://docs.google.com/presentation/test",
       };
 
-      render(<EventCard event={upcomingEventWithLinks} />);
+      render(
+        <TestWrapper>
+          <EventCard event={upcomingEventWithLinks} />
+        </TestWrapper>
+      );
 
       expect(screen.getByText("Register")).toBeInTheDocument();
       expect(screen.queryByTitle("Watch Recording")).not.toBeInTheDocument();
@@ -227,7 +304,11 @@ describe("EventCard", () => {
         await vi.importMock<typeof import("@/lib/calendar-utils")>("@/lib/calendar-utils");
       getEventStatus.mockReturnValue(EVENT_STATUS.PAST);
 
-      render(<EventCard event={mockEvent} />);
+      render(
+        <TestWrapper>
+          <EventCard event={mockEvent} />
+        </TestWrapper>
+      );
 
       expect(screen.getByText("Register")).toBeInTheDocument();
       expect(screen.queryByTitle("Watch Recording")).not.toBeInTheDocument();
@@ -245,7 +326,11 @@ describe("EventCard", () => {
         slidesUrl: "https://docs.google.com/presentation/test456",
       };
 
-      render(<EventCard event={pastEventWithLinks} />);
+      render(
+        <TestWrapper>
+          <EventCard event={pastEventWithLinks} />
+        </TestWrapper>
+      );
 
       const recordingLink = screen.getByTitle("Watch Recording").closest("a");
       const slidesLink = screen.getByTitle("View Slides").closest("a");
