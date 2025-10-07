@@ -39,7 +39,12 @@ const ContributorsSection = () => {
         }
 
         const data = await response.json();
-        setContributors(data);
+
+        // filter the bot contributors
+        const userContributors =
+          data?.filter((contributor: Contributor) => contributor.type === "User") || [];
+
+        setContributors(userContributors);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to fetch contributors");
       } finally {
