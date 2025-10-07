@@ -29,7 +29,7 @@ export default function BlogModal({ blog }: BlogModalProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <button className="mt-4 inline-flex text-sm text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline">
+        <button className="mt-4 inline-flex cursor-pointer text-sm text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline">
           Read More
         </button>
       </DialogTrigger>

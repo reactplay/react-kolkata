@@ -162,7 +162,7 @@ export default function BlogList({
           <Button
             onClick={handleMoreBlogsCTA}
             disabled={isPending}
-            className="bg-sky-500 text-white hover:bg-sky-600"
+            className="cursor-pointer bg-sky-500 text-white hover:bg-sky-600"
           >
             {isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
             {isPending ? "Loading..." : "Load More"}

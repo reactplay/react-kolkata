@@ -31,7 +31,7 @@ const BlogCard: React.FC<BlogCardProps> = (props) => {
   const defaultCoverImage = "/images/tech-events-1.jpg"; // Default fallback image
   return (
     <article
-      className={`group cursor-pointer rounded-xl border border-white/5 bg-white/5 p-5 transition hover:translate-y-[-2px] hover:bg-white/10 ${
+      className={`group rounded-xl border border-white/5 bg-white/5 p-5 transition hover:translate-y-[-2px] hover:bg-white/10 ${
         featured ? "md:col-span-2 md:row-span-2 md:p-8" : ""
       }`}
     >
