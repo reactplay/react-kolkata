@@ -1,3 +1,4 @@
+import { TestWrapper } from "@/test-utils";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -82,36 +83,60 @@ describe("BlogSection", () => {
     cleanup();
   });
   it("should render blog section title", () => {
-    render(<BlogSection />);
+    render(
+      <TestWrapper>
+        <BlogSection />
+      </TestWrapper>
+    );
     expect(screen.getByText("Latest from the Blog")).toBeInTheDocument();
   });
 
   it("should render blog section description", () => {
-    render(<BlogSection />);
+    render(
+      <TestWrapper>
+        <BlogSection />
+      </TestWrapper>
+    );
     expect(
       screen.getByText("Guides, tips, and community highlights from React Kolkata.")
     ).toBeInTheDocument();
   });
 
   it('should render "View all posts" link', () => {
-    render(<BlogSection />);
+    render(
+      <TestWrapper>
+        <BlogSection />
+      </TestWrapper>
+    );
     expect(screen.getByText("View all posts")).toBeInTheDocument();
   });
 
   it("should render filter button", () => {
-    render(<BlogSection />);
+    render(
+      <TestWrapper>
+        <BlogSection />
+      </TestWrapper>
+    );
     expect(screen.getByText("Filter")).toBeInTheDocument();
   });
 
   it("should render all blog cards", () => {
-    render(<BlogSection />);
+    render(
+      <TestWrapper>
+        <BlogSection />
+      </TestWrapper>
+    );
     expect(screen.getByTestId("blog-card-a-001")).toBeInTheDocument();
     expect(screen.getByTestId("blog-card-a-002")).toBeInTheDocument();
     expect(screen.getByTestId("blog-card-a-003")).toBeInTheDocument();
   });
 
   it("should show filter section when filter button is clicked", async () => {
-    render(<BlogSection />);
+    render(
+      <TestWrapper>
+        <BlogSection />
+      </TestWrapper>
+    );
 
     const filterButton = screen.getAllByText("Filter")[0];
     fireEvent.click(filterButton);
@@ -122,7 +147,11 @@ describe("BlogSection", () => {
   });
 
   it("should display all available tags in filter section", async () => {
-    render(<BlogSection />);
+    render(
+      <TestWrapper>
+        <BlogSection />
+      </TestWrapper>
+    );
 
     const filterButton = screen.getAllByText("Filter")[0];
     fireEvent.click(filterButton);
@@ -137,7 +166,11 @@ describe("BlogSection", () => {
   });
 
   it("should filter articles when tag is selected", async () => {
-    render(<BlogSection />);
+    render(
+      <TestWrapper>
+        <BlogSection />
+      </TestWrapper>
+    );
 
     // Open filter section
     const filterButton = screen.getAllByText("Filter")[0];
@@ -158,7 +191,11 @@ describe("BlogSection", () => {
   });
 
   it("should show clear button when tags are selected", async () => {
-    render(<BlogSection />);
+    render(
+      <TestWrapper>
+        <BlogSection />
+      </TestWrapper>
+    );
 
     // Open filter section
     const filterButton = screen.getAllByText("Filter")[0];
@@ -179,7 +216,11 @@ describe("BlogSection", () => {
   });
 
   it("should clear filters when clear button is clicked", async () => {
-    render(<BlogSection />);
+    render(
+      <TestWrapper>
+        <BlogSection />
+      </TestWrapper>
+    );
 
     // Open filter section and select a tag
     const filterButton = screen.getAllByText("Filter")[0];
@@ -207,7 +248,11 @@ describe("BlogSection", () => {
   });
 
   it("should render resources section", () => {
-    render(<BlogSection />);
+    render(
+      <TestWrapper>
+        <BlogSection />
+      </TestWrapper>
+    );
     expect(screen.getByText("Community Resources")).toBeInTheDocument();
     expect(
       screen.getByText("Hand-picked links and tools for React developers.")
@@ -215,12 +260,20 @@ describe("BlogSection", () => {
   });
 
   it('should render "Explore resources" link', () => {
-    render(<BlogSection />);
+    render(
+      <TestWrapper>
+        <BlogSection />
+      </TestWrapper>
+    );
     expect(screen.getByText("Explore resources")).toBeInTheDocument();
   });
 
   it("should toggle filter section visibility", async () => {
-    render(<BlogSection />);
+    render(
+      <TestWrapper>
+        <BlogSection />
+      </TestWrapper>
+    );
 
     const filterButton = screen.getAllByText("Filter")[0];
 
@@ -241,7 +294,11 @@ describe("BlogSection", () => {
   });
 
   it("should handle multiple tag selection", async () => {
-    render(<BlogSection />);
+    render(
+      <TestWrapper>
+        <BlogSection />
+      </TestWrapper>
+    );
 
     // Open filter section
     const filterButton = screen.getAllByText("Filter")[0];

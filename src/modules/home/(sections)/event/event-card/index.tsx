@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CalendarEvent, Event, EVENT_STATUS } from "@/types/event";
 import { CalendarDays, Clock3, FileText, MapPin, Youtube } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { getEventStatus } from "@/lib/calendar-utils";
 import { formatEventDate, formatEventTime } from "@/lib/date-utils";
@@ -15,6 +16,7 @@ interface EventCardProps {
 }
 
 export default function EventCard({ event }: EventCardProps) {
+  const t = useTranslations("Events");
   const dynamicStatus = getEventStatus(event.startDateTime, event.endDateTime);
 
   const calendarEvent: CalendarEvent = {
@@ -71,7 +73,7 @@ export default function EventCard({ event }: EventCardProps) {
                       variant="outline"
                       className="hover:bg-white"
                       style={{ backgroundColor: "#white" }}
-                      title="Watch Recording"
+                      title={t("watch_recording")}
                     >
                       <Link href={event.recordingUrl} target="_blank" rel="noreferrer">
                         <Youtube className="h-4 w-4" color="#FF0000" />
@@ -84,7 +86,7 @@ export default function EventCard({ event }: EventCardProps) {
                       size="icon"
                       variant="outline"
                       className="border-green-500/20 bg-green-500/10 text-green-300 hover:bg-green-500/20 hover:text-green-200"
-                      title="View Slides"
+                      title={t("view_slides")}
                     >
                       <Link href={event.slidesUrl} target="_blank" rel="noreferrer">
                         <FileText className="h-4 w-4" />
@@ -100,7 +102,7 @@ export default function EventCard({ event }: EventCardProps) {
                   className="flex-1 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
                 >
                   <Link href={event.registrationUrl} target="_blank" rel="noreferrer">
-                    Register
+                    {t("register")}
                   </Link>
                 </Button>
               )}
@@ -111,7 +113,7 @@ export default function EventCard({ event }: EventCardProps) {
               rel="noreferrer"
               className="px-2 text-xs text-slate-300 underline-offset-4 hover:text-slate-100 hover:underline"
             >
-              Details
+              {t("details")}
             </Link>
           </div>
 

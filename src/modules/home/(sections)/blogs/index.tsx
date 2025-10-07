@@ -22,17 +22,15 @@ const BlogSection = ({ initialBlogs, initialEndCursor }: BlogSectionProps) => {
                 className="text-3xl font-semibold tracking-tight sm:text-4xl"
                 style={{ fontFamily: "var(--font-poppins)" }}
               >
-                Community Resources
+                {t("resources_title")}
               </h2>
-              <p className="mt-2 text-slate-300">
-                Hand-picked links and tools for React developers.
-              </p>
+              <p className="mt-2 text-slate-300">{t("resources_description")}</p>
             </div>
             <Link
               href="/resources"
               className="text-sm text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline"
             >
-              Explore resources
+              {t("explore_resources")}
             </Link>
           </div>
 

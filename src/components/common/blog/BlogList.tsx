@@ -6,6 +6,7 @@ import Link from "next/link";
 import { loadMoreBlogs } from "@/store/blogActions";
 import { Blog, BlogSectionProps, BlogTag } from "@/types/blog";
 import { Filter, Loader2, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -23,6 +24,7 @@ export default function BlogList({
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
   const [isPending, startTransition] = useTransition();
+  const t = useTranslations("Blog");
 
   // Get all unique tags from articles
   const allTags = useMemo(() => {
@@ -67,11 +69,9 @@ export default function BlogList({
             className="text-3xl font-semibold tracking-tight sm:text-4xl"
             style={{ fontFamily: "var(--font-poppins)" }}
           >
-            Latest from the Blog
+            {t("title")}
           </h2>
-          <p className="mt-2 text-slate-300">
-            Guides, tips, and community highlights from React Kolkata.
-          </p>
+          <p className="mt-2 text-slate-300">{t("description")}</p>
         </div>
         <div className="flex items-center gap-4">
           <Button
@@ -81,7 +81,7 @@ export default function BlogList({
             className="border-white/10 bg-white/5 text-slate-300 hover:bg-white/10"
           >
             <Filter className="mr-2 h-4 w-4" />
-            Filter
+            {t("filter")}
           </Button>
           {/* Show only when we are not pres */}
           {!showLoadMoreButton && (
@@ -89,7 +89,7 @@ export default function BlogList({
               href="/blog"
               className="text-sm text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline"
             >
-              View all posts
+              {t("view_all_posts")}
             </Link>
           )}
         </div>
@@ -103,7 +103,12 @@ export default function BlogList({
               <h3 className="text-sm font-medium text-slate-300">Filter by tags</h3>
               {selectedTags.length > 0 && (
                 <p className="text-sm text-slate-400">
-                  (Showing {filteredArticles.length} of {blogs.length} posts)
+                  (
+                  {t("showing_posts", {
+                    count: filteredArticles.length,
+                    total: blogs.length,
+                  })}
+                  )
                 </p>
               )}
             </div>
@@ -115,7 +120,7 @@ export default function BlogList({
                 className="text-slate-400 hover:text-slate-300"
               >
                 <X className="mr-1 h-3 w-3" />
-                Clear
+                {t("clear")}
               </Button>
             )}
           </div>
