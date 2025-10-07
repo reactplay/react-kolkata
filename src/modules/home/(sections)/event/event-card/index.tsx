@@ -27,8 +27,6 @@ export default function EventCard({ event }: EventCardProps) {
     location: event.location?.address || event.venue,
   };
 
-  const expired = DATE_UTILS.isEventExpired(event.endDateTime);
-
   return (
     <article className="group relative overflow-hidden rounded-xl border border-white/5 bg-white/5 transition hover:translate-y-[-4px] hover:bg-white/10">
       <div className="relative h-44 w-full overflow-hidden">
