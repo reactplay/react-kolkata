@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 
 const links = [
   { href: "/", label: "Home" },
+  { href: "/contributors", label: "Contributors" },
   { href: "https://lu.ma/reactkolkata", label: "Events" },
 ];
 
@@ -58,11 +59,13 @@ const Navbar = () => {
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
           {links.map((l) => {
             const active = l.href === "/" ? pathname === l.href : pathname.startsWith(l.href);
+            const isExternal = l.href.startsWith("http");
             return (
               <Link
                 key={l.href}
                 href={l.href}
-                target="_blank"
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
                 className={cn(
                   "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                   active ? "text-sky-300" : "text-slate-300 hover:text-white"
@@ -99,10 +102,13 @@ const Navbar = () => {
           <nav className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6" aria-label="Mobile">
             {links.map((l) => {
               const active = l.href === "/" ? pathname === l.href : pathname.startsWith(l.href);
+              const isExternal = l.href.startsWith("http");
               return (
                 <Link
                   key={l.href}
                   href={l.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
                   className={cn(
                     "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     active
