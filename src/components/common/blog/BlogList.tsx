@@ -145,7 +145,6 @@ export default function BlogList({
             title={article.title}
             publishedAt={article.publishedAt}
             brief={article.brief}
-            content={article.content}
             id={article.id}
             author={article.author}
             tags={article.tags}
