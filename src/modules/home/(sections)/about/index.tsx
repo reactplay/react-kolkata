@@ -1,10 +1,8 @@
-import AnimatedSection from "@/components/custom/animated-section";
 import { features, highlights, timeline } from "@/base/constants/site";
-import { Chrono } from "react-chrono";
 
 const AboutSection = () => {
   return (
-    <AnimatedSection className="relative">
+    <section className="relative">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="mx-auto max-w-3xl text-center">
@@ -84,7 +82,7 @@ const AboutSection = () => {
         </div>
 
         {/* Community Timeline */}
-        <div className="mt-20">
+        <div className="mt-20 rounded-lg bg-red-500/10 p-4">
           <div className="text-center">
             <h3
               className="text-2xl font-semibold text-slate-100 sm:text-3xl"
@@ -97,36 +95,26 @@ const AboutSection = () => {
             </p>
           </div>
 
-          <div className="mt-12">
-            <Chrono
-              items={timeline}
-              mode="VERTICAL_ALTERNATING"
-              theme={{
-                primary: "#0ea5e9",
-                secondary: "#1e293b",
-                cardBgColor: "rgba(255, 255, 255, 0.05)",
-                cardForeColor: "#f1f5f9",
-                titleColor: "#f1f5f9",
-                titleColorActive: "#0ea5e9",
-              }}
-              fontSizes={{
-                cardSubtitle: "0.875rem",
-                cardText: "0.875rem",
-                cardTitle: "1.125rem",
-                title: "1rem",
-              }}
-              classNames={{
-                card: "border border-white/5 backdrop-blur-sm",
-                cardSubTitle: "text-slate-300",
-                cardText: "text-slate-300",
-                cardTitle: "text-sky-200",
-                title: "text-slate-100",
-              }}
-            />
+          <div className="mt-12 space-y-8">
+            {timeline && timeline.length > 0 ? (
+              timeline.map((item, index) => (
+                <div key={index} className="mb-4 rounded bg-blue-500/10 p-4">
+                  <h4 className="text-lg font-semibold text-sky-200">
+                    {item.cardTitle || "No title"}
+                  </h4>
+                  <p className="text-sm text-slate-400">{item.cardSubtitle || "No subtitle"}</p>
+                  <p className="text-slate-300">{item.cardDetailedText || "No description"}</p>
+                </div>
+              ))
+            ) : (
+              <div className="text-center text-red-400">
+                No timeline data available. Timeline length: {timeline?.length || 0}
+              </div>
+            )}
           </div>
         </div>
       </div>
-    </AnimatedSection>
+    </section>
   );
 };
 
