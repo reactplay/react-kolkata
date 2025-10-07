@@ -1,9 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
+  const t = useTranslations("Hero");
+
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10">
@@ -21,21 +24,18 @@ const HeroSection = () => {
       <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 md:py-28 lg:flex lg:items-center lg:px-8 lg:py-36">
         <div className="max-w-3xl">
           <p className="mb-3 inline-flex rounded-full border border-amber-400/30 bg-white/5 px-3 py-1 text-xs text-amber-400">
-            Community • Events • Learning
+            {t("badge")}
           </p>
           <h1
             className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
             style={{ fontFamily: "var(--font-poppins)" }}
           >
-            React Kolkata
+            {t("title")}
             <span className="block bg-gradient-to-r from-sky-300 via-blue-400 to-sky-300 bg-clip-text text-transparent">
-              Build. Learn. Connect.
+              {t("subtitle")}
             </span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg text-slate-300">
-            A modern hub for React developers in Kolkata. Join our meetups, talks, and workshops to
-            grow your skills and network with the community.
-          </p>
+          <p className="mt-6 max-w-2xl text-lg text-slate-300">{t("description")}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button
               asChild
@@ -43,7 +43,7 @@ const HeroSection = () => {
               className="bg-gradient-to-r from-blue-600 to-sky-500 shadow-lg shadow-sky-900/30 transition hover:from-blue-500 hover:to-sky-400"
             >
               <Link target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
-                Join the Community
+                {t("join_community")}
               </Link>
             </Button>
             <Button
@@ -53,7 +53,7 @@ const HeroSection = () => {
               className="border-white/10 bg-white/5 text-slate-100 hover:bg-white/10"
             >
               <Link target="_blank" href="https://lu.ma/reactkolkata">
-                See Upcoming Events
+                {t("see_events")}
               </Link>
             </Button>
           </div>

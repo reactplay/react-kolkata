@@ -1,7 +1,11 @@
+import { useTranslations } from "next-intl";
+
 import AnimatedSection from "@/components/custom/animated-section";
-import { features, highlights } from "@/base/constants/site";
+import { features } from "@/base/constants/site";
 
 const AboutSection = () => {
+  const t = useTranslations("About");
+
   return (
     <AnimatedSection className="relative">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -11,33 +15,48 @@ const AboutSection = () => {
             className="text-3xl font-semibold text-slate-100 sm:text-4xl"
             style={{ fontFamily: "var(--font-poppins)" }}
           >
-            About React Kolkata
+            {t("title")}
           </h2>
           <p className="mt-6 text-lg leading-relaxed font-light text-slate-300 sm:text-xl">
-            We are a community-driven group focused on knowledge-sharing, collaboration, and career
-            growth for React developers across Kolkata and beyond. Our mission is to create an
-            inclusive space where developers of all levels can learn, grow, and contribute.
+            {t("description")}
           </p>
         </div>
 
         {/* Highlights in Card Format */}
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {highlights.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10"
+          <div className="rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10">
+            <h3
+              className="text-xl font-medium text-sky-200"
+              style={{ fontFamily: "var(--font-poppins)" }}
             >
-              <h3
-                className="text-xl font-medium text-sky-200"
-                style={{ fontFamily: "var(--font-poppins)" }}
-              >
-                {item.title}
-              </h3>
-              <p className="mt-4 text-sm leading-relaxed font-light text-slate-300 sm:text-base">
-                {item.description}
-              </p>
-            </div>
-          ))}
+              {t("mission.title")}
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed font-light text-slate-300 sm:text-base">
+              {t("mission.description")}
+            </p>
+          </div>
+          <div className="rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10">
+            <h3
+              className="text-xl font-medium text-sky-200"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              {t("values.title")}
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed font-light text-slate-300 sm:text-base">
+              {t("values.description")}
+            </p>
+          </div>
+          <div className="rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10">
+            <h3
+              className="text-xl font-medium text-sky-200"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              {t("impact.title")}
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed font-light text-slate-300 sm:text-base">
+              {t("impact.description")}
+            </p>
+          </div>
         </div>
 
         {/* What We Do */}
@@ -47,16 +66,26 @@ const AboutSection = () => {
               className="text-2xl font-semibold text-slate-100 sm:text-3xl"
               style={{ fontFamily: "var(--font-poppins)" }}
             >
-              What We Do
+              {t("what_we_do")}
             </h3>
             <p className="mt-4 text-sm font-light text-slate-300 sm:text-base">
-              Discover the various ways we support and grow our developer community
+              {t("what_we_do_description")}
             </p>
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => {
+            {features.map((feature, index) => {
               const Icon = feature.icon;
+              const featureKeys = [
+                "technical_workshops",
+                "community_meetups",
+                "lightning_talks",
+                "project_showcases",
+                "mentorship_program",
+                "open_source",
+              ];
+              const featureKey = featureKeys[index];
+
               return (
                 <div
                   key={feature.title}
@@ -70,11 +99,11 @@ const AboutSection = () => {
                       className="font-medium text-slate-100"
                       style={{ fontFamily: "var(--font-poppins)" }}
                     >
-                      {feature.title}
+                      {t(`features.${featureKey}.title`)}
                     </h4>
                   </div>
                   <p className="mt-3 text-sm leading-relaxed font-light text-slate-300 sm:text-base">
-                    {feature.description}
+                    {t(`features.${featureKey}.description`)}
                   </p>
                 </div>
               );

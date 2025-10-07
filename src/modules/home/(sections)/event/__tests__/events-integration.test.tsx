@@ -1,3 +1,4 @@
+import { TestWrapper } from "@/test-utils";
 import { EVENT_STATUS, EVENT_TYPES } from "@/types/event";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -70,7 +71,11 @@ describe("EventsSection Integration", () => {
   });
 
   it("should render events section with title and description", () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     expect(screen.getByText("Events")).toBeInTheDocument();
     expect(
@@ -79,7 +84,11 @@ describe("EventsSection Integration", () => {
   });
 
   it("should render all event cards by default", () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     expect(screen.getByTestId("event-card-e-001")).toBeInTheDocument();
     expect(screen.getByTestId("event-card-e-002")).toBeInTheDocument();
@@ -88,7 +97,11 @@ describe("EventsSection Integration", () => {
   });
 
   it("should show and hide filters when filter button is clicked", async () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     const filterButton = screen.getByText("Filter");
 
@@ -109,7 +122,11 @@ describe("EventsSection Integration", () => {
   });
 
   it("should update filters when filter component triggers updates", async () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     // Show filters
     const filterButton = screen.getByText("Filter");
@@ -140,7 +157,11 @@ describe("EventsSection Integration", () => {
   });
 
   it("should clear all filters when clear button is clicked", async () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     // Show filters and apply some
     const filterButton = screen.getByText("Filter");
@@ -168,7 +189,11 @@ describe("EventsSection Integration", () => {
   });
 
   it("should render View all link", () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     const viewAllLink = screen.getByText("View all");
     expect(viewAllLink).toBeInTheDocument();
@@ -176,7 +201,11 @@ describe("EventsSection Integration", () => {
   });
 
   it("should have proper component structure", () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     // Should have main container
     const container = screen.getByText("Events").closest("div");
@@ -188,7 +217,11 @@ describe("EventsSection Integration", () => {
   });
 
   it("should pass correct event data to EventCard components", () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     // Check that event data is passed correctly
     expect(screen.getByText("React Workshop")).toBeInTheDocument();

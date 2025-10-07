@@ -1,3 +1,4 @@
+import { TestWrapper } from "@/test-utils";
 import { EVENT_STATUS, EVENT_TYPES } from "@/types/event";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -82,29 +83,49 @@ describe("EventsSection", () => {
   });
 
   it("should render events section title", () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
     expect(screen.getByText("Events")).toBeInTheDocument();
   });
 
   it("should render events section description", () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
     expect(
       screen.getByText("Join our meetups and workshops. Learn, network, and build together.")
     ).toBeInTheDocument();
   });
 
   it("should render filter button", () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
     expect(screen.getByText("Filter")).toBeInTheDocument();
   });
 
   it("should render 'View all' link", () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
     expect(screen.getByText("View all")).toBeInTheDocument();
   });
 
   it("should render all event cards by default", () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     expect(screen.getByTestId("event-card-e-001")).toBeInTheDocument();
     expect(screen.getByTestId("event-card-e-002")).toBeInTheDocument();
@@ -112,7 +133,11 @@ describe("EventsSection", () => {
   });
 
   it("should show filter section when filter button is clicked", async () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     const filterButton = screen.getByText("Filter");
     fireEvent.click(filterButton);
@@ -123,7 +148,11 @@ describe("EventsSection", () => {
   });
 
   it("should hide filter section when filter button is clicked again", async () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     const filterButton = screen.getByText("Filter");
 
@@ -141,7 +170,11 @@ describe("EventsSection", () => {
   });
 
   it("should pass correct props to EventFilters component", async () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     const filterButton = screen.getByText("Filter");
     fireEvent.click(filterButton);
@@ -155,7 +188,11 @@ describe("EventsSection", () => {
   });
 
   it("should update filters when EventFilters component calls onUpdateFilter", async () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     const filterButton = screen.getByText("Filter");
     fireEvent.click(filterButton);
@@ -173,7 +210,11 @@ describe("EventsSection", () => {
   });
 
   it("should clear filters when EventFilters component calls onClearFilters", async () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     const filterButton = screen.getByText("Filter");
     fireEvent.click(filterButton);
@@ -201,7 +242,11 @@ describe("EventsSection", () => {
   });
 
   it("should filter events based on status", async () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     const filterButton = screen.getByText("Filter");
     fireEvent.click(filterButton);
@@ -220,7 +265,11 @@ describe("EventsSection", () => {
   });
 
   it("should filter events based on type", async () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     const filterButton = screen.getByText("Filter");
     fireEvent.click(filterButton);
@@ -238,14 +287,22 @@ describe("EventsSection", () => {
   });
 
   it("should have proper initial filter state", () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     // Filter section should not be visible initially
     expect(screen.queryByTestId("event-filters")).not.toBeInTheDocument();
   });
 
   it("should handle multiple filter updates", async () => {
-    render(<EventsSection />);
+    render(
+      <TestWrapper>
+        <EventsSection />
+      </TestWrapper>
+    );
 
     const filterButton = screen.getByText("Filter");
     fireEvent.click(filterButton);
