@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CalendarEvent, Event } from "@/types/event";
-import DATE_UTILS from "@/utils/date";
-import { CalendarDays, Clock3, MapPin } from "lucide-react";
+import { CalendarEvent, Event, EVENT_STATUS } from "@/types/event";
+import { CalendarDays, Clock3, FileText, MapPin, Youtube } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { getEventStatus } from "@/lib/calendar-utils";
 import { formatEventDate, formatEventTime } from "@/lib/date-utils";
@@ -16,6 +16,7 @@ interface EventCardProps {
 }
 
 export default function EventCard({ event }: EventCardProps) {
+  const t = useTranslations("Events");
   const dynamicStatus = getEventStatus(event.startDateTime, event.endDateTime);
 
   const calendarEvent: CalendarEvent = {
@@ -62,36 +63,59 @@ export default function EventCard({ event }: EventCardProps) {
 
         {/* Action Buttons */}
         <div className="mt-4 space-y-2">
-          <div className="flex items-center gap-2">
-            {expired ? (
-              <Button
-                asChild
-                size="sm"
-                className="flex-1 cursor-not-allowed bg-gray-600 opacity-70 hover:cursor-not-allowed hover:bg-gray-600"
-                disabled
-              >
-                <Link href={event.registrationUrl} target="_blank" rel="noreferrer">
-                  Completed
-                </Link>
-              </Button>
-            ) : (
-              <Button
-                asChild
-                size="sm"
-                className="flex-1 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
-              >
-                <Link href={event.registrationUrl} target="_blank" rel="noreferrer">
-                  Register
-                </Link>
-              </Button>
-            )}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              {/* For past events with recordings/slides, show icon buttons */}
+              {dynamicStatus === EVENT_STATUS.PAST && (event.recordingUrl || event.slidesUrl) ? (
+                <>
+                  {event.recordingUrl && (
+                    <Button
+                      asChild
+                      size="icon"
+                      variant="outline"
+                      className="hover:bg-white"
+                      style={{ backgroundColor: "#white" }}
+                      title={t("watch_recording")}
+                    >
+                      <Link href={event.recordingUrl} target="_blank" rel="noreferrer">
+                        <Youtube className="h-4 w-4" color="#FF0000" />
+                      </Link>
+                    </Button>
+                  )}
+                  {event.slidesUrl && (
+                    <Button
+                      asChild
+                      size="icon"
+                      variant="outline"
+                      className="border-green-500/20 bg-green-500/10 text-green-300 hover:bg-green-500/20 hover:text-green-200"
+                      title={t("view_slides")}
+                    >
+                      <Link href={event.slidesUrl} target="_blank" rel="noreferrer">
+                        <FileText className="h-4 w-4" />
+                      </Link>
+                    </Button>
+                  )}
+                </>
+              ) : (
+                /* For upcoming/ongoing events, show register button */
+                <Button
+                  asChild
+                  size="sm"
+                  className="flex-1 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
+                >
+                  <Link href={event.registrationUrl} target="_blank" rel="noreferrer">
+                    {t("register")}
+                  </Link>
+                </Button>
+              )}
+            </div>
             <Link
               href={event.registrationUrl}
               target="_blank"
               rel="noreferrer"
               className="px-2 text-xs text-slate-300 underline-offset-4 hover:text-slate-100 hover:underline"
             >
-              Details
+              {t("details")}
             </Link>
           </div>
 
