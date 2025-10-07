@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BlogSectionProps } from "@/types/blog";
+import { useTranslations } from "next-intl";
 
 import BlogList from "@/components/common/blog/BlogList";
 import AnimatedSection from "@/components/custom/animated-section";
@@ -8,6 +9,7 @@ import { resources } from "@/base/data/dummy";
 import ResourceCard from "./blog-resource-card";
 
 const BlogSection = ({ initialBlogs, initialEndCursor }: BlogSectionProps) => {
+  const t = useTranslations("blogs");
   return (
     <AnimatedSection className="relative">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
