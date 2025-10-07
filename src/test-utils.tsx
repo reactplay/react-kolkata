@@ -81,6 +81,14 @@ const mockMessages = {
     title: "Get in touch",
     description: "Questions, suggestions, or collaboration ideas? We'd love to hear from you.",
   },
+  Contributors: {
+    title: "Our Contributors",
+    description: "Meet the amazing people who make React Kolkata possible.",
+    loading: "Loading contributors...",
+    error: "Error loading contributors",
+    total_contributors: "Total contributors: {count}",
+    footer_note: "Contributors are automatically fetched from our GitHub repository.",
+  },
 };
 
 // Test wrapper with NextIntl context

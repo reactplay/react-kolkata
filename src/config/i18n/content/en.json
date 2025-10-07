@@ -77,6 +77,14 @@
     "title": "Get in touch",
     "description": "Questions, suggestions, or collaboration ideas? We'd love to hear from you."
   },
+  "Contributors": {
+    "title": "Our Contributors",
+    "description": "Meet the amazing people who make React Kolkata possible. These contributors have helped build, maintain, and grow our community through their code, ideas, and dedication.",
+    "loading": "Loading contributors...",
+    "error": "Error loading contributors",
+    "total_contributors": "Total contributors: {count}",
+    "footer_note": "Contributors are automatically fetched from our GitHub repository. Thank you to everyone who has contributed to React Kolkata!"
+  },
   "NotFound": {
     "404": "404",
     "dosen't_exist_text": "Oops! The page you're looking for doesn't exist.",
