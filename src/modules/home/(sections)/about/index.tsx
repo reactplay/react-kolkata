@@ -1,5 +1,6 @@
 import AnimatedSection from "@/components/custom/animated-section";
-import { features, highlights } from "@/base/constants/site";
+import { features, highlights, timeline } from "@/base/constants/site";
+import { Chrono } from "react-chrono";
 
 const AboutSection = () => {
   return (
@@ -79,6 +80,49 @@ const AboutSection = () => {
                 </div>
               );
             })}
+          </div>
+        </div>
+
+        {/* Community Timeline */}
+        <div className="mt-20">
+          <div className="text-center">
+            <h3
+              className="text-2xl font-semibold text-slate-100 sm:text-3xl"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              Our Journey
+            </h3>
+            <p className="mt-4 text-sm font-light text-slate-300 sm:text-base">
+              Explore the milestones and growth of React Kolkata community
+            </p>
+          </div>
+
+          <div className="mt-12">
+            <Chrono
+              items={timeline}
+              mode="VERTICAL_ALTERNATING"
+              theme={{
+                primary: "#0ea5e9",
+                secondary: "#1e293b",
+                cardBgColor: "rgba(255, 255, 255, 0.05)",
+                cardForeColor: "#f1f5f9",
+                titleColor: "#f1f5f9",
+                titleColorActive: "#0ea5e9",
+              }}
+              fontSizes={{
+                cardSubtitle: "0.875rem",
+                cardText: "0.875rem",
+                cardTitle: "1.125rem",
+                title: "1rem",
+              }}
+              classNames={{
+                card: "border border-white/5 backdrop-blur-sm",
+                cardSubTitle: "text-slate-300",
+                cardText: "text-slate-300",
+                cardTitle: "text-sky-200",
+                title: "text-slate-100",
+              }}
+            />
           </div>
         </div>
       </div>
