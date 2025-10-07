@@ -53,3 +53,6 @@ export const highlights = [
       "Monthly meetups, lightning talks, hands-on sessions, and collaborations with local tech organizations to strengthen Kolkata's developer ecosystem.",
   },
 ];
+
+// storing constant to hit hashnode api call
+export const HASHNODE_API_URL = "https://gql.hashnode.com";
