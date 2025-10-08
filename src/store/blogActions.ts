@@ -15,7 +15,7 @@ export async function loadMoreBlogs(
   count: number
 ): Promise<BlogFetchResponse> {
   if (!cursor) {
-    return { posts: [], endCursor: null };
+    return { posts: [], endCursor: null, error: "No more posts to load." };
   }
 
   try {
@@ -32,9 +32,13 @@ export async function loadMoreBlogs(
 
     const posts: Blog[] = edges.map((edge) => edge.node);
     const endCursor = pageInfo.hasNextPage ? pageInfo.endCursor : null;
-    return { posts, endCursor };
+    return { posts, endCursor, error: null };
   } catch (error) {
     console.error("Failed to fetch more blogs:", error);
-    throw new Error("Failed to fetch more blogs.");
+    return {
+      posts: [],
+      endCursor: null,
+      error: error instanceof Error ? error.message : String(error),
+    };
   }
 }
