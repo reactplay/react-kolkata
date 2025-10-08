@@ -73,13 +73,6 @@ const mockMessages = {
     filter_by_tags: "Filter by tags",
     showing_posts: "Showing {count} of {total} posts",
     clear: "Clear",
-    resources_title: "Community Resources",
-    resources_description: "Hand-picked links and tools for React developers.",
-    explore_resources: "Explore resources",
-  },
-  Contact: {
-    title: "Get in touch",
-    description: "Questions, suggestions, or collaboration ideas? We'd love to hear from you.",
   },
   Contributors: {
     title: "Our Contributors",

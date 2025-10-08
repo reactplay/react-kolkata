@@ -9,10 +9,9 @@ import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/custom/animated-section";
-import { articles, resources } from "@/base/data/dummy";
+import { articles } from "@/base/data/dummy";
 
 import BlogCard from "./blog-card";
-import ResourceCard from "./blog-resource-card";
 
 const BlogSection = () => {
   const t = useTranslations("Blog");
@@ -140,40 +139,6 @@ const BlogSection = () => {
                 tags={article.tags}
                 readTime={article.readTime}
                 coverImage={article.coverImage}
-                featured={index === 0}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Resources Section */}
-        <div>
-          <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <h2
-                className="text-3xl font-semibold tracking-tight sm:text-4xl"
-                style={{ fontFamily: "var(--font-poppins)" }}
-              >
-                {t("resources_title")}
-              </h2>
-              <p className="mt-2 text-slate-300">{t("resources_description")}</p>
-            </div>
-            <Link
-              href="/resources"
-              className="text-sm text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline"
-            >
-              {t("explore_resources")}
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:grid-rows-2">
-            {resources.slice(0, 5).map((r, index) => (
-              <ResourceCard
-                key={r.id}
-                title={r.title}
-                date={r.date}
-                excerpt={r.excerpt}
-                href={r.link ?? "#"}
                 featured={index === 0}
               />
             ))}
