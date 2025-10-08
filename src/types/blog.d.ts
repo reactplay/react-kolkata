@@ -26,15 +26,6 @@ export interface Article {
   coverImage?: string;
 }
 
-export interface Resource {
-  id: string;
-  title: string;
-  date: string;
-  excerpt: string;
-  link?: string;
-  featured?: boolean;
-}
-
 export interface BlogFilters {
   selectedTags: string[];
   searchQuery: string;
