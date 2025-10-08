@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { SiDiscord } from "react-icons/si";
+import { Github, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
 
 const quickLinks = [
   { href: "https://lu.ma/reactkolkata", label: "Events" },
@@ -82,6 +83,24 @@ const Footer = () => {
                 rel="noreferrer"
               >
                 <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                className="hover:text-white"
+                aria-label="LinkedIn"
+                href="https://www.youtube.com/@ReactPlayIO"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Youtube className="h-5 w-5" />
+              </a>
+              <a
+                className="hover:text-white"
+                aria-label="LinkedIn"
+                href="https://discord.gg/VRVfn2Vss"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <SiDiscord className="h-5 w-5" />
               </a>
             </li>
           </ul>
