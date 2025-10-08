@@ -29,6 +29,6 @@ export async function getInitialBlogs(): Promise<BlogFetchResponse> {
     return { posts, endCursor };
   } catch (error) {
     // Re-throwing the error will be caught by the nearest error.tsx boundary
-    throw error;
+    return { error: (error as Error).message, posts: [], endCursor: null };
   }
 }

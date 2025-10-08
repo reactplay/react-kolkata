@@ -56,3 +56,8 @@ export const highlights = [
 
 // storing constant to hit hashnode api call
 export const HASHNODE_API_URL = "https://gql.hashnode.com";
+
+// number of blogs to fetch in an api call
+export const FETCH_BLOGS_COUNT_MOBILE = 4;
+export const FETCH_BLOGS_COUNT_PAD = 6;
+export const FETCH_BLOGS_COUNT_DESKTOP = 8;

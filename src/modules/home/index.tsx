@@ -7,14 +7,14 @@ import EventsSection from "./(sections)/event";
 import HeroSection from "./(sections)/hero";
 
 const LandingPage = async () => {
-  const { posts: initialBlogs, endCursor: initialEndCursor } = await getInitialBlogs();
+  const { posts: initialBlogs, endCursor: initialEndCursor, error } = await getInitialBlogs();
 
   return (
     <>
       <HeroSection />
       <AboutSection />
       <EventsSection />
-      <BlogSection initialBlogs={initialBlogs} initialEndCursor={initialEndCursor} />
+      <BlogSection initialBlogs={initialBlogs} initialEndCursor={initialEndCursor} error={error} />
     </>
   );
 };

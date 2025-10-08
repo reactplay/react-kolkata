@@ -61,11 +61,13 @@ export interface HashnodeAPIResponse {
 export interface BlogFetchResponse {
   posts: Blog[];
   endCursor: string | null;
+  error: string | null;
 }
 
 export interface BlogSectionProps {
   initialBlogs: Blog[];
   initialEndCursor: string | null;
+  error: string | null;
 }
 // Type for Hashnode API response ends
 
