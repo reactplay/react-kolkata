@@ -68,14 +68,7 @@
     "view_all_posts": "सभी पोस्ट देखें",
     "filter_by_tags": "टैग्स के अनुसार फिल्टर",
     "showing_posts": "{total} में से {count} पोस्ट दिखाई जा रही हैं",
-    "clear": "साफ करें",
-    "resources_title": "कम्युनिटी संसाधन",
-    "resources_description": "रिएक्ट डेवलपर्स के लिए हाथ से चुने गए लिंक्स और टूल्स।",
-    "explore_resources": "संसाधनों का अन्वेषण करें"
-  },
-  "Contact": {
-    "title": "संपर्क करें",
-    "description": "प्रश्न, सुझाव या सहयोग के विचार? हम आपसे सुनना चाहेंगे।"
+    "clear": "साफ करें"
   },
   "Contributors": {
     "title": "हमारे योगदानकर्ता",
