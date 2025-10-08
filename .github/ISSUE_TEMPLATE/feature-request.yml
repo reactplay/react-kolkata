@@ -17,9 +17,9 @@ body:
     attributes:
       value: |
         Please provide the feature request details in the fields below.
-
+        Ensure that your request is clear and concise to help us understand the need for this feature.
   - type: textarea
-    id: problem-details
+    id: feature-details
     attributes:
       label: Feature Details
       description: Describe the feature in detail and explain the problem it solves.
@@ -33,14 +33,6 @@ body:
       description: If you have a solution in mind, please describe it here.
     validations:
       required: true
-
-  - type: textarea
-    id: areas
-    attributes:
-      label: Affected Areas
-      placeholder: List the areas of the project this feature will affect
-    validations:
-      required: false
 
   - type: checkboxes
     id: terms
