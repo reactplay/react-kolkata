@@ -1,36 +1,20 @@
-> First thing, PLEASE READ THIS: [Code Review Checklist]
+## Summary
 
-# Description
+Briefly describe the purpose of this PR.
 
-Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
+## Changes
 
-Fixes #(issue)
+- List key changes made
+- Keep it short and clear
 
-## Type of change
+## Testing
 
-Please delete options that are not relevant.
+How did you test the changes?
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] This change requires a documentation update
+## Related Issue
 
-# How Has This Been Tested?
+Link related issue or ticket (if any)
 
-Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce.
+## Notes
 
-# Checklist:
-
-- [ ] I have performed a self-review of my own code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] Any dependent changes have been merged and published in downstream modules
-
-# Screenshots or example output
-
-<!--- If you made any visual changes, include screenshot. -->
-<!-- If you made any workflow changes, include a screenshare -->
-<!--- If not relevant, delete this section. -->
+Anything reviewers should know before merging?
