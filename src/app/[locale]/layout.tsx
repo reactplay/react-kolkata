@@ -8,6 +8,7 @@ import { routing } from "@/config/i18n/navigation";
 import { inter, poppins } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import AppProvider from "@/components/providers";
+import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 
 import "@/base/styles/globals.css";
 
@@ -37,6 +38,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
       >
         <AppProvider>
           <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        <ScrollToTopButton /> 
         </AppProvider>
       </body>
     </html>
