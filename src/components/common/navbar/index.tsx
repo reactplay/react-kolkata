@@ -86,7 +86,7 @@ const Navbar = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Twitter className="h-6 w-6" />
+                <Twitter className="h-5 w-5" />
               </a>
             </li>
             <li>
@@ -97,7 +97,7 @@ const Navbar = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Github className="h-6 w-6" />
+                <Github className="h-5 w-5" />
               </a>
             </li>
             <li>
@@ -108,7 +108,7 @@ const Navbar = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Linkedin className="h-6 w-6" />
+                <Linkedin className="h-5 w-5" />
               </a>
             </li>
             <li>
@@ -119,7 +119,7 @@ const Navbar = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Youtube className="h-6 w-6" />
+                <Youtube className="h-5 w-5" />
               </a>
             </li>
             <li>
@@ -130,7 +130,7 @@ const Navbar = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <SiDiscord className="h-6 w-6" />
+                <SiDiscord className="h-5 w-5" />
               </a>
             </li>
           </ul>
@@ -152,7 +152,7 @@ const Navbar = () => {
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
