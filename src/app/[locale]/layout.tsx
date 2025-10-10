@@ -35,9 +35,9 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
           poppins.variable
         )}
       >
-        <AppProvider>
-          <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
-        </AppProvider>
+        <NextIntlClientProvider messages={messages}>
+          <AppProvider>{children}</AppProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
