@@ -61,3 +61,7 @@ export const HASHNODE_API_URL = "https://gql.hashnode.com";
 export const FETCH_BLOGS_COUNT_MOBILE = 4;
 export const FETCH_BLOGS_COUNT_PAD = 6;
 export const FETCH_BLOGS_COUNT_DESKTOP = 8;
+
+// number of character for author in blog card
+export const AUTHOR_NAME_CHAR_LIMIT_MD = 10;
+export const AUTHOR_NAME_CHAR_LIMIT_XL = 13;

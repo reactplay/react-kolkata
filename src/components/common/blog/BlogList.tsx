@@ -76,14 +76,13 @@ export default function BlogList({
     setSelectedTags([]);
   };
 
-  const handleMoreBlogsCTA = () => {
+  const handleMoreBlogsCTA = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     startTransition(async () => {
       try {
         const { posts: newBlogs, endCursor } = await loadMoreBlogs(cursor, blogsToShow());
-        const curBlogs = blogsResponse.data;
-        setBlogsResponse({ data: [...curBlogs, ...newBlogs], error: null });
+        setBlogsResponse((prev) => ({ data: [...prev.data, ...newBlogs], error: null }));
         setCursor(endCursor);
-        await loadMoreBlogs(cursor, blogsToShow());
       } catch (error) {
         setBlogsResponse({ data: [], error: (error as Error).message });
         setCursor(null);
@@ -177,7 +176,7 @@ export default function BlogList({
             </div>
           )}
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:grid-rows-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:grid-rows-2 xl:grid-cols-4">
             {filteredArticles.map((article, index) => (
               <BlogCard
                 key={article.id}
@@ -200,7 +199,7 @@ export default function BlogList({
       {showLoadMoreButton && !!cursor && (
         <div className="mt-8 text-center">
           <Button
-            onClick={handleMoreBlogsCTA}
+            onClick={(e) => handleMoreBlogsCTA(e)}
             disabled={isPending}
             className="cursor-pointer bg-sky-500 text-white hover:bg-sky-600"
           >

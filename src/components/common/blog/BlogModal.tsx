@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import Image from "next/image";
 import { Blog } from "@/types/blog";
 import { Calendar, Clock, ExternalLink, Github, User } from "lucide-react";
@@ -6,20 +6,15 @@ import { Calendar, Clock, ExternalLink, Github, User } from "lucide-react";
 import { formatBlogDate, formatBlogRelativeTime } from "@/lib/date-utils";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 interface BlogModalProps {
   blog: Blog;
+  modalOpen: boolean;
+  setModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function BlogModal({ blog }: BlogModalProps) {
-  const [open, setOpen] = useState(false);
+export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalProps) {
   const [coverImageError, setCoverImageError] = useState(false);
   const [authorImageError, setAuthorImageError] = useState(false);
 
@@ -27,16 +22,16 @@ export default function BlogModal({ blog }: BlogModalProps) {
   if (!blog) return null;
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <button className="mt-4 inline-flex cursor-pointer text-sm text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline">
-          Read More
-        </button>
-      </DialogTrigger>
-      <DialogContent className="max-h-[90vh] max-w-3xl overflow-y-auto border-white/10 bg-[#0B1220] text-slate-100">
+    <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+      <DialogContent
+        className="no-scrollbar max-h-[90vh] max-w-3xl overflow-y-auto border-white/10 bg-[#0B1220] text-slate-100"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         <DialogHeader>
           <DialogTitle
-            className="text-xl font-semibold text-sky-200"
+            className="pr-8 text-xl font-semibold text-sky-200"
             style={{ fontFamily: "var(--font-poppins)" }}
           >
             {blog.title}
@@ -129,24 +124,6 @@ export default function BlogModal({ blog }: BlogModalProps) {
 
           <div className="prose prose-invert max-w-none">
             <p className="leading-relaxed text-slate-300">{blog.brief}</p>
-
-            {/* Hard-coded part need to find alternative  */}
-            <div className="mt-6 space-y-4">
-              <h3 className="text-lg font-medium text-slate-200">Key Highlights</h3>
-              <ul className="space-y-2 text-slate-300">
-                <li>• In-depth technical discussions and real-world examples</li>
-                <li>• Community insights and best practices</li>
-                <li>• Practical tips you can implement immediately</li>
-                <li>• Q&A session highlights and follow-up resources</li>
-              </ul>
-
-              <h3 className="text-lg font-medium text-slate-200">What You&apos;ll Learn</h3>
-              <p className="text-slate-300">
-                This article covers essential concepts and patterns that will help you build better
-                React applications. From performance optimization to modern development practices,
-                you&apos;ll gain valuable insights from our community&apos;s collective experience.
-              </p>
-            </div>
           </div>
           {/* End of hard-coded part */}
           <div className="flex items-center justify-between gap-2 border-t border-white/10 pt-4">
