@@ -3,10 +3,12 @@ import Link from "next/link";
 import { Github, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
 import { SiDiscord } from "react-icons/si";
 
+import { Link } from "@/config/i18n/navigation";
+
 const quickLinks = [
-  { href: "https://lu.ma/reactkolkata", label: "Events" },
-  { href: "/contributors", label: "Contributors" },
-  { href: "https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs", label: "Join Us" },
+  { href: "https://lu.ma/reactkolkata", label: "Events", external: true },
+  { href: "/contributors", label: "Contributors", external: false },
+  { href: "https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs", label: "Join Us", external: true },
 ];
 
 const Footer = () => {
@@ -35,13 +37,20 @@ const Footer = () => {
           <ul className="mt-3 space-y-2">
             {quickLinks.map((l) => (
               <li key={l.href}>
-                <Link
-                  href={l.href}
-                  target="_blank"
-                  className="text-sm text-slate-400 hover:text-slate-200"
-                >
-                  {l.label}
-                </Link>
+                {l.external ? (
+                  <NextLink
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-slate-400 hover:text-slate-200"
+                  >
+                    {l.label}
+                  </NextLink>
+                ) : (
+                  <Link href={l.href} className="text-sm text-slate-400 hover:text-slate-200">
+                    {l.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
