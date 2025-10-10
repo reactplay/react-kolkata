@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import NextLink from "next/link";
 import { Github, Linkedin, Menu, Twitter, X, Youtube } from "lucide-react";
 import { SiDiscord } from "react-icons/si";
 
+import { Link, usePathname } from "@/config/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/contributors", label: "Contributors" },
-  { href: "https://lu.ma/reactkolkata", label: "Events" },
+  { href: "/", label: "Home", external: false },
+  { href: "/contributors", label: "Contributors", external: false },
+  { href: "https://lu.ma/reactkolkata", label: "Events", external: true },
 ];
 
 const Navbar = () => {
@@ -58,20 +58,20 @@ const Navbar = () => {
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
           {links.map((l) => {
             const active = l.href === "/" ? pathname === l.href : pathname.startsWith(l.href);
-            const isExternal = l.href.startsWith("http");
+            const LinkComponent = l.external ? NextLink : Link;
             return (
-              <Link
+              <LinkComponent
                 key={l.href}
                 href={l.href}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
+                target={l.external ? "_blank" : undefined}
+                rel={l.external ? "noopener noreferrer" : undefined}
                 className={cn(
                   "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                   active ? "text-sky-300" : "text-slate-300 hover:text-white"
                 )}
               >
                 {l.label}
-              </Link>
+              </LinkComponent>
             );
           })}
         </nav>
@@ -162,13 +162,13 @@ const Navbar = () => {
           <nav className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6" aria-label="Mobile">
             {links.map((l) => {
               const active = l.href === "/" ? pathname === l.href : pathname.startsWith(l.href);
-              const isExternal = l.href.startsWith("http");
+              const LinkComponent = l.external ? NextLink : Link;
               return (
-                <Link
+                <LinkComponent
                   key={l.href}
                   href={l.href}
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  target={l.external ? "_blank" : undefined}
+                  rel={l.external ? "noopener noreferrer" : undefined}
                   className={cn(
                     "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     active
@@ -177,16 +177,16 @@ const Navbar = () => {
                   )}
                 >
                   {l.label}
-                </Link>
+                </LinkComponent>
               );
             })}
             <Button
               asChild
               className="mt-2 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
             >
-              <Link target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
+              <NextLink target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
                 Join the Community
-              </Link>
+              </NextLink>
             </Button>
             <ul className="mt-2 flex flex-col gap-3">
               <li className="px-2 py-2">
