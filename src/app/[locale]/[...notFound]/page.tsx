@@ -15,22 +15,19 @@ const NotFound = () => {
         className="absolute inset-0 object-cover"
         priority
       />
-
-      <div className="absolute inset-0" />
-
       <div className="relative z-10 mt-2 mr-10 font-sans">
-        <h1 className="text-4xl font-extralight sm:mr-40">Oops!</h1>
+        <h1 className="mr-25 text-4xl font-extralight sm:mr-40">Oops!</h1>
         <h1 className="flex justify-between px-20 text-7xl font-light tracking-tight sm:px-27 sm:text-9xl">
           <span className="ml-3 sm:ml-0">4</span>
           <span>4</span>
         </h1>
         <p className="mx-auto mb-4 max-w-md text-sm font-extralight sm:text-xl">
-          Lost in space… but don't worry, we'll guide you home
+          Lost in space… but don't worry, we'll guide you home.
         </p>
 
         <Link
           href="/"
-          className="text-accent-foreground hover:bg-primary/10 inline-block rounded-full border border-white/60 bg-transparent px-6 py-3 font-sans font-light duration-100"
+          className="text-accent-foreground hover:bg-primary/10 ml-6 inline-block rounded-full border border-white/60 bg-transparent px-6 py-3 font-sans font-light duration-100"
         >
           {t("go_to_home")}
         </Link>
