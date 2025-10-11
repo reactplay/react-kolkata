@@ -30,8 +30,6 @@ const Navbar = () => {
     setOpen(false);
   }, [pathname]);
 
-  console.log("Render: Navbar");
-
   return (
     <header
       className={cn(

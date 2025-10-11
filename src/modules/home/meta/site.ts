@@ -53,3 +53,6 @@ export const siteConfig: Metadata = {
     apple: "/logo.svg",
   },
 };
+
+// storing constant to hit hashnode api call
+export const HASHNODE_API_URL = "https://gql.hashnode.com";
