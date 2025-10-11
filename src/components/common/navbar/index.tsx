@@ -1,9 +1,8 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import NextLink from "next/link";
-import { Menu, X } from "lucide-react";
+import { Github, Linkedin, Menu, Twitter, X, Youtube } from "lucide-react";
+import { SiDiscord } from "react-icons/si";
 
 import { Link, usePathname } from "@/config/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -75,15 +74,74 @@ const Navbar = () => {
           })}
         </nav>
 
-        <div className="hidden md:block">
-          <Button
-            asChild
-            className="bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
-          >
-            <NextLink href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
-              Join the Community
-            </NextLink>
-          </Button>
+        <div className="hidden items-center gap-4 md:flex">
+          <ul className="flex items-center gap-4">
+            <li>
+              <a
+                className="text-slate-400 hover:text-white"
+                aria-label="Twitter"
+                href="https://x.com/reactkolkata"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Twitter className="h-5 w-5" />
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-slate-400 hover:text-white"
+                aria-label="GitHub"
+                href="https://github.com/reactplay/react-kolkata"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Github className="h-5 w-5" />
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-slate-400 hover:text-white"
+                aria-label="LinkedIn"
+                href="https://www.linkedin.com/showcase/react-kolkata"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-slate-400 hover:text-white"
+                aria-label="Youtube"
+                href="https://www.youtube.com/@ReactPlayIO"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Youtube className="h-5 w-5" />
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-slate-400 hover:text-white"
+                aria-label="Discord"
+                href="https://discord.gg/VRVfn2Vss"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <SiDiscord className="h-5 w-5" />
+              </a>
+            </li>
+          </ul>
+          <div className="hidden md:block">
+            <Button
+              asChild
+              className="bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
+            >
+              <Link href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
+                Join the Community
+              </Link>
+            </Button>
+          </div>
         </div>
 
         <button
@@ -92,13 +150,13 @@ const Navbar = () => {
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
       {/* Mobile menu */}
       {open ? (
-        <div className="absolute w-screen border-t border-white/5 bg-[#0B1220] md:hidden">
+        <div className="absolute right-0 w-1/2 border-t border-white/5 bg-[#0B1220] md:hidden">
           <nav className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6" aria-label="Mobile">
             {links.map((l) => {
               const active = l.href === "/" ? pathname === l.href : pathname.startsWith(l.href);
@@ -128,6 +186,78 @@ const Navbar = () => {
                 Join the Community
               </NextLink>
             </Button>
+            <ul className="mt-2 flex flex-col gap-3">
+              <li className="px-2 py-2">
+                <a
+                  className="text-slate-300"
+                  aria-label="Twitter"
+                  href="https://x.com/reactkolkata"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="flex items-center gap-2">
+                    <Twitter className="h-5 w-5" />
+                    <span className="text-sm">Twitter</span>
+                  </div>
+                </a>
+              </li>
+              <li className="px-2 py-2">
+                <a
+                  className="text-slate-300"
+                  aria-label="GitHub"
+                  href="https://github.com/reactplay/react-kolkata"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="flex items-center gap-2">
+                    <Github className="h-5 w-5" />
+                    <span className="text-sm">GitHub</span>
+                  </div>
+                </a>
+              </li>
+              <li className="px-2 py-2">
+                <a
+                  className="text-slate-300"
+                  aria-label="LinkedIn"
+                  href="https://www.linkedin.com/showcase/react-kolkata"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="flex items-center gap-2">
+                    <Linkedin className="h-5 w-5" />
+                    <span className="text-sm">Linkedin</span>
+                  </div>
+                </a>
+              </li>
+              <li className="px-2 py-2">
+                <a
+                  className="text-slate-300"
+                  aria-label="Youtube"
+                  href="https://www.youtube.com/@ReactPlayIO"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="flex items-center gap-2">
+                    <Youtube className="h-5 w-5" />
+                    <span className="text-sm">Youtube</span>
+                  </div>
+                </a>
+              </li>
+              <li className="px-2 py-2">
+                <a
+                  className="text-slate-300"
+                  aria-label="Discord"
+                  href=" https://discord.gg/VRVfn2Vss"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="flex items-center gap-2">
+                    <SiDiscord className="h-5 w-5" />
+                    <span className="text-sm">Discord</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
           </nav>
         </div>
       ) : null}
