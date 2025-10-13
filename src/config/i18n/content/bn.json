@@ -59,7 +59,14 @@
     "register": "নিবন্ধন",
     "details": "বিস্তারিত",
     "watch_recording": "রেকর্ডিং দেখুন",
-    "view_slides": "স্লাইড দেখুন"
+    "view_slides": "স্লাইড দেখুন",
+    "upcoming_events": "আসন্ন ইভেন্ট",
+    "past_events": "অতীত ইভেন্ট",
+    "call_for_speakers": "স্পিকারদের জন্য আহ্বান",
+    "call_for_volunteers": "স্বেচ্ছাসেবকদের জন্য আহ্বান",
+    "view_all_events": "সব ইভেন্ট দেখুন",
+    "view_all_past_events": "সব অতীত ইভেন্ট দেখুন",
+    "coming_soon": "শীঘ্রই আসছে"
   },
   "Blog": {
     "title": "ব্লগ থেকে সর্বশেষ",
