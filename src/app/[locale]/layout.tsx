@@ -30,7 +30,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
     <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-dvh bg-[#0B1220] text-slate-100 antialiased",
+          "bg-background text-foreground min-h-dvh antialiased",
           inter.variable,
           poppins.variable
         )}

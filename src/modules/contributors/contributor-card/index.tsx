@@ -18,7 +18,7 @@ interface ContributorCardProps {
 
 const ContributorCard = ({ contributor }: ContributorCardProps) => {
   return (
-    <div className="group relative overflow-hidden rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10">
+    <div className="group border-border bg-foreground/5 hover:border-primary/30 hover:bg-foreground/10 dark:bg-foreground/10 dark:hover:bg-foreground/20 relative overflow-hidden rounded-xl border p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1">
       {/* Avatar */}
       <div className="relative mx-auto mb-4 h-20 w-20 overflow-hidden rounded-full">
         <Image
@@ -30,10 +30,12 @@ const ContributorCard = ({ contributor }: ContributorCardProps) => {
       </div>
 
       {/* Name */}
-      <h3 className="mb-2 text-center text-lg font-semibold text-slate-100">{contributor.login}</h3>
+      <h3 className="text-foreground mb-2 text-center text-lg font-semibold">
+        {contributor.login}
+      </h3>
 
       {/* Contributions */}
-      <div className="mb-4 flex items-center justify-center gap-2 text-sm text-slate-400">
+      <div className="text-muted-foreground mb-4 flex items-center justify-center gap-2 text-sm">
         <GitCommit className="h-4 w-4" />
         <span>
           {contributor.contributions}{" "}
@@ -44,7 +46,7 @@ const ContributorCard = ({ contributor }: ContributorCardProps) => {
       {/* Admin Badge */}
       {contributor.site_admin && (
         <div className="mb-4 flex justify-center">
-          <span className="inline-flex items-center rounded-full bg-amber-500/10 px-2 py-1 text-xs font-medium text-amber-400">
+          <span className="inline-flex items-center rounded-full bg-amber-500/10 px-2 py-1 text-xs font-medium text-amber-500">
             Admin
           </span>
         </div>
@@ -56,7 +58,7 @@ const ContributorCard = ({ contributor }: ContributorCardProps) => {
           href={contributor.html_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300 transition-colors hover:bg-white/10 hover:text-slate-100"
+          className="border-border bg-foreground/5 text-muted-foreground hover:bg-foreground/10 hover:text-foreground inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm transition-colors"
         >
           <Github className="h-4 w-4" />
           View Profile
@@ -64,7 +66,7 @@ const ContributorCard = ({ contributor }: ContributorCardProps) => {
       </div>
 
       {/* Hover Effect */}
-      <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-br from-sky-500/5 to-blue-500/5 opacity-0 transition-opacity group-hover:opacity-100" />
+      <div className="from-primary/10 via-primary/5 to-primary/10 pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-br opacity-0 transition-opacity group-hover:opacity-100" />
     </div>
   );
 };

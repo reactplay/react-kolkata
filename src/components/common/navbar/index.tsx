@@ -7,6 +7,7 @@ import { SiDiscord } from "react-icons/si";
 import { Link, usePathname } from "@/config/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/ui/theme-toggle";
 
 const links = [
   { href: "/", label: "Home", external: false },
@@ -35,7 +36,7 @@ const Navbar = () => {
       className={cn(
         "sticky top-0 z-50 w-full transition-colors",
         scrolled
-          ? "border-b border-white/5 bg-[#0B1220]/70 backdrop-blur supports-[backdrop-filter]:bg-[#0B1220]/60"
+          ? "border-border bg-background/80 supports-[backdrop-filter]:bg-background/60 border-b backdrop-blur"
           : ""
       )}
       role="banner"
@@ -65,7 +66,7 @@ const Navbar = () => {
                 rel={l.external ? "noopener noreferrer" : undefined}
                 className={cn(
                   "rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                  active ? "text-sky-300" : "text-slate-300 hover:text-white"
+                  active ? "text-primary" : "text-muted-foreground hover:text-foreground"
                 )}
               >
                 {l.label}
@@ -78,7 +79,7 @@ const Navbar = () => {
           <ul className="flex items-center gap-4">
             <li>
               <a
-                className="text-slate-400 hover:text-white"
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Twitter"
                 href="https://x.com/reactkolkata"
                 target="_blank"
@@ -89,7 +90,7 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                className="text-slate-400 hover:text-white"
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="GitHub"
                 href="https://github.com/reactplay/react-kolkata"
                 target="_blank"
@@ -100,7 +101,7 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                className="text-slate-400 hover:text-white"
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="LinkedIn"
                 href="https://www.linkedin.com/showcase/react-kolkata"
                 target="_blank"
@@ -111,7 +112,7 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                className="text-slate-400 hover:text-white"
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Youtube"
                 href="https://www.youtube.com/@ReactPlayIO"
                 target="_blank"
@@ -122,7 +123,7 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                className="text-slate-400 hover:text-white"
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Discord"
                 href="https://discord.gg/VRVfn2Vss"
                 target="_blank"
@@ -135,28 +136,33 @@ const Navbar = () => {
           <div className="hidden md:block">
             <Button
               asChild
-              className="bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
             >
               <Link href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
                 Join the Community
               </Link>
             </Button>
           </div>
+          <ThemeToggle />
         </div>
 
-        <button
-          className="inline-flex items-center justify-center rounded-md p-2 text-slate-200 md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-5 md:hidden">
+          <ThemeToggle />
+
+          <button
+            className="text-foreground hover:bg-foreground/10 inline-flex items-center justify-center rounded-md p-2 transition-colors"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
       {open ? (
-        <div className="absolute right-0 w-1/2 border-t border-white/5 bg-[#0B1220] md:hidden">
+        <div className="border-border bg-background absolute right-0 w-1/2 border-t md:hidden">
           <nav className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6" aria-label="Mobile">
             {links.map((l) => {
               const active = l.href === "/" ? pathname === l.href : pathname.startsWith(l.href);
@@ -170,8 +176,8 @@ const Navbar = () => {
                   className={cn(
                     "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     active
-                      ? "bg-white/5 text-sky-300"
-                      : "text-slate-300 hover:bg-white/5 hover:text-white"
+                      ? "bg-foreground/5 text-primary"
+                      : "text-muted-foreground hover:bg-foreground/5 hover:text-foreground"
                   )}
                 >
                   {l.label}
@@ -180,7 +186,7 @@ const Navbar = () => {
             })}
             <Button
               asChild
-              className="mt-2 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 mt-2 transition-colors"
             >
               <NextLink target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
                 Join the Community
@@ -189,7 +195,7 @@ const Navbar = () => {
             <ul className="mt-2 flex flex-col gap-3">
               <li className="px-2 py-2">
                 <a
-                  className="text-slate-300"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label="Twitter"
                   href="https://x.com/reactkolkata"
                   target="_blank"
@@ -203,7 +209,7 @@ const Navbar = () => {
               </li>
               <li className="px-2 py-2">
                 <a
-                  className="text-slate-300"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label="GitHub"
                   href="https://github.com/reactplay/react-kolkata"
                   target="_blank"
@@ -217,7 +223,7 @@ const Navbar = () => {
               </li>
               <li className="px-2 py-2">
                 <a
-                  className="text-slate-300"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label="LinkedIn"
                   href="https://www.linkedin.com/showcase/react-kolkata"
                   target="_blank"
@@ -231,7 +237,7 @@ const Navbar = () => {
               </li>
               <li className="px-2 py-2">
                 <a
-                  className="text-slate-300"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label="Youtube"
                   href="https://www.youtube.com/@ReactPlayIO"
                   target="_blank"
@@ -245,9 +251,9 @@ const Navbar = () => {
               </li>
               <li className="px-2 py-2">
                 <a
-                  className="text-slate-300"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label="Discord"
-                  href=" https://discord.gg/VRVfn2Vss"
+                  href="https://discord.gg/VRVfn2Vss"
                   target="_blank"
                   rel="noreferrer"
                 >

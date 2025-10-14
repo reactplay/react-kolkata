@@ -41,7 +41,7 @@ const BlogCard: React.FC<BlogCardProps> = (props) => {
   const defaultCoverImage = "/images/tech-events-1.jpg"; // Default fallback image
   return (
     <article
-      className={`group grid cursor-pointer grid-rows-[auto_1fr_auto] rounded-xl border border-white/5 bg-white/5 p-5 transition hover:translate-y-[-2px] hover:bg-white/10 ${
+      className={`group border-border bg-background hover:bg-primary/10 grid cursor-pointer grid-rows-[auto_1fr_auto] rounded-xl border p-5 transition hover:translate-y-[-2px] ${
         featured ? "md:col-span-2 md:row-span-2 md:p-8" : ""
       }`}
       onClick={() => setModalOpen(true)}
@@ -70,7 +70,7 @@ const BlogCard: React.FC<BlogCardProps> = (props) => {
             <Badge
               key={tag.id}
               variant="secondary"
-              className="bg-sky-500/10 px-2 py-1 text-xs text-sky-300 hover:bg-sky-500/20"
+              className="bg-primary/10 text-primary hover:bg-primary/20 dark:bg-primary/15 px-2 py-1 text-xs transition-colors"
             >
               {tag.name.length > 15 ? `${tag.name.substring(0, 12)}...` : tag.name}
             </Badge>
@@ -80,7 +80,7 @@ const BlogCard: React.FC<BlogCardProps> = (props) => {
         <div className="flex grow flex-col">
           {/* Title */}
           <h3
-            className={`overflow-hidden font-medium text-sky-200 group-hover:text-sky-300 ${
+            className={`text-foreground group-hover:text-primary overflow-hidden font-medium transition-colors ${
               featured ? "text-xl md:text-2xl" : "line-clamp-3 h-18 text-base"
             }`}
           >
@@ -89,7 +89,7 @@ const BlogCard: React.FC<BlogCardProps> = (props) => {
 
           {/* Excerpt */}
           <p
-            className={`mt-3 text-slate-300 ${
+            className={`text-muted-foreground mt-3 ${
               featured ? "line-clamp-4 text-base" : "line-clamp-2 h-10 text-sm"
             }`}
           >
@@ -103,8 +103,8 @@ const BlogCard: React.FC<BlogCardProps> = (props) => {
           <div className="flex items-center gap-2 text-nowrap">
             <div className="relative h-6 w-6 overflow-hidden rounded-full">
               {authorImageError ? (
-                <div className="flex h-full w-full items-center justify-center bg-slate-600">
-                  <User className="h-3 w-3 text-slate-400" />
+                <div className="bg-foreground/10 flex h-full w-full items-center justify-center">
+                  <User className="text-foreground/60 h-3 w-3" />
                 </div>
               ) : (
                 <Image
@@ -116,7 +116,7 @@ const BlogCard: React.FC<BlogCardProps> = (props) => {
                 />
               )}
             </div>
-            <span className={`text-slate-300 ${featured ? "text-sm" : "text-xs"}`}>
+            <span className={`text-muted-foreground ${featured ? "text-sm" : "text-xs"}`}>
               {/* for featured card and mobile screen show full author name */}
               {!featured && authorNameCharLimit && author.name.length > authorNameCharLimit
                 ? `${author.name.substring(0, authorNameCharLimit - 3)}...`
@@ -124,7 +124,7 @@ const BlogCard: React.FC<BlogCardProps> = (props) => {
             </span>
           </div>
 
-          <div className="flex items-center gap-3 text-nowrap text-slate-400">
+          <div className="text-muted-foreground flex items-center gap-3 text-nowrap">
             <div className="flex items-center gap-1">
               <Clock className="h-3 w-3" />
               <span className="text-xs">{readTimeInMinutes} min</span>

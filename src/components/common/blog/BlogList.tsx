@@ -104,14 +104,14 @@ export default function BlogList({
               >
                 {t("title")}
               </h2>
-              <p className="mt-2 text-slate-300">{t("description")}</p>
+              <p className="text-muted-foreground mt-2">{t("description")}</p>
             </div>
             <div className="flex items-center gap-4">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setShowFilters(!showFilters)}
-                className="border-white/10 bg-white/5 text-slate-300 hover:bg-white/10"
+                className="border-border bg-foreground/5 text-foreground hover:bg-foreground/10 dark:bg-foreground/10 dark:hover:bg-foreground/20 transition-colors"
               >
                 <Filter className="mr-2 h-4 w-4" />
                 {t("filter")}
@@ -120,7 +120,7 @@ export default function BlogList({
               {!showLoadMoreButton && (
                 <Link
                   href="/blog"
-                  className="text-sm text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline"
+                  className="text-primary hover:text-primary/80 text-sm underline-offset-4 transition-colors hover:underline"
                 >
                   {t("view_all_posts")}
                 </Link>
@@ -130,12 +130,12 @@ export default function BlogList({
 
           {/* Filter Section */}
           {showFilters && (
-            <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-4">
+            <div className="border-border bg-foreground/5 dark:bg-foreground/10 flex flex-col gap-2 rounded-xl border p-4">
               <div className="flex h-6 items-center justify-between">
                 <div className="flex items-center justify-center gap-2">
-                  <h3 className="text-sm font-medium text-slate-300">Filter by tags</h3>
+                  <h3 className="text-foreground text-sm font-medium">Filter by tags</h3>
                   {selectedTags.length > 0 && (
-                    <p className="text-sm text-slate-400">
+                    <p className="text-muted-foreground text-sm">
                       (
                       {t("showing_posts", {
                         count: filteredArticles.length,
@@ -150,7 +150,7 @@ export default function BlogList({
                     variant="ghost"
                     size="sm"
                     onClick={clearFilters}
-                    className="text-slate-400 hover:text-slate-300"
+                    className="text-muted-foreground hover:text-foreground"
                   >
                     <X className="mr-1 h-3 w-3" />
                     {t("clear")}
@@ -162,11 +162,7 @@ export default function BlogList({
                   <Badge
                     key={tag.id}
                     variant={selectedTags.includes(tag.id) ? "default" : "secondary"}
-                    className={`cursor-pointer transition-colors ${
-                      selectedTags.includes(tag.id)
-                        ? "bg-sky-500 text-white hover:bg-sky-600"
-                        : "bg-white/10 text-slate-300 hover:bg-white/20"
-                    }`}
+                    className="cursor-pointer transition-colors"
                     onClick={() => toggleTag(tag.id)}
                   >
                     {tag.name}
@@ -201,7 +197,7 @@ export default function BlogList({
           <Button
             onClick={(e) => handleMoreBlogsCTA(e)}
             disabled={isPending}
-            className="cursor-pointer bg-sky-500 text-white hover:bg-sky-600"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer transition-colors"
           >
             {isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
             {isPending ? "Loading..." : "Load More"}
