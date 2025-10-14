@@ -12,48 +12,48 @@ const AboutSection = () => {
         {/* Heading */}
         <div className="mx-auto max-w-3xl text-center">
           <h2
-            className="text-3xl font-semibold text-slate-100 sm:text-4xl"
+            className="text-foreground text-3xl font-semibold sm:text-4xl"
             style={{ fontFamily: "var(--font-poppins)" }}
           >
             {t("title")}
           </h2>
-          <p className="mt-6 text-lg leading-relaxed font-light text-slate-300 sm:text-xl">
+          <p className="text-foreground mt-6 text-lg leading-relaxed font-light sm:text-xl">
             {t("description")}
           </p>
         </div>
 
         {/* Highlights in Card Format */}
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10">
+          <div className="border-border bg-background hover:border-primary/10 hover:bg-primary/10 rounded-xl border p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1">
             <h3
-              className="text-xl font-medium text-sky-200"
+              className="text-foreground text-xl font-medium"
               style={{ fontFamily: "var(--font-poppins)" }}
             >
               {t("mission.title")}
             </h3>
-            <p className="mt-4 text-sm leading-relaxed font-light text-slate-300 sm:text-base">
+            <p className="text-foreground mt-4 text-sm leading-relaxed font-light sm:text-base">
               {t("mission.description")}
             </p>
           </div>
-          <div className="rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10">
+          <div className="border-border bg-background hover:border-primary/10 hover:bg-primary/10 rounded-xl border p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1">
             <h3
-              className="text-xl font-medium text-sky-200"
+              className="text-foreground text-xl font-medium"
               style={{ fontFamily: "var(--font-poppins)" }}
             >
               {t("values.title")}
             </h3>
-            <p className="mt-4 text-sm leading-relaxed font-light text-slate-300 sm:text-base">
+            <p className="text-foreground mt-4 text-sm leading-relaxed font-light sm:text-base">
               {t("values.description")}
             </p>
           </div>
-          <div className="rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10">
+          <div className="border-border bg-background hover:border-primary/10 hover:bg-primary/10 rounded-xl border p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1">
             <h3
-              className="text-xl font-medium text-sky-200"
+              className="text-foreground text-xl font-medium"
               style={{ fontFamily: "var(--font-poppins)" }}
             >
               {t("impact.title")}
             </h3>
-            <p className="mt-4 text-sm leading-relaxed font-light text-slate-300 sm:text-base">
+            <p className="text-foreground mt-4 text-sm leading-relaxed font-light sm:text-base">
               {t("impact.description")}
             </p>
           </div>
@@ -63,12 +63,12 @@ const AboutSection = () => {
         <div className="mt-20">
           <div className="text-center">
             <h3
-              className="text-2xl font-semibold text-slate-100 sm:text-3xl"
+              className="text-foreground text-2xl font-semibold sm:text-3xl"
               style={{ fontFamily: "var(--font-poppins)" }}
             >
               {t("what_we_do")}
             </h3>
-            <p className="mt-4 text-sm font-light text-slate-300 sm:text-base">
+            <p className="text-foreground mt-4 text-sm font-light sm:text-base">
               {t("what_we_do_description")}
             </p>
           </div>
@@ -89,20 +89,20 @@ const AboutSection = () => {
               return (
                 <div
                   key={feature.title}
-                  className="group rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10"
+                  className="group border-border bg-background hover:border-primary/10 hover:bg-primary/10 rounded-xl border p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="rounded-lg bg-gradient-to-br from-blue-500/20 to-sky-400/20 p-2">
-                      <Icon className="h-5 w-5 text-sky-300" />
+                    <div className="from-primary/15 to-accent/20 dark:from-primary/35 dark:to-accent/30 rounded-lg bg-gradient-to-br p-2 transition-colors">
+                      <Icon className="text-foreground h-5 w-5" />
                     </div>
                     <h4
-                      className="font-medium text-slate-100"
+                      className="text-foreground font-medium"
                       style={{ fontFamily: "var(--font-poppins)" }}
                     >
                       {t(`features.${featureKey}.title`)}
                     </h4>
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed font-light text-slate-300 sm:text-base">
+                  <p className="text-foreground mt-3 text-sm leading-relaxed font-light sm:text-base">
                     {t(`features.${featureKey}.description`)}
                   </p>
                 </div>

@@ -18,7 +18,7 @@ export default function CalendarButtons({ event }: CalendarButtonsProps) {
       <Button
         variant="outline"
         size="sm"
-        className="flex-1 border-white/10 bg-white/5 text-xs text-slate-300 hover:bg-white/10"
+        className="border-border bg-background/5 text-foreground/70 hover:bg-primary/10 flex-1 text-xs"
         onClick={() => window.open(generateGoogleCalendarUrl(event), "_blank")}
       >
         <Calendar className="mr-1 h-3 w-3" />
@@ -27,7 +27,7 @@ export default function CalendarButtons({ event }: CalendarButtonsProps) {
       <Button
         variant="outline"
         size="sm"
-        className="flex-1 border-white/10 bg-white/5 text-xs text-slate-300 hover:bg-white/10"
+        className="border-border bg-background/5 text-foreground/70 hover:bg-primary/10 flex-1 text-xs"
         onClick={() => window.open(generateOutlookCalendarUrl(event), "_blank")}
       >
         <Calendar className="mr-1 h-3 w-3" />

@@ -51,21 +51,21 @@ export default function EventsSection() {
             >
               {t("title")}
             </h2>
-            <p className="mt-2 text-slate-300">{t("description")}</p>
+            <p className="text-muted-foreground mt-2">{t("description")}</p>
           </div>
           <div className="flex items-center gap-4">
             <Button
               variant="outline"
               size="sm"
               onClick={() => setShowFilters(!showFilters)}
-              className="border-white/10 bg-white/5 text-slate-300 hover:bg-white/10"
+              className="border-border bg-background text-foreground hover:bg-background/10"
             >
               <Filter className="mr-2 h-4 w-4" />
               {t("filter")}
             </Button>
             <Link
               href="https://luma.com/reactkolkata"
-              className="text-sm text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline"
+              className="text-foreground/90 text-sm underline-offset-4 hover:underline"
               target="_blank"
               rel="noopener noreferrer"
             >

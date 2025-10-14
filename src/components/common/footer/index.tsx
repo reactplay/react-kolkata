@@ -13,7 +13,7 @@ const quickLinks = [
 
 const Footer = () => {
   return (
-    <footer className="border-t border-white/5 bg-[#0B1220]">
+    <footer className="border-border bg-background border-t">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
         <div>
           <Link href="/" className="flex items-center gap-1" aria-label="React Kolkata Home">
@@ -27,13 +27,13 @@ const Footer = () => {
               />
             </div>
           </Link>
-          <p className="text-sm text-slate-400">
+          <p className="text-muted-foreground text-sm">
             A community for React developers in Kolkata. Meet, learn, and build together.
           </p>
         </div>
 
         <nav aria-label="Quick links">
-          <h3 className="text-sm font-semibold text-slate-200">Quick Links</h3>
+          <h3 className="text-foreground text-sm font-semibold">Quick Links</h3>
           <ul className="mt-3 space-y-2">
             {quickLinks.map((l) => (
               <li key={l.href}>
@@ -42,12 +42,15 @@ const Footer = () => {
                     href={l.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-slate-400 hover:text-slate-200"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
                     {l.label}
                   </NextLink>
                 ) : (
-                  <Link href={l.href} className="text-sm text-slate-400 hover:text-slate-200">
+                  <Link
+                    href={l.href}
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+                  >
                     {l.label}
                   </Link>
                 )}
@@ -57,17 +60,20 @@ const Footer = () => {
         </nav>
 
         <div>
-          <h3 className="text-sm font-semibold text-slate-200">Contact</h3>
-          <ul className="mt-3 space-y-2 text-sm text-slate-400">
+          <h3 className="text-foreground text-sm font-semibold">Contact</h3>
+          <ul className="text-muted-foreground mt-3 space-y-2 text-sm">
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4" aria-hidden />{" "}
-              <a href="mailto:reactkolkata@gmail.com" className="hover:text-slate-200">
+              <a
+                href="mailto:reactkolkata@gmail.com"
+                className="hover:text-foreground transition-colors"
+              >
                 reactkolkata@gmail.com
               </a>
             </li>
             <li className="mt-4 flex items-center gap-4">
               <a
-                className="hover:text-white"
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Twitter"
                 href="https://x.com/reactkolkata"
                 target="_blank"
@@ -76,7 +82,7 @@ const Footer = () => {
                 <Twitter className="h-5 w-5" />
               </a>
               <a
-                className="hover:text-white"
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="GitHub"
                 href="https://github.com/reactplay/react-kolkata"
                 target="_blank"
@@ -85,7 +91,7 @@ const Footer = () => {
                 <Github className="h-5 w-5" />
               </a>
               <a
-                className="hover:text-white"
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="LinkedIn"
                 href="https://www.linkedin.com/showcase/react-kolkata"
                 target="_blank"
@@ -94,7 +100,7 @@ const Footer = () => {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                className="hover:text-white"
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="youtube"
                 href="https://www.youtube.com/@ReactPlayIO"
                 target="_blank"
@@ -103,7 +109,7 @@ const Footer = () => {
                 <Youtube className="h-5 w-5" />
               </a>
               <a
-                className="hover:text-white"
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Discord"
                 href="https://discord.gg/VRVfn2Vss"
                 target="_blank"
@@ -115,8 +121,8 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/5">
-        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-6 text-xs text-slate-500 sm:px-6 lg:px-8">
+      <div className="border-border border-t">
+        <div className="text-muted-foreground mx-auto flex max-w-7xl items-center justify-center px-4 py-6 text-xs sm:px-6 lg:px-8">
           <p>&copy; {new Date().getFullYear()} React Kolkata. All rights reserved.</p>
         </div>
       </div>

@@ -24,14 +24,14 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
   return (
     <Dialog open={modalOpen} onOpenChange={setModalOpen}>
       <DialogContent
-        className="no-scrollbar max-h-[90vh] max-w-3xl overflow-y-auto border-white/10 bg-[#0B1220] text-slate-100"
+        className="no-scrollbar border-border bg-background/95 text-foreground max-h-[90vh] max-w-3xl overflow-y-auto backdrop-blur"
         onClick={(e) => {
           e.stopPropagation();
         }}
       >
         <DialogHeader>
           <DialogTitle
-            className="pr-8 text-xl font-semibold text-sky-200"
+            className="text-primary pr-8 text-xl font-semibold"
             style={{ fontFamily: "var(--font-poppins)" }}
           >
             {blog.title}
@@ -55,7 +55,7 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
           )}
 
           {/* Article Meta */}
-          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
+          <div className="text-muted-foreground flex flex-wrap items-center gap-4 text-sm">
             <div className="flex items-center gap-1">
               <Calendar className="h-4 w-4" />
               <span>{formatBlogDate(blog.publishedAt)}</span>
@@ -64,7 +64,7 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
               <Clock className="h-4 w-4" />
               <span>{blog.readTimeInMinutes} min read</span>
             </div>
-            <div className="text-slate-500">{formatBlogRelativeTime(blog.publishedAt)}</div>
+            <div>{formatBlogRelativeTime(blog.publishedAt)}</div>
           </div>
 
           {/* Tags */}
@@ -73,7 +73,7 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
               <Badge
                 key={tag.id}
                 variant="secondary"
-                className="bg-sky-500/10 text-sky-300 hover:bg-sky-500/20"
+                className="bg-primary/10 text-primary hover:bg-primary/20 dark:bg-primary/15 transition-colors"
               >
                 {tag.name}
               </Badge>
@@ -81,12 +81,12 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
           </div>
 
           {/* Author Section */}
-          <div className="rounded-lg border border-white/10 bg-white/5 p-4">
+          <div className="border-border bg-foreground/5 dark:bg-foreground/10 rounded-lg border p-4">
             <div className="flex items-start gap-4">
               <div className="relative h-12 w-12 overflow-hidden rounded-full">
                 {authorImageError ? (
-                  <div className="flex h-full w-full items-center justify-center bg-slate-600">
-                    <User className="h-6 w-6 text-slate-400" />
+                  <div className="bg-foreground/10 flex h-full w-full items-center justify-center">
+                    <User className="text-foreground/60 h-6 w-6" />
                   </div>
                 ) : (
                   <Image
@@ -100,20 +100,20 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <h4 className="font-medium text-slate-200">{blog.author.name}</h4>
+                  <h4 className="text-foreground font-medium">{blog.author.name}</h4>
                   {/* Assuming profileUrl might be added to author object later */}
                   {blog.author.profileUrl && (
                     <a
                       href={blog.author.profileUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-slate-400 hover:text-slate-300"
+                      className="text-muted-foreground hover:text-foreground"
                     >
                       <Github className="h-4 w-4" />
                     </a>
                   )}
                 </div>
-                <p className="text-sm text-slate-400">
+                <p className="text-muted-foreground text-sm">
                   {blog.author.bio?.text && blog.author.bio.text.length > 140
                     ? `${blog.author.bio.text.substring(0, 140)}...`
                     : blog.author.bio?.text || "Community Contributor"}
@@ -122,15 +122,17 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
             </div>
           </div>
 
-          <div className="prose prose-invert max-w-none">
-            <p className="leading-relaxed text-slate-300">{blog.brief}</p>
+          <div className="prose prose-slate text-foreground dark:prose-invert max-w-none">
+            <p className="text-muted-foreground leading-relaxed">{blog.brief}</p>
           </div>
           {/* End of hard-coded part */}
-          <div className="flex items-center justify-between gap-2 border-t border-white/10 pt-4">
-            <div className="text-xs text-slate-500">Published by React Kolkata Community</div>
+          <div className="border-border flex items-center justify-between gap-2 border-t pt-4">
+            <div className="text-muted-foreground text-xs">
+              Published by React Kolkata Community
+            </div>
             <Button
               asChild
-              className="bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
             >
               <a
                 href={blog.url || "https://reactplay.hashnode.dev"}

@@ -38,12 +38,12 @@ export default function EventFiltersComponent({
   };
 
   return (
-    <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-4">
+    <div className="border-border bg-foreground/5 dark:bg-foreground/10 flex flex-col gap-2 rounded-xl border p-4">
       <div className="flex h-6 items-center justify-between">
         <div className="flex items-center justify-center gap-2">
-          <h3 className="text-sm font-medium text-slate-300">Filter events</h3>
+          <h3 className="text-foreground text-sm font-medium">Filter events</h3>
           {(filters.status !== EVENT_STATUS.ALL || filters.type !== EVENT_TYPES.ALL) && (
-            <p className="text-sm text-slate-400">
+            <p className="text-muted-foreground text-sm">
               (Showing {filteredCount} of {totalEvents} events)
             </p>
           )}
@@ -54,7 +54,7 @@ export default function EventFiltersComponent({
             variant="ghost"
             size="sm"
             onClick={onClearFilters}
-            className="text-slate-400 hover:text-slate-300"
+            className="text-muted-foreground hover:text-foreground"
           >
             <X className="h-3 w-3" />
             Clear
@@ -65,18 +65,14 @@ export default function EventFiltersComponent({
       <div className="grid gap-4 sm:grid-cols-2">
         {/* Status Filter */}
         <div className="flex flex-col gap-2">
-          <label className="block text-xs font-medium text-slate-400">Event Status</label>
+          <label className="text-muted-foreground block text-xs font-medium">Event Status</label>
           <div className="flex flex-wrap gap-2">
             {[EVENT_STATUS.ALL, EVENT_STATUS.UPCOMING, EVENT_STATUS.ONGOING, EVENT_STATUS.PAST].map(
               (status) => (
                 <Badge
                   key={status}
                   variant={filters.status === status ? "default" : "secondary"}
-                  className={`cursor-pointer transition-colors ${
-                    filters.status === status
-                      ? "bg-sky-500 text-white hover:bg-sky-600"
-                      : "bg-white/10 text-slate-300 hover:bg-white/20"
-                  }`}
+                  className="cursor-pointer transition-colors"
                   onClick={() => onUpdateFilter("status", status)}
                 >
                   {status === EVENT_STATUS.ALL
@@ -90,18 +86,14 @@ export default function EventFiltersComponent({
 
         {/* Type Filter */}
         <div className="flex flex-col gap-2">
-          <label className="block text-xs font-medium text-slate-400">Event Type</label>
+          <label className="text-muted-foreground block text-xs font-medium">Event Type</label>
           <div className="flex flex-wrap gap-2">
             {[EVENT_TYPES.ALL, EVENT_TYPES.ONLINE, EVENT_TYPES.OFFLINE, EVENT_TYPES.HYBRID].map(
               (type) => (
                 <Badge
                   key={type}
                   variant={filters.type === type ? "default" : "secondary"}
-                  className={`cursor-pointer transition-colors ${
-                    filters.type === type
-                      ? "bg-sky-500 text-white hover:bg-sky-600"
-                      : "bg-white/10 text-slate-300 hover:bg-white/20"
-                  }`}
+                  className="cursor-pointer transition-colors"
                   onClick={() => onUpdateFilter("type", type)}
                 >
                   <div className="flex items-center gap-1">

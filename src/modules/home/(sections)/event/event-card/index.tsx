@@ -28,7 +28,7 @@ export default function EventCard({ event }: EventCardProps) {
   };
 
   return (
-    <article className="group relative overflow-hidden rounded-xl border border-white/5 bg-white/5 transition hover:translate-y-[-4px] hover:bg-white/10">
+    <article className="group border-border bg-background/5 hover:bg-primary/10 relative overflow-hidden rounded-xl border transition hover:translate-y-[-4px]">
       <div className="relative h-44 w-full overflow-hidden">
         <Image
           src={event.image ?? "/images/tech-events-1.jpg"}
@@ -42,22 +42,22 @@ export default function EventCard({ event }: EventCardProps) {
       </div>
 
       <div className="p-5">
-        <h3 className="line-clamp-1 text-lg font-semibold text-sky-200">{event.title}</h3>
-        <div className="mt-2 grid gap-1 text-sm text-slate-300">
+        <h3 className="text-foreground line-clamp-1 text-lg font-semibold">{event.title}</h3>
+        <div className="text-foreground/70 mt-2 grid gap-1 text-sm">
           <div className="flex items-center gap-2">
-            <CalendarDays className="h-4 w-4 text-sky-300" aria-hidden />
+            <CalendarDays className="text-foreground/70 h-4 w-4" aria-hidden />
             <span>{formatEventDate(event.startDateTime)}</span>
           </div>
           <div className="flex items-center gap-2">
-            <Clock3 className="h-4 w-4 text-sky-300" aria-hidden />
+            <Clock3 className="text-foreground/70 h-4 w-4" aria-hidden />
             <span>{formatEventTime(event.startDateTime, event.endDateTime)}</span>
           </div>
           <div className="flex items-center gap-2">
-            <MapPin className="h-4 w-4 text-sky-300" aria-hidden />
+            <MapPin className="text-foreground/70 h-4 w-4" aria-hidden />
             <span className="line-clamp-1">{event.venue}</span>
           </div>
         </div>
-        <p className="mt-3 line-clamp-2 text-sm text-slate-300">{event.description}</p>
+        <p className="text-foreground/70 mt-3 line-clamp-2 text-sm">{event.description}</p>
 
         {/* Action Buttons */}
         <div className="mt-4 space-y-2">
@@ -71,7 +71,7 @@ export default function EventCard({ event }: EventCardProps) {
                       asChild
                       size="icon"
                       variant="outline"
-                      className="hover:bg-white"
+                      className="hover:bg-red-500/10 hover:text-red-400"
                       style={{ backgroundColor: "#white" }}
                       title={t("watch_recording")}
                     >
@@ -111,7 +111,7 @@ export default function EventCard({ event }: EventCardProps) {
               href={event.registrationUrl}
               target="_blank"
               rel="noreferrer"
-              className="px-2 text-xs text-slate-300 underline-offset-4 hover:text-slate-100 hover:underline"
+              className="text-foreground hover:text-foreground/80 px-2 text-xs underline-offset-4 hover:underline"
             >
               {t("details")}
             </Link>

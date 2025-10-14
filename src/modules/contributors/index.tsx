@@ -61,8 +61,8 @@ const ContributorsSection = () => {
       <AnimatedSection className="relative">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-sky-500 border-t-transparent"></div>
-            <p className="mt-4 text-slate-300">{t("loading")}</p>
+            <div className="border-primary mx-auto h-8 w-8 animate-spin rounded-full border-4 border-t-transparent"></div>
+            <p className="text-muted-foreground mt-4">{t("loading")}</p>
           </div>
         </div>
       </AnimatedSection>
@@ -74,8 +74,8 @@ const ContributorsSection = () => {
       <AnimatedSection className="relative">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-sky-500 border-t-transparent"></div>
-            <p className="mt-4 text-slate-300">{t("loading")}</p>
+            <div className="border-primary mx-auto h-8 w-8 animate-spin rounded-full border-4 border-t-transparent"></div>
+            <p className="text-muted-foreground mt-4">{t("loading")}</p>
           </div>
         </div>
       </AnimatedSection>
@@ -87,7 +87,7 @@ const ContributorsSection = () => {
       <AnimatedSection className="relative">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-red-400">
+            <p className="text-destructive">
               {t("error")}: {error}
             </p>
           </div>
@@ -102,15 +102,15 @@ const ContributorsSection = () => {
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
           <h1
-            className="text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl"
+            className="text-foreground text-4xl font-bold tracking-tight sm:text-5xl"
             style={{ fontFamily: "var(--font-poppins)" }}
           >
             {t("title")}
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-slate-300 sm:text-xl">
+          <p className="text-muted-foreground mt-6 text-lg leading-relaxed sm:text-xl">
             {t("description")}
           </p>
-          <p className="mt-4 text-sm text-slate-400">
+          <p className="text-muted-foreground mt-4 text-sm">
             {t("total_contributors", { count: contributors.length })}
           </p>
         </div>
@@ -126,7 +126,7 @@ const ContributorsSection = () => {
 
         {/* Footer Note */}
         <div className="mt-16 text-center">
-          <p className="text-sm text-slate-400">{t("footer_note")}</p>
+          <p className="text-muted-foreground text-sm">{t("footer_note")}</p>
         </div>
       </div>
     </AnimatedSection>
