@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 const links = [
   { href: "/", label: "Home", external: false },
   { href: "/contributors", label: "Contributors", external: false },
-  { href: "https://lu.ma/reactkolkata", label: "Events", external: true },
+  { href: "/events", label: "Events", external: false },
 ];
 
 const Navbar = () => {
