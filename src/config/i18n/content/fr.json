@@ -58,6 +58,19 @@
     "view_all_past_events": "Voir tous les événements passés",
     "coming_soon": "Bientôt disponible"
   },
+  "Sponsors": {
+    "title": "Nos Sponsors",
+    "description": "React Kolkata est soutenu par des sponsors généreux qui nous aident à organiser des événements, ateliers et initiatives communautaires. Intéressé pour sponsoriser ? Contactez-nous !",
+    "card": {
+      "title": "Devenez Sponsor",
+      "description": "Soutenez la communauté en sponsorisant un événement ou en contribuant des ressources. Les sponsors gagnent en visibilité auprès des développeurs et nous aident à garder nos activités accessibles.",
+      "cta": "En savoir plus"
+    },
+    "sample": {
+      "name": "Litmus Chaos",
+      "description": "Litmus Chaos soutient les communautés de développeurs en parrainant des événements, en fournissant des ressources d'apprentissage et en offrant du mentorat ainsi que des outils pour le chaos engineering."
+    }
+  },
   "NotFound": {
     "404": "404",
     "dosent_exist_text": "Oups! La page que vous cherchez n'existe pas.",

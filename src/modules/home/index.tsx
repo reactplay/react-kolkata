@@ -5,6 +5,7 @@ import AboutSection from "./(sections)/about";
 import BlogSection from "./(sections)/blogs";
 import EventsSection from "./(sections)/event";
 import HeroSection from "./(sections)/hero";
+import SponsorsSection from "./(sections)/sponsors";
 
 const LandingPage = async () => {
   const { posts: initialBlogs, endCursor: initialEndCursor, error } = await getInitialBlogs();
@@ -13,6 +14,7 @@ const LandingPage = async () => {
     <>
       <HeroSection />
       <AboutSection />
+      <SponsorsSection />
       <EventsSection />
       <BlogSection initialBlogs={initialBlogs} initialEndCursor={initialEndCursor} error={error} />
     </>
