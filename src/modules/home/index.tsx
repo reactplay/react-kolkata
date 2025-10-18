@@ -3,6 +3,7 @@ import { getInitialBlogs } from "@/utils/blog";
 
 import AboutSection from "./(sections)/about";
 import BlogSection from "./(sections)/blogs";
+import CommunitySection from "./(sections)/community";
 import EventsSection from "./(sections)/event";
 import HeroSection from "./(sections)/hero";
 
@@ -14,6 +15,7 @@ const LandingPage = async () => {
       <HeroSection />
       <AboutSection />
       <EventsSection />
+      <CommunitySection />
       <BlogSection initialBlogs={initialBlogs} initialEndCursor={initialEndCursor} error={error} />
     </>
   );

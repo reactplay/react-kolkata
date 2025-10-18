@@ -13,24 +13,15 @@ import { events } from "@/base/data/dummy";
 export default function EventsPage() {
   const t = useTranslations("Events");
 
-  const { upcomingEvents, pastEvents } = (() => {
-    const upcoming: typeof events = [];
-    const past: typeof events = [];
+  const upcomingEvents = events.filter((event) => {
+    const status = getEventStatus(event.startDateTime, event.endDateTime);
+    return status === EVENT_STATUS.UPCOMING || status === EVENT_STATUS.ONGOING;
+  });
 
-    events.forEach((event) => {
-      const dynamicStatus = getEventStatus(event.startDateTime, event.endDateTime);
-      if (dynamicStatus === EVENT_STATUS.UPCOMING || dynamicStatus === EVENT_STATUS.ONGOING) {
-        upcoming.push(event);
-      } else {
-        past.push(event);
-      }
-    });
-
-    return {
-      upcomingEvents: upcoming,
-      pastEvents: past,
-    };
-  })();
+  const pastEvents = events.filter((event) => {
+    const status = getEventStatus(event.startDateTime, event.endDateTime);
+    return status === EVENT_STATUS.PAST;
+  });
 
   return (
     <AnimatedSection className="relative">
