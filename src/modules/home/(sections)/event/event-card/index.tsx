@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { CalendarEvent, Event, EVENT_STATUS } from "@/types/event";
@@ -117,8 +119,8 @@ export default function EventCard({ event }: EventCardProps) {
             </Link>
           </div>
 
-          {/* Calendar Integration */}
-          <CalendarButtons event={calendarEvent} />
+          {/* Calendar Integration - Only show for upcoming events */}
+          {dynamicStatus !== EVENT_STATUS.PAST && <CalendarButtons event={calendarEvent} />}
         </div>
       </div>
     </article>

@@ -59,7 +59,19 @@
     "register": "रजिस्टर करें",
     "details": "विवरण",
     "watch_recording": "रिकॉर्डिंग देखें",
-    "view_slides": "स्लाइड्स देखें"
+    "view_slides": "स्लाइड्स देखें",
+    "upcoming_events": "आगामी इवेंट्स",
+    "past_events": "पिछले इवेंट्स",
+    "call_for_speakers": "स्पीकर्स के लिए कॉल",
+    "call_for_volunteers": "वॉलंटियर्स के लिए कॉल",
+    "view_all_events": "सभी इवेंट्स देखें",
+    "view_all_past_events": "सभी पिछले इवेंट्स देखें",
+    "coming_soon": "जल्द आ रहा है",
+    "community_partners_title": "कम्युनिटी पार्टनर्स",
+    "community_partners_description": "हम शानदार कम्युनिटीज़ के साथ मिलकर आपके लिए अधिक मूल्य लाते हैं।",
+    "become_partner_cta": "पार्टनर बनें",
+    "partner_visit_label": "विज़िट करें",
+    "partner_visit_cta": "खोलें"
   },
   "Blog": {
     "title": "ब्लॉग से नवीनतम",

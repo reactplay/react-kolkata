@@ -1,9 +1,11 @@
 import Image from "next/image";
 import NextLink from "next/link";
-import { Github, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
+import { Github, Linkedin, Mail, Youtube } from "lucide-react";
 import { SiDiscord } from "react-icons/si";
 
 import { Link } from "@/config/i18n/navigation";
+
+import { XLogo } from "../icons/XLogo";
 
 const quickLinks = [
   { href: "https://lu.ma/reactkolkata", label: "Events", external: true },
@@ -73,13 +75,13 @@ const Footer = () => {
             </li>
             <li className="mt-4 flex items-center gap-4">
               <a
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="Twitter"
+                className="hover:text-white"
+                aria-label="X (Twitter)"
                 href="https://x.com/reactkolkata"
                 target="_blank"
                 rel="noreferrer"
               >
-                <Twitter className="h-5 w-5" />
+                <XLogo className="h-5 w-5 text-slate-400 hover:text-white" />
               </a>
               <a
                 className="text-muted-foreground hover:text-foreground transition-colors"

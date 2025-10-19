@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import NextLink from "next/link";
-import { Github, Linkedin, Menu, Twitter, X, Youtube } from "lucide-react";
+import { Github, Linkedin, Menu, X, Youtube } from "lucide-react";
 import { SiDiscord } from "react-icons/si";
 
 import { Link, usePathname } from "@/config/i18n/navigation";
@@ -9,10 +9,12 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ui/theme-toggle";
 
+import { XLogo } from "../icons/XLogo";
+
 const links = [
   { href: "/", label: "Home", external: false },
   { href: "/contributors", label: "Contributors", external: false },
-  { href: "https://lu.ma/reactkolkata", label: "Events", external: true },
+  { href: "/events", label: "Events", external: false },
 ];
 
 const Navbar = () => {
@@ -79,13 +81,13 @@ const Navbar = () => {
           <ul className="flex items-center gap-4">
             <li>
               <a
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="Twitter"
+                className="text-slate-400 hover:text-white"
+                aria-label="X (Twitter)"
                 href="https://x.com/reactkolkata"
                 target="_blank"
                 rel="noreferrer"
               >
-                <Twitter className="h-5 w-5" />
+                <XLogo className="h-5 w-5 text-slate-400 hover:text-white" />
               </a>
             </li>
             <li>
@@ -195,15 +197,15 @@ const Navbar = () => {
             <ul className="mt-2 flex flex-col gap-3">
               <li className="px-2 py-2">
                 <a
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                  aria-label="Twitter"
+                  className="text-slate-300"
+                  aria-label="X (Twitter)"
                   href="https://x.com/reactkolkata"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <div className="flex items-center gap-2">
-                    <Twitter className="h-5 w-5" />
-                    <span className="text-sm">Twitter</span>
+                    <XLogo className="h-5 w-5" />
+                    <span className="text-sm">X</span>
                   </div>
                 </a>
               </li>

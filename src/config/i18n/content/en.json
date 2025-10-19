@@ -59,7 +59,19 @@
     "register": "Register",
     "details": "Details",
     "watch_recording": "Watch Recording",
-    "view_slides": "View Slides"
+    "view_slides": "View Slides",
+    "upcoming_events": "Upcoming Events",
+    "past_events": "Past Events",
+    "call_for_speakers": "Call for Speakers",
+    "call_for_volunteers": "Call for Volunteers",
+    "view_all_events": "View All Events",
+    "view_all_past_events": "View All Past Events",
+    "coming_soon": "Coming Soon",
+    "community_partners_title": "Community Partners",
+    "community_partners_description": "We collaborate with amazing communities to bring more value to you.",
+    "become_partner_cta": "Become a partner",
+    "partner_visit_label": "Visit",
+    "partner_visit_cta": "Open"
   },
   "Blog": {
     "title": "Latest from the Blog",
