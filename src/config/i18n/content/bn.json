@@ -66,7 +66,12 @@
     "call_for_volunteers": "স্বেচ্ছাসেবকদের জন্য আহ্বান",
     "view_all_events": "সব ইভেন্ট দেখুন",
     "view_all_past_events": "সব অতীত ইভেন্ট দেখুন",
-    "coming_soon": "শীঘ্রই আসছে"
+    "coming_soon": "শীঘ্রই আসছে",
+    "community_partners_title": "কমিউনিটি পার্টনার",
+    "community_partners_description": "আমরা দুর্দান্ত কমিউনিটিগুলোর সাথে কাজ করি আপনাদের আরও মূল্য দিতে।",
+    "become_partner_cta": "পার্টনার হোন",
+    "partner_visit_label": "ভিজিট",
+    "partner_visit_cta": "ওপেন"
   },
   "Blog": {
     "title": "ব্লগ থেকে সর্বশেষ",
