@@ -66,12 +66,7 @@
     "call_for_volunteers": "স্বেচ্ছাসেবকদের জন্য আহ্বান",
     "view_all_events": "সব ইভেন্ট দেখুন",
     "view_all_past_events": "সব অতীত ইভেন্ট দেখুন",
-    "coming_soon": "শীঘ্রই আসছে",
-    "community_partners_title": "কমিউনিটি পার্টনার",
-    "community_partners_description": "আমরা দুর্দান্ত কমিউনিটিগুলোর সাথে কাজ করি আপনাদের আরও মূল্য দিতে।",
-    "become_partner_cta": "পার্টনার হোন",
-    "partner_visit_label": "ভিজিট",
-    "partner_visit_cta": "ওপেন"
+    "coming_soon": "শীঘ্রই আসছে"
   },
   "Blog": {
     "title": "ব্লগ থেকে সর্বশেষ",
@@ -99,8 +94,8 @@
       "cta": "স্পনসর কিভাবে হন"
     },
     "sample": {
-      "name": "Litmus Chaos",
-      "description": "Litmus Chaos ইভেন্ট স্পনসর করে, শেখার সম্পদ প্রদান করে এবং কৌশলগত মেন্টরশিপ এবং চাওস ইঞ্জিনিয়ারিং টুলিং প্রদান করে ডেভেলপার কমিউনিটি সমর্থন করে।"
+      "name": "Showcase your brand — become a sponsor",
+      "description": "React Kolkata-এ আপনার ব্র্যান্ড প্রদর্শন করুন — স্থানীয় ডেভেলপারদের কাছে দৃশ্যমানতা পেতে একটি ইভেন্ট স্পনসর করুন, কর্মশালা সমর্থন করুন এবং কমিউনিটিকে বৃদ্ধি করতে সাহায্য করুন।"
     }
   },
   "NotFound": {

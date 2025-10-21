@@ -56,12 +56,7 @@
     "call_for_volunteers": "Appel aux bénévoles",
     "view_all_events": "Voir tous les événements",
     "view_all_past_events": "Voir tous les événements passés",
-    "coming_soon": "Bientôt disponible",
-    "community_partners_title": "Partenaires communautaires",
-    "community_partners_description": "Nous collaborons avec des communautés formidables pour vous apporter plus de valeur.",
-    "become_partner_cta": "Devenir partenaire",
-    "partner_visit_label": "Visiter",
-    "partner_visit_cta": "Ouvrir"
+    "coming_soon": "Bientôt disponible"
   },
   "Sponsors": {
     "title": "Nos Sponsors",
@@ -72,8 +67,8 @@
       "cta": "En savoir plus"
     },
     "sample": {
-      "name": "Litmus Chaos",
-      "description": "Litmus Chaos soutient les communautés de développeurs en parrainant des événements, en fournissant des ressources d'apprentissage et en offrant du mentorat ainsi que des outils pour le chaos engineering."
+      "name": "Showcase your brand — become a sponsor",
+      "description": "Mettez en valeur votre marque sur React Kolkata — sponsorisez un événement pour gagner en visibilité auprès des développeurs locaux, soutenir des ateliers et aider la communauté à se développer."
     }
   },
   "NotFound": {
