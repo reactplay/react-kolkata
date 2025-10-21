@@ -41,6 +41,28 @@
     },
     "footer_text": "Une initiative Open Source de CreoWis Technologies."
   },
+  "Events": {
+    "title": "Événements",
+    "description": "Rejoignez nos rencontres et ateliers. Apprenez, réseautagez et construisez ensemble.",
+    "filter": "Filtrer",
+    "view_all": "Voir tout",
+    "register": "S'inscrire",
+    "details": "Détails",
+    "watch_recording": "Regarder l'enregistrement",
+    "view_slides": "Voir les diapositives",
+    "upcoming_events": "Événements à venir",
+    "past_events": "Événements passés",
+    "call_for_speakers": "Appel aux orateurs",
+    "call_for_volunteers": "Appel aux bénévoles",
+    "view_all_events": "Voir tous les événements",
+    "view_all_past_events": "Voir tous les événements passés",
+    "coming_soon": "Bientôt disponible",
+    "community_partners_title": "Partenaires communautaires",
+    "community_partners_description": "Nous collaborons avec des communautés formidables pour vous apporter plus de valeur.",
+    "become_partner_cta": "Devenir partenaire",
+    "partner_visit_label": "Visiter",
+    "partner_visit_cta": "Ouvrir"
+  },
   "NotFound": {
     "404": "404",
     "dosent_exist_text": "Oups! La page que vous cherchez n'existe pas.",
