@@ -77,8 +77,37 @@
     }
   },
   "NotFound": {
-    "404": "404",
+    "4a04": "404",
     "dosent_exist_text": "Oups! La page que vous cherchez n'existe pas.",
     "go_to_home": "Retour à l'accueil"
+  },
+  "Navbar": {
+    "home": "Accueil",
+    "contributors": "Contributeurs",
+    "events": "Événements",
+    "join_community": "Rejoindre la communauté",
+    "x": "X",
+    "github": "GitHub",
+    "linkedin": "Linkedin",
+    "youtube": "Youtube",
+    "discord": "Discord"
+  },
+  "Footer": {
+    "description": "Une communauté pour les développeurs React à Kolkata. Rencontrez, apprenez et construisez ensemble.",
+    "quick_links_title": "Liens rapides",
+    "quick_links": {
+      "events": "Événements",
+      "contributors": "Contributeurs",
+      "join_us": "Rejoignez-nous"
+    },
+    "contact_title": "Contact",
+    "rights_reserved": "React Kolkata. Tous droits réservés.",
+    "aria_labels": {
+      "x": "X (Twitter)",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "youtube": "Youtube",
+      "discord": "Discord"
+    }
   }
 }
