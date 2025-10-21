@@ -1,3 +1,4 @@
+import { BadgeCheck, Target, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/custom/animated-section";
@@ -23,39 +24,62 @@ const AboutSection = () => {
         </div>
 
         {/* Highlights in Card Format */}
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10">
-            <h3
-              className="text-xl font-medium text-sky-200"
-              style={{ fontFamily: "var(--font-poppins)" }}
-            >
-              {t("mission.title")}
-            </h3>
-            <p className="mt-4 text-sm leading-relaxed font-light text-slate-300 sm:text-base">
-              {t("mission.description")}
-            </p>
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="group rounded-lg border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-white/10 hover:bg-white/10 hover:shadow-md hover:shadow-blue-500/5">
+            <div className="flex items-start gap-3.5">
+              <div className="rounded-md bg-gradient-to-br from-blue-500/15 to-sky-400/15 p-2 transition-all duration-300 group-hover:from-blue-500/20 group-hover:to-sky-400/20">
+                <Target className="h-4 w-4 text-sky-400" />
+              </div>
+              <div className="flex-1">
+                <h3
+                  className="text-base font-medium text-slate-100"
+                  style={{ fontFamily: "var(--font-poppins)" }}
+                >
+                  {t("mission.title")}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed font-light text-slate-200">
+                  {t("mission.description")}
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10">
-            <h3
-              className="text-xl font-medium text-sky-200"
-              style={{ fontFamily: "var(--font-poppins)" }}
-            >
-              {t("values.title")}
-            </h3>
-            <p className="mt-4 text-sm leading-relaxed font-light text-slate-300 sm:text-base">
-              {t("values.description")}
-            </p>
+
+          <div className="group rounded-lg border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-white/10 hover:bg-white/10 hover:shadow-md hover:shadow-purple-500/5">
+            <div className="flex items-start gap-3.5">
+              <div className="rounded-md bg-gradient-to-br from-blue-500/15 to-sky-400/15 p-2 transition-all duration-300 group-hover:from-blue-500/20 group-hover:to-sky-400/20">
+                <BadgeCheck className="h-4 w-4 text-sky-400" />
+              </div>
+              <div className="flex-1">
+                <h3
+                  className="text-base font-medium text-slate-100"
+                  style={{ fontFamily: "var(--font-poppins)" }}
+                >
+                  {t("values.title")}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed font-light text-slate-200">
+                  {t("values.description")}
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10">
-            <h3
-              className="text-xl font-medium text-sky-200"
-              style={{ fontFamily: "var(--font-poppins)" }}
-            >
-              {t("impact.title")}
-            </h3>
-            <p className="mt-4 text-sm leading-relaxed font-light text-slate-300 sm:text-base">
-              {t("impact.description")}
-            </p>
+
+          <div className="group rounded-lg border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-white/10 hover:bg-white/10 hover:shadow-md hover:shadow-amber-500/5 sm:col-span-2 lg:col-span-1">
+            <div className="flex items-start gap-3.5">
+              <div className="rounded-md bg-gradient-to-br from-blue-500/15 to-sky-400/15 p-2 transition-all duration-300 group-hover:from-blue-500/20 group-hover:to-sky-400/20">
+                <Zap className="h-4 w-4 text-sky-400" />
+              </div>
+              <div className="flex-1">
+                <h3
+                  className="text-base font-medium text-slate-100"
+                  style={{ fontFamily: "var(--font-poppins)" }}
+                >
+                  {t("impact.title")}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed font-light text-slate-300">
+                  {t("impact.description")}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
