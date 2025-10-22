@@ -1,19 +1,34 @@
 import Image from "next/image";
 import NextLink from "next/link";
 import { Github, Linkedin, Mail, Youtube } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { SiDiscord } from "react-icons/si";
 
 import { Link } from "@/config/i18n/navigation";
 
 import { XLogo } from "../icons/XLogo";
 
-const quickLinks = [
-  { href: "https://lu.ma/reactkolkata", label: "Events", external: true },
-  { href: "/contributors", label: "Contributors", external: false },
-  { href: "https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs", label: "Join Us", external: true },
-];
-
 const Footer = () => {
+  const t = useTranslations("Footer");
+
+  const quickLinks = [
+    {
+      href: "https://lu.ma/reactkolkata",
+      label: t("quick_links.events"),
+      external: true,
+    },
+    {
+      href: "/contributors",
+      label: t("quick_links.contributors"),
+      external: false,
+    },
+    {
+      href: "https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs",
+      label: t("quick_links.join_us"),
+      external: true,
+    },
+  ];
+
   return (
     <footer className="border-t border-white/5 bg-[#0B1220]">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
@@ -29,13 +44,11 @@ const Footer = () => {
               />
             </div>
           </Link>
-          <p className="text-sm text-slate-400">
-            A community for React developers in Kolkata. Meet, learn, and build together.
-          </p>
+          <p className="text-sm text-slate-400">{t("description")}</p>
         </div>
 
         <nav aria-label="Quick links">
-          <h3 className="text-sm font-semibold text-slate-200">Quick Links</h3>
+          <h3 className="text-sm font-semibold text-slate-200">{t("quick_links_title")}</h3>
           <ul className="mt-3 space-y-2">
             {quickLinks.map((l) => (
               <li key={l.href}>
@@ -59,7 +72,7 @@ const Footer = () => {
         </nav>
 
         <div>
-          <h3 className="text-sm font-semibold text-slate-200">Contact</h3>
+          <h3 className="text-sm font-semibold text-slate-200">{t("contact_title")}</h3>
           <ul className="mt-3 space-y-2 text-sm text-slate-400">
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4" aria-hidden />{" "}
@@ -70,7 +83,7 @@ const Footer = () => {
             <li className="mt-4 flex items-center gap-4">
               <a
                 className="hover:text-white"
-                aria-label="X (Twitter)"
+                aria-label={t("aria_labels.x")}
                 href="https://x.com/reactkolkata"
                 target="_blank"
                 rel="noreferrer"
@@ -79,7 +92,7 @@ const Footer = () => {
               </a>
               <a
                 className="hover:text-white"
-                aria-label="GitHub"
+                aria-label={t("aria_labels.github")}
                 href="https://github.com/reactplay/react-kolkata"
                 target="_blank"
                 rel="noreferrer"
@@ -88,7 +101,7 @@ const Footer = () => {
               </a>
               <a
                 className="hover:text-white"
-                aria-label="LinkedIn"
+                aria-label={t("aria_labels.linkedin")}
                 href="https://www.linkedin.com/showcase/react-kolkata"
                 target="_blank"
                 rel="noreferrer"
@@ -97,7 +110,7 @@ const Footer = () => {
               </a>
               <a
                 className="hover:text-white"
-                aria-label="youtube"
+                aria-label={t("aria_labels.youtube")}
                 href="https://www.youtube.com/@ReactPlayIO"
                 target="_blank"
                 rel="noreferrer"
@@ -106,7 +119,7 @@ const Footer = () => {
               </a>
               <a
                 className="hover:text-white"
-                aria-label="Discord"
+                aria-label={t("aria_labels.discord")}
                 href="https://discord.gg/VRVfn2Vss"
                 target="_blank"
                 rel="noreferrer"
@@ -119,7 +132,9 @@ const Footer = () => {
       </div>
       <div className="border-t border-white/5">
         <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-6 text-xs text-slate-500 sm:px-6 lg:px-8">
-          <p>&copy; {new Date().getFullYear()} React Kolkata. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} {t("rights_reserved")}
+          </p>
         </div>
       </div>
     </footer>
