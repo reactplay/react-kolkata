@@ -108,6 +108,35 @@
     "dosen't_exist_text": "ওপস! আপনি যে পেজটি খুঁজছেন তা বিদ্যমান নেই।",
     "go_to_home": "হোমে ফিরে যান"
   },
+  "Navbar": {
+    "home": "হোম",
+    "contributors": "অবদানকারী",
+    "events": "ইভেন্ট",
+    "join_community": "কমিউনিটিতে যোগ দিন",
+    "x": "X",
+    "github": "গিটহাব",
+    "linkedin": "লিঙ্কডইন",
+    "youtube": "ইউটিউব",
+    "discord": "ডিসকর্ড"
+  },
+  "Footer": {
+    "description": "কলকাতার রিয়্যাক্ট ডেভেলপারদের জন্য একটি কমিউনিটি। একসাথে দেখা করুন, শিখুন এবং তৈরি করুন।",
+    "quick_links_title": "দ্রুত লিঙ্ক",
+    "quick_links": {
+      "events": "ইভেন্ট",
+      "contributors": "অবদানকারী",
+      "join_us": "যোগ দিন"
+    },
+    "contact_title": "যোগাযোগ",
+    "rights_reserved": "রিয়্যাক্ট কলকাতা। সর্বস্বত্ব সংরক্ষিত।",
+    "aria_labels": {
+      "x": "X (টুইটার)",
+      "github": "গিটহাব",
+      "linkedin": "লিঙ্কডইন",
+      "youtube": "ইউটিউব",
+      "discord": "ডিসকর্ড"
+    }
+  },
   "LanguageSwitcher": {
     "label": "ভাষা পরিবর্তন করুন"
   }
