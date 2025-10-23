@@ -4,6 +4,8 @@ import { useTranslations } from "next-intl";
 import AnimatedSection from "@/components/custom/animated-section";
 import { features } from "@/base/constants/site";
 
+import CoreTeam from "./core-team";
+
 const AboutSection = () => {
   const t = useTranslations("About");
 
@@ -133,6 +135,11 @@ const AboutSection = () => {
               );
             })}
           </div>
+        </div>
+
+        {/* Core Team Section */}
+        <div className="mt-20">
+          <CoreTeam />
         </div>
       </div>
     </AnimatedSection>
