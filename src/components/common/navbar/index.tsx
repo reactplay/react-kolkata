@@ -2,24 +2,27 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import NextLink from "next/link";
 import { Github, Linkedin, Menu, X, Youtube } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { SiDiscord } from "react-icons/si";
 
 import { Link, usePathname } from "@/config/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { LanguageSwitcher } from "@/components/custom/language-switcher"; // <-- 1. IMPORT ADDED
 
 import { XLogo } from "../icons/XLogo";
-
-const links = [
-  { href: "/", label: "Home", external: false },
-  { href: "/contributors", label: "Contributors", external: false },
-  { href: "/events", label: "Events", external: false },
-];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const t = useTranslations("Navbar");
+
+  const links = [
+    { href: "/", label: t("home"), external: false },
+    { href: "/contributors", label: t("contributors"), external: false },
+    { href: "/events", label: t("events"), external: false },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -81,7 +84,7 @@ const Navbar = () => {
             <li>
               <a
                 className="text-slate-400 hover:text-white"
-                aria-label="X (Twitter)"
+                aria-label={t("x")}
                 href="https://x.com/reactkolkata"
                 target="_blank"
                 rel="noreferrer"
@@ -92,7 +95,7 @@ const Navbar = () => {
             <li>
               <a
                 className="text-slate-400 hover:text-white"
-                aria-label="GitHub"
+                aria-label={t("github")}
                 href="https://github.com/reactplay/react-kolkata"
                 target="_blank"
                 rel="noreferrer"
@@ -103,7 +106,7 @@ const Navbar = () => {
             <li>
               <a
                 className="text-slate-400 hover:text-white"
-                aria-label="LinkedIn"
+                aria-label={t("linkedin")}
                 href="https://www.linkedin.com/showcase/react-kolkata"
                 target="_blank"
                 rel="noreferrer"
@@ -114,7 +117,7 @@ const Navbar = () => {
             <li>
               <a
                 className="text-slate-400 hover:text-white"
-                aria-label="Youtube"
+                aria-label={t("youtube")}
                 href="https://www.youtube.com/@ReactPlayIO"
                 target="_blank"
                 rel="noreferrer"
@@ -125,7 +128,7 @@ const Navbar = () => {
             <li>
               <a
                 className="text-slate-400 hover:text-white"
-                aria-label="Discord"
+                aria-label={t("discord")}
                 href="https://discord.gg/VRVfn2Vss"
                 target="_blank"
                 rel="noreferrer"
@@ -134,13 +137,14 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
+          <LanguageSwitcher /> {/* <-- 2. SWITCHER ADDED FOR DESKTOP */}
           <div className="hidden md:block">
             <Button
               asChild
               className="bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
             >
-              <Link href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
-                Join the Community
+              <Link href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs" target="_blank">
+                {t("join_community")}
               </Link>
             </Button>
           </div>
@@ -185,77 +189,83 @@ const Navbar = () => {
               className="mt-2 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
             >
               <NextLink target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
-                Join the Community
+                {t("join_community")}
               </NextLink>
             </Button>
+
+            {/* --- 3. SWITCHER ADDED FOR MOBILE --- */}
+            <div className="flex justify-center py-2">
+              <LanguageSwitcher />
+            </div>
+
             <ul className="mt-2 flex flex-col gap-3">
               <li className="px-2 py-2">
                 <a
                   className="text-slate-300"
-                  aria-label="X (Twitter)"
+                  aria-label={t("x")}
                   href="https://x.com/reactkolkata"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <div className="flex items-center gap-2">
                     <XLogo className="h-5 w-5" />
-                    <span className="text-sm">X</span>
+                    <span className="text-sm">{t("x")}</span>
                   </div>
                 </a>
               </li>
               <li className="px-2 py-2">
                 <a
                   className="text-slate-300"
-                  aria-label="GitHub"
+                  aria-label={t("github")}
                   href="https://github.com/reactplay/react-kolkata"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <div className="flex items-center gap-2">
                     <Github className="h-5 w-5" />
-                    <span className="text-sm">GitHub</span>
+                    <span className="text-sm">{t("github")}</span>
                   </div>
                 </a>
               </li>
               <li className="px-2 py-2">
                 <a
                   className="text-slate-300"
-                  aria-label="LinkedIn"
+                  aria-label={t("linkedin")}
                   href="https://www.linkedin.com/showcase/react-kolkata"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <div className="flex items-center gap-2">
                     <Linkedin className="h-5 w-5" />
-                    <span className="text-sm">Linkedin</span>
+                    <span className="text-sm">{t("linkedin")}</span>
                   </div>
                 </a>
               </li>
               <li className="px-2 py-2">
                 <a
                   className="text-slate-300"
-                  aria-label="Youtube"
+                  aria-label={t("youtube")}
                   href="https://www.youtube.com/@ReactPlayIO"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <div className="flex items-center gap-2">
                     <Youtube className="h-5 w-5" />
-                    <span className="text-sm">Youtube</span>
+                    <span className="text-sm">{t("youtube")}</span>
                   </div>
                 </a>
               </li>
               <li className="px-2 py-2">
                 <a
                   className="text-slate-300"
-                  aria-label="Discord"
+                  aria-label={t("discord")}
                   href=" https://discord.gg/VRVfn2Vss"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <div className="flex items-center gap-2">
                     <SiDiscord className="h-5 w-5" />
-                    <span className="text-sm">Discord</span>
+                    <span className="text-sm">{t("discord")}</span>
                   </div>
                 </a>
               </li>
