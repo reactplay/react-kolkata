@@ -136,5 +136,8 @@
       "youtube": "ইউটিউব",
       "discord": "ডিসকর্ড"
     }
+  },
+  "LanguageSwitcher": {
+    "label": "ভাষা পরিবর্তন করুন"
   }
 }

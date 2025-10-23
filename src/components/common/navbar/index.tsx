@@ -8,6 +8,7 @@ import { SiDiscord } from "react-icons/si";
 import { Link, usePathname } from "@/config/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { LanguageSwitcher } from "@/components/custom/language-switcher"; // <-- 1. IMPORT ADDED
 
 import { XLogo } from "../icons/XLogo";
 
@@ -136,6 +137,7 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
+          <LanguageSwitcher /> {/* <-- 2. SWITCHER ADDED FOR DESKTOP */}
           <div className="hidden md:block">
             <Button
               asChild
@@ -190,6 +192,12 @@ const Navbar = () => {
                 {t("join_community")}
               </NextLink>
             </Button>
+
+            {/* --- 3. SWITCHER ADDED FOR MOBILE --- */}
+            <div className="flex justify-center py-2">
+              <LanguageSwitcher />
+            </div>
+
             <ul className="mt-2 flex flex-col gap-3">
               <li className="px-2 py-2">
                 <a
