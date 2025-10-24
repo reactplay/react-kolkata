@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Linkedin } from "lucide-react";
 
 const members = [
@@ -53,11 +54,14 @@ const CoreTeam = () => (
         >
           <div className="flex flex-col items-center rounded-xl border border-white/10 bg-white/5 p-3 shadow-lg backdrop-blur-sm hover:shadow-sky-500/10 md:p-4">
             <div className="relative">
-              <img
+              <Image
                 src={member.photo}
                 alt={member.name}
-                className="mb-2 h-20 w-20 rounded-full border-4 border-sky-400/80 object-cover shadow-lg md:mb-3 md:h-28 md:w-28"
+                width={112}
+                height={112}
+                className="mb-2 rounded-full border-4 border-sky-400/80 object-cover shadow-lg md:mb-3"
                 style={{ background: "#fff" }}
+                priority={false}
               />
               <div className="absolute right-0 bottom-1 rounded-full border-2 border-white/80 bg-gradient-to-br from-blue-500 to-sky-400 p-1.5 shadow-lg">
                 <Linkedin className="h-3 w-3 text-white md:h-4 md:w-4" />
