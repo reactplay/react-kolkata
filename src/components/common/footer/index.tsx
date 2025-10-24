@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import NextLink from "next/link";
+import { trackGAEvent } from "@/utils/analytics";
 import { Github, Linkedin, Mail, Youtube } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { SiDiscord } from "react-icons/si";
@@ -28,6 +31,13 @@ const Footer = () => {
       external: true,
     },
   ];
+
+  const handleSocialClick = (platform: string) => {
+    trackGAEvent("social_icon_click", {
+      category: "Social",
+      label: `Footer ${platform} Click`,
+    });
+  };
 
   return (
     <footer className="border-t border-white/5 bg-[#0B1220]">
@@ -87,6 +97,7 @@ const Footer = () => {
                 href="https://x.com/reactkolkata"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => handleSocialClick("X")}
               >
                 <XLogo className="h-5 w-5 text-slate-400 hover:text-white" />
               </a>
@@ -96,6 +107,7 @@ const Footer = () => {
                 href="https://github.com/reactplay/react-kolkata"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => handleSocialClick("GitHub")}
               >
                 <Github className="h-5 w-5" />
               </a>
@@ -105,6 +117,7 @@ const Footer = () => {
                 href="https://www.linkedin.com/showcase/react-kolkata"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => handleSocialClick("LinkedIn")}
               >
                 <Linkedin className="h-5 w-5" />
               </a>
@@ -114,6 +127,7 @@ const Footer = () => {
                 href="https://www.youtube.com/@ReactPlayIO"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => handleSocialClick("YouTube")}
               >
                 <Youtube className="h-5 w-5" />
               </a>
@@ -123,6 +137,7 @@ const Footer = () => {
                 href="https://discord.gg/VRVfn2Vss"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => handleSocialClick("Discord")}
               >
                 <SiDiscord className="h-5 w-5" />
               </a>

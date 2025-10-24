@@ -1,6 +1,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import { siteConfig } from "@/modules/home/meta/site";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
@@ -21,10 +22,8 @@ type RootLayoutProps = Readonly<{
 export default async function RootLayout({ children, params }: RootLayoutProps) {
   const { locale } = await params;
 
-  // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as any)) notFound();
 
-  // Providing all messages to the client
   const messages = await getMessages();
   return (
     <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
@@ -38,6 +37,8 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
         <NextIntlClientProvider messages={messages}>
           <AppProvider>{children}</AppProvider>
         </NextIntlClientProvider>
+
+        {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
       </body>
     </html>
   );

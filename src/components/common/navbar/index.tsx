@@ -1,6 +1,9 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import NextLink from "next/link";
+import { trackGAEvent } from "@/utils/analytics";
 import { Github, Linkedin, Menu, X, Youtube } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { SiDiscord } from "react-icons/si";
@@ -8,7 +11,7 @@ import { SiDiscord } from "react-icons/si";
 import { Link, usePathname } from "@/config/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { LanguageSwitcher } from "@/components/custom/language-switcher"; // <-- 1. IMPORT ADDED
+import { LanguageSwitcher } from "@/components/custom/language-switcher";
 
 import { XLogo } from "../icons/XLogo";
 
@@ -23,6 +26,13 @@ const Navbar = () => {
     { href: "/contributors", label: t("contributors"), external: false },
     { href: "/events", label: t("events"), external: false },
   ];
+
+  const handleJoinClick = () => {
+    trackGAEvent("join_community_click", {
+      category: "CTA",
+      label: "Navbar Join Button",
+    });
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -137,11 +147,12 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
-          <LanguageSwitcher /> {/* <-- 2. SWITCHER ADDED FOR DESKTOP */}
+          <LanguageSwitcher />
           <div className="hidden md:block">
             <Button
               asChild
               className="bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
+              onClick={handleJoinClick}
             >
               <Link href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs" target="_blank">
                 {t("join_community")}
@@ -160,7 +171,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open ? (
         <div className="absolute right-0 w-1/2 border-t border-white/5 bg-[#0B1220] md:hidden">
           <nav className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6" aria-label="Mobile">
@@ -187,13 +197,13 @@ const Navbar = () => {
             <Button
               asChild
               className="mt-2 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
+              onClick={handleJoinClick}
             >
               <NextLink target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
                 {t("join_community")}
               </NextLink>
             </Button>
 
-            {/* --- 3. SWITCHER ADDED FOR MOBILE --- */}
             <div className="flex justify-center py-2">
               <LanguageSwitcher />
             </div>
