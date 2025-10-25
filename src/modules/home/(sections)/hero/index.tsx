@@ -1,11 +1,29 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { trackGAEvent } from "@/utils/analytics";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   const t = useTranslations("Hero");
+
+  // --- 3. HANDLERS ADDED ---
+  const handleJoinClick = () => {
+    trackGAEvent("join_community_click", {
+      category: "CTA",
+      label: "Hero Join Button",
+    });
+  };
+
+  const handleEventsClick = () => {
+    trackGAEvent("see_events_click", {
+      category: "CTA",
+      label: "Hero See Events Button",
+    });
+  };
 
   return (
     <section className="relative overflow-hidden">
@@ -41,6 +59,7 @@ const HeroSection = () => {
               asChild
               size="lg"
               className="bg-gradient-to-r from-blue-600 to-sky-500 shadow-lg shadow-sky-900/30 transition hover:from-blue-500 hover:to-sky-400"
+              onClick={handleJoinClick}
             >
               <Link target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
                 {t("join_community")}
@@ -51,6 +70,7 @@ const HeroSection = () => {
               variant="outline"
               size="lg"
               className="border-white/10 bg-white/5 text-slate-100 hover:bg-white/10"
+              onClick={handleEventsClick}
             >
               <Link target="_blank" href="https://lu.ma/reactkolkata">
                 {t("see_events")}
