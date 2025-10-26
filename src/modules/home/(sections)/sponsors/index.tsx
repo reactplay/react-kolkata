@@ -1,8 +1,8 @@
 import React from "react";
+import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/custom/animated-section";
-import PartnerButton from "@/components/custom/partner-button/PartnerBtn";
 
 const SponsorsSection = () => {
   const t = useTranslations("Sponsors");
@@ -24,7 +24,12 @@ const SponsorsSection = () => {
         </div>
 
         <div className="mt-12 grid justify-center">
-          <div className="group max-w-3xl rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10">
+          <Link
+            href="https://tally.so/r/nPxOMB"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block max-w-3xl rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-500/50 hover:from-sky-500/15 hover:to-purple-500/15"
+          >
             <div className="flex items-center gap-3">
               <div className="rounded-lg bg-gradient-to-br from-blue-500/20 to-sky-400/20 p-2">
                 <svg
@@ -48,11 +53,7 @@ const SponsorsSection = () => {
             <p className="mt-3 text-sm leading-relaxed font-light text-slate-300 sm:text-base">
               {t("sample.description")}
             </p>
-          </div>
-        </div>
-
-        <div className="mt-12 flex justify-center">
-          <PartnerButton link="https://forms.gle/your-google-form-link" />
+          </Link>
         </div>
       </div>
     </AnimatedSection>
