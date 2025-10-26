@@ -10,9 +10,29 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Contributors" });
 
+  const pageTitle = t("title");
+  const pageDescription = t("description");
+
   return {
-    title: t("title"),
-    description: t("description"),
+    title: pageTitle,
+    description: pageDescription,
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: `/${locale}/contributors`,
+      siteName: "React Kolkata",
+      locale: locale,
+      type: "website",
+      // Optional: can add a specific image
+      // images: ['/images/contributors-og.jpg'],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageTitle,
+      description: pageDescription,
+      // Optional: can add a specific image
+      // images: ['/images/contributors-twitter.jpg'],
+    },
   };
 }
 

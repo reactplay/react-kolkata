@@ -1,5 +1,6 @@
 import React from "react";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { siteConfig } from "@/modules/home/meta/site";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { NextIntlClientProvider } from "next-intl";
@@ -18,6 +19,22 @@ type RootLayoutProps = Readonly<{
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }>;
+
+// Define Organization JSON-LD data
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "React Kolkata",
+  url: "https://reactkolkata.com",
+  logo: "https://reactkolkata.com/logo.svg",
+  sameAs: [
+    "https://x.com/reactkolkata",
+    "https://github.com/reactplay/react-kolkata",
+    "https://www.linkedin.com/showcase/react-kolkata",
+    "https://www.youtube.com/@ReactPlayIO",
+    // can add Discord if applicable
+  ],
+};
 
 export default async function RootLayout({ children, params }: RootLayoutProps) {
   const { locale } = await params;
@@ -39,6 +56,14 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
         </NextIntlClientProvider>
 
         {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
+
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
       </body>
     </html>
   );
