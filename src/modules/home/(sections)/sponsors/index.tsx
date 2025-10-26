@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/custom/animated-section";
+import PartnerButton from "@/components/custom/partner-button/PartnerBtn";
 
 const SponsorsSection = () => {
   const t = useTranslations("Sponsors");
@@ -22,7 +23,6 @@ const SponsorsSection = () => {
           </p>
         </div>
 
-        {/* Sample Sponsor Card (styled like other feature cards) */}
         <div className="mt-12 grid justify-center">
           <div className="group max-w-3xl rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10">
             <div className="flex items-center gap-3">
@@ -49,6 +49,10 @@ const SponsorsSection = () => {
               {t("sample.description")}
             </p>
           </div>
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <PartnerButton link="https://forms.gle/your-google-form-link" />
         </div>
       </div>
     </AnimatedSection>
