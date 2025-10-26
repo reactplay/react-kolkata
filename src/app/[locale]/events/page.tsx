@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import CfpCard from "@/modules/home/(sections)/event/cfp-card";
 import ComingSoonCard from "@/modules/home/(sections)/event/coming-soon-card";
 import EventCard from "@/modules/home/(sections)/event/event-card";
@@ -5,10 +6,45 @@ import EventCardCompact from "@/modules/home/(sections)/event/event-card-compact
 import VolunteerCard from "@/modules/home/(sections)/event/volunteer-card";
 import { EVENT_STATUS } from "@/types/event";
 import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 import { getEventStatus } from "@/lib/calendar-utils";
 import AnimatedSection from "@/components/custom/animated-section";
 import { events } from "@/base/data/dummy";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Events" });
+
+  const pageTitle = t("title");
+  const pageDescription = t("description");
+
+  return {
+    title: pageTitle,
+    description: pageDescription,
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: `/${locale}/events`,
+      siteName: "React Kolkata",
+      locale: locale,
+      type: "website",
+      // Optional: can add a specific image
+      // images: ['/images/events-og.jpg'],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageTitle,
+      description: pageDescription,
+      // Optional: can add a specific image
+      // images: ['/images/events-twitter.jpg'],
+    },
+  };
+}
 
 export default function EventsPage() {
   const t = useTranslations("Events");
@@ -38,7 +74,6 @@ export default function EventsPage() {
           </div>
         </div>
 
-        {/* Upcoming Events Section */}
         <section className="space-y-6">
           <h2
             className="text-2xl font-semibold tracking-tight"
@@ -61,7 +96,6 @@ export default function EventsPage() {
               </div>
             </div>
           ) : (
-            /* Show only Coming Soon card when no upcoming events */
             <div className="grid gap-6 lg:grid-cols-3">
               <div className="lg:col-span-2">
                 <ComingSoonCard />
@@ -78,7 +112,6 @@ export default function EventsPage() {
           )}
         </section>
 
-        {/* Past Events Section */}
         {pastEvents.length > 0 && (
           <section className="space-y-6">
             <h2
@@ -89,7 +122,6 @@ export default function EventsPage() {
             </h2>
 
             <div className="grid gap-6 lg:grid-cols-3 lg:items-start">
-              {/* Large past event card - takes 2 columns */}
               <div className="lg:col-span-2">
                 {pastEvents.slice(0, 1).map((event) => (
                   <EventCard key={event.id} event={event} />
@@ -113,7 +145,6 @@ export default function EventsPage() {
           </section>
         )}
 
-        {/* No events message */}
         {upcomingEvents.length === 0 && pastEvents.length === 0 && (
           <div className="py-12 text-center">
             <p className="text-slate-300">No events found.</p>
