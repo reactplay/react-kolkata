@@ -60,7 +60,12 @@ export default function CommunityPartners() {
           <p className="mt-2 text-slate-300">{t("community_partners_description")}</p>
         </div>
 
-        <Link href="#" onClick={(e) => e.preventDefault()} className="sm:flex-shrink-0">
+        <Link
+          href="https://tally.so/r/nPxOMB"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="sm:flex-shrink-0"
+        >
           <div className="group flex items-center gap-2 rounded-lg border border-sky-500/30 bg-gradient-to-r from-sky-500/10 to-purple-500/10 px-4 py-2.5 transition hover:border-sky-500/50 hover:from-sky-500/15 hover:to-purple-500/15">
             <Handshake className="h-4 w-4 text-sky-300" />
             <span className="text-sm font-medium text-sky-200">{t("become_partner_cta")}</span>
