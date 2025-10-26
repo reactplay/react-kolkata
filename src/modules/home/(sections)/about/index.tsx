@@ -1,11 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, BadgeCheck, Calendar, Target, Zap } from "lucide-react";
+import { ArrowRight, BadgeCheck, Calendar, LucideIcon, Target, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/custom/animated-section";
 import { features } from "@/base/constants/site";
+
+interface HighlightCardProps {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  colorClass?: "blue" | "purple" | "amber";
+}
+
+interface FeatureCardProps {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
 
 // Animation variants
 const fadeInUp = {
@@ -29,7 +42,12 @@ const scaleOnHover = {
 };
 
 // Reusable Highlight Card Component
-const HighlightCard = ({ icon: Icon, title, description, colorClass = "blue" }) => {
+const HighlightCard = ({
+  icon: Icon,
+  title,
+  description,
+  colorClass = "blue",
+}: HighlightCardProps) => {
   const shadowClasses = {
     blue: "hover:shadow-blue-500/10",
     purple: "hover:shadow-purple-500/10",
@@ -66,7 +84,7 @@ const HighlightCard = ({ icon: Icon, title, description, colorClass = "blue" }) 
 };
 
 // Reusable Feature Card Component
-const FeatureCard = ({ icon: Icon, title, description }) => {
+const FeatureCard = ({ icon: Icon, title, description }: FeatureCardProps) => {
   return (
     <motion.div
       variants={fadeInUp}
