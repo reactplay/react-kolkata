@@ -4,6 +4,15 @@ title: "\U0001F41B [Bug report]: "
 labels: ["bug"]
 assignees: [""]
 body:
+  - type: checkboxes
+    id: read-guidelines
+    attributes:
+      label: Contributor Guidelines
+      description: Please confirm that you have read the [Contributor Guidelines and Discussion](https://github.com/reactplay/react-kolkata/discussions/35) before submitting this issue.
+      options:
+        - label: I have read the guidelines and discussion
+          required: true
+
   - type: markdown
     attributes:
       value: |
@@ -16,31 +25,11 @@ body:
       description: Tell us what you see!
     validations:
       required: true
-  - type: textarea
-    id: reproduce-step
-    attributes:
-      label: Steps to reproduce the bug?
-      description: Steps to reproduce the behavior..
-      placeholder: |
-        1. Go to '...'
-        2. Click on '....'
-        3. Scroll down to '....'
-        4. See error
-    validations:
-      required: true
 
   - type: textarea
-    id: expected-behavior
+    id: desktop-or-mobile-details
     attributes:
-      label: Expected behavior
-      description: A clear and concise description of what you expected to happen.
-    validations:
-      required: true
-
-  - type: textarea
-    id: desktop-details
-    attributes:
-      label: Desktop (Please provide your system information)
+      label: Desktop or Mobile (Please provide your system information)
       description: |
         examples:
           - **OS**: [e.g. iOS]
@@ -50,27 +39,10 @@ body:
       required: true
 
   - type: textarea
-    id: mobile-browser
-    attributes:
-      label: Mobile (Please provide your device information)
-      description: |
-        examples:
-           - **Device**: [e.g. iPhone6]
-           - **OS**: [e.g. iOS8.1]
-           - **Browser** [e.g. stock browser, safari]
-           - **Version** [e.g. 22]
-  - type: textarea
     id: screenshot
     attributes:
       label: Screenshot / ScreenShare
       description: If applicable, add screenshots to help explain your problem.
-
-  - type: textarea
-    id: additional-context
-    attributes:
-      label: Relevant log output
-      description: Add any other context about the problem here.
-      render: shell-script
 
   - type: checkboxes
     id: terms

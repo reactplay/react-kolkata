@@ -132,7 +132,33 @@
   }
 }
 
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+  }
+}
+
 /* Improve focus outlines on dark bg */
 :focus-visible {
   outline-color: rgb(56 189 248 / 0.8);
+}
+
+/* Ensure sections are visible on mobile */
+@media (max-width: 768px) {
+  section {
+    min-height: auto !important;
+  }
+
+  /* Fallback for motion components */
+  [data-motion] {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
 }

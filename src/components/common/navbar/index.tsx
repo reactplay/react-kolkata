@@ -2,22 +2,37 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import NextLink from "next/link";
+import { trackGAEvent } from "@/utils/analytics";
+import { Github, Linkedin, Menu, X, Youtube } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { SiDiscord } from "react-icons/si";
 
+import { Link, usePathname } from "@/config/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { LanguageSwitcher } from "@/components/custom/language-switcher";
 
-const links = [
-  { href: "/", label: "Home" },
-  { href: "https://lu.ma/reactkolkata", label: "Events" },
-];
+import { XLogo } from "../icons/XLogo";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const t = useTranslations("Navbar");
+
+  const links = [
+    { href: "/", label: t("home"), external: false },
+    { href: "/contributors", label: t("contributors"), external: false },
+    { href: "/events", label: t("events"), external: false },
+  ];
+
+  const handleJoinClick = () => {
+    trackGAEvent("join_community_click", {
+      category: "CTA",
+      label: "Navbar Join Button",
+    });
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -29,8 +44,6 @@ const Navbar = () => {
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
-
-  console.log("Render: Navbar");
 
   return (
     <header
@@ -58,29 +71,94 @@ const Navbar = () => {
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
           {links.map((l) => {
             const active = l.href === "/" ? pathname === l.href : pathname.startsWith(l.href);
+            const LinkComponent = l.external ? NextLink : Link;
             return (
-              <Link
+              <LinkComponent
                 key={l.href}
                 href={l.href}
-                target="_blank"
+                target={l.external ? "_blank" : undefined}
+                rel={l.external ? "noopener noreferrer" : undefined}
                 className={cn(
                   "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                   active ? "text-sky-300" : "text-slate-300 hover:text-white"
                 )}
               >
                 {l.label}
-              </Link>
+              </LinkComponent>
             );
           })}
         </nav>
 
-        <div className="hidden md:block">
-          <Button
-            asChild
-            className="bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
-          >
-            <Link href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">Join the Community</Link>
-          </Button>
+        <div className="hidden items-center gap-4 md:flex">
+          <ul className="flex items-center gap-4">
+            <li>
+              <a
+                className="text-slate-400 hover:text-white"
+                aria-label={t("x")}
+                href="https://x.com/reactkolkata"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <XLogo className="h-5 w-5 text-slate-400 hover:text-white" />
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-slate-400 hover:text-white"
+                aria-label={t("github")}
+                href="https://github.com/reactplay/react-kolkata"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Github className="h-5 w-5" />
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-slate-400 hover:text-white"
+                aria-label={t("linkedin")}
+                href="https://www.linkedin.com/showcase/react-kolkata"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-slate-400 hover:text-white"
+                aria-label={t("youtube")}
+                href="https://www.youtube.com/@ReactPlayIO"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Youtube className="h-5 w-5" />
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-slate-400 hover:text-white"
+                aria-label={t("discord")}
+                href="https://discord.gg/VRVfn2Vss"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <SiDiscord className="h-5 w-5" />
+              </a>
+            </li>
+          </ul>
+          <LanguageSwitcher />
+          <div className="hidden md:block">
+            <Button
+              asChild
+              className="bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
+              onClick={handleJoinClick}
+            >
+              <Link href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs" target="_blank">
+                {t("join_community")}
+              </Link>
+            </Button>
+          </div>
         </div>
 
         <button
@@ -89,20 +167,22 @@ const Navbar = () => {
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open ? (
-        <div className="absolute w-screen border-t border-white/5 bg-[#0B1220] md:hidden">
+        <div className="absolute right-0 w-1/2 border-t border-white/5 bg-[#0B1220] md:hidden">
           <nav className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6" aria-label="Mobile">
             {links.map((l) => {
               const active = l.href === "/" ? pathname === l.href : pathname.startsWith(l.href);
+              const LinkComponent = l.external ? NextLink : Link;
               return (
-                <Link
+                <LinkComponent
                   key={l.href}
                   href={l.href}
+                  target={l.external ? "_blank" : undefined}
+                  rel={l.external ? "noopener noreferrer" : undefined}
                   className={cn(
                     "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     active
@@ -111,17 +191,95 @@ const Navbar = () => {
                   )}
                 >
                   {l.label}
-                </Link>
+                </LinkComponent>
               );
             })}
             <Button
               asChild
               className="mt-2 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
+              onClick={handleJoinClick}
             >
-              <Link target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
-                Join the Community
-              </Link>
+              <NextLink target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
+                {t("join_community")}
+              </NextLink>
             </Button>
+
+            <div className="flex justify-center py-2">
+              <LanguageSwitcher />
+            </div>
+
+            <ul className="mt-2 flex flex-col gap-3">
+              <li className="px-2 py-2">
+                <a
+                  className="text-slate-300"
+                  aria-label={t("x")}
+                  href="https://x.com/reactkolkata"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="flex items-center gap-2">
+                    <XLogo className="h-5 w-5" />
+                    <span className="text-sm">{t("x")}</span>
+                  </div>
+                </a>
+              </li>
+              <li className="px-2 py-2">
+                <a
+                  className="text-slate-300"
+                  aria-label={t("github")}
+                  href="https://github.com/reactplay/react-kolkata"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="flex items-center gap-2">
+                    <Github className="h-5 w-5" />
+                    <span className="text-sm">{t("github")}</span>
+                  </div>
+                </a>
+              </li>
+              <li className="px-2 py-2">
+                <a
+                  className="text-slate-300"
+                  aria-label={t("linkedin")}
+                  href="https://www.linkedin.com/showcase/react-kolkata"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="flex items-center gap-2">
+                    <Linkedin className="h-5 w-5" />
+                    <span className="text-sm">{t("linkedin")}</span>
+                  </div>
+                </a>
+              </li>
+              <li className="px-2 py-2">
+                <a
+                  className="text-slate-300"
+                  aria-label={t("youtube")}
+                  href="https://www.youtube.com/@ReactPlayIO"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="flex items-center gap-2">
+                    <Youtube className="h-5 w-5" />
+                    <span className="text-sm">{t("youtube")}</span>
+                  </div>
+                </a>
+              </li>
+              <li className="px-2 py-2">
+                <a
+                  className="text-slate-300"
+                  aria-label={t("discord")}
+                  href=" https://discord.gg/VRVfn2Vss"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="flex items-center gap-2">
+                    <SiDiscord className="h-5 w-5" />
+                    <span className="text-sm">{t("discord")}</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
           </nav>
         </div>
       ) : null}

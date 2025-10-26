@@ -1,17 +1,24 @@
+import React from "react";
+import { getInitialBlogs } from "@/utils/blog";
+
 import AboutSection from "./(sections)/about";
 import BlogSection from "./(sections)/blogs";
-import ContactSection from "./(sections)/contact";
+import CommunitySection from "./(sections)/community";
 import EventsSection from "./(sections)/event";
 import HeroSection from "./(sections)/hero";
+import SponsorsSection from "./(sections)/sponsors";
 
-const LandingPage = () => {
+const LandingPage = async () => {
+  const { posts: initialBlogs, endCursor: initialEndCursor, error } = await getInitialBlogs();
+
   return (
     <>
       <HeroSection />
       <AboutSection />
+      <SponsorsSection />
       <EventsSection />
-      <BlogSection />
-      <ContactSection />
+      <CommunitySection />
+      <BlogSection initialBlogs={initialBlogs} initialEndCursor={initialEndCursor} error={error} />
     </>
   );
 };

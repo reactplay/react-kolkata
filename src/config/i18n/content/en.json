@@ -1,49 +1,143 @@
 {
-  "Home": {
+  "Hero": {
+    "badge": "Community • Events • Learning",
     "title": "React Kolkata",
-    "description": "We created a boilerplate with essential tools and best practices so you can focus on building your NextJS project.",
-    "edit_prompt": "Edit",
-    "edit_file": "app/page.tsx",
-    "edit_to_start": "to start",
-    "tech_stack": {
-      "nextjs": {
-        "name": "Next JS",
-        "description": "Utilize the power of Next.js for server-rendered React applications"
-      },
-      "typescript": {
-        "name": "TypeScript",
-        "description": "Enhance your development experience with TypeScript's static typing"
-      },
-      "tailwindcss": {
-        "name": "Tailwind CSS",
-        "description": "Rapidly build custom designs with Tailwind CSS's utility-first approach"
-      },
-      "eslint": {
-        "name": "ESLint",
-        "description": "Enforce code quality standards and catch errors early with ESLint"
-      },
-      "prettier": {
-        "name": "Prettier",
-        "description": "Keep your codebase clean and consistent with automatic code formatting using Prettier."
-      },
-      "prettier_plugin_tailwindcss": {
-        "name": "Prettier Plugin Tailwindcss",
-        "description": "Automatic sorting of tailwind classnames using the official prettier plugin"
-      },
-      "prettier_plugin_sort_imports": {
-        "name": "Prettier Plugin Sort Imports",
-        "description": "Sort imports alphabetically for better readability, especially in larger projects"
-      },
-      "husky": {
-        "name": "Husky",
-        "description": "Ensure code quality and prevent bad commits with pre-commit hooks powered by Husky"
-      }
+    "subtitle": "Build. Learn. Connect.",
+    "description": "A modern hub for React developers in Kolkata. Join our meetups, talks, and workshops to grow your skills and network with the community.",
+    "join_community": "Join the Community",
+    "see_events": "See Upcoming Events"
+  },
+  "About": {
+    "title": "About React Kolkata",
+    "description": "We are a community-driven group focused on knowledge-sharing, collaboration, and career growth for React developers across Kolkata and beyond. Our mission is to create an inclusive space where developers of all levels can learn, grow, and contribute.",
+    "what_we_do": "What We Do",
+    "what_we_do_description": "Discover the various ways we support and grow our developer community",
+    "mission": {
+      "title": "Our Mission",
+      "description": "Empower developers through events, workshops, and mentorship while fostering an inclusive, welcoming community for continuous learning and growth."
     },
-    "footer_text": "An Open Source initiative from CreoWis Technologies."
+    "values": {
+      "title": "Our Values",
+      "description": "Openness, inclusivity, continuous learning, and giving back by sharing knowledge, opportunities, and supporting each other's professional journey."
+    },
+    "impact": {
+      "title": "Community Impact",
+      "description": "Monthly meetups, lightning talks, hands-on sessions, and collaborations with local tech organizations to strengthen Kolkata's developer ecosystem."
+    },
+    "features": {
+      "technical_workshops": {
+        "title": "Technical Workshops",
+        "description": "Hands-on coding sessions covering the latest React patterns, tools, and best practices."
+      },
+      "community_meetups": {
+        "title": "Community Meetups",
+        "description": "Regular gatherings to network, share experiences, and learn from fellow developers."
+      },
+      "lightning_talks": {
+        "title": "Lightning Talks",
+        "description": "Quick, focused presentations on specific topics, tips, and emerging technologies."
+      },
+      "project_showcases": {
+        "title": "Project Showcases",
+        "description": "Platform for members to demo their projects and get feedback from the community."
+      },
+      "mentorship_program": {
+        "title": "Mentorship Program",
+        "description": "Connect experienced developers with newcomers for guidance and career support."
+      },
+      "open_source": {
+        "title": "Open Source Contributions",
+        "description": "Collaborative projects and contributions to the broader React ecosystem."
+      }
+    }
+  },
+  "Events": {
+    "title": "Events",
+    "description": "Join our meetups and workshops. Learn, network, and build together.",
+    "filter": "Filter",
+    "view_all": "View all",
+    "register": "Register",
+    "details": "Details",
+    "watch_recording": "Watch Recording",
+    "view_slides": "View Slides",
+    "upcoming_events": "Upcoming Events",
+    "past_events": "Past Events",
+    "call_for_speakers": "Call for Speakers",
+    "call_for_volunteers": "Call for Volunteers",
+    "view_all_events": "View All Events",
+    "view_all_past_events": "View All Past Events",
+    "coming_soon": "Coming Soon",
+    "community_partners_title": "Community Partners",
+    "community_partners_description": "We collaborate with amazing communities to bring more value to you.",
+    "become_partner_cta": "Become a partner",
+    "partner_visit_label": "Visit",
+    "partner_visit_cta": "Open"
+  },
+  "Blog": {
+    "title": "Latest from the Blog",
+    "description": "Guides, tips, and community highlights from React Kolkata.",
+    "filter": "Filter",
+    "view_all_posts": "View all posts",
+    "filter_by_tags": "Filter by tags",
+    "showing_posts": "Showing {count} of {total} posts",
+    "clear": "Clear"
+  },
+  "Contributors": {
+    "title": "Our Contributors",
+    "description": "Meet the amazing people who make React Kolkata possible. These contributors have helped build, maintain, and grow our community through their code, ideas, and dedication.",
+    "loading": "Loading contributors...",
+    "error": "Error loading contributors",
+    "total_contributors": "Total contributors: {count}",
+    "footer_note": "Contributors are automatically fetched from our GitHub repository. Thank you to everyone who has contributed to React Kolkata!"
+  },
+  "Sponsors": {
+    "title": "Our Sponsors",
+    "description": "React Kolkata is powered by generous sponsors who help us run events, workshops, and community initiatives. Interested in sponsoring us? Get in touch!",
+    "card": {
+      "title": "Become a Sponsor",
+      "description": "Support the community by sponsoring an event or contributing resources. Sponsors gain visibility among developers and help keep our activities accessible.",
+      "cta": "Learn how to sponsor"
+    },
+    "sample": {
+      "name": "Showcase your brand — become a sponsor",
+      "description": "Showcase your brand at React Kolkata — sponsor an event to gain visibility with local developers, support workshops, and help the community grow."
+    }
   },
   "NotFound": {
     "404": "404",
     "dosen't_exist_text": "Oops! The page you're looking for doesn't exist.",
     "go_to_home": "Go back to Home"
+  },
+  "Navbar": {
+    "home": "Home",
+    "contributors": "Contributors",
+    "events": "Events",
+    "join_community": "Join the Community",
+    "x": "X",
+    "github": "GitHub",
+    "linkedin": "Linkedin",
+    "youtube": "Youtube",
+    "discord": "Discord"
+  },
+  "Footer": {
+    "description": "A community for React developers in Kolkata. Meet, learn, and build together.",
+    "quick_links_title": "Quick Links",
+    "quick_links": {
+      "events": "Events",
+      "contributors": "Contributors",
+      "join_us": "Join Us"
+    },
+    "contact_title": "Contact",
+    "rights_reserved": "React Kolkata. All rights reserved.",
+    "aria_labels": {
+      "x": "X (Twitter)",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "youtube": "Youtube",
+      "discord": "Discord"
+    }
+  },
+  "LanguageSwitcher": {
+    "label": "Change language"
   }
 }
