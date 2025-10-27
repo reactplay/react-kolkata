@@ -25,7 +25,7 @@ const SponsorsSection = () => {
 
         <div className="mt-12 grid justify-center">
           <Link
-            href="https://tally.so/r/nPxOMB"
+            href="https://tally.so/r/w8vGOz"
             target="_blank"
             rel="noopener noreferrer"
             className="group block max-w-3xl rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-500/50 hover:from-sky-500/15 hover:to-purple-500/15"
