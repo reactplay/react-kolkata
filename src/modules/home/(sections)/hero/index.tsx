@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 const HeroSection = () => {
   const t = useTranslations("Hero");
 
-  // --- 3. HANDLERS ADDED ---
   const handleJoinClick = () => {
     trackGAEvent("join_community_click", {
       category: "CTA",
@@ -40,20 +39,26 @@ const HeroSection = () => {
       </div>
 
       <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 md:py-28 lg:flex lg:items-center lg:px-8 lg:py-36">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           <p className="mb-3 inline-flex rounded-full border border-amber-400/30 bg-white/5 px-3 py-1 text-xs text-amber-400">
             {t("badge")}
           </p>
+
           <h1
-            className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
+            className="text-4xl leading-snug font-bold tracking-tight break-words sm:text-5xl md:text-[2.9rem] lg:text-6xl"
             style={{ fontFamily: "var(--font-poppins)" }}
           >
             {t("title")}
-            <span className="block bg-gradient-to-r from-sky-300 via-blue-400 to-sky-300 bg-clip-text text-transparent">
-              {t("subtitle")}
-            </span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg text-slate-300">{t("description")}</p>
+          <h2
+            className="mt-[0.25rem] bg-gradient-to-r from-sky-300 via-blue-400 to-sky-300 bg-clip-text text-4xl leading-snug font-bold break-words text-transparent sm:text-5xl md:text-[2.9rem] lg:text-6xl"
+            style={{ fontFamily: "var(--font-poppins)" }}
+          >
+            {t("subtitle")}
+          </h2>
+
+          <p className="mt-8 max-w-2xl text-lg text-slate-300">{t("description")}</p>
+
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button
               asChild
@@ -65,6 +70,7 @@ const HeroSection = () => {
                 {t("join_community")}
               </Link>
             </Button>
+
             <Button
               asChild
               variant="outline"
