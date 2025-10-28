@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import NextLink from "next/link";
 import { trackGAEvent } from "@/utils/analytics";
+import { AnimatePresence, motion } from "framer-motion";
 import { Github, Linkedin, Menu, X, Youtube } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { SiDiscord } from "react-icons/si";
@@ -18,6 +19,8 @@ import { XLogo } from "../icons/XLogo";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [hoveredIcon, setHoveredIcon] = useState<number | null>(null); // State for the icon hover
+
   const pathname = usePathname();
   const t = useTranslations("Navbar");
 
@@ -90,63 +93,137 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden items-center gap-4 md:flex">
-          <ul className="flex items-center gap-4">
-            <li>
+          <ul
+            className="relative flex items-center gap-0.5"
+            onMouseLeave={() => setHoveredIcon(null)}
+          >
+            {/* --- Icon 1: X --- */}
+            <li className="relative">
+              <AnimatePresence>
+                {hoveredIcon === 0 && (
+                  <motion.span
+                    // --- UPDATED CLASSES FOR BETTER LOOK ---
+                    className="absolute inset-0 h-full w-full rounded-full border border-sky-400/20 bg-slate-700/50"
+                    layoutId="hoverIconBackground"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { duration: 0.15 } }}
+                    exit={{ opacity: 0, transition: { duration: 0.15, delay: 0.2 } }}
+                  />
+                )}
+              </AnimatePresence>
               <a
-                className="text-slate-400 hover:text-white"
+                className="relative z-10 block p-2 text-slate-400 hover:text-white"
                 aria-label={t("x")}
                 href="https://x.com/reactkolkata"
                 target="_blank"
                 rel="noreferrer"
+                onMouseEnter={() => setHoveredIcon(0)}
               >
-                <XLogo className="h-5 w-5 text-slate-400 hover:text-white" />
+                <XLogo className="h-5 w-5" />
               </a>
             </li>
-            <li>
+
+            {/* --- Icon 2: Github --- */}
+            <li className="relative">
+              <AnimatePresence>
+                {hoveredIcon === 1 && (
+                  <motion.span
+                    className="absolute inset-0 h-full w-full rounded-full border border-sky-400/20 bg-slate-700/50"
+                    layoutId="hoverIconBackground"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { duration: 0.15 } }}
+                    exit={{ opacity: 0, transition: { duration: 0.15, delay: 0.2 } }}
+                  />
+                )}
+              </AnimatePresence>
               <a
-                className="text-slate-400 hover:text-white"
+                className="relative z-10 block p-2 text-slate-400 hover:text-white"
                 aria-label={t("github")}
                 href="https://github.com/reactplay/react-kolkata"
                 target="_blank"
                 rel="noreferrer"
+                onMouseEnter={() => setHoveredIcon(1)}
               >
                 <Github className="h-5 w-5" />
               </a>
             </li>
-            <li>
+
+            {/* --- Icon 3: Linkedin --- */}
+            <li className="relative">
+              <AnimatePresence>
+                {hoveredIcon === 2 && (
+                  <motion.span
+                    className="absolute inset-0 h-full w-full rounded-full border border-sky-400/20 bg-slate-700/50"
+                    layoutId="hoverIconBackground"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { duration: 0.15 } }}
+                    exit={{ opacity: 0, transition: { duration: 0.15, delay: 0.2 } }}
+                  />
+                )}
+              </AnimatePresence>
               <a
-                className="text-slate-400 hover:text-white"
+                className="relative z-10 block p-2 text-slate-400 hover:text-white"
                 aria-label={t("linkedin")}
                 href="https://www.linkedin.com/showcase/react-kolkata"
                 target="_blank"
                 rel="noreferrer"
+                onMouseEnter={() => setHoveredIcon(2)}
               >
                 <Linkedin className="h-5 w-5" />
               </a>
             </li>
-            <li>
+
+            {/* --- Icon 4: Youtube --- */}
+            <li className="relative">
+              <AnimatePresence>
+                {hoveredIcon === 3 && (
+                  <motion.span
+                    className="absolute inset-0 h-full w-full rounded-full border border-sky-400/20 bg-slate-700/50"
+                    layoutId="hoverIconBackground"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { duration: 0.15 } }}
+                    exit={{ opacity: 0, transition: { duration: 0.15, delay: 0.2 } }}
+                  />
+                )}
+              </AnimatePresence>
               <a
-                className="text-slate-400 hover:text-white"
+                className="relative z-10 block p-2 text-slate-400 hover:text-white"
                 aria-label={t("youtube")}
                 href="https://www.youtube.com/@ReactPlayIO"
                 target="_blank"
                 rel="noreferrer"
+                onMouseEnter={() => setHoveredIcon(3)}
               >
                 <Youtube className="h-5 w-5" />
               </a>
             </li>
-            <li>
+
+            {/* --- Icon 5: Discord --- */}
+            <li className="relative">
+              <AnimatePresence>
+                {hoveredIcon === 4 && (
+                  <motion.span
+                    className="absolute inset-0 h-full w-full rounded-full border border-sky-400/20 bg-slate-700/50"
+                    layoutId="hoverIconBackground"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { duration: 0.15 } }}
+                    exit={{ opacity: 0, transition: { duration: 0.15, delay: 0.2 } }}
+                  />
+                )}
+              </AnimatePresence>
               <a
-                className="text-slate-400 hover:text-white"
+                className="relative z-10 block p-2 text-slate-400 hover:text-white"
                 aria-label={t("discord")}
-                href="https://discord.gg/VRVfn2Vss"
+                href=" https://discord.gg/VRVfn2Vss"
                 target="_blank"
                 rel="noreferrer"
+                onMouseEnter={() => setHoveredIcon(4)}
               >
                 <SiDiscord className="h-5 w-5" />
               </a>
             </li>
           </ul>
+
           <LanguageSwitcher />
           <div className="hidden md:block">
             <Button

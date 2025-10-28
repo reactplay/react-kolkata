@@ -1,9 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Handshake, Users } from "lucide-react";
 import { useTranslations } from "next-intl";
+
+import { cn } from "@/lib/utils";
 
 type Partner = {
   name: string;
@@ -47,6 +51,8 @@ const partners: Partner[] = [
 export default function CommunityPartners() {
   const t = useTranslations("Events");
 
+  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
     <section className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -74,11 +80,42 @@ export default function CommunityPartners() {
         </Link>
       </div>
 
-      {/* Partner Cards Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {partners.map((partner) => (
-          <Link key={partner.name} href={partner.url} target="_blank" rel="noopener noreferrer">
-            <article className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-white/5 bg-white/5 p-6 transition hover:translate-y-[-4px] hover:bg-white/10">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {partners.map((partner, idx) => (
+          <Link
+            key={partner.name}
+            href={partner.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative block h-full w-full p-2"
+            onMouseEnter={() => setHoveredIndex(idx)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <AnimatePresence>
+              {hoveredIndex === idx && (
+                <motion.span
+                  className="absolute inset-0 block h-full w-full rounded-xl bg-slate-800/[0.9]"
+                  layoutId="hoverBackground"
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { duration: 0.15 },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    transition: { duration: 0.15, delay: 0.2 },
+                  }}
+                />
+              )}
+            </AnimatePresence>
+
+            <article
+              className={cn(
+                "relative z-20 flex h-full flex-col overflow-hidden rounded-xl border bg-white/5 p-6",
+                "border-white/5",
+                "group-hover:border-slate-700"
+              )}
+            >
               {/* Partner Logo */}
               <div className="mb-4 flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg ring-1 ring-white/10">
                 {partner.imageSrc ? (
@@ -118,7 +155,6 @@ export default function CommunityPartners() {
                 </div>
               </div>
 
-              {/* Hover gradient overlay */}
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-500/0 via-transparent to-purple-500/0 opacity-0 transition-opacity group-hover:opacity-10" />
             </article>
           </Link>
