@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import NextLink from "next/link";
+import NextLink from "next/link"; // Use NextLink for external and hash links
 import { trackGAEvent } from "@/utils/analytics";
 import { Github, Linkedin, Menu, X, Youtube } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { SiDiscord } from "react-icons/si";
 
-import { Link, usePathname } from "@/config/i18n/navigation";
+import { Link, usePathname } from "@/config/i18n/navigation"; // Use Link for internal page routes
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/custom/language-switcher";
@@ -22,9 +22,10 @@ const Navbar = () => {
   const t = useTranslations("Navbar");
 
   const links = [
-    { href: "/", label: t("home"), external: false },
-    { href: "/contributors", label: t("contributors"), external: false },
-    { href: "/events", label: t("events"), external: false },
+    { href: "/", label: t("home"), external: false, isHashLink: false },
+    { href: "/#core-team", label: t("core_team"), external: false, isHashLink: true },
+    { href: "/contributors", label: t("contributors"), external: false, isHashLink: false },
+    { href: "/events", label: t("events"), external: false, isHashLink: false },
   ];
 
   const handleJoinClick = () => {
@@ -70,8 +71,12 @@ const Navbar = () => {
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
           {links.map((l) => {
-            const active = l.href === "/" ? pathname === l.href : pathname.startsWith(l.href);
-            const LinkComponent = l.external ? NextLink : Link;
+            const checkPath = l.isHashLink ? l.href.split("#")[0] : l.href;
+            const active =
+              checkPath === "/" ? pathname === checkPath : pathname.startsWith(checkPath);
+            // Use NextLink for external or hash links, use localized Link otherwise
+            const LinkComponent = l.external || l.isHashLink ? NextLink : Link;
+
             return (
               <LinkComponent
                 key={l.href}
@@ -80,7 +85,12 @@ const Navbar = () => {
                 rel={l.external ? "noopener noreferrer" : undefined}
                 className={cn(
                   "rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                  active ? "text-sky-300" : "text-slate-300 hover:text-white"
+                  // Style hash link normally, active style based on path match
+                  l.isHashLink
+                    ? "text-slate-300 hover:text-white"
+                    : active
+                      ? "text-sky-300"
+                      : "text-slate-300 hover:text-white"
                 )}
               >
                 {l.label}
@@ -154,9 +164,9 @@ const Navbar = () => {
               className="bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
               onClick={handleJoinClick}
             >
-              <Link href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs" target="_blank">
+              <NextLink href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs" target="_blank">
                 {t("join_community")}
-              </Link>
+              </NextLink>
             </Button>
           </div>
         </div>
@@ -175,8 +185,11 @@ const Navbar = () => {
         <div className="absolute right-0 w-1/2 border-t border-white/5 bg-[#0B1220] md:hidden">
           <nav className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6" aria-label="Mobile">
             {links.map((l) => {
-              const active = l.href === "/" ? pathname === l.href : pathname.startsWith(l.href);
-              const LinkComponent = l.external ? NextLink : Link;
+              const checkPath = l.isHashLink ? l.href.split("#")[0] : l.href;
+              const active =
+                checkPath === "/" ? pathname === checkPath : pathname.startsWith(checkPath);
+              const LinkComponent = l.external || l.isHashLink ? NextLink : Link;
+
               return (
                 <LinkComponent
                   key={l.href}
@@ -185,9 +198,11 @@ const Navbar = () => {
                   rel={l.external ? "noopener noreferrer" : undefined}
                   className={cn(
                     "rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                    active
-                      ? "bg-white/5 text-sky-300"
-                      : "text-slate-300 hover:bg-white/5 hover:text-white"
+                    l.isHashLink
+                      ? "text-slate-300 hover:bg-white/5 hover:text-white"
+                      : active
+                        ? "bg-white/5 text-sky-300"
+                        : "text-slate-300 hover:bg-white/5 hover:text-white"
                   )}
                 >
                   {l.label}

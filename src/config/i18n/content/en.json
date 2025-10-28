@@ -110,6 +110,7 @@
   },
   "Navbar": {
     "home": "Home",
+    "core_team": "Core Team",
     "contributors": "Contributors",
     "events": "Events",
     "join_community": "Join the Community",
