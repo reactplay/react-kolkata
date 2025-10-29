@@ -36,7 +36,7 @@ const members = [
 ];
 
 const CoreTeam = () => (
-  <section className="py-10 text-center">
+  <section id="core-team" className="py-10 text-center">
     <h2
       className="mb-8 text-3xl font-bold text-slate-100"
       style={{ fontFamily: "var(--font-poppins)" }}
