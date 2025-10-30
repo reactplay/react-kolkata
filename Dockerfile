@@ -1,7 +1,11 @@
 # Stage 1: Build Stage
-FROM --platform=linux/arm64/v8 node:20-alpine AS build
+# Use a specific, patched Node 20 LTS Alpine version
+FROM --platform=linux/arm64/v8 node:20.18.0-alpine3.20 AS build
+
+# Add security updates at the start of the stage
+RUN apk update && apk upgrade --no-cache
+
 # Install dependencies only when needed
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
@@ -22,8 +26,14 @@ RUN pnpm run build
 
 
 # Stage 2: Production Stage
-FROM --platform=linux/arm64/v8 node:20-alpine AS production-stage
-RUN apk update && apk upgrade && apk add dumb-init && adduser -D nextuser
+# Use the same specific, patched Node 20 LTS Alpine version
+FROM --platform=linux/arm64/v8 node:20.18.0-alpine3.20 AS production-stage
+
+# Add security updates at the start of the stage
+RUN apk update && apk upgrade --no-cache
+
+# Add dumb-init and create non-root user
+RUN apk add --no-cache dumb-init && adduser -D nextuser
 
 WORKDIR /app
 

@@ -50,13 +50,8 @@ export const siteConfig: Metadata = {
     description:
       "Join React Kolkata for meetups, talks, workshops, and resources. A modern hub for React developers in Kolkata.",
     images: ["/react-kolkata-meetup.png"],
-    // Optional: can add Twitter site handle
     site: "@ReactKolkata",
   },
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
   icons: {
     icon: "/logo.svg",
     shortcut: "/logo.svg",

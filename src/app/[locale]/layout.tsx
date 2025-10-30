@@ -1,4 +1,5 @@
 import React from "react";
+import { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 import { siteConfig } from "@/modules/home/meta/site";
@@ -13,14 +14,20 @@ import AppProvider from "@/components/providers";
 
 import "@/base/styles/globals.css";
 
-export const metadata = siteConfig;
+export const metadata: Metadata = siteConfig;
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+};
 
 type RootLayoutProps = Readonly<{
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }>;
 
-// Define Organization JSON-LD data
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -32,7 +39,6 @@ const organizationJsonLd = {
     "https://github.com/reactplay/react-kolkata",
     "https://www.linkedin.com/showcase/react-kolkata",
     "https://www.youtube.com/@ReactPlayIO",
-    // can add Discord if applicable
   ],
 };
 
