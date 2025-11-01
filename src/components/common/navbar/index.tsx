@@ -72,7 +72,7 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
           {links.map((l) => {
             const checkPath = l.isHashLink ? l.href.split("#")[0] : l.href;
             const active =
@@ -102,7 +102,7 @@ const Navbar = () => {
           })}
         </nav>
 
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="hidden items-center gap-4 lg:flex">
           <ul
             className="relative flex items-center gap-0.5"
             onMouseLeave={() => setHoveredIcon(null)}
@@ -235,7 +235,7 @@ const Navbar = () => {
           </ul>
 
           <LanguageSwitcher />
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Button
               asChild
               className="bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
@@ -249,7 +249,7 @@ const Navbar = () => {
         </div>
 
         <button
-          className="inline-flex items-center justify-center rounded-md p-2 text-slate-200 md:hidden"
+          className="inline-flex items-center justify-center rounded-md p-2 text-slate-200 lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={open}
@@ -259,7 +259,7 @@ const Navbar = () => {
       </div>
 
       {open ? (
-        <div className="absolute right-0 w-1/2 border-t border-white/5 bg-[#0B1220] md:hidden">
+        <div className="absolute right-0 w-1/2 border-t border-white/5 bg-[#0B1220] lg:hidden">
           <nav className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6" aria-label="Mobile">
             {links.map((l) => {
               const checkPath = l.isHashLink ? l.href.split("#")[0] : l.href;
