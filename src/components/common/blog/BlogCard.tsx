@@ -47,15 +47,15 @@ const BlogCard: React.FC<BlogCardProps> = ({
   return (
     <>
       <article
-        className={`group grid cursor-pointer grid-rows-[auto_1fr_auto] rounded-xl border border-white/5 bg-white/5 p-5 transition hover:translate-y-[-2px] hover:bg-white/10 ${
+        className={`group flex cursor-pointer flex-col rounded-xl border border-white/5 bg-white/5 p-5 transition hover:translate-y-[-2px] hover:bg-white/10 ${
           featured ? "md:col-span-2 md:row-span-2 md:p-8" : ""
         }`}
         onClick={() => setModalOpen(true)}
       >
         {/* Cover Image */}
         <div
-          className={`relative mb-4 overflow-hidden rounded-lg ${
-            featured ? "h-48 md:h-64" : "h-32"
+          className={`relative mb-4 w-full overflow-hidden rounded-lg ${
+            featured ? "aspect-video" : "aspect-video"
           }`}
         >
           <Image
@@ -64,11 +64,12 @@ const BlogCard: React.FC<BlogCardProps> = ({
             fill
             className="object-cover transition-transform group-hover:scale-105"
             onError={() => setCoverImageError(true)}
+            sizes={featured ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 33vw"}
           />
         </div>
 
         {/* Tags, Title & Excerpt */}
-        <div className="flex flex-col grow">
+        <div className="flex flex-1 flex-col">
           <div className="mb-3 flex flex-wrap gap-1">
             {tags.slice(0, featured ? 4 : 2).map((tag) => (
               <Badge
@@ -82,16 +83,16 @@ const BlogCard: React.FC<BlogCardProps> = ({
           </div>
 
           <h3
-            className={`overflow-hidden font-medium text-sky-200 group-hover:text-sky-300 ${
-              featured ? "text-xl md:text-2xl" : "line-clamp-3 h-18 text-base"
+            className={`font-medium text-sky-200 group-hover:text-sky-300 ${
+              featured ? "line-clamp-2 text-xl md:text-2xl" : "line-clamp-2 text-base"
             }`}
           >
             {title}
           </h3>
 
           <p
-            className={`mt-3 text-slate-300 ${
-              featured ? "line-clamp-4 text-base" : "line-clamp-2 h-10 text-sm"
+            className={`mt-2 text-slate-300 ${
+              featured ? "line-clamp-3 text-base md:line-clamp-4" : "line-clamp-3 text-sm"
             }`}
           >
             {brief}
@@ -99,9 +100,9 @@ const BlogCard: React.FC<BlogCardProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="mt-auto pt-4 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-nowrap">
-            <div className="relative h-6 w-6 overflow-hidden rounded-full">
+        <div className="mt-4 flex items-center justify-between gap-4 border-t border-white/5 pt-4">
+          <div className="flex min-w-0 items-center gap-2">
+            <div className="relative h-6 w-6 flex-shrink-0 overflow-hidden rounded-full">
               {authorImageError ? (
                 <div className="flex h-full w-full items-center justify-center bg-slate-600">
                   <User className="h-3 w-3 text-slate-400" />
@@ -116,17 +117,17 @@ const BlogCard: React.FC<BlogCardProps> = ({
                 />
               )}
             </div>
-            <span className={`text-slate-300 ${featured ? "text-sm" : "text-xs"}`}>
+            <span className={`truncate text-slate-300 ${featured ? "text-sm" : "text-xs"}`}>
               {displayAuthorName}
             </span>
           </div>
 
-          <div className="flex items-center gap-3 text-slate-400 text-nowrap">
+          <div className="flex flex-shrink-0 items-center gap-3 text-slate-400">
             <div className="flex items-center gap-1">
               <Clock className="h-3 w-3" />
               <span className="text-xs">{readTimeInMinutes} min</span>
             </div>
-            <span className={`${featured ? "text-sm" : "text-xs"}`}>
+            <span className={`whitespace-nowrap ${featured ? "text-sm" : "text-xs"}`}>
               {formatBlogDate(publishedAt)}
             </span>
           </div>
