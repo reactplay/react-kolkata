@@ -17,7 +17,7 @@ export default function VolunteerCard() {
       <div className="relative h-20 w-full flex-shrink-0 overflow-hidden">
         <Image
           src={bgImage}
-          alt="Call for Speakers"
+          alt="Call for Volunteers"
           fill
           className="object-cover transition duration-500 group-hover:scale-105"
         />

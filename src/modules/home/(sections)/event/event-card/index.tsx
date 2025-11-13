@@ -30,7 +30,7 @@ export default function EventCard({ event }: EventCardProps) {
   };
 
   return (
-    <article className="group relative overflow-hidden rounded-xl border border-white/5 bg-white/5 transition hover:translate-y-[-4px] hover:bg-white/10">
+    <article className="group relative overflow-hidden rounded-xl border border-white/5 bg-white/5 transition hover:-translate-y-1 hover:bg-white/10">
       <div className="relative h-44 w-full overflow-hidden">
         <Image
           src={event.image ?? "/images/tech-events-1.jpg"}
@@ -38,7 +38,7 @@ export default function EventCard({ event }: EventCardProps) {
           fill
           className="object-cover transition duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] to-transparent opacity-60" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#0B1220] to-transparent opacity-60" />
 
         <EventBadges type={event.type} status={dynamicStatus} />
       </div>
@@ -101,7 +101,7 @@ export default function EventCard({ event }: EventCardProps) {
                 <Button
                   asChild
                   size="sm"
-                  className="flex-1 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
+                  className="flex-1 bg-linear-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
                 >
                   <Link href={event.registrationUrl} target="_blank" rel="noreferrer">
                     {t("register")}
