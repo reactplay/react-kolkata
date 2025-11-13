@@ -47,7 +47,7 @@ export default function CfpCard() {
             size="sm"
             className="w-full bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
           >
-            <Link href="#" target="_blank" rel="noreferrer">
+            <Link href="https://forms.gle/voWDew8cCKpxgPsm8" target="_blank" rel="noreferrer">
               <Send className="mr-2 h-3 w-3" />
               {t("call_for_speakers")}
             </Link>
