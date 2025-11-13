@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import { Linkedin } from "lucide-react";
 
@@ -6,32 +5,27 @@ const members = [
   {
     name: "Arkajit Roy",
     linkedin: "https://www.linkedin.com/in/arkajitroy/",
-    photo:
-      "https://media.licdn.com/dms/image/v2/D5603AQF9I3abVywIIA/profile-displayphoto-scale_400_400/B56Zn9TWjDI8Ak-/0/1760891333998?e=1762992000&v=beta&t=D42gckg1POIk7yGCVHCETMABwNhxfgsXdH3t33aGPg0",
+    photo: "/images/arkajit.jpeg",
   },
   {
     name: "Tapas Adhikary",
     linkedin: "https://www.linkedin.com/in/tapasadhikary/",
-    photo:
-      "https://media.licdn.com/dms/image/v2/D5603AQFJaklkV5Q8fg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1723084600181?e=1762992000&v=beta&t=N_1PwpjEGdOYiW5VEEcg-u00k1z0SVq-qGRrmkifS2k",
+    photo: "/images/tapas.jpeg",
   },
   {
     name: "Arindam Majumder",
     linkedin: "https://www.linkedin.com/in/arindam2004/",
-    photo:
-      "https://media.licdn.com/dms/image/v2/D4D03AQHdiWc3N_8NwQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1672588040569?e=1762992000&v=beta&t=DoFgqqU8WrTuIGsR5MeNc60Zp4OMReDpryimB_WNzzU",
+    photo: "/images/arindam.jpeg",
   },
   {
     name: "Sulagna Ghosh",
     linkedin: "https://www.linkedin.com/in/sulagna-ghosh-7955361a7/",
-    photo:
-      "https://media.licdn.com/dms/image/v2/D4E03AQEd3fPzKnALwA/profile-displayphoto-shrink_400_400/B4EZY9W.UcG0Ak-/0/1744786156105?e=1762992000&v=beta&t=mOM4D_4Uju4lCkyr_HwmciM0Umc6G-o7eYizbIAujM0",
+    photo: "/images/sulagna.jpeg",
   },
   {
     name: "Priyankar Pal",
     linkedin: "https://www.linkedin.com/in/priyankarpal/",
-    photo:
-      "https://media.licdn.com/dms/image/v2/D5603AQH_Ws_vDJhGqQ/profile-displayphoto-shrink_400_400/B56ZXrJBzBHoAk-/0/1743406768671?e=1762992000&v=beta&t=y3KRNF18OtRwOY5GfgJtnjVYtzicSOMgiQxcMlTsdd4",
+    photo: "/images/priyankar.jpeg",
   },
 ];
 
@@ -55,7 +49,7 @@ const CoreTeam = () => (
           <div className="flex flex-col items-center rounded-xl border border-white/10 bg-white/5 p-3 shadow-lg backdrop-blur-sm hover:shadow-sky-500/10 md:p-4">
             <div className="relative">
               <Image
-                src={member.photo}
+                src={member?.photo}
                 alt={member.name}
                 width={112}
                 height={112}
