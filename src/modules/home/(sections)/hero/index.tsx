@@ -35,7 +35,7 @@ const HeroSection = () => {
           priority
         />
         <div className="absolute inset-0 bg-[radial-gradient(1000px_400px_at_top,rgba(37,99,235,0.35),transparent)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B1220]/50 via-transparent to-[#0B1220]" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#0B1220]/50 via-transparent to-[#0B1220]" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 md:py-28 lg:flex lg:items-center lg:px-8 lg:py-36">
@@ -45,13 +45,13 @@ const HeroSection = () => {
           </p>
 
           <h1
-            className="text-4xl leading-snug font-bold tracking-tight break-words sm:text-5xl md:text-[2.9rem] lg:text-6xl"
+            className="text-4xl leading-snug font-bold tracking-tight wrap-break-word sm:text-5xl md:text-[2.9rem] lg:text-6xl"
             style={{ fontFamily: "var(--font-poppins)" }}
           >
             {t("title")}
           </h1>
           <h2
-            className="mt-[0.25rem] bg-gradient-to-r from-sky-300 via-blue-400 to-sky-300 bg-clip-text text-4xl leading-snug font-bold break-words text-transparent sm:text-5xl md:text-[2.9rem] lg:text-6xl"
+            className="mt-1 bg-linear-to-r from-sky-300 via-blue-400 to-sky-300 bg-clip-text text-4xl leading-snug font-bold wrap-break-word text-transparent sm:text-5xl md:text-[2.9rem] lg:text-6xl"
             style={{ fontFamily: "var(--font-poppins)" }}
           >
             {t("subtitle")}
@@ -63,7 +63,7 @@ const HeroSection = () => {
             <Button
               asChild
               size="lg"
-              className="bg-gradient-to-r from-blue-600 to-sky-500 shadow-lg shadow-sky-900/30 transition hover:from-blue-500 hover:to-sky-400"
+              className="bg-linear-to-r from-blue-600 to-sky-500 shadow-lg shadow-sky-900/30 transition hover:from-blue-500 hover:to-sky-400"
               onClick={handleJoinClick}
             >
               <Link target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">

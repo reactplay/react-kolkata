@@ -1,4 +1,3 @@
-
 # 🚀 React Kolkata
 
 > The comprehensive Next.js starter and toolkit for building modern, scalable web apps with best practices, rapid setup, and a vibrant community.
@@ -10,7 +9,6 @@
 Welcome to **React Kolkata**! This project provides a robust foundation for Next.js applications, featuring TypeScript, Tailwind CSS, i18n, testing, and more. Whether you're building a personal project or a production-grade app, React Kolkata helps you get started quickly and maintain code quality with ease.
 
 **Join our community events:** [React Kolkata on lu.ma](https://lu.ma/reactkolkata)
-
 
 ## ✨ Features
 
@@ -24,7 +22,6 @@ Welcome to **React Kolkata**! This project provides a robust foundation for Next
 - **Internationalization (i18n)**: Built-in multi-language support with next-intl
 - **Playwright & Vitest**: E2E, unit, and integration testing
 - **Community Events**: [React Kolkata on lu.ma](https://lu.ma/reactkolkata)
-
 
 ---
 
@@ -61,7 +58,6 @@ docker-compose up
 
 ---
 
-
 ## 🌍 Internationalization (i18n)
 
 Built-in support for multiple languages using [next-intl](https://next-intl-docs.vercel.app/).
@@ -73,12 +69,14 @@ Built-in support for multiple languages using [next-intl](https://next-intl-docs
 Example:
 
 ```js
-import { useTranslations } from 'next-intl';
-const t = useTranslations('Home');
-<h1>{t('welcomeMessage')}</h1>
+import { useTranslations } from "next-intl";
+
+const t = useTranslations("Home");
+<h1>{t("welcomeMessage")}</h1>;
 ```
 
 **Add a new language:**
+
 1. Add a JSON file in `src/config/i18n/content/` (e.g., `es.json`)
 2. Add the language code to the `locales` array in `src/config/i18n/navigation.ts`
 
@@ -126,31 +124,32 @@ To use strings from a language file in both **client and server** components, us
    <h1>{t("welcomeMessage")}</h1>
    ```
 
-
 ## 🧪 Testing
 
 ### Playwright (E2E)
+
 - Headless & UI browser testing (Chromium, Firefox, WebKit)
 - Test location: `__test__/e2e/`
 - Config: `playwright.config.ts`
 
 Run tests:
+
 ```bash
 pnpm test:e2e # or npm run test:e2e
 ```
 
 ### Vitest (Unit & Integration)
+
 - Fast, parallel test runner with JSDOM
 - Config: `vitest.config.mts`
 
 Run tests:
+
 ```bash
 pnpm test # or npm run test
 ```
 
-
 ---
-
 
 ## 📁 Folder Structure
 
@@ -172,8 +171,7 @@ pnpm test # or npm run test
 
 ---
 
-
-**__test__**: All tests (e2e, unit, integration)
+****test****: All tests (e2e, unit, integration)
 **public**: Static assets (images, icons, etc.)
 **src/components**: UI, common, and custom components
 **src/modules**: Feature modules/sections
@@ -182,7 +180,6 @@ pnpm test # or npm run test
 **src/lib**: Shared utilities and logic
 **styles**: Global and component styles
 **types**: TypeScript type definitions
-
 
 ## 📝 Conventions
 
@@ -194,7 +191,6 @@ pnpm test # or npm run test
 - **Hooks**: camelCase, start with `use` (e.g., `useFetchData`)
 - **UI components**: in `ui/` folder, each as its own folder with `index.ts`
 
-
 ## 🤝 Contributing
 
 Contributions are always welcome!
@@ -202,7 +198,6 @@ Contributions are always welcome!
 See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to get started.
 
 Please adhere to this project's [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
-
 
 ## 🙏 Acknowledgements
 
