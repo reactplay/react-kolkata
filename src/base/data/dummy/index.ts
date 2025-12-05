@@ -12,7 +12,7 @@ export const events = [
       "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,background=white,quality=75,width=400,height=400/event-covers/ma/ddb6a2c2-1af8-4e94-9d56-fd978b95ad39.png",
     type: EVENT_TYPES.ONLINE,
     startDateTime: "2025-11-29T19:00:00+05:30",
-    endDateTime: "2025-12-15T21:30:00+05:30",
+    endDateTime: "2025-11-29T21:30:00+05:30",
   },
   {
     id: "ze3qavyg",
