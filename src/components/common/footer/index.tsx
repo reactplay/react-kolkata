@@ -41,8 +41,8 @@ const Footer = () => {
 
   return (
     <footer className="border-t border-white/5 bg-[#0B1220]">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
-        <div>
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 md:items-start lg:px-8">
+        <div className="flex flex-col gap-4">
           <Link href="/" className="flex items-center gap-1" aria-label="React Kolkata Home">
             <div className="relative h-25 w-25">
               <Image
@@ -57,7 +57,7 @@ const Footer = () => {
           <p className="text-sm text-slate-400">{t("description")}</p>
         </div>
 
-        <nav aria-label="Quick links">
+        <nav aria-label="Quick links" className="flex flex-col">
           <h3 className="text-sm font-semibold text-slate-200">{t("quick_links_title")}</h3>
           <ul className="mt-3 space-y-2">
             {quickLinks.map((l) => (
@@ -81,9 +81,9 @@ const Footer = () => {
           </ul>
         </nav>
 
-        <div>
+        <div className="flex flex-col">
           <h3 className="text-sm font-semibold text-slate-200">{t("contact_title")}</h3>
-          <ul className="mt-3 space-y-2 text-sm text-slate-400">
+          <ul className="mt-3 space-y-4 text-sm text-slate-400">
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4" aria-hidden />{" "}
               <a href="mailto:reactkolkata@gmail.com" className="hover:text-slate-200">
@@ -146,7 +146,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-t border-white/5">
-        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-6 text-xs text-slate-500 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-6 text-center text-slate-500 sm:px-6 lg:px-8">
           <p>
             &copy; {new Date().getFullYear()} {t("rights_reserved")}
           </p>
