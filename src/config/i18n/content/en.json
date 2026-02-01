@@ -103,6 +103,32 @@
       "description": "Showcase your brand at React Kolkata — sponsor an event to gain visibility with local developers, support workshops, and help the community grow."
     }
   },
+  "Newsletter": {
+    "title": "Stay Updated",
+    "description": "Subscribe to our newsletter to get the latest updates about events, workshops, and community news.",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "your.email@example.com",
+    "interestsLabel": "What are you interested in? (Optional)",
+    "interests": {
+      "events": "Upcoming Events",
+      "techTalks": "Tech Talks & Presentations",
+      "workshops": "Workshops & Hands-on Sessions",
+      "communityNews": "Community Updates & News"
+    },
+    "button": {
+      "subscribe": "Subscribe to Newsletter",
+      "loading": "Subscribing..."
+    },
+    "success": {
+      "title": "Successfully Subscribed!",
+      "message": "Thank you for subscribing. You'll receive our latest updates in your inbox."
+    },
+    "errors": {
+      "invalidEmail": "Please enter a valid email address.",
+      "generic": "Something went wrong. Please try again later."
+    },
+    "privacyNote": "We respect your privacy. Unsubscribe anytime."
+  },
   "NotFound": {
     "404": "404",
     "dosen't_exist_text": "Oops! The page you're looking for doesn't exist.",
