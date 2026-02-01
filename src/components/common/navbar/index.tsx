@@ -29,6 +29,7 @@ const Navbar = () => {
     { href: "/#core-team", label: t("core_team"), external: false, isHashLink: true },
     { href: "/contributors", label: t("contributors"), external: false, isHashLink: false },
     { href: "/events", label: t("events"), external: false, isHashLink: false },
+    { href: "/playground", label: t("playground"), external: false, isHashLink: false },
   ];
 
   const handleJoinClick = () => {

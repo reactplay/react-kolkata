@@ -1,5 +1,7 @@
 import { EVENT_TYPES } from "@/types/event";
 
+export { snippets } from "./snippets";
+
 export const events = [
   {
     id: "rk-nov-2025",

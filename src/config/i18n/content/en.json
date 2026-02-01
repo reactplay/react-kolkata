@@ -129,6 +129,51 @@
     },
     "privacyNote": "We respect your privacy. Unsubscribe anytime."
   },
+  "Playground": {
+    "title": "Live Code Playground",
+    "description": "Write, run, and share React code snippets instantly. Experiment with React in real-time.",
+    "controls": {
+      "run": "Run Code",
+      "reset": "Reset",
+      "save": "Save",
+      "saved": "Saved",
+      "share": "Share",
+      "getLink": "Get Shareable Link",
+      "linkCopied": "Link Copied!",
+      "copyCode": "Copy Code",
+      "copied": "Copied!",
+      "download": "Download"
+    },
+    "snippets": {
+      "featured": "Featured",
+      "viewCode": "View Code",
+      "all": "All",
+      "sortRecent": "Most Recent",
+      "sortPopular": "Most Popular",
+      "sortLiked": "Most Liked",
+      "showing": "Showing {count} of {total} snippets",
+      "noResults": "No snippets found",
+      "tryDifferentFilter": "Try selecting a different filter or tag"
+    },
+    "tips": {
+      "keyboard": {
+        "title": "Keyboard Shortcuts",
+        "tab": "Indent code",
+        "save": "Save snippet",
+        "run": "Run code"
+      },
+      "features": {
+        "title": "Features",
+        "autoRun": "Live preview updates",
+        "share": "Share code with community",
+        "bookmark": "Save your favorites"
+      },
+      "community": {
+        "title": "Community",
+        "description": "Browse and learn from community snippets. Share your own creations and help others learn!"
+      }
+    }
+  },
   "NotFound": {
     "404": "404",
     "dosen't_exist_text": "Oops! The page you're looking for doesn't exist.",
@@ -139,6 +184,7 @@
     "core_team": "Core Team",
     "contributors": "Contributors",
     "events": "Events",
+    "playground": "Playground",
     "join_community": "Join the Community",
     "x": "X",
     "github": "GitHub",
