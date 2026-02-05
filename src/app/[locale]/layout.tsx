@@ -10,6 +10,7 @@ import { getMessages } from "next-intl/server";
 import { routing } from "@/config/i18n/navigation";
 import { inter, poppins } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import { JumpToTop } from "@/components/custom/jump-to-top";
 import AppProvider from "@/components/providers";
 
 import "@/base/styles/globals.css";
@@ -58,7 +59,10 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
         )}
       >
         <NextIntlClientProvider messages={messages}>
-          <AppProvider>{children}</AppProvider>
+          <AppProvider>
+            {children}
+            <JumpToTop />
+          </AppProvider>
         </NextIntlClientProvider>
 
         {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
