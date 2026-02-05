@@ -54,17 +54,17 @@ const Navbar = () => {
       className={cn(
         "sticky top-0 z-50 w-full transition-colors",
         scrolled
-          ? "border-b border-white/5 bg-[#0B1220]/70 backdrop-blur supports-[backdrop-filter]:bg-[#0B1220]/60"
+          ? "border-b border-white/5 bg-[#0B1220]/70 backdrop-blur supports-backdrop-filter:bg-[#0B1220]/60"
           : ""
       )}
       role="banner"
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2" aria-label="React Kolkata Home">
-          <div className="relative h-24 w-24">
+          <div className="relative h-20 w-20">
             <Image
               alt="react kolkata brand logo"
-              src="/logo.svg"
+              src="/images/React-Kolkata-Logo.png"
               fill
               className="object-contain"
               priority

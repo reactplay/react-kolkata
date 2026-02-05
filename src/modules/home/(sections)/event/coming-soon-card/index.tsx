@@ -40,7 +40,7 @@ export default function ComingSoonCard() {
 
         {/* Coming Soon Badge */}
         <div className="mt-3">
-          <div className="w-full rounded-md bg-gradient-to-r from-sky-600/20 to-blue-600/20 px-3 py-2 text-center">
+          <div className="w-full rounded-md bg-linear-to-r from-sky-600/20 to-blue-600/20 px-3 py-2 text-center">
             <span className="text-xs font-medium text-sky-300">{t("coming_soon")}</span>
           </div>
         </div>

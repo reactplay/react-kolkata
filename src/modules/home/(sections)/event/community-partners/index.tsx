@@ -46,6 +46,19 @@ const partners: Partner[] = [
     imageSrc: "/partners/hackspire.jpg",
     description: "Inspiring hackers and developers",
   },
+  {
+    name: "Cityjs India",
+    url: "https://www.linkedin.com/company/cityjs-india/",
+    handle: "@CityJSIndia",
+    imageSrc: "/partners/cityjs.png",
+    description: "Indian chapter of CityJS Conferences",
+  },
+  {
+    name: "The Helper",
+    url: "https://www.linkedin.com/company/the-helper-srmist/",
+    imageSrc: "/partners/helper.png",
+    description: "Academic support platform",
+  },
 ];
 
 export default function CommunityPartners() {

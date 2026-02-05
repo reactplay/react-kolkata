@@ -2,6 +2,19 @@ import { EVENT_TYPES } from "@/types/event";
 
 export const events = [
   {
+    id: "rk-nov-2025",
+    title: "Building Together: The React Kolkata Chapter by ReactPlay",
+    venue: "Virtual",
+    description:
+      "​If you’re passionate about React or any other exciting technology — whether it’s web development, cloud computing, AI, mobile apps, or something else — we invite you to be a speaker at our upcoming tech meetups!​This event is open to everyone, whether you're just starting out or already deep into tech. Come by, learn something new, and be part of the conversation.",
+    registrationUrl: "https://luma.com/eq8ntf1n",
+    image:
+      "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,background=white,quality=75,width=400,height=400/event-covers/ma/ddb6a2c2-1af8-4e94-9d56-fd978b95ad39.png",
+    type: EVENT_TYPES.ONLINE,
+    startDateTime: "2025-11-29T19:00:00+05:30",
+    endDateTime: "2025-11-29T21:30:00+05:30",
+  },
+  {
     id: "ze3qavyg",
     title: "CTRL + React: Join the React Kolkata Chapter by ReactPlay",
     venue: "Virtual",
