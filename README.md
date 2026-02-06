@@ -86,7 +86,7 @@ To add a new language, we have to add the language JSON file to the content dire
 
 After that, we have to add the newly added language to the locales array in the navigation.ts file. Below is the content of the navigation.ts file, where we need to add the newly added language to the locales array:
 
-```bash
+```ts
 import {defineRouting} from 'next-intl/routing';
 import {createNavigation} from 'next-intl/navigation';
 
@@ -136,6 +136,12 @@ Run tests:
 
 ```bash
 pnpm test:e2e # or npm run test:e2e
+```
+
+First-time setup (install browsers and system dependencies):
+
+```bash
+pnpm test:e2e:setup
 ```
 
 ### Vitest (Unit & Integration)
