@@ -41,10 +41,10 @@ const Footer = () => {
 
   return (
     <footer className="border-t border-white/5 bg-[#0B1220]">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
-        <div>
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-10 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
+        <div className="space-y-3">
           <Link href="/" className="flex items-center gap-1" aria-label="React Kolkata Home">
-            <div className="relative h-25 w-25">
+            <div className="relative h-16 w-16">
               <Image
                 alt="react kolkata brand logo"
                 src="/logo.svg"
@@ -57,7 +57,7 @@ const Footer = () => {
           <p className="text-sm text-slate-400">{t("description")}</p>
         </div>
 
-        <nav aria-label="Quick links">
+        <nav aria-label="Quick links" className="space-y-3">
           <h3 className="text-sm font-semibold text-slate-200">{t("quick_links_title")}</h3>
           <ul className="mt-3 space-y-2">
             {quickLinks.map((l) => (
@@ -81,7 +81,7 @@ const Footer = () => {
           </ul>
         </nav>
 
-        <div>
+        <div className="space-y-3">
           <h3 className="text-sm font-semibold text-slate-200">{t("contact_title")}</h3>
           <ul className="mt-3 space-y-2 text-sm text-slate-400">
             <li className="flex items-center gap-2">
@@ -90,7 +90,7 @@ const Footer = () => {
                 reactkolkata@gmail.com
               </a>
             </li>
-            <li className="mt-4 flex items-center gap-4">
+            <li className="mt-4 flex flex-wrap items-center gap-4">
               <a
                 className="hover:text-white"
                 aria-label={t("aria_labels.x")}
@@ -99,7 +99,7 @@ const Footer = () => {
                 rel="noreferrer"
                 onClick={() => handleSocialClick("X")}
               >
-                <XLogo className="h-5 w-5 text-slate-400 hover:text-white" />
+                <XLogo className="h-5 w-5 text-slate-400 transition hover:text-white" />
               </a>
               <a
                 className="hover:text-white"
@@ -109,7 +109,7 @@ const Footer = () => {
                 rel="noreferrer"
                 onClick={() => handleSocialClick("GitHub")}
               >
-                <Github className="h-5 w-5" />
+                <Github className="h-5 w-5 text-slate-400 transition hover:text-white" />
               </a>
               <a
                 className="hover:text-white"
@@ -119,7 +119,7 @@ const Footer = () => {
                 rel="noreferrer"
                 onClick={() => handleSocialClick("LinkedIn")}
               >
-                <Linkedin className="h-5 w-5" />
+                <Linkedin className="h-5 w-5 text-slate-400 transition hover:text-white" />
               </a>
               <a
                 className="hover:text-white"
@@ -129,7 +129,7 @@ const Footer = () => {
                 rel="noreferrer"
                 onClick={() => handleSocialClick("YouTube")}
               >
-                <Youtube className="h-5 w-5" />
+                <Youtube className="h-5 w-5 text-slate-400 transition hover:text-white" />
               </a>
               <a
                 className="hover:text-white"
@@ -139,14 +139,14 @@ const Footer = () => {
                 rel="noreferrer"
                 onClick={() => handleSocialClick("Discord")}
               >
-                <SiDiscord className="h-5 w-5" />
+                <SiDiscord className="h-5 w-5 text-slate-400 transition hover:text-white" />
               </a>
             </li>
           </ul>
         </div>
       </div>
       <div className="border-t border-white/5">
-        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-6 text-xs text-slate-500 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-6 text-xs tracking-wide text-slate-400 sm:px-6 lg:px-8">
           <p>
             &copy; {new Date().getFullYear()} {t("rights_reserved")}
           </p>
