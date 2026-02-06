@@ -138,6 +138,12 @@ Run tests:
 pnpm test:e2e # or npm run test:e2e
 ```
 
+First-time setup (install browsers and system dependencies):
+
+```bash
+pnpm test:e2e:setup
+```
+
 ### Vitest (Unit & Integration)
 
 - Fast, parallel test runner with JSDOM
