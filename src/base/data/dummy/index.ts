@@ -67,7 +67,7 @@ export const articles = [
       id: "author-1",
       name: "Priyanka Pal",
       avatar:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+        "https://ui-avatars.com/api/?name=Priyanka+Pal&size=150&background=6366f1&color=fff&bold=true",
       bio: "React developer and community organizer at React Kolkata",
       profileUrl: "https://github.com/priyankarpal",
     },
@@ -90,7 +90,7 @@ export const articles = [
       id: "author-2",
       name: "Badal Jain",
       avatar:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+        "https://ui-avatars.com/api/?name=Badal+Jain&size=150&background=8b5cf6&color=fff&bold=true",
       bio: "Full-stack developer and open source contributor",
       profileUrl: "https://github.com/badaljain",
     },
@@ -113,7 +113,7 @@ export const articles = [
       id: "author-3",
       name: "Dev Community",
       avatar:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+        "https://ui-avatars.com/api/?name=Dev+Community&size=150&background=ec4899&color=fff&bold=true",
       bio: "Collective wisdom from React Kolkata community",
       profileUrl: "https://github.com/reactplay",
     },
@@ -136,7 +136,7 @@ export const articles = [
       id: "author-1",
       name: "Priyanka Pal",
       avatar:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+        "https://ui-avatars.com/api/?name=Priyanka+Pal&size=150&background=6366f1&color=fff&bold=true",
       bio: "React developer and community organizer at React Kolkata",
       profileUrl: "https://github.com/priyankarpal",
     },
@@ -159,7 +159,7 @@ export const articles = [
       id: "author-2",
       name: "Badal Jain",
       avatar:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+        "https://ui-avatars.com/api/?name=Badal+Jain&size=150&background=8b5cf6&color=fff&bold=true",
       bio: "Full-stack developer and open source contributor",
       profileUrl: "https://github.com/badaljain",
     },
