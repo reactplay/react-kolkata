@@ -21,6 +21,7 @@ Welcome to **React Kolkata**! This project provides a robust foundation for Next
 - **Docker Support**: Easy containerization and deployment
 - **Internationalization (i18n)**: Built-in multi-language support with next-intl
 - **Playwright & Vitest**: E2E, unit, and integration testing
+- **Newsletter Subscription**: Engage community members with updates and announcements
 - **Community Events**: [React Kolkata on lu.ma](https://lu.ma/reactkolkata)
 
 ---

@@ -6,6 +6,7 @@ import BlogSection from "./(sections)/blogs";
 import CommunitySection from "./(sections)/community";
 import EventsSection from "./(sections)/event";
 import HeroSection from "./(sections)/hero";
+import NewsletterSection from "./(sections)/newsletter";
 import SponsorsSection from "./(sections)/sponsors";
 
 const LandingPage = async () => {
@@ -19,6 +20,7 @@ const LandingPage = async () => {
       <EventsSection />
       <CommunitySection />
       <BlogSection initialBlogs={initialBlogs} initialEndCursor={initialEndCursor} error={error} />
+      <NewsletterSection />
     </>
   );
 };
