@@ -22,7 +22,6 @@ export default function PlaygroundPage() {
 
   const handleSave = () => {
     // TODO: Implement actual save to backend/localStorage
-    console.log("Saving code:", code);
     setIsSaved(true);
     setTimeout(() => setIsSaved(false), 2000);
   };
@@ -35,7 +34,6 @@ export default function PlaygroundPage() {
 
   const handleShare = () => {
     // TODO: Implement actual sharing logic
-    console.log("Sharing code:", code);
   };
 
   const handleToggleBookmark = () => {

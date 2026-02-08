@@ -36,7 +36,6 @@ export function formatDate(isoDateString: string, format: DateFormat): string {
 
   // Check if date is valid
   if (isNaN(date.getTime())) {
-    console.warn("Invalid date provided to formatDate:", isoDateString);
     return "Invalid date";
   }
 

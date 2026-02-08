@@ -9,7 +9,5 @@ declare global {
 export const trackGAEvent = (action: string, params?: { [key: string]: any }) => {
   if (typeof window.gtag === "function") {
     window.gtag("event", action, params);
-  } else {
-    console.warn("gtag function not found. Analytics event not sent.");
   }
 };

@@ -52,7 +52,7 @@ export default function PlaygroundControls({
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (error) {
-      console.error("Failed to copy:", error);
+      // Silently fail - clipboard API may not be available
     }
   };
 
