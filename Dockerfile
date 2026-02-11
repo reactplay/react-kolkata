@@ -9,8 +9,8 @@ RUN apk update && apk upgrade --no-cache
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Install pnpm globally
-RUN npm install -g pnpm
+# Install pnpm globally with specific version
+RUN npm install -g pnpm@9.15.4
 
 # Copy package manifests and lock file
 COPY package.json pnpm-lock.yaml ./

@@ -34,7 +34,6 @@ export async function loadMoreBlogs(
     const endCursor = pageInfo.hasNextPage ? pageInfo.endCursor : null;
     return { posts, endCursor, error: null };
   } catch (error) {
-    console.error("Failed to fetch more blogs:", error);
     return {
       posts: [],
       endCursor: null,
