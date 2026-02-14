@@ -18,6 +18,7 @@ const LANGUAGES = [
   { code: "en", nativeName: "English" },
   { code: "bn", nativeName: "বাংলা" },
   { code: "hi", nativeName: "हिन्दी" },
+  { code: "es", nativeName: "Español" },
 ];
 
 export function LanguageSwitcher() {
