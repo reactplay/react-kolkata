@@ -35,7 +35,13 @@ const LandingPage = async () => {
         <CommunitySection />
       </WithErrorBoundary>
       <WithErrorBoundary>
-        <BlogSection initialBlogs={initialBlogs} initialEndCursor={initialEndCursor} error={error} />
+        {error ? (
+          <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
+            <p className="text-red-400">Failed to load blogs. Please try again later.</p>
+          </div>
+        ) : (
+          <BlogSection initialBlogs={initialBlogs} initialEndCursor={initialEndCursor} error={error} />
+        )}
       </WithErrorBoundary>
     </>
   );

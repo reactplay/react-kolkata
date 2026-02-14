@@ -27,7 +27,15 @@ export default function BlogList({
 }: BlogSectionProps & { showLoadMoreButton?: boolean }) {
   // Validate and filter initial blogs
   const validatedBlogs = initialBlogs.filter((blog) => {
-    if (!blog || !blog.title || !blog.author || !blog.publishedAt) {
+    if (
+      !blog ||
+      !blog.title ||
+      !blog.author ||
+      !blog.author.name ||
+      !blog.author.profilePicture ||
+      !blog.publishedAt ||
+      !Array.isArray(blog.tags)
+    ) {
       console.warn("BlogList: Filtering out invalid blog entry", blog);
       return false;
     }
@@ -87,31 +95,46 @@ export default function BlogList({
 
   const handleMoreBlogsCTA = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    startTransition(() => {
-      loadMoreBlogs(cursor, blogsToShow())
-        .then(({ posts: newBlogs, endCursor, error }) => {
-          if (error) {
+    loadMoreBlogs(cursor, blogsToShow())
+      .then(({ posts: newBlogs, endCursor, error }) => {
+        if (error) {
+          startTransition(() => {
             setBlogsResponse((prev) => ({ ...prev, error }));
-            return;
-          }
-          // Validate new blogs before adding
-          const validNewBlogs = newBlogs.filter((blog) => {
-            if (!blog || !blog.title || !blog.author || !blog.publishedAt) {
-              console.warn("BlogList: Filtering out invalid blog entry", blog);
-              return false;
-            }
-            return true;
           });
-          setBlogsResponse((prev) => ({ data: [...prev.data, ...validNewBlogs], error: null }));
+          return;
+        }
+        // Validate new blogs before adding
+        const validNewBlogs = newBlogs.filter((blog) => {
+          if (
+            !blog ||
+            !blog.title ||
+            !blog.author ||
+            !blog.author.name ||
+            !blog.author.profilePicture ||
+            !blog.publishedAt ||
+            !Array.isArray(blog.tags)
+          ) {
+            console.warn("BlogList: Filtering out invalid blog entry", blog);
+            return false;
+          }
+          return true;
+        });
+        startTransition(() => {
+          setBlogsResponse((prev) => ({
+            data: [...prev.data, ...validNewBlogs],
+            error: null,
+          }));
           setCursor(endCursor);
-        })
-        .catch((error) => {
+        });
+      })
+      .catch((error) => {
+        startTransition(() => {
           setBlogsResponse((prev) => ({
             ...prev,
             error: error instanceof Error ? error.message : "Failed to load blogs",
           }));
         });
-    });
+      });
   };
 
   return (

@@ -24,7 +24,14 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
   if (!blog) return null;
 
   // Validate required properties
-  if (!blog.title || !blog.author || !blog.publishedAt) {
+  if (
+    !blog.title ||
+    !blog.author ||
+    !blog.author.name ||
+    !blog.author.profilePicture ||
+    !blog.publishedAt ||
+    !Array.isArray(blog.tags)
+  ) {
     console.error("BlogModal: Invalid blog object", blog);
     return (
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
