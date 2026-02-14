@@ -1,6 +1,8 @@
 import React from "react";
 import { getInitialBlogs } from "@/utils/blog";
 
+import ErrorBoundary from "@/components/common/error-boundary";
+
 import AboutSection from "./(sections)/about";
 import BlogSection from "./(sections)/blogs";
 import CommunitySection from "./(sections)/community";
@@ -13,12 +15,24 @@ const LandingPage = async () => {
 
   return (
     <>
-      <HeroSection />
-      <AboutSection />
-      <SponsorsSection />
-      <EventsSection />
-      <CommunitySection />
-      <BlogSection initialBlogs={initialBlogs} initialEndCursor={initialEndCursor} error={error} />
+      <ErrorBoundary>
+        <HeroSection />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <AboutSection />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <SponsorsSection />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <EventsSection />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <CommunitySection />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <BlogSection initialBlogs={initialBlogs} initialEndCursor={initialEndCursor} error={error} />
+      </ErrorBoundary>
     </>
   );
 };

@@ -25,11 +25,20 @@ export default function BlogList({
   showLoadMoreButton = false,
   error,
 }: BlogSectionProps & { showLoadMoreButton?: boolean }) {
+  // Validate and filter initial blogs
+  const validatedBlogs = initialBlogs.filter((blog) => {
+    if (!blog || !blog.title || !blog.author || !blog.publishedAt) {
+      console.warn("BlogList: Filtering out invalid blog entry", blog);
+      return false;
+    }
+    return true;
+  });
+
   const [blogsResponse, setBlogsResponse] = useState<Omit<BlogResponse, "isLoading">>({
-    data: initialBlogs,
+    data: validatedBlogs,
     error: error || null,
   });
-  useState<Blog[]>(initialBlogs);
+  useState<Blog[]>(validatedBlogs);
   const [cursor, setCursor] = useState<string | null>(initialEndCursor);
 
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -78,22 +87,45 @@ export default function BlogList({
 
   const handleMoreBlogsCTA = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    startTransition(async () => {
-      try {
-        const { posts: newBlogs, endCursor } = await loadMoreBlogs(cursor, blogsToShow());
-        setBlogsResponse((prev) => ({ data: [...prev.data, ...newBlogs], error: null }));
-        setCursor(endCursor);
-      } catch (error) {
-        setBlogsResponse({ data: [], error: (error as Error).message });
-        setCursor(null);
-      }
+    startTransition(() => {
+      loadMoreBlogs(cursor, blogsToShow())
+        .then(({ posts: newBlogs, endCursor, error }) => {
+          if (error) {
+            setBlogsResponse((prev) => ({ ...prev, error }));
+            return;
+          }
+          // Validate new blogs before adding
+          const validNewBlogs = newBlogs.filter((blog) => {
+            if (!blog || !blog.title || !blog.author || !blog.publishedAt) {
+              console.warn("BlogList: Filtering out invalid blog entry", blog);
+              return false;
+            }
+            return true;
+          });
+          setBlogsResponse((prev) => ({ data: [...prev.data, ...validNewBlogs], error: null }));
+          setCursor(endCursor);
+        })
+        .catch((error) => {
+          setBlogsResponse((prev) => ({
+            ...prev,
+            error: error instanceof Error ? error.message : "Failed to load blogs",
+          }));
+        });
     });
   };
 
   return (
     <div className="mb-16 flex flex-col gap-8">
-      {error ? (
-        <p>{error}</p>
+      {blogsResponse.error ? (
+        <div className="rounded-lg border border-red-500/20 bg-red-500/5 p-6 text-center">
+          <p className="text-red-400">{blogsResponse.error}</p>
+          <button
+            onClick={() => setBlogsResponse((prev) => ({ ...prev, error: null }))}
+            className="mt-4 rounded-lg bg-sky-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-sky-600"
+          >
+            Dismiss
+          </button>
+        </div>
       ) : (
         <>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">

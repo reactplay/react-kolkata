@@ -19,7 +19,23 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
   const [authorImageError, setAuthorImageError] = useState(false);
 
   const defaultCoverImage = "/images/tech-events-1.jpg";
+  
+  // Validate blog object
   if (!blog) return null;
+
+  // Validate required properties
+  if (!blog.title || !blog.author || !blog.publishedAt) {
+    console.error("BlogModal: Invalid blog object", blog);
+    return (
+      <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+        <DialogContent className="border-white/10 bg-[#0B1220] text-slate-100">
+          <div className="p-8 text-center">
+            <p className="text-red-400">Unable to display blog post: Missing required data</p>
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
+  }
 
   return (
     <Dialog open={modalOpen} onOpenChange={setModalOpen}>

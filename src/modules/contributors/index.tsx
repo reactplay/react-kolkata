@@ -30,6 +30,7 @@ const ContributorsSection = () => {
     const fetchContributors = async () => {
       try {
         setLoading(true);
+        setError(null);
         const response = await fetch(
           "https://api.github.com/repos/reactplay/react-kolkata/contributors"
         );
@@ -40,13 +41,26 @@ const ContributorsSection = () => {
 
         const data = await response.json();
 
+        // Validate response data
+        if (!Array.isArray(data)) {
+          throw new Error("Invalid response format from GitHub API");
+        }
+
         // filter the bot contributors
-        const userContributors =
-          data?.filter((contributor: Contributor) => contributor.type === "User") || [];
+        const userContributors = data.filter(
+          (contributor: Contributor) =>
+            contributor &&
+            contributor.type === "User" &&
+            contributor.login &&
+            contributor.avatar_url
+        );
 
         setContributors(userContributors);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to fetch contributors");
+        const errorMessage =
+          err instanceof Error ? err.message : "Failed to fetch contributors";
+        setError(errorMessage);
+        console.error("Error fetching contributors:", err);
       } finally {
         setLoading(false);
       }
@@ -86,10 +100,18 @@ const ContributorsSection = () => {
     return (
       <AnimatedSection className="relative">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="text-red-400">
-              {t("error")}: {error}
-            </p>
+          <div className="rounded-lg border border-red-500/20 bg-red-500/5 p-8 text-center">
+            <div className="mb-4 text-4xl">⚠️</div>
+            <h3 className="mb-2 text-lg font-semibold text-red-400">
+              {t("error")}
+            </h3>
+            <p className="text-sm text-slate-400">{error}</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="mt-4 rounded-lg bg-sky-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-sky-600"
+            >
+              Try Again
+            </button>
           </div>
         </div>
       </AnimatedSection>
