@@ -60,7 +60,6 @@ const ContributorsSection = () => {
         const errorMessage =
           err instanceof Error ? err.message : "Failed to fetch contributors";
         setError(errorMessage);
-        console.error("Error fetching contributors:", err);
       } finally {
         setLoading(false);
       }

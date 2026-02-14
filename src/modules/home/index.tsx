@@ -13,26 +13,22 @@ import SponsorsSection from "./(sections)/sponsors";
 const LandingPage = async () => {
   const { posts: initialBlogs, endCursor: initialEndCursor, error } = await getInitialBlogs();
 
+  const sections = [
+    { Component: HeroSection, props: {} },
+    { Component: AboutSection, props: {} },
+    { Component: SponsorsSection, props: {} },
+    { Component: EventsSection, props: {} },
+    { Component: CommunitySection, props: {} },
+    { Component: BlogSection, props: { initialBlogs, initialEndCursor, error } },
+  ];
+
   return (
     <>
-      <ErrorBoundary>
-        <HeroSection />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <AboutSection />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <SponsorsSection />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <EventsSection />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <CommunitySection />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <BlogSection initialBlogs={initialBlogs} initialEndCursor={initialEndCursor} error={error} />
-      </ErrorBoundary>
+      {sections.map(({ Component, props }, index) => (
+        <ErrorBoundary key={index}>
+          <Component {...props} />
+        </ErrorBoundary>
+      ))}
     </>
   );
 };
