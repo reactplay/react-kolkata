@@ -46,7 +46,6 @@ export default function BlogList({
     data: validatedBlogs,
     error: error || null,
   });
-  useState<Blog[]>(validatedBlogs);
   const [cursor, setCursor] = useState<string | null>(initialEndCursor);
 
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
