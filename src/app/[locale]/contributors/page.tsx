@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import ContributorsSection from "@/modules/contributors";
 import { getTranslations } from "next-intl/server";
 
+import ErrorBoundary from "@/components/common/error-boundary";
+
 export async function generateMetadata({
   params,
 }: {
@@ -37,5 +39,9 @@ export async function generateMetadata({
 }
 
 export default function ContributorsPage() {
-  return <ContributorsSection />;
+  return (
+    <ErrorBoundary>
+      <ContributorsSection />
+    </ErrorBoundary>
+  );
 }

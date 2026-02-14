@@ -31,6 +31,16 @@ const BlogCard: React.FC<BlogCardProps> = ({
   const [modalOpen, setModalOpen] = useState(false);
   const { isPad, isDesktop } = useDeviceDetail();
 
+  // Validate required properties
+  if (!title || !publishedAt || !author || !author.name) {
+    console.error("BlogCard: Missing required properties", { title, publishedAt, author });
+    return (
+      <article className="flex cursor-not-allowed flex-col rounded-xl border border-red-500/20 bg-red-500/5 p-5">
+        <p className="text-sm text-red-400">Invalid blog data</p>
+      </article>
+    );
+  }
+
   const authorNameLimit = isDesktop
     ? AUTHOR_NAME_CHAR_LIMIT_XL
     : isPad
@@ -71,7 +81,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
         {/* Tags, Title & Excerpt */}
         <div className="flex flex-1 flex-col">
           <div className="mb-3 flex flex-wrap gap-1">
-            {tags.slice(0, featured ? 4 : 2).map((tag) => (
+            {tags && Array.isArray(tags) && tags.slice(0, featured ? 4 : 2).map((tag) => (
               <Badge
                 key={tag.id}
                 variant="secondary"
