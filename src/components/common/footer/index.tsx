@@ -40,26 +40,30 @@ const Footer = () => {
   };
 
   return (
-    <footer className="border-t border-white/5 bg-[#0B1220]">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
-        <div>
-          <Link href="/" className="flex items-center gap-1" aria-label="React Kolkata Home">
-            <div className="relative h-25 w-25">
-              <Image
-                alt="react kolkata brand logo"
-                src="/logo.svg"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
+    <footer className="border-t border-white/5 bg-[#0B1220] text-slate-400">
+      {/* ===== MAIN GRID ===== */}
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 md:grid-cols-3">
+        {/* LEFT — BRAND */}
+        <div className="space-y-4">
+          <Link href="/" className="flex items-center gap-3" aria-label="React Kolkata Home">
+            <Image
+              src="/logo.svg"
+              alt="React Kolkata logo"
+              width={60}
+              height={60}
+              className="object-contain"
+              priority
+            />
           </Link>
-          <p className="text-sm text-slate-400">{t("description")}</p>
+
+          <p className="text-sm leading-relaxed">{t("description")}</p>
         </div>
 
-        <nav aria-label="Quick links">
-          <h3 className="text-sm font-semibold text-slate-200">{t("quick_links_title")}</h3>
-          <ul className="mt-3 space-y-2">
+        {/* MIDDLE — QUICK LINKS (Centered) */}
+        <nav aria-label="Quick links" className="flex flex-col items-center text-center">
+          <h3 className="mb-4 text-sm font-semibold text-white">{t("quick_links_title")}</h3>
+
+          <ul className="space-y-3 text-sm">
             {quickLinks.map((l) => (
               <li key={l.href}>
                 {l.external ? (
@@ -67,12 +71,12 @@ const Footer = () => {
                     href={l.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-slate-400 hover:text-slate-200"
+                    className="transition hover:text-white"
                   >
                     {l.label}
                   </NextLink>
                 ) : (
-                  <Link href={l.href} className="text-sm text-slate-400 hover:text-slate-200">
+                  <Link href={l.href} className="transition hover:text-white">
                     {l.label}
                   </Link>
                 )}
@@ -81,76 +85,76 @@ const Footer = () => {
           </ul>
         </nav>
 
+        {/* RIGHT — CONTACT */}
         <div>
-          <h3 className="text-sm font-semibold text-slate-200">{t("contact_title")}</h3>
-          <ul className="mt-3 space-y-2 text-sm text-slate-400">
-            <li className="flex items-center gap-2">
-              <Mail className="h-4 w-4" aria-hidden />{" "}
-              <a href="mailto:reactkolkata@gmail.com" className="hover:text-slate-200">
-                reactkolkata@gmail.com
-              </a>
-            </li>
-            <li className="mt-4 flex items-center gap-4">
-              <a
-                className="hover:text-white"
-                aria-label={t("aria_labels.x")}
-                href="https://x.com/reactkolkata"
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => handleSocialClick("X")}
-              >
-                <XLogo className="h-5 w-5 text-slate-400 hover:text-white" />
-              </a>
-              <a
-                className="hover:text-white"
-                aria-label={t("aria_labels.github")}
-                href="https://github.com/reactplay/react-kolkata"
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => handleSocialClick("GitHub")}
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a
-                className="hover:text-white"
-                aria-label={t("aria_labels.linkedin")}
-                href="https://www.linkedin.com/showcase/react-kolkata"
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => handleSocialClick("LinkedIn")}
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                className="hover:text-white"
-                aria-label={t("aria_labels.youtube")}
-                href="https://www.youtube.com/@ReactPlayIO"
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => handleSocialClick("YouTube")}
-              >
-                <Youtube className="h-5 w-5" />
-              </a>
-              <a
-                className="hover:text-white"
-                aria-label={t("aria_labels.discord")}
-                href="https://discord.gg/VRVfn2Vss"
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => handleSocialClick("Discord")}
-              >
-                <SiDiscord className="h-5 w-5" />
-              </a>
-            </li>
-          </ul>
+          <h3 className="mb-4 text-sm font-semibold text-white">{t("contact_title")}</h3>
+
+          {/* Email */}
+          <div className="flex items-center gap-2 text-sm">
+            <Mail className="h-4 w-4" />
+            <a href="mailto:reactkolkata@gmail.com" className="transition hover:text-white">
+              reactkolkata@gmail.com
+            </a>
+          </div>
+
+          {/* Socials */}
+          <div className="mt-6 flex flex-wrap items-center gap-5">
+            <a
+              href="https://x.com/reactkolkata"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => handleSocialClick("X")}
+              className="text-slate-400 transition hover:text-white"
+            >
+              <XLogo className="h-5 w-5" />
+            </a>
+
+            <a
+              href="https://github.com/reactplay/react-kolkata"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => handleSocialClick("GitHub")}
+              className="text-slate-400 transition hover:text-white"
+            >
+              <Github className="h-5 w-5" />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/showcase/react-kolkata"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => handleSocialClick("LinkedIn")}
+              className="text-slate-400 transition hover:text-white"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+
+            <a
+              href="https://www.youtube.com/@ReactPlayIO"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => handleSocialClick("YouTube")}
+              className="text-slate-400 transition hover:text-white"
+            >
+              <Youtube className="h-5 w-5" />
+            </a>
+
+            <a
+              href="https://discord.gg/VRVfn2Vss"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => handleSocialClick("Discord")}
+              className="text-slate-400 transition hover:text-white"
+            >
+              <SiDiscord className="h-5 w-5" />
+            </a>
+          </div>
         </div>
       </div>
-      <div className="border-t border-white/5">
-        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-6 text-xs text-slate-500 sm:px-6 lg:px-8">
-          <p>
-            &copy; {new Date().getFullYear()} {t("rights_reserved")}
-          </p>
-        </div>
+
+      {/* ===== BOTTOM BAR ===== */}
+      <div className="border-t border-white/5 py-6 text-center text-xs">
+        © {new Date().getFullYear()} {t("rights_reserved")}
       </div>
     </footer>
   );
