@@ -1,0 +1,144 @@
+{
+  "Hero": {
+    "badge": "Comunidad • Eventos • Aprendizaje",
+    "title": "React Kolkata",
+    "subtitle": "Construye. Aprende. Conecta.",
+    "description": "Un centro moderno para desarrolladores de React en Kolkata. Únete a nuestros meetups, charlas y talleres para mejorar tus habilidades y conectar con la comunidad.",
+    "join_community": "Únete a la Comunidad",
+    "see_events": "Ver Próximos Eventos"
+  },
+  "About": {
+    "title": "Sobre React Kolkata",
+    "description": "Somos una comunidad enfocada en compartir conocimiento, colaborar y apoyar el crecimiento profesional de desarrolladores React en Kolkata y más allá. Nuestra misión es crear un espacio inclusivo donde desarrolladores de todos los niveles puedan aprender, crecer y contribuir.",
+    "what_we_do": "Qué Hacemos",
+    "what_we_do_description": "Descubre las diferentes maneras en que apoyamos y hacemos crecer nuestra comunidad",
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "Empoderar a desarrolladores a través de eventos, talleres y mentorías mientras fomentamos una comunidad inclusiva y acogedora para el aprendizaje continuo."
+    },
+    "values": {
+      "title": "Nuestros Valores",
+      "description": "Apertura, inclusión, aprendizaje continuo y compartir conocimiento y oportunidades para apoyar el crecimiento profesional."
+    },
+    "impact": {
+      "title": "Impacto en la Comunidad",
+      "description": "Meetups mensuales, charlas rápidas, sesiones prácticas y colaboraciones con organizaciones tecnológicas locales."
+    },
+    "features": {
+      "technical_workshops": {
+        "title": "Talleres Técnicos",
+        "description": "Sesiones prácticas de programación cubriendo los últimos patrones y mejores prácticas de React."
+      },
+      "community_meetups": {
+        "title": "Meetups Comunitarios",
+        "description": "Reuniones regulares para conectar, compartir experiencias y aprender juntos."
+      },
+      "lightning_talks": {
+        "title": "Charlas Relámpago",
+        "description": "Presentaciones breves sobre temas específicos y nuevas tecnologías."
+      },
+      "project_showcases": {
+        "title": "Presentación de Proyectos",
+        "description": "Espacio para que los miembros muestren sus proyectos y reciban retroalimentación."
+      },
+      "mentorship_program": {
+        "title": "Programa de Mentoría",
+        "description": "Conecta desarrolladores experimentados con principiantes para orientación profesional."
+      },
+      "open_source": {
+        "title": "Contribuciones Open Source",
+        "description": "Proyectos colaborativos y contribuciones al ecosistema React."
+      }
+    }
+  },
+  "Events": {
+    "title": "Eventos",
+    "description": "Únete a nuestros meetups y talleres. Aprende, conecta y construye.",
+    "filter": "Filtrar",
+    "view_all": "Ver todos",
+    "register": "Registrarse",
+    "details": "Detalles",
+    "watch_recording": "Ver grabación",
+    "view_slides": "Ver diapositivas",
+    "upcoming_events": "Próximos Eventos",
+    "past_events": "Eventos Pasados",
+    "call_for_speakers": "Convocatoria para Ponentes",
+    "call_for_volunteers": "Convocatoria para Voluntarios",
+    "view_all_events": "Ver Todos los Eventos",
+    "view_all_past_events": "Ver Todos los Eventos Pasados",
+    "coming_soon": "Próximamente",
+    "community_partners_title": "Socios de la Comunidad",
+    "community_partners_description": "Colaboramos con comunidades increíbles para brindarte más valor.",
+    "become_partner_cta": "Conviértete en socio",
+    "partner_visit_label": "Visitar",
+    "partner_visit_cta": "Abrir"
+  },
+  "Blog": {
+    "title": "Último del Blog",
+    "description": "Guías, consejos y novedades de la comunidad React Kolkata.",
+    "filter": "Filtrar",
+    "view_all_posts": "Ver todas las publicaciones",
+    "filter_by_tags": "Filtrar por etiquetas",
+    "showing_posts": "Mostrando {count} de {total} publicaciones",
+    "clear": "Limpiar"
+  },
+  "Contributors": {
+    "title": "Nuestros Colaboradores",
+    "description": "Conoce a las personas increíbles que hacen posible React Kolkata.",
+    "loading": "Cargando colaboradores...",
+    "error": "Error al cargar colaboradores",
+    "total_contributors": "Total de colaboradores: {count}",
+    "footer_note": "Los colaboradores se obtienen automáticamente de nuestro repositorio en GitHub."
+  },
+  "Sponsors": {
+    "title": "Nuestros Patrocinadores",
+    "description": "React Kolkata es impulsado por patrocinadores generosos que apoyan nuestros eventos y talleres.",
+    "card": {
+      "title": "Conviértete en Patrocinador",
+      "description": "Apoya a la comunidad patrocinando un evento o contribuyendo recursos.",
+      "cta": "Aprende cómo patrocinar"
+    },
+    "sample": {
+      "name": "Muestra tu marca — conviértete en patrocinador",
+      "description": "Patrocina un evento para ganar visibilidad entre desarrolladores locales."
+    }
+  },
+  "NotFound": {
+    "404": "404",
+    "dosen't_exist_text": "¡Ups! La página que buscas no existe.",
+    "go_to_home": "Volver al Inicio"
+  },
+  "Navbar": {
+    "home": "Inicio",
+    "core_team": "Equipo Central",
+    "contributors": "Colaboradores",
+    "events": "Eventos",
+    "join_community": "Únete a la Comunidad",
+    "x": "X",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "youtube": "YouTube",
+    "discord": "Discord"
+  },
+  "Footer": {
+    "description": "Una comunidad para desarrolladores React en Kolkata. Reúnete, aprende y construye juntos.",
+    "quick_links_title": "Enlaces Rápidos",
+    "quick_links": {
+      "events": "Eventos",
+      "contributors": "Colaboradores",
+      "join_us": "Únete"
+    },
+    "contact_title": "Contacto",
+    "rights_reserved": "React Kolkata. Todos los derechos reservados.",
+    "aria_labels": {
+      "x": "X (Twitter)",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "youtube": "YouTube",
+      "discord": "Discord"
+    }
+  },
+  "LanguageSwitcher": {
+    "label": "Cambiar idioma"
+  }
+}
