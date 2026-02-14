@@ -10,25 +10,33 @@ import EventsSection from "./(sections)/event";
 import HeroSection from "./(sections)/hero";
 import SponsorsSection from "./(sections)/sponsors";
 
+const WithErrorBoundary = ({ children }: { children: React.ReactNode }) => (
+  <ErrorBoundary>{children}</ErrorBoundary>
+);
+
 const LandingPage = async () => {
   const { posts: initialBlogs, endCursor: initialEndCursor, error } = await getInitialBlogs();
 
-  const sections = [
-    { Component: HeroSection, props: {} },
-    { Component: AboutSection, props: {} },
-    { Component: SponsorsSection, props: {} },
-    { Component: EventsSection, props: {} },
-    { Component: CommunitySection, props: {} },
-    { Component: BlogSection, props: { initialBlogs, initialEndCursor, error } },
-  ];
-
   return (
     <>
-      {sections.map(({ Component, props }, index) => (
-        <ErrorBoundary key={index}>
-          <Component {...props} />
-        </ErrorBoundary>
-      ))}
+      <WithErrorBoundary>
+        <HeroSection />
+      </WithErrorBoundary>
+      <WithErrorBoundary>
+        <AboutSection />
+      </WithErrorBoundary>
+      <WithErrorBoundary>
+        <SponsorsSection />
+      </WithErrorBoundary>
+      <WithErrorBoundary>
+        <EventsSection />
+      </WithErrorBoundary>
+      <WithErrorBoundary>
+        <CommunitySection />
+      </WithErrorBoundary>
+      <WithErrorBoundary>
+        <BlogSection initialBlogs={initialBlogs} initialEndCursor={initialEndCursor} error={error} />
+      </WithErrorBoundary>
     </>
   );
 };
