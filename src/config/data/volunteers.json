@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "name": "Sappy Mukherjee",
+    "role": "Organizer",
+    "bio": "Passionate about React and building community in Kolkata.",
+    "photo": "https://github.com/sappymukherjee214.png",
+    "socials": {
+      "github": "https://github.com/sappymukherjee214",
+      "linkedin": "https://linkedin.com/in/sappymukherjee",
+      "twitter": "https://twitter.com/sappymukherjee"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Arindam Majumder",
+    "role": "Organizer",
+    "bio": "Lead at React Play and Core member of React Kolkata.",
+    "photo": "/images/arindam.jpeg",
+    "socials": {
+      "github": "https://github.com/arindam-majumder",
+      "linkedin": "https://linkedin.com/in/arindam-majumder"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Anisur Rahman",
+    "role": "Coordinator",
+    "bio": "Helping organize meetups and connecting developers.",
+    "photo": "https://github.com/anisurrahman77.png",
+    "socials": {
+      "github": "https://github.com/anisurrahman77",
+      "linkedin": "https://linkedin.com/in/anisurrahman77"
+    }
+  }
+]

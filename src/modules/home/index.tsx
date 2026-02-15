@@ -4,11 +4,13 @@ import { getInitialBlogs } from "@/utils/blog";
 import ErrorBoundary from "@/components/common/error-boundary";
 
 import AboutSection from "./(sections)/about";
+import CoreTeam from "./(sections)/about/core-team";
 import BlogSection from "./(sections)/blogs";
 import CommunitySection from "./(sections)/community";
 import EventsSection from "./(sections)/event";
 import HeroSection from "./(sections)/hero";
 import SponsorsSection from "./(sections)/sponsors";
+import VolunteerSection from "./(sections)/volunteers";
 
 const WithErrorBoundary = ({ children }: { children: React.ReactNode }) => (
   <ErrorBoundary>{children}</ErrorBoundary>
@@ -32,6 +34,12 @@ const LandingPage = async () => {
         <EventsSection />
       </WithErrorBoundary>
       <WithErrorBoundary>
+        <CoreTeam />
+      </WithErrorBoundary>
+      <WithErrorBoundary>
+        <VolunteerSection />
+      </WithErrorBoundary>
+      <WithErrorBoundary>
         <CommunitySection />
       </WithErrorBoundary>
       <WithErrorBoundary>
@@ -40,7 +48,11 @@ const LandingPage = async () => {
             <p className="text-red-400">Failed to load blogs. Please try again later.</p>
           </div>
         ) : (
-          <BlogSection initialBlogs={initialBlogs} initialEndCursor={initialEndCursor} error={error} />
+          <BlogSection
+            initialBlogs={initialBlogs}
+            initialEndCursor={initialEndCursor}
+            error={error}
+          />
         )}
       </WithErrorBoundary>
     </>

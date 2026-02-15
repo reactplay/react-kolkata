@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: process.env.NEXT_PUBLIC_NODE_ENV === 'development',
   images: {
-    formats: ['image/avif', 'image/webp'], 
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: "https",
@@ -52,6 +52,12 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "media-exp1.licdn.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "github.com",
         port: "",
         pathname: "/**",
       },

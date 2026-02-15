@@ -83,7 +83,7 @@ describe("EventsSection Integration", () => {
     ).toBeInTheDocument();
   });
 
-  it("should render all event cards by default", () => {
+  it("should render the first upcoming event card by default", () => {
     render(
       <TestWrapper>
         <EventsSection />
@@ -91,9 +91,9 @@ describe("EventsSection Integration", () => {
     );
 
     expect(screen.getByTestId("event-card-e-001")).toBeInTheDocument();
-    expect(screen.getByTestId("event-card-e-002")).toBeInTheDocument();
+    expect(screen.queryByTestId("event-card-e-002")).not.toBeInTheDocument();
     expect(screen.getByText("React Workshop")).toBeInTheDocument();
-    expect(screen.getByText("Online Meetup")).toBeInTheDocument();
+    expect(screen.queryByText("Online Meetup")).not.toBeInTheDocument();
   });
 
   it("should show and hide filters when filter button is clicked", async () => {
@@ -195,9 +195,9 @@ describe("EventsSection Integration", () => {
       </TestWrapper>
     );
 
-    const viewAllLink = screen.getByText("View all");
+    const viewAllLink = screen.getByText("View All Events");
     expect(viewAllLink).toBeInTheDocument();
-    expect(viewAllLink).toHaveAttribute("href", "https://luma.com/reactkolkata");
+    expect(viewAllLink).toHaveAttribute("href", "/events");
   });
 
   it("should have proper component structure", () => {
@@ -213,7 +213,7 @@ describe("EventsSection Integration", () => {
 
     // Should have event cards grid
     expect(screen.getByTestId("event-card-e-001")).toBeInTheDocument();
-    expect(screen.getByTestId("event-card-e-002")).toBeInTheDocument();
+    expect(screen.queryByTestId("event-card-e-002")).not.toBeInTheDocument();
   });
 
   it("should pass correct event data to EventCard components", () => {
@@ -223,10 +223,8 @@ describe("EventsSection Integration", () => {
       </TestWrapper>
     );
 
-    // Check that event data is passed correctly
+    // Check that event data is passed correctly for the first event
     expect(screen.getByText("React Workshop")).toBeInTheDocument();
-    expect(screen.getByText("Online Meetup")).toBeInTheDocument();
     expect(screen.getByText("offline")).toBeInTheDocument(); // Event type
-    expect(screen.getByText("online")).toBeInTheDocument(); // Event type
   });
 });

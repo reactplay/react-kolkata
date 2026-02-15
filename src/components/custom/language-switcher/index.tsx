@@ -22,15 +22,28 @@ const LANGUAGES = [
 ];
 
 export function LanguageSwitcher() {
+  const [mounted, setMounted] = React.useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations("LanguageSwitcher");
 
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const onSelectLanguage = (newLocale: string) => {
     // This function replaces the pathname with the new locale
     router.replace(pathname, { locale: newLocale });
   };
+
+  if (!mounted) {
+    return (
+      <Button variant="ghost" size="icon" disabled>
+        <Languages className="h-5 w-5 text-slate-400" />
+      </Button>
+    );
+  }
 
   return (
     <DropdownMenu>

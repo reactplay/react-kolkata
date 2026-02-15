@@ -140,5 +140,14 @@
   },
   "LanguageSwitcher": {
     "label": "Change language"
+  },
+  "Home": {
+    "Volunteers": {
+      "title": "Community Volunteers",
+      "description": "Meet the dedicated individuals who volunteer their time and effort to organize events, manage the community, and help React Kolkata thrive.",
+      "join_title": "Want to contribute?",
+      "join_description": "We are always looking for passionate people to join our team of volunteers. Whether you're an expert or a beginner, there are many ways to help!",
+      "join_button": "Join as a Volunteer"
+    }
   }
 }

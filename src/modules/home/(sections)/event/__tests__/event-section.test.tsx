@@ -111,16 +111,16 @@ describe("EventsSection", () => {
     expect(screen.getByText("Filter")).toBeInTheDocument();
   });
 
-  it("should render 'View all' link", () => {
+  it("should render 'View All Events' link", () => {
     render(
       <TestWrapper>
         <EventsSection />
       </TestWrapper>
     );
-    expect(screen.getByText("View all")).toBeInTheDocument();
+    expect(screen.getByText("View All Events")).toBeInTheDocument();
   });
 
-  it("should render all event cards by default", () => {
+  it("should render the first upcoming event card by default", () => {
     render(
       <TestWrapper>
         <EventsSection />
@@ -128,8 +128,8 @@ describe("EventsSection", () => {
     );
 
     expect(screen.getByTestId("event-card-e-001")).toBeInTheDocument();
-    expect(screen.getByTestId("event-card-e-002")).toBeInTheDocument();
-    expect(screen.getByTestId("event-card-e-003")).toBeInTheDocument();
+    // Only the first one is shown in the upcoming section layout
+    expect(screen.queryByTestId("event-card-e-002")).not.toBeInTheDocument();
   });
 
   it("should show filter section when filter button is clicked", async () => {
@@ -258,10 +258,10 @@ describe("EventsSection", () => {
     const filterUpcomingButton = screen.getByText("Filter Upcoming");
     fireEvent.click(filterUpcomingButton);
 
-    // All events should still be visible since they're all upcoming in our mock
+    // Only the first matching upcoming event is shown in the current layout
     expect(screen.getByTestId("event-card-e-001")).toBeInTheDocument();
-    expect(screen.getByTestId("event-card-e-002")).toBeInTheDocument();
-    expect(screen.getByTestId("event-card-e-003")).toBeInTheDocument();
+    expect(screen.queryByTestId("event-card-e-002")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("event-card-e-003")).not.toBeInTheDocument();
   });
 
   it("should filter events based on type", async () => {
