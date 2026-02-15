@@ -4,6 +4,7 @@ import { getInitialBlogs } from "@/utils/blog";
 import { getTranslations } from "next-intl/server";
 
 import BlogList from "@/components/common/blog/BlogList";
+import ErrorBoundary from "@/components/common/error-boundary";
 
 export async function generateMetadata({
   params,
@@ -44,12 +45,14 @@ const BlogPage = async () => {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-      <BlogList
-        initialBlogs={initialBlogs}
-        initialEndCursor={initialEndCursor}
-        error={error}
-        showLoadMoreButton={true}
-      />
+      <ErrorBoundary>
+        <BlogList
+          initialBlogs={initialBlogs}
+          initialEndCursor={initialEndCursor}
+          error={error}
+          showLoadMoreButton={true}
+        />
+      </ErrorBoundary>
     </div>
   );
 };
