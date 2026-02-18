@@ -42,8 +42,7 @@ const Footer = () => {
   return (
     <footer className="border-t border-white/5 bg-[#0B1220] text-slate-400">
       {/* ===== MAIN GRID ===== */}
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 md:grid-cols-3">
-        {/* LEFT — BRAND */}
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-4">
           <Link href="/" className="flex items-center gap-3" aria-label="React Kolkata Home">
             <Image
@@ -55,37 +54,44 @@ const Footer = () => {
               priority
             />
           </Link>
-
           <p className="text-sm leading-relaxed">{t("description")}</p>
         </div>
 
-        {/* MIDDLE — QUICK LINKS (Centered) */}
-        <nav aria-label="Quick links" className="flex flex-col items-center text-center">
-          <h3 className="mb-4 text-sm font-semibold text-white">{t("quick_links_title")}</h3>
+        <div className="flex flex-col space-y-4">
+          <h3 className="text-sm font-semibold text-white">{t("about_project_title")}</h3>
+          <p className="text-sm leading-relaxed">{t("about_project_description")}</p>
+          <div className="text-sm">
+            <span className="font-medium text-slate-300">{t("tech_stack_label")}</span>
+            <p className="mt-1 font-mono text-xs text-slate-500">{t("tech_stack_list")}</p>
+          </div>
+        </div>
 
-          <ul className="space-y-3 text-sm">
-            {quickLinks.map((l) => (
-              <li key={l.href}>
-                {l.external ? (
-                  <NextLink
-                    href={l.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition hover:text-white"
-                  >
-                    {l.label}
-                  </NextLink>
-                ) : (
-                  <Link href={l.href} className="transition hover:text-white">
-                    {l.label}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
+        <nav aria-label="Quick links" className="flex flex-col md:items-start lg:items-center">
+          <div className="flex flex-col">
+            <h3 className="mb-4 text-sm font-semibold text-white">{t("quick_links_title")}</h3>
+            <ul className="space-y-3 text-sm">
+              {quickLinks.map((l) => (
+                <li key={l.href}>
+                  {l.external ? (
+                    <NextLink
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition hover:text-white"
+                    >
+                      {l.label}
+                    </NextLink>
+                  ) : (
+                    <Link href={l.href} className="transition hover:text-white">
+                      {l.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
         </nav>
 
-        {/* RIGHT — CONTACT */}
         <div>
           <h3 className="mb-4 text-sm font-semibold text-white">{t("contact_title")}</h3>
 
