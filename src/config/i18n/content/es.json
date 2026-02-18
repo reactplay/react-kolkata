@@ -143,11 +143,11 @@
   },
   "Home": {
     "Volunteers": {
-      "title": "Voluntarios de la Comunidad",
+      "title": "Campeón de la Comunidad",
       "description": "Conozca a las personas dedicadas que ofrecen su tiempo y esfuerzo para organizar eventos, gestionar la comunidad y ayudar a que React Kolkata prospere.",
       "join_title": "¿Quieres contribuir?",
-      "join_description": "Siempre estamos buscando personas apasionadas para unirse a nuestro equipo de voluntarios. Ya seas un experto o un principiante, ¡hay muchas maneras de ayudar!",
-      "join_button": "Únete como Voluntario"
+      "join_description": "Siempre estamos buscando personas apasionadas para unirse a nuestro equipo. Ya seas un experto o un principiante, ¡hay muchas maneras de ayudar!",
+      "join_button": "Únete como Campeón"
     }
   }
 }
