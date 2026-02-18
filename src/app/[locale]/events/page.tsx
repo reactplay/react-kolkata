@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import CfpCard from "@/modules/home/(sections)/event/cfp-card";
+import ChampionCard from "@/modules/home/(sections)/event/champion-card";
 import ComingSoonCard from "@/modules/home/(sections)/event/coming-soon-card";
 import EventCard from "@/modules/home/(sections)/event/event-card";
 import EventCardCompact from "@/modules/home/(sections)/event/event-card-compact";
-import VolunteerCard from "@/modules/home/(sections)/event/volunteer-card";
 import { EVENT_STATUS } from "@/types/event";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
@@ -92,7 +92,7 @@ export default function EventsPage() {
 
               <div className="flex flex-col gap-6">
                 <CfpCard />
-                <VolunteerCard />
+                <ChampionCard />
               </div>
             </div>
           ) : (

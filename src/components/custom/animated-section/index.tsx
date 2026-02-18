@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { motion, type Variants } from "motion/react";
+import { motion, type Variants } from "framer-motion";
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -17,14 +17,17 @@ const fallbackVariants: Variants = {
 export default function AnimatedSection({
   children,
   className = "",
+  id,
   disableAnimation = false,
 }: {
   children: React.ReactNode;
   className?: string;
+  id?: string;
   disableAnimation?: boolean;
 }) {
   return (
     <motion.section
+      id={id}
       className={className}
       variants={disableAnimation ? fallbackVariants : variants}
       initial="hidden"

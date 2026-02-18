@@ -12,11 +12,11 @@ import AnimatedSection from "@/components/custom/animated-section";
 import { events } from "@/base/data/dummy";
 
 import CfpCard from "./cfp-card";
+import ChampionCard from "./champion-card";
 import ComingSoonCard from "./coming-soon-card";
 import EventCard from "./event-card";
 import EventCardCompact from "./event-card-compact";
 import EventFiltersComponent from "./event-filters";
-import VolunteerCard from "./volunteer-card";
 
 export default function EventsSection() {
   const t = useTranslations("Events");
@@ -128,7 +128,7 @@ export default function EventsSection() {
               {t("upcoming_events")}
             </h3>
 
-            {/* Wireframe layout: Large upcoming event card + 2 smaller CFP/Volunteer cards */}
+            {/* Wireframe layout: Large upcoming event card + 2 smaller CFP/Champion cards */}
             {filteredUpcomingEvents.length > 0 ? (
               <div className="grid gap-6 lg:grid-cols-3 lg:items-start">
                 {/* Large upcoming event card - takes 2 columns */}
@@ -138,10 +138,10 @@ export default function EventsSection() {
                   ))}
                 </div>
 
-                {/* CFP and Volunteer Cards - stacked vertically, matching left card height */}
+                {/* CFP and Champion Cards - stacked vertically, matching left card height */}
                 <div className="flex flex-col gap-6 lg:h-full">
                   <CfpCard />
-                  <VolunteerCard />
+                  <ChampionCard />
                 </div>
               </div>
             ) : (
