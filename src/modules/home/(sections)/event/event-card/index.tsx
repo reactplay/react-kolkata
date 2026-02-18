@@ -30,7 +30,7 @@ export default function EventCard({ event }: EventCardProps) {
   };
 
   return (
-    <article className="group relative overflow-hidden rounded-xl border border-white/5 bg-white/5 transition hover:-translate-y-1 hover:bg-white/10">
+    <article className="group relative h-full overflow-hidden rounded-xl border border-white/5 bg-white/5 transition hover:-translate-y-1 hover:bg-white/10">
       <div className="relative h-44 w-full overflow-hidden">
         <Image
           src={event.image ?? "/images/tech-events-1.jpg"}

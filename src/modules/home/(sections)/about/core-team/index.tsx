@@ -47,9 +47,9 @@ const CoreTeam = () => (
             href={member.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="group block transition-transform hover:-translate-y-1"
+            className="group flex h-full w-full transition-transform hover:-translate-y-1"
           >
-            <div className="flex flex-col items-center rounded-xl border border-white/5 bg-white/5 p-4 shadow-lg backdrop-blur-sm transition-all hover:border-white/10 hover:bg-white/10 hover:shadow-sky-500/5 md:p-6">
+            <div className="flex h-full w-full flex-col items-center rounded-xl border border-white/5 bg-white/5 p-4 shadow-lg backdrop-blur-sm transition-all hover:border-white/10 hover:bg-white/10 hover:shadow-sky-500/5 md:p-6">
               <div className="relative mb-4">
                 <div className="relative h-24 w-24 overflow-hidden rounded-full ring-4 ring-sky-500/20 transition-all group-hover:ring-sky-500/40 md:h-28 md:w-28">
                   <Image

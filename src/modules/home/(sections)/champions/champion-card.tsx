@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Globe, Linkedin, Twitter, User } from "lucide-react";
+import { Github, Linkedin, User } from "lucide-react";
 
-export interface Volunteer {
+export interface Champion {
   id: number;
   name: string;
   role: string;
@@ -11,24 +11,22 @@ export interface Volunteer {
   socials: {
     github?: string;
     linkedin?: string;
-    twitter?: string;
-    website?: string;
   };
 }
 
-interface VolunteerCardProps {
-  volunteer: Volunteer;
+interface ChampionCardProps {
+  champion: Champion;
 }
 
-const VolunteerCard = ({ volunteer }: VolunteerCardProps) => {
+const ChampionCard = ({ champion }: ChampionCardProps) => {
   return (
-    <div className="group relative flex flex-col items-center overflow-hidden rounded-xl border border-white/5 bg-white/5 p-6 text-center backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10">
+    <div className="group relative flex h-full flex-col items-center overflow-hidden rounded-xl border border-white/5 bg-white/5 p-6 text-center backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/10">
       {/* Photo */}
       <div className="relative mb-4 h-24 w-24 overflow-hidden rounded-full ring-2 ring-sky-500/20 transition-all group-hover:ring-sky-500/40">
-        {volunteer.photo ? (
+        {champion.photo ? (
           <Image
-            src={volunteer.photo}
-            alt={`${volunteer.name}'s photo`}
+            src={champion.photo}
+            alt={`${champion.name}'s photo`}
             fill
             unoptimized
             className="object-cover transition-transform group-hover:scale-110"
@@ -41,19 +39,19 @@ const VolunteerCard = ({ volunteer }: VolunteerCardProps) => {
       </div>
 
       {/* Name & Role */}
-      <h3 className="mb-1 text-xl font-bold text-slate-100">{volunteer.name}</h3>
+      <h3 className="mb-1 text-xl font-bold text-slate-100">{champion.name}</h3>
       <span className="mb-3 inline-flex items-center rounded-full border border-sky-500/20 bg-sky-500/10 px-2.5 py-0.5 text-xs font-medium text-sky-400">
-        {volunteer.role}
+        {champion.role}
       </span>
 
       {/* Bio */}
-      <p className="mb-6 line-clamp-3 text-sm leading-relaxed text-slate-400">{volunteer.bio}</p>
+      <p className="mb-6 line-clamp-3 text-sm leading-relaxed text-slate-400">{champion.bio}</p>
 
       {/* Social Links */}
       <div className="mt-auto flex gap-3">
-        {volunteer.socials.github && (
+        {champion.socials.github && (
           <Link
-            href={volunteer.socials.github}
+            href={champion.socials.github}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-lg bg-white/5 p-2 text-slate-400 transition-colors hover:bg-white/10 hover:text-slate-100"
@@ -62,37 +60,15 @@ const VolunteerCard = ({ volunteer }: VolunteerCardProps) => {
             <Github className="h-4 w-4" />
           </Link>
         )}
-        {volunteer.socials.linkedin && (
+        {champion.socials.linkedin && (
           <Link
-            href={volunteer.socials.linkedin}
+            href={champion.socials.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-lg bg-white/5 p-2 text-slate-400 transition-colors hover:bg-white/10 hover:text-slate-100"
             aria-label="LinkedIn Profile"
           >
             <Linkedin className="h-4 w-4" />
-          </Link>
-        )}
-        {volunteer.socials.twitter && (
-          <Link
-            href={volunteer.socials.twitter}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg bg-white/5 p-2 text-slate-400 transition-colors hover:bg-white/10 hover:text-slate-100"
-            aria-label="Twitter Profile"
-          >
-            <Twitter className="h-4 w-4" />
-          </Link>
-        )}
-        {volunteer.socials.website && (
-          <Link
-            href={volunteer.socials.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg bg-white/5 p-2 text-slate-400 transition-colors hover:bg-white/10 hover:text-slate-100"
-            aria-label="Personal Website"
-          >
-            <Globe className="h-4 w-4" />
           </Link>
         )}
       </div>
@@ -103,4 +79,4 @@ const VolunteerCard = ({ volunteer }: VolunteerCardProps) => {
   );
 };
 
-export default VolunteerCard;
+export default ChampionCard;

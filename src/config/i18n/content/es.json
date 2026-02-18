@@ -63,7 +63,7 @@
     "upcoming_events": "Próximos Eventos",
     "past_events": "Eventos Pasados",
     "call_for_speakers": "Convocatoria para Ponentes",
-    "call_for_volunteers": "Convocatoria para Campeones",
+    "call_for_champions": "Convocatoria para Campeones",
     "view_all_events": "Ver Todos los Eventos",
     "view_all_past_events": "Ver Todos los Eventos Pasados",
     "coming_soon": "Próximamente",
@@ -142,7 +142,7 @@
     "label": "Cambiar idioma"
   },
   "Home": {
-    "Volunteers": {
+    "Champions": {
       "title": "Campeón de la Comunidad",
       "description": "Conozca a las personas dedicadas que ofrecen su tiempo y esfuerzo para organizar eventos, gestionar la comunidad y ayudar a que React Kolkata prospere.",
       "join_title": "¿Quieres contribuir?",

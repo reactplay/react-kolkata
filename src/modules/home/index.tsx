@@ -6,11 +6,11 @@ import ErrorBoundary from "@/components/common/error-boundary";
 import AboutSection from "./(sections)/about";
 import CoreTeam from "./(sections)/about/core-team";
 import BlogSection from "./(sections)/blogs";
+import ChampionSection from "./(sections)/champions";
 import CommunitySection from "./(sections)/community";
 import EventsSection from "./(sections)/event";
 import HeroSection from "./(sections)/hero";
 import SponsorsSection from "./(sections)/sponsors";
-import VolunteerSection from "./(sections)/volunteers";
 
 const WithErrorBoundary = ({ children }: { children: React.ReactNode }) => (
   <ErrorBoundary>{children}</ErrorBoundary>
@@ -34,12 +34,6 @@ const LandingPage = async () => {
         <EventsSection />
       </WithErrorBoundary>
       <WithErrorBoundary>
-        <CoreTeam />
-      </WithErrorBoundary>
-      <WithErrorBoundary>
-        <VolunteerSection />
-      </WithErrorBoundary>
-      <WithErrorBoundary>
         <CommunitySection />
       </WithErrorBoundary>
       <WithErrorBoundary>
@@ -54,6 +48,12 @@ const LandingPage = async () => {
             error={error}
           />
         )}
+      </WithErrorBoundary>
+      <WithErrorBoundary>
+        <CoreTeam />
+      </WithErrorBoundary>
+      <WithErrorBoundary>
+        <ChampionSection />
       </WithErrorBoundary>
     </>
   );

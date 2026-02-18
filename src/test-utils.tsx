@@ -67,7 +67,7 @@ const mockMessages = {
     upcoming_events: "Upcoming Events",
     past_events: "Past Events",
     call_for_speakers: "Call for Speakers",
-    call_for_volunteers: "Call for Volunteers",
+    call_for_champions: "Call for Champions",
     view_all_events: "View All Events",
     view_all_past_events: "View All Past Events",
     coming_soon: "Coming Soon",
@@ -88,15 +88,6 @@ const mockMessages = {
     error: "Error loading contributors",
     total_contributors: "Total contributors: {count}",
     footer_note: "Contributors are automatically fetched from our GitHub repository.",
-  },
-  Home: {
-    Volunteers: {
-      title: "Community Volunteers",
-      description: "Meet the dedicated individuals who volunteer their time.",
-      join_title: "Want to contribute?",
-      join_description: "We are always looking for passionate people.",
-      join_button: "Join as a Volunteer",
-    },
   },
 };
 
