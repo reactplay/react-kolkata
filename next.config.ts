@@ -67,6 +67,24 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "wsrv.nl",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "drive.google.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "soumyodeep-dey.vercel.app",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   experimental: {

@@ -32,5 +32,106 @@
       "github": "https://github.com/anisurrahman77",
       "linkedin": "https://linkedin.com/in/anisurrahman77"
     }
+  },
+  {
+    "id": 4,
+    "name": "Arpan Kumar De",
+    "role": "Event Organization",
+    "bio": "Making events fun!",
+    "photo": "https://github.com/arpankumarde.png",
+    "socials": {
+      "github": "https://github.com/arpankumarde",
+      "linkedin": "https://www.linkedin.com/in/arpankumarde"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Priya Mahato",
+    "role": "Event Organization",
+    "bio": "Smoothness Controller",
+    "photo": "https://wsrv.nl/?url=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D14tTMrfH7pOyv_naSi_9f5LVV1dnUvV-k&w=250&h=250",
+    "socials": {
+      "github": "https://github.com/priyamahato86",
+      "linkedin": "https://www.linkedin.com/in/priyamahato86"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Titash Shil",
+    "role": "Design team",
+    "bio": "A tech-minded designer passionate about innovation, community, and creating meaningful digital experiences.",
+    "photo": "https://github.com/Titash-shil.png",
+    "socials": {
+      "github": "https://github.com/Titash-shil",
+      "linkedin": "https://www.linkedin.com/in/titash-shil-844857292/"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Koustav Singh",
+    "role": "Event Organizing Team",
+    "bio": "Contributing to planning, coordination, and execution of community-driven tech events.",
+    "photo": "https://github.com/koustavx08.png",
+    "socials": {
+      "github": "https://github.com/koustavx08",
+      "linkedin": "https://linkedin.com/in/koustavx08"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Hiya Sarkar",
+    "role": "Event organisation team, Github & Website maintain team",
+    "bio": "In React Kolkata for event organisation and github & website maintain.",
+    "photo": "https://github.com/hiyasarkar.png",
+    "socials": {
+      "github": "https://github.com/hiyasarkar",
+      "linkedin": "https://linkedin.com/in/hiyasarkar"
+    }
+  },
+  {
+    "id": 9,
+    "name": "Rishita Kundu",
+    "role": "Design team",
+    "bio": "Tech enthusiast and graphic designer who loves building projects and exploring new tech.",
+    "photo": "https://github.com/rix-04turtle.png",
+    "socials": {
+      "github": "https://github.com/rix-04turtle",
+      "linkedin": "https://www.linkedin.com/in/rishita-kundu"
+    }
+  },
+  {
+    "id": 10,
+    "name": "Arup Matabber",
+    "role": "Design team",
+    "bio": "I draw shapes using the Pen Tool",
+    "photo": "https://drive.google.com/uc?id=1uIriyrdiyIqUXqa4G5b9rlwzbLj3IpI_",
+    "socials": {
+      "github": "https://github.com/arup-matabber",
+      "linkedin": "https://www.linkedin.com/in/arup-matabber/"
+    }
+  },
+  {
+    "id": 11,
+    "name": "Chandika Sarkar",
+    "role": "Content team, event organizing team",
+    "bio": "In React Kolkata for content and event organization, creating engaging posts and supporting event execution.",
+    "photo": "https://github.com/chandikasarkar.png",
+    "socials": {
+      "github": "https://github.com/chandikasarkar",
+      "linkedin": "https://www.linkedin.com/in/chandika-sarkar-059853254/"
+    }
+  },
+  {
+    "id": 12,
+    "name": "Soumyodeep Dey",
+    "role": "Tech and Content team",
+    "bio": "Love working with amazing people and giving back to the community.",
+    "photo": "https://soumyodeep-dey.vercel.app/Images/LOGO.webp",
+    "socials": {
+      "github": "https://github.com/Soumyodeep-Dey",
+      "linkedin": "https://www.linkedin.com/in/soumyodeep-dey/",
+      "twitter": "https://twitter.com/Soumyodeep2003",
+      "portfolio": "https://soumyodeep-dey.vercel.app/"
+    }
   }
 ]
