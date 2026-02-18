@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 
 import bgImage from "../../../../../../public/images/kolkata_image_1.png";
 
-export default function VolunteerCard() {
+export default function ChampionCard() {
   const t = useTranslations("Events");
 
   return (
@@ -17,7 +17,7 @@ export default function VolunteerCard() {
       <div className="relative h-20 w-full flex-shrink-0 overflow-hidden">
         <Image
           src={bgImage}
-          alt="Call for Volunteers"
+          alt="Call for Champions"
           fill
           className="object-cover transition duration-500 group-hover:scale-105"
         />
@@ -26,7 +26,7 @@ export default function VolunteerCard() {
 
       <div className="flex flex-1 flex-col justify-between p-3">
         <div>
-          <h3 className="text-sm font-semibold text-sky-200">{t("call_for_volunteers")}</h3>
+          <h3 className="text-sm font-semibold text-sky-200">{t("call_for_champions")}</h3>
 
           <div className="mt-2 space-y-1 text-xs text-slate-300">
             <div className="flex items-center gap-2">
@@ -45,10 +45,10 @@ export default function VolunteerCard() {
           <Button
             asChild
             size="sm"
-            className="w-full bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
+            className="w-full bg-linear-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
           >
             <Link href="#" target="_blank" rel="noreferrer">
-              {t("call_for_volunteers")}
+              {t("call_for_champions")}
             </Link>
           </Button>
         </div>

@@ -4,7 +4,9 @@ import { getInitialBlogs } from "@/utils/blog";
 import ErrorBoundary from "@/components/common/error-boundary";
 
 import AboutSection from "./(sections)/about";
+import CoreTeam from "./(sections)/about/core-team";
 import BlogSection from "./(sections)/blogs";
+import ChampionSection from "./(sections)/champions";
 import CommunitySection from "./(sections)/community";
 import EventsSection from "./(sections)/event";
 import HeroSection from "./(sections)/hero";
@@ -40,8 +42,18 @@ const LandingPage = async () => {
             <p className="text-red-400">Failed to load blogs. Please try again later.</p>
           </div>
         ) : (
-          <BlogSection initialBlogs={initialBlogs} initialEndCursor={initialEndCursor} error={error} />
+          <BlogSection
+            initialBlogs={initialBlogs}
+            initialEndCursor={initialEndCursor}
+            error={error}
+          />
         )}
+      </WithErrorBoundary>
+      <WithErrorBoundary>
+        <CoreTeam />
+      </WithErrorBoundary>
+      <WithErrorBoundary>
+        <ChampionSection />
       </WithErrorBoundary>
     </>
   );
