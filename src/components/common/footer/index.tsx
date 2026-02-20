@@ -42,8 +42,8 @@ const Footer = () => {
   return (
     <footer className="border-t border-white/5 bg-[#0B1220] text-slate-400">
       {/* ===== MAIN GRID ===== */}
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 md:grid-cols-2 lg:grid-cols-4">
-        <div className="space-y-4">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 md:grid-cols-3 lg:gap-16">
+        <div className="flex flex-col space-y-5">
           <Link href="/" className="flex items-center gap-3" aria-label="React Kolkata Home">
             <Image
               src="/logo.svg"
@@ -54,15 +54,10 @@ const Footer = () => {
               priority
             />
           </Link>
-          <p className="text-sm leading-relaxed">{t("description")}</p>
-        </div>
 
-        <div className="flex flex-col space-y-4">
-          <h3 className="text-sm font-semibold text-white">{t("about_project_title")}</h3>
-          <p className="text-sm leading-relaxed">{t("about_project_description")}</p>
-          <div className="text-sm">
-            <span className="font-medium text-slate-300">{t("tech_stack_label")}</span>
-            <p className="mt-1 font-mono text-xs text-slate-500">{t("tech_stack_list")}</p>
+          <div className="flex flex-col space-y-3">
+            <h3 className="text-sm font-semibold text-white">{t("about_project_title")}</h3>
+            <p className="text-sm leading-relaxed lg:pr-10">{t("about_project_description")}</p>
           </div>
         </div>
 
@@ -92,68 +87,68 @@ const Footer = () => {
           </div>
         </nav>
 
-        <div>
-          <h3 className="mb-4 text-sm font-semibold text-white">{t("contact_title")}</h3>
+        <div className="flex flex-col md:items-start lg:items-end">
+          <div className="flex flex-col">
+            <h3 className="mb-4 text-sm font-semibold text-white">{t("contact_title")}</h3>
 
-          {/* Email */}
-          <div className="flex items-center gap-2 text-sm">
-            <Mail className="h-4 w-4" />
-            <a href="mailto:reactkolkata@gmail.com" className="transition hover:text-white">
-              reactkolkata@gmail.com
-            </a>
-          </div>
+            <div className="flex items-center gap-2 text-sm">
+              <Mail className="h-4 w-4" />
+              <a href="mailto:reactkolkata@gmail.com" className="transition hover:text-white">
+                reactkolkata@gmail.com
+              </a>
+            </div>
 
-          {/* Socials */}
-          <div className="mt-6 flex flex-wrap items-center gap-5">
-            <a
-              href="https://x.com/reactkolkata"
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => handleSocialClick("X")}
-              className="text-slate-400 transition hover:text-white"
-            >
-              <XLogo className="h-5 w-5" />
-            </a>
+            <div className="mt-6 flex flex-wrap items-center gap-5">
+              <a
+                href="https://x.com/reactkolkata"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => handleSocialClick("X")}
+                className="text-slate-400 transition hover:text-white"
+              >
+                <XLogo className="h-5 w-5" />
+              </a>
 
-            <a
-              href="https://github.com/reactplay/react-kolkata"
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => handleSocialClick("GitHub")}
-              className="text-slate-400 transition hover:text-white"
-            >
-              <Github className="h-5 w-5" />
-            </a>
+              <a
+                href="https://github.com/reactplay/react-kolkata"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => handleSocialClick("GitHub")}
+                className="text-slate-400 transition hover:text-white"
+              >
+                <Github className="h-5 w-5" />
+              </a>
 
-            <a
-              href="https://www.linkedin.com/showcase/react-kolkata"
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => handleSocialClick("LinkedIn")}
-              className="text-slate-400 transition hover:text-white"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
+              <a
+                href="https://www.linkedin.com/showcase/react-kolkata"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => handleSocialClick("LinkedIn")}
+                className="text-slate-400 transition hover:text-white"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
 
-            <a
-              href="https://www.youtube.com/@ReactPlayIO"
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => handleSocialClick("YouTube")}
-              className="text-slate-400 transition hover:text-white"
-            >
-              <Youtube className="h-5 w-5" />
-            </a>
+              <a
+                href="https://www.youtube.com/@ReactPlayIO"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => handleSocialClick("YouTube")}
+                className="text-slate-400 transition hover:text-white"
+              >
+                <Youtube className="h-5 w-5" />
+              </a>
 
-            <a
-              href="https://discord.gg/VRVfn2Vss"
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => handleSocialClick("Discord")}
-              className="text-slate-400 transition hover:text-white"
-            >
-              <SiDiscord className="h-5 w-5" />
-            </a>
+              <a
+                href="https://discord.gg/VRVfn2Vss"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => handleSocialClick("Discord")}
+                className="text-slate-400 transition hover:text-white"
+              >
+                <SiDiscord className="h-5 w-5" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
