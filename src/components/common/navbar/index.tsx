@@ -20,6 +20,18 @@ import { XLogo } from "../icons/XLogo";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      if (pathname.includes("/events")) {
+        router.push(`/events?search=${searchQuery}`);
+      }
+    }, 400);
+
+    return () => clearTimeout(delayDebounce);
+  }, [searchQuery]);
+
   const [hoveredIcon, setHoveredIcon] = useState<number | null>(null); // State for the icon hover
   const [activeSection, setActiveSection] = useState(false);
 
@@ -126,6 +138,16 @@ const Navbar = () => {
             );
           })}
         </nav>
+
+        <div className="ml-4 hidden items-center lg:flex">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="rounded-md border border-slate-600 bg-slate-800 px-3 py-1 text-sm text-white outline-none focus:border-sky-400"
+          />
+        </div>
 
         <div className="hidden items-center gap-4 lg:flex">
           <ul
