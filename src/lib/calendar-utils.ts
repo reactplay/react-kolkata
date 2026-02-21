@@ -39,6 +39,26 @@ export function generateOutlookCalendarUrl(event: CalendarEvent): string {
 }
 
 /**
+ * Generate a globally unique identifier for calendar events
+ * Uses crypto.randomUUID() for guaranteed uniqueness
+ * @returns UUID string
+ */
+function generateEventUID(): string {
+  // Use Web Crypto API for cryptographically secure UUID
+  // Fallback to timestamp-based UUID if crypto is not available (older browsers)
+  if (typeof crypto !== "undefined" && crypto.randomUUID) {
+    return crypto.randomUUID();
+  }
+  
+  // Fallback: Generate RFC 4122 version 4 UUID manually
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16) | 0;
+    const v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
+/**
  * Generate ICS (iCalendar) file content for download
  * @param event - Calendar event data
  * @returns ICS file content as string
@@ -48,12 +68,15 @@ export function generateICSContent(event: CalendarEvent): string {
   const startDate = formatDateForCalendar(event.startDateTime);
   const endDate = formatDateForCalendar(event.endDateTime);
 
+  // Generate a globally unique UID to prevent calendar collisions
+  const uniqueUID = generateEventUID();
+
   return [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
     "PRODID:-//React Kolkata//Event//EN",
     "BEGIN:VEVENT",
-    `UID:${event.title.replace(/\s+/g, "-").toLowerCase()}-${startDate}@react-kolkata.dev`,
+    `UID:${uniqueUID}@react-kolkata.dev`,
     `DTSTAMP:${now}`,
     `DTSTART:${startDate}`,
     `DTEND:${endDate}`,
