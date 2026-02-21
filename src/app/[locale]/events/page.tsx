@@ -46,15 +46,24 @@ export async function generateMetadata({
   };
 }
 
-export default function EventsPage() {
+export default function EventsPage({ searchParams }: { searchParams: { search?: string } }) {
   const t = useTranslations("Events");
+  const searchQuery = searchParams?.search?.toLowerCase() || "";
 
-  const upcomingEvents = events.filter((event) => {
+  const filteredEvents = events.filter((event) => {
+    const matchesSearch =
+      event.title.toLowerCase().includes(searchQuery) ||
+      event.description?.toLowerCase().includes(searchQuery);
+
+    return matchesSearch;
+  });
+
+  const upcomingEvents = filteredEvents.filter((event) => {
     const status = getEventStatus(event.startDateTime, event.endDateTime);
     return status === EVENT_STATUS.UPCOMING || status === EVENT_STATUS.ONGOING;
   });
 
-  const pastEvents = events.filter((event) => {
+  const pastEvents = filteredEvents.filter((event) => {
     const status = getEventStatus(event.startDateTime, event.endDateTime);
     return status === EVENT_STATUS.PAST;
   });
@@ -147,7 +156,13 @@ export default function EventsPage() {
 
         {upcomingEvents.length === 0 && pastEvents.length === 0 && (
           <div className="py-12 text-center">
-            <p className="text-slate-300">No events found.</p>
+            {searchQuery ? (
+              <p className="text-slate-300">
+                No results found for "<span className="text-sky-400">{searchQuery}</span>"
+              </p>
+            ) : (
+              <p className="text-slate-300">No events found.</p>
+            )}
           </div>
         )}
       </div>
