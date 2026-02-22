@@ -36,7 +36,39 @@ const ContributorsSection = () => {
         );
 
         if (!response.ok) {
-          throw new Error(`Failed to fetch contributors: ${response.status}`);
+          // Handle specific HTTP error codes with meaningful messages
+          if (response.status === 403) {
+            // Check if it's a rate limit error
+            const rateLimitRemaining = response.headers.get("X-RateLimit-Remaining");
+            const rateLimitReset = response.headers.get("X-RateLimit-Reset");
+            
+            if (rateLimitRemaining === "0" && rateLimitReset) {
+              const resetTime = new Date(parseInt(rateLimitReset) * 1000);
+              const resetTimeFormatted = resetTime.toLocaleTimeString("en-US", {
+                hour: "numeric",
+                minute: "2-digit",
+                hour12: true,
+              });
+              throw new Error(
+                `GitHub API rate limit exceeded. Please try again after ${resetTimeFormatted}.`
+              );
+            }
+            throw new Error(
+              "Access forbidden. This might be due to API rate limiting or access restrictions."
+            );
+          } else if (response.status === 404) {
+            throw new Error(
+              "Repository not found. Please check if the repository exists and is public."
+            );
+          } else if (response.status >= 500) {
+            throw new Error(
+              "GitHub servers are experiencing issues. Please try again later."
+            );
+          } else {
+            throw new Error(
+              `Unable to fetch contributors (Error ${response.status}). Please try again.`
+            );
+          }
         }
 
         const data = await response.json();
