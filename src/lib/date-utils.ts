@@ -151,25 +151,44 @@ function getRelativeTime(date: Date): string {
  * Format event time range from two ISO datetime strings
  * @param startDateTime - ISO datetime string
  * @param endDateTime - ISO datetime string
+ * @param timezone - Optional timezone (e.g., "Asia/Kolkata"). If not provided, uses user's local timezone
  * @returns Formatted time range (e.g., "11:00 AM – 1:00 PM IST")
  */
-export function formatEventTimeRange(startDateTime: string, endDateTime: string): string {
+export function formatEventTimeRange(
+  startDateTime: string,
+  endDateTime: string,
+  timezone?: string
+): string {
   const start = new Date(startDateTime);
   const end = new Date(endDateTime);
 
+  // Determine which timezone to use
+  const timeZone = timezone || Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  // Format times in the specified timezone
   const startTime = start.toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
     hour12: true,
+    timeZone,
   });
 
   const endTime = end.toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
     hour12: true,
+    timeZone,
   });
 
-  return `${startTime} – ${endTime} IST`;
+  // Get timezone abbreviation (e.g., "IST", "PST", "EST")
+  const timezoneAbbr = new Intl.DateTimeFormat("en-IN", {
+    timeZone,
+    timeZoneName: "short",
+  })
+    .formatToParts(start)
+    .find((part) => part.type === "timeZoneName")?.value || "";
+
+  return `${startTime} – ${endTime} ${timezoneAbbr}`;
 }
 
 // Convenience functions for common use cases
@@ -183,5 +202,5 @@ export const formatBlogRelativeTime = (isoDateString: string) =>
 // Event-specific convenience functions
 export const formatEventDate = (isoDateString: string) =>
   formatDate(isoDateString, DATE_FORMATS.BLOG_DATE);
-export const formatEventTime = (startDateTime: string, endDateTime: string) =>
-  formatEventTimeRange(startDateTime, endDateTime);
+export const formatEventTime = (startDateTime: string, endDateTime: string, timezone?: string) =>
+  formatEventTimeRange(startDateTime, endDateTime, timezone);
