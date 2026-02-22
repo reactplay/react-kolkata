@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import NextLink from "next/link"; // Use NextLink for external and hash links
+import { useRouter } from "next/navigation";
 import { trackGAEvent } from "@/utils/analytics";
 import { AnimatePresence, motion } from "framer-motion";
 import { Github, Linkedin, Menu, X, Youtube } from "lucide-react";
@@ -20,9 +21,21 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [hoveredIcon, setHoveredIcon] = useState<number | null>(null); // State for the icon hover
+  const [activeSection, setActiveSection] = useState(false);
 
+  const router = useRouter();
   const pathname = usePathname();
   const t = useTranslations("Navbar");
+
+  const handleCoreTeamClick = () => {
+    setActiveSection(true);
+    if (pathname === "/") {
+      const el = document.getElementById("core-team");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      router.push("/#core-team");
+    }
+  };
 
   const links = [
     { href: "/", label: t("home"), external: false, isHashLink: false },
@@ -47,6 +60,10 @@ const Navbar = () => {
 
   useEffect(() => {
     setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (pathname !== "/") setActiveSection(false);
   }, [pathname]);
 
   return (
@@ -81,7 +98,18 @@ const Navbar = () => {
             // Use NextLink for external or hash links, use localized Link otherwise
             const LinkComponent = l.external || l.isHashLink ? NextLink : Link;
 
-            return (
+            return l.isHashLink ? (
+              <button
+                onClick={handleCoreTeamClick}
+                key={l.href}
+                className={cn(
+                  "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                  "text-slate-300 hover:text-white"
+                )}
+              >
+                {l.label}
+              </button>
+            ) : (
               <LinkComponent
                 key={l.href}
                 href={l.href}
@@ -89,13 +117,9 @@ const Navbar = () => {
                 rel={l.external ? "noopener noreferrer" : undefined}
                 className={cn(
                   "rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                  // Style hash link normally, active style based on path match
-                  l.isHashLink
-                    ? "text-slate-300 hover:text-white"
-                    : active
-                      ? "text-sky-300"
-                      : "text-slate-300 hover:text-white"
+                  active ? "text-sky-300" : "text-slate-300 hover:text-white"
                 )}
+                onClick={l.href === "/" ? () => setActiveSection(false) : undefined}
               >
                 {l.label}
               </LinkComponent>
@@ -268,19 +292,32 @@ const Navbar = () => {
                 checkPath === "/" ? pathname === checkPath : pathname.startsWith(checkPath);
               const LinkComponent = l.external || l.isHashLink ? NextLink : Link;
 
-              return (
+              return l.isHashLink ? (
+                <button
+                  onClick={handleCoreTeamClick}
+                  key={l.href}
+                  className={cn(
+                    "inline-flex w-full items-center rounded-md px-3 py-2 text-left text-sm font-medium transition-colors",
+                    "cursor-pointer border-0 bg-transparent",
+                    activeSection
+                      ? "bg-white/5 text-sky-300"
+                      : "text-slate-300 hover:bg-white/5 hover:text-white"
+                  )}
+                >
+                  {l.label}
+                </button>
+              ) : (
                 <LinkComponent
                   key={l.href}
                   href={l.href}
                   target={l.external ? "_blank" : undefined}
                   rel={l.external ? "noopener noreferrer" : undefined}
+                  onClick={() => setActiveSection(false)}
                   className={cn(
                     "rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                    l.isHashLink
-                      ? "text-slate-300 hover:bg-white/5 hover:text-white"
-                      : active
-                        ? "bg-white/5 text-sky-300"
-                        : "text-slate-300 hover:bg-white/5 hover:text-white"
+                    active && !activeSection
+                      ? "bg-white/5 text-sky-300"
+                      : "text-slate-300 hover:bg-white/5 hover:text-white"
                   )}
                 >
                   {l.label}
