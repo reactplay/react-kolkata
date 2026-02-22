@@ -50,7 +50,7 @@ const ContributorsSection = () => {
                 hour12: true,
               });
               throw new Error(
-                `GitHub API rate limit exceeded. Please try again after ${resetTimeFormatted}. You can also authenticate with GitHub to increase your rate limit.`
+                `GitHub API rate limit exceeded. Please try again after ${resetTimeFormatted}.`
               );
             }
             throw new Error(

@@ -181,7 +181,7 @@ export function formatEventTimeRange(
   });
 
   // Get timezone abbreviation (e.g., "IST", "PST", "EST")
-  const timezoneAbbr = new Intl.DateTimeFormat("en-US", {
+  const timezoneAbbr = new Intl.DateTimeFormat("en-IN", {
     timeZone,
     timeZoneName: "short",
   })
