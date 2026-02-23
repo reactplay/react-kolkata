@@ -46,7 +46,7 @@ export async function generateMetadata({
   };
 }
 
-export default function EventsPage({ searchParams }: { searchParams: { search?: string } }) {
+export default async function EventsPage({ searchParams }: { searchParams: { search?: string } }) {
   const t = useTranslations("Events");
   const searchQuery = searchParams?.search?.toLowerCase() || "";
 
