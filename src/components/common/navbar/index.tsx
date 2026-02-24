@@ -40,9 +40,19 @@ const Navbar = () => {
   const links = [
     { href: "/", label: t("home"), external: false, isHashLink: false },
     { href: "/#core-team", label: t("core_team"), external: false, isHashLink: true },
+    { href: "/#faq", label: "FAQ", external: false, isHashLink: true },
     { href: "/contributors", label: t("contributors"), external: false, isHashLink: false },
     { href: "/events", label: t("events"), external: false, isHashLink: false },
   ];
+  const handleFAQClick = () => {
+    setActiveSection(true);
+    if (pathname === "/") {
+      const el = document.getElementById("faq");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      router.push("/#faq");
+    }
+  };
 
   const handleJoinClick = () => {
     trackGAEvent("join_community_click", {
@@ -98,18 +108,35 @@ const Navbar = () => {
             // Use NextLink for external or hash links, use localized Link otherwise
             const LinkComponent = l.external || l.isHashLink ? NextLink : Link;
 
-            return l.isHashLink ? (
-              <button
-                onClick={handleCoreTeamClick}
-                key={l.href}
-                className={cn(
-                  "rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                  "text-slate-300 hover:text-white"
-                )}
-              >
-                {l.label}
-              </button>
-            ) : (
+            if (l.isHashLink && l.href === "/#core-team") {
+              return (
+                <button
+                  onClick={handleCoreTeamClick}
+                  key={l.href}
+                  className={cn(
+                    "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                    "text-slate-300 hover:text-white"
+                  )}
+                >
+                  {l.label}
+                </button>
+              );
+            }
+            if (l.isHashLink && l.href === "/#faq") {
+              return (
+                <button
+                  onClick={handleFAQClick}
+                  key={l.href}
+                  className={cn(
+                    "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                    "text-slate-300 hover:text-white"
+                  )}
+                >
+                  {l.label}
+                </button>
+              );
+            }
+            return (
               <LinkComponent
                 key={l.href}
                 href={l.href}
@@ -292,21 +319,41 @@ const Navbar = () => {
                 checkPath === "/" ? pathname === checkPath : pathname.startsWith(checkPath);
               const LinkComponent = l.external || l.isHashLink ? NextLink : Link;
 
-              return l.isHashLink ? (
-                <button
-                  onClick={handleCoreTeamClick}
-                  key={l.href}
-                  className={cn(
-                    "inline-flex w-full items-center rounded-md px-3 py-2 text-left text-sm font-medium transition-colors",
-                    "cursor-pointer border-0 bg-transparent",
-                    activeSection
-                      ? "bg-white/5 text-sky-300"
-                      : "text-slate-300 hover:bg-white/5 hover:text-white"
-                  )}
-                >
-                  {l.label}
-                </button>
-              ) : (
+              if (l.isHashLink && l.href === "/#core-team") {
+                return (
+                  <button
+                    onClick={handleCoreTeamClick}
+                    key={l.href}
+                    className={cn(
+                      "inline-flex w-full items-center rounded-md px-3 py-2 text-left text-sm font-medium transition-colors",
+                      "cursor-pointer border-0 bg-transparent",
+                      activeSection
+                        ? "bg-white/5 text-sky-300"
+                        : "text-slate-300 hover:bg-white/5 hover:text-white"
+                    )}
+                  >
+                    {l.label}
+                  </button>
+                );
+              }
+              if (l.isHashLink && l.href === "/#faq") {
+                return (
+                  <button
+                    onClick={handleFAQClick}
+                    key={l.href}
+                    className={cn(
+                      "inline-flex w-full items-center rounded-md px-3 py-2 text-left text-sm font-medium transition-colors",
+                      "cursor-pointer border-0 bg-transparent",
+                      activeSection
+                        ? "bg-white/5 text-sky-300"
+                        : "text-slate-300 hover:bg-white/5 hover:text-white"
+                    )}
+                  >
+                    {l.label}
+                  </button>
+                );
+              }
+              return (
                 <LinkComponent
                   key={l.href}
                   href={l.href}
