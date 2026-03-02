@@ -1,7 +1,7 @@
 "use client";
 
 // since this component has interactivity added this component as client component
-import { useCallback, useMemo, useState, useTransition } from "react";
+import { useCallback, useMemo, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import { loadMoreBlogs } from "@/store/blogActions";
 import { Blog, BlogResponse, BlogSectionProps, BlogTag } from "@/types/blog";
@@ -51,6 +51,10 @@ export default function BlogList({
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
   const [isPending, startTransition] = useTransition();
+  
+  // Ref to track if a fetch is currently in progress (prevents race conditions)
+  const isFetchingRef = useRef(false);
+  
   const t = useTranslations("Blog");
   const { isMobile, isPad } = useDeviceDetail();
 
@@ -94,6 +98,15 @@ export default function BlogList({
 
   const handleMoreBlogsCTA = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    
+    // Prevent concurrent requests (race condition guard)
+    if (isFetchingRef.current || isPending) {
+      return;
+    }
+    
+    // Mark fetch as in progress
+    isFetchingRef.current = true;
+    
     loadMoreBlogs(cursor, blogsToShow())
       .then(({ posts: newBlogs, endCursor, error }) => {
         if (error) {
@@ -118,11 +131,18 @@ export default function BlogList({
           }
           return true;
         });
+        
         startTransition(() => {
-          setBlogsResponse((prev) => ({
-            data: [...prev.data, ...validNewBlogs],
-            error: null,
-          }));
+          setBlogsResponse((prev) => {
+            // Additional safety: check for duplicate IDs before merging
+            const existingIds = new Set(prev.data.map((b) => b.id));
+            const uniqueNewBlogs = validNewBlogs.filter((blog) => !existingIds.has(blog.id));
+            
+            return {
+              data: [...prev.data, ...uniqueNewBlogs],
+              error: null,
+            };
+          });
           setCursor(endCursor);
         });
       })
@@ -133,6 +153,10 @@ export default function BlogList({
             error: error instanceof Error ? error.message : "Failed to load blogs",
           }));
         });
+      })
+      .finally(() => {
+        // Always reset the fetch flag, even on error
+        isFetchingRef.current = false;
       });
   };
 

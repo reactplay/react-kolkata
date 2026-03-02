@@ -27,7 +27,36 @@ export async function loadMoreBlogs(
         variables: { postCount: count, cursor: cursor.toString() },
       }),
     });
+
+    // Check response status before attempting to parse JSON
+    if (!res.ok) {
+      // Attempt to parse error response for more details
+      let errorMessage = `Failed to fetch blogs (HTTP ${res.status})`;
+      try {
+        const errorData = await res.json();
+        if (errorData.errors && Array.isArray(errorData.errors) && errorData.errors[0]?.message) {
+          errorMessage = errorData.errors[0].message;
+        }
+      } catch {
+        // If error response is not JSON, use status-based message
+        if (res.status === 429) {
+          errorMessage = "Too many requests. Please try again in a moment.";
+        } else if (res.status >= 500) {
+          errorMessage = "Blog service is temporarily unavailable. Please try again later.";
+        } else if (res.status === 403) {
+          errorMessage = "Access denied to blog service.";
+        }
+      }
+      throw new Error(errorMessage);
+    }
+
     const { data }: { data: { publication: HashnodePublication } } = await res.json();
+
+    // Validate API response structure
+    if (!data || !data.publication || !data.publication.posts) {
+      throw new Error("Invalid response structure from blog API");
+    }
+
     const { edges, pageInfo } = data.publication.posts;
 
     const posts: Blog[] = edges.map((edge) => edge.node);
