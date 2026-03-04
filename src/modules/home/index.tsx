@@ -9,6 +9,7 @@ import BlogSection from "./(sections)/blogs";
 import ChampionSection from "./(sections)/champions";
 import CommunitySection from "./(sections)/community";
 import EventsSection from "./(sections)/event";
+import FAQSection from "./(sections)/faq";
 import HeroSection from "./(sections)/hero";
 import SponsorsSection from "./(sections)/sponsors";
 
@@ -54,6 +55,9 @@ const LandingPage = async () => {
       </WithErrorBoundary>
       <WithErrorBoundary>
         <ChampionSection />
+      </WithErrorBoundary>
+      <WithErrorBoundary>
+        <FAQSection />
       </WithErrorBoundary>
     </>
   );
