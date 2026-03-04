@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import NextLink from "next/link"; // Use NextLink for external and hash links
 import { useRouter } from "next/navigation";
@@ -22,6 +22,8 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [hoveredIcon, setHoveredIcon] = useState<number | null>(null); // State for the icon hover
   const [activeSection, setActiveSection] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -76,6 +78,30 @@ const Navbar = () => {
     if (pathname !== "/") setActiveSection(false);
   }, [pathname]);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener("keydown", handleKeyDown);
+
+      const firstFocusable = mobileMenuRef.current?.querySelector(
+        "a, button"
+      ) as HTMLElement | null;
+
+      firstFocusable?.focus();
+    } else {
+      toggleButtonRef.current?.focus();
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open]);
+
   return (
     <header
       className={cn(
@@ -100,13 +126,14 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
-          {links.map((l) => {
-            const checkPath = l.isHashLink ? l.href.split("#")[0] : l.href;
-            const active =
-              checkPath === "/" ? pathname === checkPath : pathname.startsWith(checkPath);
-            // Use NextLink for external or hash links, use localized Link otherwise
-            const LinkComponent = l.external || l.isHashLink ? NextLink : Link;
+        <nav className="hidden items-center lg:flex" aria-label="Primary">
+          <ul className="flex items-center gap-1">
+            {links.map((l) => {
+              const checkPath = l.isHashLink ? l.href.split("#")[0] : l.href;
+              const active =
+                checkPath === "/" ? pathname === checkPath : pathname.startsWith(checkPath);
+              // Use NextLink for external or hash links, use localized Link otherwise
+              const LinkComponent = l.external || l.isHashLink ? NextLink : Link;
 
             if (l.isHashLink && l.href === "/#core-team") {
               return (
@@ -152,6 +179,37 @@ const Navbar = () => {
               </LinkComponent>
             );
           })}
+              return (
+                <li key={l.href}>
+                  {l.isHashLink ? (
+                    <button
+                      onClick={handleCoreTeamClick}
+                      className={cn(
+                        "rounded-md px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]",
+                        "text-slate-300 hover:text-white"
+                      )}
+                    >
+                      {l.label}
+                    </button>
+                  ) : (
+                    <LinkComponent
+                      href={l.href}
+                      target={l.external ? "_blank" : undefined}
+                      rel={l.external ? "noopener noreferrer" : undefined}
+                      aria-current={active ? "page" : undefined}
+                      className={cn(
+                        "rounded-md px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]",
+                        active ? "text-sky-300" : "text-slate-300 hover:text-white"
+                      )}
+                      onClick={l.href === "/" ? () => setActiveSection(false) : undefined}
+                    >
+                      {l.label}
+                    </LinkComponent>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
@@ -174,7 +232,7 @@ const Navbar = () => {
                 )}
               </AnimatePresence>
               <a
-                className="relative z-10 block p-2 text-slate-400 hover:text-white"
+                className="relative z-10 block rounded-full p-2 text-slate-400 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]"
                 aria-label={t("x")}
                 href="https://x.com/reactkolkata"
                 target="_blank"
@@ -285,7 +343,6 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
-
           <LanguageSwitcher />
           <div className="hidden lg:block">
             <Button
@@ -301,23 +358,34 @@ const Navbar = () => {
         </div>
 
         <button
-          className="inline-flex items-center justify-center rounded-md p-2 text-slate-200 lg:hidden"
+          ref={toggleButtonRef}
+          className="inline-flex items-center justify-center rounded-md p-2 text-slate-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220] lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={open}
+          aria-controls="mobile-menu"
         >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {open ? (
+            <X className="h-5 w-5" aria-hidden="true" />
+          ) : (
+            <Menu className="h-5 w-5" aria-hidden="true" />
+          )}
         </button>
       </div>
 
       {open ? (
-        <div className="absolute right-0 w-1/2 border-t border-white/5 bg-[#0B1220] lg:hidden">
-          <nav className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6" aria-label="Mobile">
-            {links.map((l) => {
-              const checkPath = l.isHashLink ? l.href.split("#")[0] : l.href;
-              const active =
-                checkPath === "/" ? pathname === checkPath : pathname.startsWith(checkPath);
-              const LinkComponent = l.external || l.isHashLink ? NextLink : Link;
+        <div
+          id="mobile-menu"
+          ref={mobileMenuRef}
+          className="absolute right-0 w-1/2 border-t border-white/5 bg-[#0B1220] lg:hidden"
+        >
+          <nav className="mx-auto max-w-7xl px-4 py-3 sm:px-6" aria-label="Mobile">
+            <ul className="grid gap-1">
+              {links.map((l) => {
+                const checkPath = l.isHashLink ? l.href.split("#")[0] : l.href;
+                const active =
+                  checkPath === "/" ? pathname === checkPath : pathname.startsWith(checkPath);
+                const LinkComponent = l.external || l.isHashLink ? NextLink : Link;
 
               if (l.isHashLink && l.href === "/#core-team") {
                 return (
@@ -380,82 +448,127 @@ const Navbar = () => {
                 {t("join_community")}
               </NextLink>
             </Button>
+                return (
+                  <li key={l.href}>
+                    {l.isHashLink ? (
+                      <button
+                        onClick={handleCoreTeamClick}
+                        className={cn(
+                          "inline-flex w-full items-center rounded-md px-3 py-2 text-left text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]",
+                          "cursor-pointer border-0 bg-transparent",
+                          activeSection
+                            ? "bg-white/5 text-sky-300"
+                            : "text-slate-300 hover:bg-white/5 hover:text-white"
+                        )}
+                      >
+                        {l.label}
+                      </button>
+                    ) : (
+                      <LinkComponent
+                        href={l.href}
+                        target={l.external ? "_blank" : undefined}
+                        rel={l.external ? "noopener noreferrer" : undefined}
+                        aria-current={active && !activeSection ? "page" : undefined}
+                        onClick={() => setActiveSection(false)}
+                        className={cn(
+                          "block rounded-md px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]",
+                          active && !activeSection
+                            ? "bg-white/5 text-sky-300"
+                            : "text-slate-300 hover:bg-white/5 hover:text-white"
+                        )}
+                      >
+                        {l.label}
+                      </LinkComponent>
+                    )}
+                  </li>
+                );
+              })}
+              <Button
+                asChild
+                className="mt-2 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
+                onClick={handleJoinClick}
+              >
+                <NextLink target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
+                  {t("join_community")}
+                </NextLink>
+              </Button>
 
-            <div className="flex justify-center py-2">
-              <LanguageSwitcher />
-            </div>
+              <div className="flex justify-center py-2">
+                <LanguageSwitcher />
+              </div>
 
-            <ul className="mt-2 flex flex-col gap-3">
-              <li className="px-2 py-2">
-                <a
-                  className="text-slate-300"
-                  aria-label={t("x")}
-                  href="https://x.com/reactkolkata"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <div className="flex items-center gap-2">
-                    <XLogo className="h-5 w-5" />
-                    <span className="text-sm">{t("x")}</span>
-                  </div>
-                </a>
-              </li>
-              <li className="px-2 py-2">
-                <a
-                  className="text-slate-300"
-                  aria-label={t("github")}
-                  href="https://github.com/reactplay/react-kolkata"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <div className="flex items-center gap-2">
-                    <Github className="h-5 w-5" />
-                    <span className="text-sm">{t("github")}</span>
-                  </div>
-                </a>
-              </li>
-              <li className="px-2 py-2">
-                <a
-                  className="text-slate-300"
-                  aria-label={t("linkedin")}
-                  href="https://www.linkedin.com/showcase/react-kolkata"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <div className="flex items-center gap-2">
-                    <Linkedin className="h-5 w-5" />
-                    <span className="text-sm">{t("linkedin")}</span>
-                  </div>
-                </a>
-              </li>
-              <li className="px-2 py-2">
-                <a
-                  className="text-slate-300"
-                  aria-label={t("youtube")}
-                  href="https://www.youtube.com/@ReactPlayIO"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <div className="flex items-center gap-2">
-                    <Youtube className="h-5 w-5" />
-                    <span className="text-sm">{t("youtube")}</span>
-                  </div>
-                </a>
-              </li>
-              <li className="px-2 py-2">
-                <a
-                  className="text-slate-300"
-                  aria-label={t("discord")}
-                  href=" https://discord.gg/VRVfn2Vss"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <div className="flex items-center gap-2">
-                    <SiDiscord className="h-5 w-5" />
-                    <span className="text-sm">{t("discord")}</span>
-                  </div>
-                </a>
-              </li>
+              <ul className="mt-2 flex flex-col gap-3">
+                <li className="px-2 py-2">
+                  <a
+                    className="text-slate-300"
+                    aria-label={t("x")}
+                    href="https://x.com/reactkolkata"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <div className="flex items-center gap-2">
+                      <XLogo className="h-5 w-5" />
+                      <span className="text-sm">{t("x")}</span>
+                    </div>
+                  </a>
+                </li>
+                <li className="px-2 py-2">
+                  <a
+                    className="text-slate-300"
+                    aria-label={t("github")}
+                    href="https://github.com/reactplay/react-kolkata"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Github className="h-5 w-5" />
+                      <span className="text-sm">{t("github")}</span>
+                    </div>
+                  </a>
+                </li>
+                <li className="px-2 py-2">
+                  <a
+                    className="text-slate-300"
+                    aria-label={t("linkedin")}
+                    href="https://www.linkedin.com/showcase/react-kolkata"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Linkedin className="h-5 w-5" />
+                      <span className="text-sm">{t("linkedin")}</span>
+                    </div>
+                  </a>
+                </li>
+                <li className="px-2 py-2">
+                  <a
+                    className="text-slate-300"
+                    aria-label={t("youtube")}
+                    href="https://www.youtube.com/@ReactPlayIO"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Youtube className="h-5 w-5" />
+                      <span className="text-sm">{t("youtube")}</span>
+                    </div>
+                  </a>
+                </li>
+                <li className="px-2 py-2">
+                  <a
+                    className="text-slate-300"
+                    aria-label={t("discord")}
+                    href=" https://discord.gg/VRVfn2Vss"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <div className="flex items-center gap-2">
+                      <SiDiscord className="h-5 w-5" />
+                      <span className="text-sm">{t("discord")}</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
             </ul>
           </nav>
         </div>
