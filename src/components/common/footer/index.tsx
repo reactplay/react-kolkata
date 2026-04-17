@@ -46,10 +46,10 @@ const Footer = () => {
         <div className="flex flex-col space-y-5">
           <Link href="/" className="flex items-center gap-3" aria-label="React Kolkata Home">
             <Image
-              src="/logo.svg"
+              src="/images/React-Kolkata-Logo-new.png"
               alt="React Kolkata logo"
-              width={60}
-              height={60}
+              width={150}
+              height={150}
               className="object-contain"
               priority
             />
