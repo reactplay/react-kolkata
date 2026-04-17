@@ -104,12 +104,11 @@ const Navbar = () => {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2" aria-label="React Kolkata Home">
-          <div className="relative h-20 w-20">
+          <div className="relative h-28 w-52">
             <Image
               alt="react kolkata brand logo"
-              src="/images/React-Kolkata-Logo.png"
+              src="/images/React-Kolkata-Logo-new.png"
               fill
-              sizes="80px"
               className="object-contain"
               priority
             />
@@ -325,7 +324,7 @@ const Navbar = () => {
           ref={mobileMenuRef}
           className="absolute right-0 w-1/2 border-t border-white/5 bg-[#0B1220] lg:hidden"
         >
-          <nav className="mx-auto max-w-7xl px-4 py-3 sm:px-6" aria-label="Mobile">
+          <nav className="mx-auto max-w-7xl" aria-label="Mobile">
             <ul className="grid gap-1">
               {links.map((l) => {
                 const checkPath = l.isHashLink ? l.href.split("#")[0] : l.href;

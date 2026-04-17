@@ -24,7 +24,7 @@
   {
     "id": 6,
     "name": "Titash Shil",
-    "role": "Design team",
+    "role": "Design Team",
     "bio": "A tech-minded designer passionate about innovation, community, and creating meaningful digital experiences.",
     "photo": "https://github.com/Titash-shil.png",
     "socials": {
@@ -46,7 +46,7 @@
   {
     "id": 8,
     "name": "Hiya Sarkar",
-    "role": "Event organisation team, Github & Website maintain team",
+    "role": "Event organisation Team, Github & Website maintain Team",
     "bio": "In React Kolkata for event organisation and github & website maintain.",
     "photo": "https://github.com/hiyasarkar.png",
     "socials": {
@@ -57,7 +57,7 @@
   {
     "id": 9,
     "name": "Rishita Kundu",
-    "role": "Design team",
+    "role": "Design Team",
     "bio": "Tech enthusiast and graphic designer who loves building projects, exploring new tech, and turning ideas into visually engaging real-world solutions.",
     "photo": "https://raw.githubusercontent.com/rix-04turtle/my-image/main/Rishita.jpeg",
     "socials": {
@@ -68,9 +68,9 @@
   {
     "id": 10,
     "name": "Arup Matabber",
-    "role": "Design team",
+    "role": "Design Team",
     "bio": "I draw shapes using the Pen Tool",
-    "photo": "https://drive.google.com/uc?id=1uIriyrdiyIqUXqa4G5b9rlwzbLj3IpI_",
+    "photo": "https://avatars.githubusercontent.com/u/146101983?v=4",
     "socials": {
       "github": "https://github.com/arup-matabber.png",
       "linkedin": "https://www.linkedin.com/in/arup-matabber/"
@@ -79,7 +79,7 @@
   {
     "id": 11,
     "name": "Chandika Sarkar",
-    "role": "Content team, event organizing team",
+    "role": "Content Team, event organizing Team",
     "bio": "In React Kolkata for content and event organization, creating engaging posts and supporting event execution.",
     "photo": "https://github.com/chandikasarkar.png",
     "socials": {
@@ -90,7 +90,7 @@
   {
     "id": 12,
     "name": "Soumyodeep  Dey",
-    "role": "Tech and Content team",
+    "role": "Tech and Content Team",
     "bio": "with react Kolkata because personally I got many things and support from  the community so want to give it back and love working with these amazing people",
     "photo": "https://soumyodeep-dey.vercel.app/Images/LOGO.webp",
     "socials": {
@@ -98,6 +98,19 @@
       "linkedin": "https://www.linkedin.com/in/soumyodeep-dey/",
       "twitter": "https://twitter.com/Soumyodeep2003",
       "portfolio": "https://soumyodeep-dey.vercel.app/"
+    }
+  },
+  {
+    "id": 13,
+    "name": "MD NAYAJ MONDAL",
+    "role": "Event Organization and Content Team",
+    "bio": "",
+    "photo": "https://avatars.githubusercontent.com/u/184644006?v=4",
+    "socials": {
+      "github": "https://github.com/mdnm18",
+      "linkedin": "https://www.linkedin.com/in/md-nayaj-mondal/",
+      "twitter": "https://x.com/MD_N_M_18",
+      "portfolio": "https://my-portfolio-website-eight-pi.vercel.app/index.html"
     }
   }
 ]

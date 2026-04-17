@@ -29,6 +29,11 @@ const members = [
     linkedin: "https://www.linkedin.com/in/priyankarpal/",
     photo: "/images/priyankar.jpeg",
   },
+  {
+    name: "Sujal Maiti",
+    linkedin: "https://www.linkedin.com/in/sujal-maiti-a4931a190/",
+    photo: "/images/sujal.jpeg",
+  },
 ];
 
 const CoreTeam = () => (
