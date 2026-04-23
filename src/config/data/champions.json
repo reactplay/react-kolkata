@@ -112,5 +112,17 @@
       "twitter": "https://x.com/MD_N_M_18",
       "portfolio": "https://my-portfolio-website-eight-pi.vercel.app/index.html"
     }
+  },
+  {
+    "id": 14,
+    "name": "Mohammad Shahzeb Alam",
+    "role": "Event Organizing Team",
+    "bio": "Frontend developer & React Kolkata organizer, building community and contributing to open source.",
+    "photo": "https://github.com/Shahzebdevv.png",
+    "socials": {
+      "github": "https://github.com/Shahzebdevv",
+      "linkedin": "https://www.linkedin.com/in/mohammad-shahzeb-alam-3029a82b9/",
+      "twitter": "https://x.com/MdShahzebAlam"
+    }
   }
 ]
