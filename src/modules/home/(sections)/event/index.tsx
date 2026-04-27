@@ -17,6 +17,7 @@ import ComingSoonCard from "./coming-soon-card";
 import EventCard from "./event-card";
 import EventCardCompact from "./event-card-compact";
 import EventFiltersComponent from "./event-filters";
+import LumaEmbed from "./luma-embed";
 
 export default function EventsSection() {
   const t = useTranslations("Events");
@@ -133,9 +134,15 @@ export default function EventsSection() {
               <div className="grid gap-6 lg:grid-cols-3 lg:items-start">
                 {/* Large upcoming event card - takes 2 columns */}
                 <div className="lg:col-span-2">
-                  {filteredUpcomingEvents.slice(0, 1).map((event) => (
-                    <EventCard key={event.id} event={event} />
-                  ))}
+                  {filteredUpcomingEvents
+                    .slice(0, 1)
+                    .map((event) =>
+                      event.id.startsWith("evt-") ? (
+                        <LumaEmbed key={event.id} eventId={event.id} />
+                      ) : (
+                        <EventCard key={event.id} event={event} />
+                      )
+                    )}
                 </div>
 
                 {/* CFP and Champion Cards - stacked vertically, matching left card height */}
