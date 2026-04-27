@@ -2,6 +2,20 @@ import { EVENT_TYPES } from "@/types/event";
 
 export const events = [
   {
+    id: "evt-39ktH71VIdB6ynb",
+    title: "React Kolkata Meetup: May’26 Edition",
+    venue: "Indus Net Technologies (INT.), Kolkata",
+    description:
+      "Join us at the first-ever in-person meetup of React Kolkata. Calling out all the React and AI developers from the City of Joy and beyond to gather and make this event successful with learning and sharing.",
+    registrationUrl: "https://luma.com/event/evt-39ktH71VIdB6ynb",
+    image:
+      "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,background=white,quality=75,width=400,height=400/event-covers/z2/8226021e-7f61-4c12-a7d1-e633d7b87163.jpg",
+    type: EVENT_TYPES.IN_PERSON,
+    startDateTime: "2026-05-24T10:00:00+05:30",
+    endDateTime: "2026-05-24T14:00:00+05:30",
+    isFeatured: true,
+  },
+  {
     id: "rk-nov-2025",
     title: "Building Together: The React Kolkata Chapter by ReactPlay",
     venue: "Virtual",

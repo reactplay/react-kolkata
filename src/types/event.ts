@@ -4,6 +4,7 @@ export const EVENT_TYPES = {
   ONLINE: "online",
   OFFLINE: "offline",
   HYBRID: "hybrid",
+  IN_PERSON: "offline",
 } as const;
 
 export type EventType = (typeof EVENT_TYPES)[keyof typeof EVENT_TYPES];
@@ -39,6 +40,7 @@ export interface Event {
   // Recording and slide links for past events
   recordingUrl?: string;
   slidesUrl?: string;
+  isFeatured?: boolean;
 }
 
 export interface EventFilters {
