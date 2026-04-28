@@ -36,6 +36,7 @@ export default function EventCard({ event }: EventCardProps) {
           src={event.image ?? "/images/tech-events-1.jpg"}
           alt={event.title}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 67vw, 800px"
           className="object-cover transition duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-linear-to-t from-[#0B1220] to-transparent opacity-60" />

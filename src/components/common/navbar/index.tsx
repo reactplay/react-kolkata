@@ -2,15 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import NextLink from "next/link"; // Use NextLink for external and hash links
+import NextLink from "next/link"; // Use NextLink for external links
 import { useRouter } from "next/navigation";
 import { trackGAEvent } from "@/utils/analytics";
 import { AnimatePresence, motion } from "framer-motion";
 import { Github, Linkedin, Menu, X, Youtube } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { SiDiscord } from "react-icons/si";
 
-import { Link, usePathname } from "@/config/i18n/navigation"; // Use Link for internal page routes
+import { Link, usePathname } from "@/config/i18n/navigation"; // Use localized navigation for internal page routes
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/custom/language-switcher";
@@ -27,6 +27,7 @@ const Navbar = () => {
 
   const router = useRouter();
   const pathname = usePathname();
+  const locale = useLocale();
   const t = useTranslations("Navbar");
 
   const handleCoreTeamClick = () => {
@@ -35,7 +36,7 @@ const Navbar = () => {
       const el = document.getElementById("core-team");
       if (el) el.scrollIntoView({ behavior: "smooth" });
     } else {
-      router.push("/#core-team");
+      router.push(`/${locale}/#core-team`);
     }
   };
 
@@ -104,11 +105,12 @@ const Navbar = () => {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2" aria-label="React Kolkata Home">
-          <div className="relative h-28 w-52">
+          <div className="relative h-24 w-60 sm:h-28 sm:w-64">
             <Image
               alt="react kolkata brand logo"
               src="/images/React-Kolkata-Logo-new.png"
               fill
+              sizes="(max-width: 640px) 240px, 256px"
               className="object-contain"
               priority
             />
@@ -130,7 +132,7 @@ const Navbar = () => {
                     <button
                       onClick={handleCoreTeamClick}
                       className={cn(
-                        "rounded-md px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]",
+                        "cursor-pointer rounded-md px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]",
                         "text-slate-300 hover:text-white"
                       )}
                     >

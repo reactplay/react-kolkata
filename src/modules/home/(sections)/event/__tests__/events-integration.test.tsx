@@ -197,7 +197,7 @@ describe("EventsSection Integration", () => {
 
     const viewAllLink = screen.getByText("View All Events");
     expect(viewAllLink).toBeInTheDocument();
-    expect(viewAllLink).toHaveAttribute("href", "/events");
+    expect(viewAllLink).toHaveAttribute("href", "/en/events");
   });
 
   it("should have proper component structure", () => {

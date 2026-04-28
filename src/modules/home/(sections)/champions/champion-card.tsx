@@ -28,6 +28,7 @@ const ChampionCard = ({ champion }: ChampionCardProps) => {
             src={champion.photo}
             alt={`${champion.name}'s photo`}
             fill
+            sizes="96px"
             unoptimized
             className="object-cover transition-transform group-hover:scale-110"
           />

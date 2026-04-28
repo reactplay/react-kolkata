@@ -81,15 +81,17 @@ const BlogCard: React.FC<BlogCardProps> = ({
         {/* Tags, Title & Excerpt */}
         <div className="flex flex-1 flex-col">
           <div className="mb-3 flex flex-wrap gap-1">
-            {tags && Array.isArray(tags) && tags.slice(0, featured ? 4 : 2).map((tag) => (
-              <Badge
-                key={tag.id}
-                variant="secondary"
-                className="bg-sky-500/10 px-2 py-1 text-xs text-sky-300 hover:bg-sky-500/20"
-              >
-                {tag.name.length > 15 ? `${tag.name.substring(0, 12)}...` : tag.name}
-              </Badge>
-            ))}
+            {tags &&
+              Array.isArray(tags) &&
+              tags.slice(0, featured ? 4 : 2).map((tag) => (
+                <Badge
+                  key={tag.id}
+                  variant="secondary"
+                  className="bg-sky-500/10 px-2 py-1 text-xs text-sky-300 hover:bg-sky-500/20"
+                >
+                  {tag.name.length > 15 ? `${tag.name.substring(0, 12)}...` : tag.name}
+                </Badge>
+              ))}
           </div>
 
           <h3
@@ -122,6 +124,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
                   src={author.profilePicture || ""}
                   alt={author.name}
                   fill
+                  sizes="24px"
                   className="object-cover"
                   onError={() => setAuthorImageError(true)}
                 />

@@ -43,26 +43,28 @@ const Footer = () => {
     <footer className="border-t border-white/5 bg-[#0B1220] text-slate-400">
       {/* ===== MAIN GRID ===== */}
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 md:grid-cols-3 lg:gap-16">
-        <div className="flex flex-col space-y-5">
-          <Link href="/" className="flex items-center gap-3" aria-label="React Kolkata Home">
-            <Image
-              src="/images/React-Kolkata-Logo-new.png"
-              alt="React Kolkata logo"
-              width={150}
-              height={150}
-              className="object-contain"
-              priority
-            />
+        <div className="flex flex-col items-start gap-4">
+          <Link href="/" className="inline-flex self-start" aria-label="React Kolkata Home">
+            <div className="relative h-20 w-[220px] overflow-hidden">
+              <Image
+                src="/images/React-Kolkata-Logo-new.png"
+                alt="React Kolkata logo"
+                fill
+                sizes="220px"
+                className="object-cover object-left"
+                priority
+              />
+            </div>
           </Link>
 
-          <div className="flex flex-col space-y-3">
+          <div className="max-w-sm space-y-3 pl-4">
             <h3 className="text-sm font-semibold text-white">{t("about_project_title")}</h3>
-            <p className="text-sm leading-relaxed lg:pr-10">{t("about_project_description")}</p>
+            <p className="text-sm leading-relaxed">{t("about_project_description")}</p>
           </div>
         </div>
 
-        <nav aria-label="Quick links" className="flex flex-col md:items-start lg:items-center">
-          <div className="flex flex-col">
+        <nav aria-label="Quick links" className="flex flex-col items-start">
+          <div className="flex flex-col items-start">
             <h3 className="mb-4 text-sm font-semibold text-white">{t("quick_links_title")}</h3>
             <ul className="space-y-3 text-sm">
               {quickLinks.map((l) => (
@@ -87,8 +89,8 @@ const Footer = () => {
           </div>
         </nav>
 
-        <div className="flex flex-col md:items-start lg:items-end">
-          <div className="flex flex-col">
+        <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start">
             <h3 className="mb-4 text-sm font-semibold text-white">{t("contact_title")}</h3>
 
             <div className="flex items-center gap-2 text-sm">

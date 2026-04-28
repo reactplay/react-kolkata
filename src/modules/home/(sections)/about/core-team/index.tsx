@@ -61,6 +61,7 @@ const CoreTeam = () => (
                     src={member?.photo}
                     alt={member.name}
                     fill
+                    sizes="(max-width: 768px) 96px, 112px"
                     className="object-cover transition-transform group-hover:scale-110"
                     style={{ background: "#1e293b" }}
                   />

@@ -12,6 +12,7 @@ const NotFound = () => {
         src="/images/404.jpg"
         alt="404 background"
         fill
+        sizes="100vw"
         className="absolute inset-0 object-cover"
         priority
       />
