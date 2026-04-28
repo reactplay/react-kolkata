@@ -6,7 +6,7 @@ import Link from "next/link";
 import { loadMoreBlogs } from "@/store/blogActions";
 import { Blog, BlogResponse, BlogSectionProps, BlogTag } from "@/types/blog";
 import { Filter, Loader2, X } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { useDeviceDetail } from "@/hooks/use-device-detail";
 import { Badge } from "@/components/ui/badge";
@@ -51,10 +51,11 @@ export default function BlogList({
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
   const [isPending, startTransition] = useTransition();
-  
+  const locale = useLocale();
+
   // Ref to track if a fetch is currently in progress (prevents race conditions)
   const isFetchingRef = useRef(false);
-  
+
   const t = useTranslations("Blog");
   const { isMobile, isPad } = useDeviceDetail();
 
@@ -98,15 +99,15 @@ export default function BlogList({
 
   const handleMoreBlogsCTA = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    
+
     // Prevent concurrent requests (race condition guard)
     if (isFetchingRef.current || isPending) {
       return;
     }
-    
+
     // Mark fetch as in progress
     isFetchingRef.current = true;
-    
+
     loadMoreBlogs(cursor, blogsToShow())
       .then(({ posts: newBlogs, endCursor, error }) => {
         if (error) {
@@ -131,13 +132,13 @@ export default function BlogList({
           }
           return true;
         });
-        
+
         startTransition(() => {
           setBlogsResponse((prev) => {
             // Additional safety: check for duplicate IDs before merging
             const existingIds = new Set(prev.data.map((b) => b.id));
             const uniqueNewBlogs = validNewBlogs.filter((blog) => !existingIds.has(blog.id));
-            
+
             return {
               data: [...prev.data, ...uniqueNewBlogs],
               error: null,
@@ -197,7 +198,7 @@ export default function BlogList({
               {/* Show only when we are not pres */}
               {!showLoadMoreButton && (
                 <Link
-                  href="/blog"
+                  href={`/${locale}/blog`}
                   className="text-sm text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline"
                 >
                   {t("view_all_posts")}

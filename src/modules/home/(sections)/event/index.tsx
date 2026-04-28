@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { EVENT_STATUS, EVENT_TYPES, EventFilters } from "@/types/event";
 import { Filter } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { getEventStatus } from "@/lib/calendar-utils";
 import { Button } from "@/components/ui/button";
@@ -20,6 +20,7 @@ import EventFiltersComponent from "./event-filters";
 import LumaEmbed from "./luma-embed";
 
 export default function EventsSection() {
+  const locale = useLocale();
   const t = useTranslations("Events");
   const [filters, setFilters] = useState<EventFilters>({
     status: EVENT_STATUS.ALL,
@@ -98,7 +99,7 @@ export default function EventsSection() {
               {t("filter")}
             </Button>
             <Link
-              href="/events"
+              href={`/${locale}/events`}
               className="text-sm text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline"
             >
               {t("view_all_events")}
@@ -174,7 +175,7 @@ export default function EventsSection() {
                   {t("past_events")}
                 </h3>
                 <Link
-                  href="/events"
+                  href={`/${locale}/events`}
                   className="text-sm text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline"
                 >
                   {t("view_all_past_events")}

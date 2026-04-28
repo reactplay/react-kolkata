@@ -121,6 +121,8 @@
     "discord": "Discord"
   },
   "Footer": {
+    "about_project_title": "Sobre la Plataforma",
+    "about_project_description": "Una iniciativa de código abierto creada para la comunidad. Esta plataforma facilita eventos, el intercambio de conocimiento y la colaboración entre desarrolladores.",
     "description": "Una comunidad para desarrolladores React en Kolkata. Reúnete, aprende y construye juntos.",
     "quick_links_title": "Enlaces Rápidos",
     "quick_links": {

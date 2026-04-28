@@ -25,6 +25,7 @@ const ContributorCard = ({ contributor }: ContributorCardProps) => {
           src={contributor.avatar_url}
           alt={`${contributor.login}'s avatar`}
           fill
+          sizes="80px"
           className="object-cover transition-transform group-hover:scale-105"
         />
       </div>

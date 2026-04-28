@@ -19,7 +19,7 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
   const [authorImageError, setAuthorImageError] = useState(false);
 
   const defaultCoverImage = "/images/tech-events-1.jpg";
-  
+
   // Validate blog object
   if (!blog) return null;
 
@@ -71,6 +71,7 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
                 }
                 alt={blog.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 768px"
                 className="object-cover"
                 onError={() => setCoverImageError(true)}
               />
@@ -116,6 +117,7 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
                     src={blog.author.profilePicture}
                     alt={blog.author.name}
                     fill
+                    sizes="48px"
                     className="object-cover"
                     onError={() => setAuthorImageError(true)}
                   />
