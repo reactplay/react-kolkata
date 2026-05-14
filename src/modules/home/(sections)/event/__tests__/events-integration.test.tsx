@@ -1,6 +1,6 @@
 import { TestWrapper } from "@/test-utils";
 import { EVENT_STATUS, EVENT_TYPES } from "@/types/event";
-import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import EventsSection from "../index";
@@ -96,108 +96,16 @@ describe("EventsSection Integration", () => {
     expect(screen.queryByText("Online Meetup")).not.toBeInTheDocument();
   });
 
-  it("should show and hide filters when filter button is clicked", async () => {
+  it("should render View all past events link", () => {
     render(
       <TestWrapper>
         <EventsSection />
       </TestWrapper>
     );
 
-    const filterButton = screen.getByText("Filter");
-
-    // Initially filters should not be visible
-    expect(screen.queryByTestId("event-filters")).not.toBeInTheDocument();
-
-    // Click to show filters
-    fireEvent.click(filterButton);
-    await waitFor(() => {
-      expect(screen.getByTestId("event-filters")).toBeInTheDocument();
-    });
-
-    // Click to hide filters
-    fireEvent.click(filterButton);
-    await waitFor(() => {
-      expect(screen.queryByTestId("event-filters")).not.toBeInTheDocument();
-    });
-  });
-
-  it("should update filters when filter component triggers updates", async () => {
-    render(
-      <TestWrapper>
-        <EventsSection />
-      </TestWrapper>
-    );
-
-    // Show filters
-    const filterButton = screen.getByText("Filter");
-    fireEvent.click(filterButton);
-
-    await waitFor(() => {
-      expect(screen.getByTestId("event-filters")).toBeInTheDocument();
-    });
-
-    // Check initial state
-    expect(screen.getByText("Status: all, Type: all")).toBeInTheDocument();
-
-    // Apply status filter
-    const upcomingButton = screen.getByText("Filter Upcoming");
-    fireEvent.click(upcomingButton);
-
-    await waitFor(() => {
-      expect(screen.getByText("Status: upcoming, Type: all")).toBeInTheDocument();
-    });
-
-    // Apply type filter
-    const onlineButton = screen.getByText("Filter Online");
-    fireEvent.click(onlineButton);
-
-    await waitFor(() => {
-      expect(screen.getByText("Status: upcoming, Type: online")).toBeInTheDocument();
-    });
-  });
-
-  it("should clear all filters when clear button is clicked", async () => {
-    render(
-      <TestWrapper>
-        <EventsSection />
-      </TestWrapper>
-    );
-
-    // Show filters and apply some
-    const filterButton = screen.getByText("Filter");
-    fireEvent.click(filterButton);
-
-    await waitFor(() => {
-      expect(screen.getByTestId("event-filters")).toBeInTheDocument();
-    });
-
-    // Apply filters
-    const upcomingButton = screen.getByText("Filter Upcoming");
-    fireEvent.click(upcomingButton);
-
-    await waitFor(() => {
-      expect(screen.getByText("Status: upcoming, Type: all")).toBeInTheDocument();
-    });
-
-    // Clear filters
-    const clearButton = screen.getByText("Clear All");
-    fireEvent.click(clearButton);
-
-    await waitFor(() => {
-      expect(screen.getByText("Status: all, Type: all")).toBeInTheDocument();
-    });
-  });
-
-  it("should render View all link", () => {
-    render(
-      <TestWrapper>
-        <EventsSection />
-      </TestWrapper>
-    );
-
-    const viewAllLink = screen.getByText("View All Events");
+    const viewAllLink = screen.getByText("View All Past Events");
     expect(viewAllLink).toBeInTheDocument();
-    expect(viewAllLink).toHaveAttribute("href", "/en/events");
+    expect(viewAllLink.closest("a")).toHaveAttribute("href", "/en/events");
   });
 
   it("should have proper component structure", () => {

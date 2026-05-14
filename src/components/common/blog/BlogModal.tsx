@@ -53,10 +53,7 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
         }}
       >
         <DialogHeader>
-          <DialogTitle
-            className="pr-8 text-xl font-semibold text-sky-200"
-            style={{ fontFamily: "var(--font-poppins)" }}
-          >
+          <DialogTitle className="pr-8 text-xl font-semibold text-sky-200">
             {blog.title}
           </DialogTitle>
         </DialogHeader>

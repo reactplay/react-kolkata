@@ -9,9 +9,9 @@ const nextConfig: NextConfig = {
   // },
   output: "standalone",
   reactStrictMode: true,
-  productionBrowserSourceMaps: process.env.NEXT_PUBLIC_NODE_ENV === 'development',
+  productionBrowserSourceMaps: process.env.NEXT_PUBLIC_NODE_ENV === "development",
   images: {
-    formats: ['image/avif', 'image/webp'],
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",
@@ -94,7 +94,7 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion'],
+    optimizePackageImports: ["lucide-react", "framer-motion"],
   },
 };
 

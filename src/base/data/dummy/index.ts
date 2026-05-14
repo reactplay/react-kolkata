@@ -158,7 +158,7 @@ export const articles = [
       { id: "kolkata", name: "Kolkata", slug: "kolkata" },
     ],
     readTime: 7,
-    coverImage: "/images/kolkata_image.jpg",
+    coverImage: "/images/kolkata-hero.jpg",
     url: "https://reactplay.hashnode.dev/community-spotlight-open-source-in-kolkata",
   },
   {

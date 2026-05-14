@@ -1,7 +1,7 @@
 // blogPostQuery is the
 const blogPostQuery = `
     query Publication($postCount: Int!, $cursor: String) {
-        publication(host: "reactplay.hashnode.dev") {
+        publication(host: "reactplay.io") {
             posts(first: $postCount, after: $cursor) {
                 edges {
                     node {

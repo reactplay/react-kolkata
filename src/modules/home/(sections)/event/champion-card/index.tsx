@@ -27,15 +27,17 @@ export default function ChampionCard() {
 
       <div className="flex flex-1 flex-col justify-between p-3">
         <div>
-          <h3 className="text-sm font-semibold text-sky-200">{t("call_for_champions")}</h3>
+          <h3 className="text-sm font-bold text-white transition-colors group-hover:text-white">
+            {t("call_for_champions")}
+          </h3>
 
-          <div className="mt-2 space-y-1 text-xs text-slate-300">
+          <div className="mt-2 space-y-1 text-xs text-slate-400">
             <div className="flex items-center gap-2">
-              <Heart className="h-3 w-3 text-sky-300" aria-hidden />
+              <Heart className="h-3 w-3 text-slate-500" aria-hidden />
               <span>Make a difference</span>
             </div>
             <div className="flex items-center gap-2">
-              <Calendar className="h-3 w-3 text-sky-300" aria-hidden />
+              <Calendar className="h-3 w-3 text-slate-500" aria-hidden />
               <span>Help organize events</span>
             </div>
           </div>
@@ -43,11 +45,7 @@ export default function ChampionCard() {
 
         {/* Action Button */}
         <div className="mt-3">
-          <Button
-            asChild
-            size="sm"
-            className="w-full bg-linear-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
-          >
+          <Button asChild size="sm" className="w-full bg-white text-slate-900 hover:bg-slate-200">
             <Link href="#" target="_blank" rel="noreferrer">
               {t("call_for_champions")}
             </Link>

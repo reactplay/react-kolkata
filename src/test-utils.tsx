@@ -68,7 +68,7 @@ const mockMessages = {
     past_events: "Past Events",
     call_for_speakers: "Call for Speakers",
     call_for_champions: "Call for Champions",
-    view_all_events: "View All Events",
+    // view_all_events: "View All Events",
     view_all_past_events: "View All Past Events",
     coming_soon: "Coming Soon",
   },

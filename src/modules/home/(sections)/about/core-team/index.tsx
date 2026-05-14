@@ -1,83 +1,110 @@
 import Image from "next/image";
 import { Linkedin } from "lucide-react";
 
+import { XLogo } from "@/components/common/icons/XLogo";
 import AnimatedSection from "@/components/custom/animated-section";
+import { ArchitecturalCorner } from "@/components/custom/architectural-corner";
 
 const members = [
   {
     name: "Arkajit Roy",
+    role: "Design Lead",
     linkedin: "https://www.linkedin.com/in/arkajitroy/",
+    twitter: "https://x.com/arkajitroy",
     photo: "/images/arkajit.jpeg",
   },
   {
     name: "Tapas Adhikary",
+    role: "Community Lead",
     linkedin: "https://www.linkedin.com/in/tapasadhikary/",
+    twitter: "https://x.com/tapasadhikary",
     photo: "/images/tapas.jpeg",
   },
   {
     name: "Arindam Majumder",
+    role: "Developer Relations",
     linkedin: "https://www.linkedin.com/in/arindam2004/",
+    twitter: "https://x.com/arindam_majumder",
     photo: "/images/arindam.jpeg",
   },
   {
     name: "Sulagna Ghosh",
+    role: "Community Lead",
     linkedin: "https://www.linkedin.com/in/sulagna-ghosh-7955361a7/",
+    twitter: "https://x.com/sulagna_ghosh",
     photo: "/images/sulagna.jpeg",
   },
   {
     name: "Priyankar Pal",
+    role: "Open Source Maintainer",
     linkedin: "https://www.linkedin.com/in/priyankarpal/",
+    twitter: "https://x.com/priyankarpal",
     photo: "/images/priyankar.jpeg",
   },
   {
     name: "Sujal Maiti",
+    role: "Social Media",
     linkedin: "https://www.linkedin.com/in/sujal-maiti-a4931a190/",
+    twitter: "https://x.com/sujal_maiti",
     photo: "/images/sujal.jpeg",
   },
 ];
 
 const CoreTeam = () => (
-  <AnimatedSection id="core-team" className="py-24 text-center">
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2
-        className="mb-16 text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl lg:text-5xl"
-        style={{ fontFamily: "var(--font-poppins)" }}
-      >
-        Core Team
-      </h2>
-      <div className="mx-auto grid grid-cols-2 gap-4 md:gap-8 lg:grid-cols-3 xl:grid-cols-5">
+  <AnimatedSection id="core-team" className="bg-[#0B1220] py-20">
+    <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mb-20 text-center">
+        <h2 className="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          Meet the Core Team
+        </h2>
+        <p className="mx-auto max-w-3xl text-xl text-slate-400">
+          The passionate individuals behind React Kolkata, working together to build the best
+          developer community in the city.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {members.map((member) => (
-          <a
+          <div
             key={member.name}
-            href={member.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex h-full w-full transition-transform hover:-translate-y-1"
+            className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-slate-800 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-500/10"
           >
-            <div className="flex h-full w-full flex-col items-center rounded-xl border border-white/5 bg-white/5 p-4 shadow-lg backdrop-blur-sm transition-all hover:border-white/10 hover:bg-white/10 hover:shadow-sky-500/5 md:p-6">
-              <div className="relative mb-4">
-                <div className="relative h-24 w-24 overflow-hidden rounded-full ring-4 ring-sky-500/20 transition-all group-hover:ring-sky-500/40 md:h-28 md:w-28">
-                  <Image
-                    src={member?.photo}
-                    alt={member.name}
-                    fill
-                    sizes="(max-width: 768px) 96px, 112px"
-                    className="object-cover transition-transform group-hover:scale-110"
-                    style={{ background: "#1e293b" }}
-                  />
-                </div>
-                <div className="absolute right-0 bottom-0 rounded-full border-2 border-slate-900 bg-gradient-to-br from-blue-500 to-sky-400 p-1.5 shadow-lg">
-                  <Linkedin className="h-3 w-3 text-white md:h-4 md:w-4" />
-                </div>
+            <ArchitecturalCorner />
+            <Image
+              src={member.photo}
+              alt={member.name}
+              fill
+              className="object-cover grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0"
+            />
+
+            {/* Dark Overlay Gradient */}
+            <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent opacity-80" />
+
+            {/* Info at bottom left */}
+            <div className="absolute bottom-0 left-0 w-full p-6 text-left">
+              <h3 className="mb-1 text-xl font-bold text-white">{member.name}</h3>
+              <p className="mb-4 text-sm text-slate-300">{member.role}</p>
+
+              <div className="flex items-center gap-3">
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-md bg-white/10 p-2 text-white backdrop-blur-md transition-colors hover:bg-white/20"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </a>
+                <a
+                  href={member.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-md bg-white/10 p-2 text-white backdrop-blur-md transition-colors hover:bg-white/20"
+                >
+                  <XLogo className="h-4 w-4" />
+                </a>
               </div>
-              <span
-                className="text-sm font-semibold text-slate-100 md:text-lg"
-                style={{ fontFamily: "var(--font-poppins)" }}
-              >
-                {member.name}
-              </span>
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </div>

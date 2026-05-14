@@ -2,12 +2,8 @@
 @import "tw-animate-css";
 
 :root {
-  --font-inter:
-    "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
-    "Apple Color Emoji", "Segoe UI Emoji";
-  --font-poppins:
-    "Poppins", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
-    "Apple Color Emoji", "Segoe UI Emoji";
+  --font-geist-sans: "Geist Sans", ui-sans-serif, system-ui, -apple-system;
+  --font-geist-mono: "Geist Mono", ui-monospace, SFMono-Regular;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -79,6 +75,8 @@
 }
 
 @theme inline {
+  --font-sans: Geist, "Geist Placeholder", sans-serif;
+  --font-mono: var(--font-geist-mono);
   /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -116,6 +114,16 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  --animate-marquee: marquee 30s linear infinite;
 }
 
 @layer base {
@@ -125,10 +133,19 @@
   html,
   body {
     height: 100%;
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
   }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-inter);
+    font-family: Geist, "Geist Placeholder", sans-serif;
   }
 }
 

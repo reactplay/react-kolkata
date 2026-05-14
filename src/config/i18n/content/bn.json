@@ -151,5 +151,26 @@
       "join_description": "আমরা সবসময় আমাদের টিমে যোগদানের জন্য উৎসাহী ব্যক্তিদের খুঁজছি। আপনি বিশেষজ্ঞ হোন বা নতুন, সাহায্য করার অনেক উপায় আছে!",
       "join_button": "চ্যাম্পিয়ন হিসেবে যোগ দিন"
     }
+  },
+  "Timeline": {
+    "title": "Your Journey with Us",
+    "subtitle": "From learning to leading — here's how you can grow with React Kolkata.",
+    "step-1": {
+      "title": "Connect",
+      "description": "Join our WhatsApp, Discord, and GitHub to stay updated."
+    },
+    "step-2": {
+      "title": "Learn",
+      "description": "Attend our monthly meetups and technical workshops."
+    },
+    "step-3": {
+      "title": "Build",
+      "description": "Collaborate on community projects and open-source."
+    },
+    "step-4": { "title": "Impact", "description": "Become a speaker and mentor others." }
+  },
+  "Gallery": {
+    "title": "Moments to Remember",
+    "subtitle": "Capturing the energy and passion of the React Kolkata community."
   }
 }

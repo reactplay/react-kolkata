@@ -60,10 +60,8 @@ export default function EventBadges({ type, status }: EventBadgesProps) {
 
   return (
     <>
-      {/* Event Type Badge */}
       <div className="absolute top-3 right-3">{getEventTypeBadge(type)}</div>
 
-      {/* Event Status Badge */}
       <div className="absolute top-3 left-3">{getStatusBadge(status)}</div>
     </>
   );
