@@ -4,11 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import NextLink from "next/link"; // Use NextLink for external links
 import { useRouter } from "next/navigation";
-import { trackGAEvent } from "@/utils/analytics";
 import { AnimatePresence, motion } from "framer-motion";
-import { Github, Linkedin, Menu, X, Youtube } from "lucide-react";
+import { Github, Linkedin, Menu, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { SiDiscord } from "react-icons/si";
 
 import { Link, usePathname } from "@/config/i18n/navigation"; // Use localized navigation for internal page routes
 import { cn } from "@/lib/utils";
@@ -20,8 +18,6 @@ import { XLogo } from "../icons/XLogo";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [hoveredIcon, setHoveredIcon] = useState<number | null>(null); // State for the icon hover
-  const [activeSection, setActiveSection] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -31,7 +27,6 @@ const Navbar = () => {
   const t = useTranslations("Navbar");
 
   const handleCoreTeamClick = () => {
-    setActiveSection(true);
     if (pathname === "/") {
       const el = document.getElementById("core-team");
       if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -47,13 +42,6 @@ const Navbar = () => {
     { href: "/events", label: t("events"), external: false, isHashLink: false },
   ];
 
-  const handleJoinClick = () => {
-    trackGAEvent("join_community_click", {
-      category: "CTA",
-      label: "Navbar Join Button",
-    });
-  };
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
@@ -63,10 +51,6 @@ const Navbar = () => {
 
   useEffect(() => {
     setOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
-    if (pathname !== "/") setActiveSection(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -96,34 +80,51 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-colors",
-        scrolled
-          ? "border-b border-white/5 bg-[#0B1220]/70 backdrop-blur supports-backdrop-filter:bg-[#0B1220]/60"
-          : ""
+        "fixed top-0 z-50 flex w-full justify-center px-4 transition-all duration-300",
+        scrolled ? "pt-6" : "pt-0"
       )}
       role="banner"
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div
+        className={cn(
+          "mx-auto flex w-full items-center justify-between transition-all duration-500",
+          scrolled
+            ? "max-w-2xl rounded-full border border-white/10 bg-[#0B1220]/80 px-6 py-2 shadow-2xl backdrop-blur-xl"
+            : "h-20 max-w-7xl bg-transparent px-4 sm:h-24 sm:px-6 lg:px-8"
+        )}
+      >
+        {/* Logo */}
         <Link href="/" className="flex items-center gap-2" aria-label="React Kolkata Home">
-          <div className="relative h-24 w-60 sm:h-28 sm:w-64">
+          <div
+            className={cn(
+              "relative transition-all duration-500",
+              scrolled ? "h-10 w-28" : "h-16 w-48 sm:h-38 sm:w-56"
+            )}
+          >
             <Image
               alt="react kolkata brand logo"
               src="/images/React-Kolkata-Logo-new.png"
               fill
-              sizes="(max-width: 640px) 240px, 256px"
+              sizes="(max-width: 640px) 200px, 256px"
               className="object-contain"
               priority
             />
           </div>
         </Link>
 
-        <nav className="hidden items-center lg:flex" aria-label="Primary">
+        {/* Desktop Navigation Links (Hidden in Pill) */}
+        <nav
+          className={cn(
+            "hidden items-center overflow-hidden transition-all duration-300 lg:flex",
+            scrolled ? "pointer-events-none w-0 opacity-0" : "w-auto opacity-100"
+          )}
+          aria-label="Primary"
+        >
           <ul className="flex items-center gap-1">
             {links.map((l) => {
               const checkPath = l.isHashLink ? l.href.split("#")[0] : l.href;
               const active =
                 checkPath === "/" ? pathname === checkPath : pathname.startsWith(checkPath);
-              // Use NextLink for external or hash links, use localized Link otherwise
               const LinkComponent = l.external || l.isHashLink ? NextLink : Link;
 
               return (
@@ -132,7 +133,7 @@ const Navbar = () => {
                     <button
                       onClick={handleCoreTeamClick}
                       className={cn(
-                        "cursor-pointer rounded-md px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]",
+                        "cursor-pointer rounded-md px-3 py-2 text-sm font-medium transition-colors focus:outline-none",
                         "text-slate-300 hover:text-white"
                       )}
                     >
@@ -145,10 +146,9 @@ const Navbar = () => {
                       rel={l.external ? "noopener noreferrer" : undefined}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "rounded-md px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]",
+                        "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                         active ? "text-sky-300" : "text-slate-300 hover:text-white"
                       )}
-                      onClick={l.href === "/" ? () => setActiveSection(false) : undefined}
                     >
                       {l.label}
                     </LinkComponent>
@@ -159,306 +159,131 @@ const Navbar = () => {
           </ul>
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
-          <ul
-            className="relative flex items-center gap-0.5"
-            onMouseLeave={() => setHoveredIcon(null)}
-          >
-            {/* --- Icon 1: X --- */}
-            <li className="relative">
-              <AnimatePresence>
-                {hoveredIcon === 0 && (
-                  <motion.span
-                    // --- UPDATED CLASSES FOR BETTER LOOK ---
-                    className="absolute inset-0 h-full w-full rounded-full border border-sky-400/20 bg-slate-700/50"
-                    layoutId="hoverIconBackground"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, transition: { duration: 0.15 } }}
-                    exit={{ opacity: 0, transition: { duration: 0.15, delay: 0.2 } }}
-                  />
-                )}
-              </AnimatePresence>
-              <a
-                className="relative z-10 block rounded-full p-2 text-slate-400 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]"
-                aria-label={t("x")}
-                href="https://x.com/reactkolkata"
-                target="_blank"
-                rel="noreferrer"
-                onMouseEnter={() => setHoveredIcon(0)}
-              >
-                <XLogo className="h-5 w-5" />
-              </a>
-            </li>
-
-            {/* --- Icon 2: Github --- */}
-            <li className="relative">
-              <AnimatePresence>
-                {hoveredIcon === 1 && (
-                  <motion.span
-                    className="absolute inset-0 h-full w-full rounded-full border border-sky-400/20 bg-slate-700/50"
-                    layoutId="hoverIconBackground"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, transition: { duration: 0.15 } }}
-                    exit={{ opacity: 0, transition: { duration: 0.15, delay: 0.2 } }}
-                  />
-                )}
-              </AnimatePresence>
-              <a
-                className="relative z-10 block p-2 text-slate-400 hover:text-white"
-                aria-label={t("github")}
-                href="https://github.com/reactplay/react-kolkata"
-                target="_blank"
-                rel="noreferrer"
-                onMouseEnter={() => setHoveredIcon(1)}
-              >
-                <Github className="h-5 w-5" />
-              </a>
-            </li>
-
-            {/* --- Icon 3: Linkedin --- */}
-            <li className="relative">
-              <AnimatePresence>
-                {hoveredIcon === 2 && (
-                  <motion.span
-                    className="absolute inset-0 h-full w-full rounded-full border border-sky-400/20 bg-slate-700/50"
-                    layoutId="hoverIconBackground"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, transition: { duration: 0.15 } }}
-                    exit={{ opacity: 0, transition: { duration: 0.15, delay: 0.2 } }}
-                  />
-                )}
-              </AnimatePresence>
-              <a
-                className="relative z-10 block p-2 text-slate-400 hover:text-white"
-                aria-label={t("linkedin")}
-                href="https://www.linkedin.com/showcase/react-kolkata"
-                target="_blank"
-                rel="noreferrer"
-                onMouseEnter={() => setHoveredIcon(2)}
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-            </li>
-
-            {/* --- Icon 4: Youtube --- */}
-            <li className="relative">
-              <AnimatePresence>
-                {hoveredIcon === 3 && (
-                  <motion.span
-                    className="absolute inset-0 h-full w-full rounded-full border border-sky-400/20 bg-slate-700/50"
-                    layoutId="hoverIconBackground"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, transition: { duration: 0.15 } }}
-                    exit={{ opacity: 0, transition: { duration: 0.15, delay: 0.2 } }}
-                  />
-                )}
-              </AnimatePresence>
-              <a
-                className="relative z-10 block p-2 text-slate-400 hover:text-white"
-                aria-label={t("youtube")}
-                href="https://www.youtube.com/@ReactPlayIO"
-                target="_blank"
-                rel="noreferrer"
-                onMouseEnter={() => setHoveredIcon(3)}
-              >
-                <Youtube className="h-5 w-5" />
-              </a>
-            </li>
-
-            {/* --- Icon 5: Discord --- */}
-            <li className="relative">
-              <AnimatePresence>
-                {hoveredIcon === 4 && (
-                  <motion.span
-                    className="absolute inset-0 h-full w-full rounded-full border border-sky-400/20 bg-slate-700/50"
-                    layoutId="hoverIconBackground"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, transition: { duration: 0.15 } }}
-                    exit={{ opacity: 0, transition: { duration: 0.15, delay: 0.2 } }}
-                  />
-                )}
-              </AnimatePresence>
-              <a
-                className="relative z-10 block p-2 text-slate-400 hover:text-white"
-                aria-label={t("discord")}
-                href=" https://discord.gg/VRVfn2Vss"
-                target="_blank"
-                rel="noreferrer"
-                onMouseEnter={() => setHoveredIcon(4)}
-              >
-                <SiDiscord className="h-5 w-5" />
-              </a>
-            </li>
+        {/* Desktop Actions / Socials (Hidden in Pill) */}
+        <div
+          className={cn(
+            "hidden items-center gap-6 overflow-hidden transition-all duration-300 lg:flex",
+            scrolled ? "pointer-events-none w-0 opacity-0" : "w-auto opacity-100"
+          )}
+        >
+          <ul className="flex items-center gap-2">
+            {[
+              { icon: XLogo, href: "https://x.com/reactkolkata", label: t("x") },
+              {
+                icon: Github,
+                href: "https://github.com/reactplay/react-kolkata",
+                label: t("github"),
+              },
+              {
+                icon: Linkedin,
+                href: "https://www.linkedin.com/showcase/react-kolkata",
+                label: t("linkedin"),
+              },
+            ].map((social, i) => (
+              <li key={i}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block p-2 text-slate-400 transition-colors hover:text-white"
+                  aria-label={social.label}
+                >
+                  <social.icon className="h-5 w-5" />
+                </a>
+              </li>
+            ))}
           </ul>
           <LanguageSwitcher />
-          <div className="hidden lg:block">
-            <Button
-              asChild
-              className="bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
-              onClick={handleJoinClick}
-            >
-              <NextLink href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs" target="_blank">
-                {t("join_community")}
-              </NextLink>
-            </Button>
-          </div>
+          {/* <Button
+            asChild
+            size="sm"
+            className="rounded-full bg-indigo-600 hover:bg-indigo-500"
+            onClick={handleJoinClick}
+          >
+            <NextLink href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs" target="_blank">
+              {t("join_community")}
+            </NextLink>
+          </Button> */}
         </div>
 
-        <button
-          ref={toggleButtonRef}
-          className="inline-flex items-center justify-center rounded-md p-2 text-slate-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220] lg:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-        >
-          {open ? (
-            <X className="h-5 w-5" aria-hidden="true" />
-          ) : (
-            <Menu className="h-5 w-5" aria-hidden="true" />
-          )}
-        </button>
+        {/* Menu Button (Always visible in Pill, only mobile in full) */}
+        <div className="flex items-center gap-4">
+          <button
+            ref={toggleButtonRef}
+            className={cn(
+              "inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-all focus:outline-none",
+              scrolled
+                ? "border border-white/10 bg-white/10 text-white hover:bg-white/20"
+                : "border border-white/5 bg-white/5 text-slate-200 lg:hidden"
+            )}
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            <span className="mr-2 hidden sm:inline">{open ? "Close" : "Menu"}</span>
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
-      {open ? (
-        <div
-          id="mobile-menu"
-          ref={mobileMenuRef}
-          className="absolute right-0 w-1/2 border-t border-white/5 bg-[#0B1220] lg:hidden"
-        >
-          <nav className="mx-auto max-w-7xl" aria-label="Mobile">
-            <ul className="grid gap-1">
-              {links.map((l) => {
-                const checkPath = l.isHashLink ? l.href.split("#")[0] : l.href;
-                const active =
-                  checkPath === "/" ? pathname === checkPath : pathname.startsWith(checkPath);
-                const LinkComponent = l.external || l.isHashLink ? NextLink : Link;
-
-                return (
+      {/* Mobile / Full Menu Overlay */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-24 right-4 left-4 z-50 rounded-3xl border border-white/10 bg-[#0B1220]/95 p-8 shadow-2xl backdrop-blur-2xl lg:hidden"
+          >
+            <nav className="flex flex-col gap-6">
+              <ul className="grid gap-4">
+                {links.map((l) => (
                   <li key={l.href}>
-                    {l.isHashLink ? (
-                      <button
-                        onClick={handleCoreTeamClick}
-                        className={cn(
-                          "inline-flex w-full items-center rounded-md px-3 py-2 text-left text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]",
-                          "cursor-pointer border-0 bg-transparent",
-                          activeSection
-                            ? "bg-white/5 text-sky-300"
-                            : "text-slate-300 hover:bg-white/5 hover:text-white"
-                        )}
-                      >
-                        {l.label}
-                      </button>
-                    ) : (
-                      <LinkComponent
-                        href={l.href}
-                        target={l.external ? "_blank" : undefined}
-                        rel={l.external ? "noopener noreferrer" : undefined}
-                        aria-current={active && !activeSection ? "page" : undefined}
-                        onClick={() => setActiveSection(false)}
-                        className={cn(
-                          "block rounded-md px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]",
-                          active && !activeSection
-                            ? "bg-white/5 text-sky-300"
-                            : "text-slate-300 hover:bg-white/5 hover:text-white"
-                        )}
-                      >
-                        {l.label}
-                      </LinkComponent>
-                    )}
+                    <button
+                      onClick={() => {
+                        if (l.isHashLink) handleCoreTeamClick();
+                        setOpen(false);
+                      }}
+                      className="text-2xl font-bold text-white transition-colors hover:text-sky-400"
+                    >
+                      {l.label}
+                    </button>
                   </li>
-                );
-              })}
-              <Button
-                asChild
-                className="mt-2 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
-                onClick={handleJoinClick}
-              >
-                <NextLink target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
-                  {t("join_community")}
-                </NextLink>
-              </Button>
-
-              <div className="flex justify-center py-2">
-                <LanguageSwitcher />
-              </div>
-
-              <ul className="mt-2 flex flex-col gap-3">
-                <li className="px-2 py-2">
-                  <a
-                    className="text-slate-300"
-                    aria-label={t("x")}
-                    href="https://x.com/reactkolkata"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <div className="flex items-center gap-2">
-                      <XLogo className="h-5 w-5" />
-                      <span className="text-sm">{t("x")}</span>
-                    </div>
-                  </a>
-                </li>
-                <li className="px-2 py-2">
-                  <a
-                    className="text-slate-300"
-                    aria-label={t("github")}
-                    href="https://github.com/reactplay/react-kolkata"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <div className="flex items-center gap-2">
-                      <Github className="h-5 w-5" />
-                      <span className="text-sm">{t("github")}</span>
-                    </div>
-                  </a>
-                </li>
-                <li className="px-2 py-2">
-                  <a
-                    className="text-slate-300"
-                    aria-label={t("linkedin")}
-                    href="https://www.linkedin.com/showcase/react-kolkata"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <div className="flex items-center gap-2">
-                      <Linkedin className="h-5 w-5" />
-                      <span className="text-sm">{t("linkedin")}</span>
-                    </div>
-                  </a>
-                </li>
-                <li className="px-2 py-2">
-                  <a
-                    className="text-slate-300"
-                    aria-label={t("youtube")}
-                    href="https://www.youtube.com/@ReactPlayIO"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <div className="flex items-center gap-2">
-                      <Youtube className="h-5 w-5" />
-                      <span className="text-sm">{t("youtube")}</span>
-                    </div>
-                  </a>
-                </li>
-                <li className="px-2 py-2">
-                  <a
-                    className="text-slate-300"
-                    aria-label={t("discord")}
-                    href=" https://discord.gg/VRVfn2Vss"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <div className="flex items-center gap-2">
-                      <SiDiscord className="h-5 w-5" />
-                      <span className="text-sm">{t("discord")}</span>
-                    </div>
-                  </a>
-                </li>
+                ))}
               </ul>
-            </ul>
-          </nav>
-        </div>
-      ) : null}
+              <div className="my-4 h-px w-full bg-white/10" />
+              <div className="flex flex-col gap-6">
+                <Button
+                  asChild
+                  className="h-14 w-full rounded-2xl bg-indigo-600 text-lg"
+                  onClick={() => setOpen(false)}
+                >
+                  <NextLink href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs" target="_blank">
+                    {t("join_community")}
+                  </NextLink>
+                </Button>
+                <div className="flex justify-center gap-8">
+                  <a href="https://x.com/reactkolkata" className="text-slate-400 hover:text-white">
+                    <XLogo className="h-6 w-6" />
+                  </a>
+                  <a
+                    href="https://github.com/reactplay/react-kolkata"
+                    className="text-slate-400 hover:text-white"
+                  >
+                    <Github className="h-6 w-6" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/showcase/react-kolkata"
+                    className="text-slate-400 hover:text-white"
+                  >
+                    <Linkedin className="h-6 w-6" />
+                  </a>
+                </div>
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

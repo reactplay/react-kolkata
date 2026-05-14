@@ -1,221 +1,116 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useRef } from "react";
 import Link from "next/link";
-import { EVENT_STATUS, EVENT_TYPES, EventFilters } from "@/types/event";
-import { Filter } from "lucide-react";
+import { EVENT_STATUS } from "@/types/event";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLocale, useTranslations } from "next-intl";
 
 import { getEventStatus } from "@/lib/calendar-utils";
-import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/custom/animated-section";
 import { events } from "@/base/data/dummy";
 
-import CfpCard from "./cfp-card";
-import ChampionCard from "./champion-card";
 import ComingSoonCard from "./coming-soon-card";
 import EventCard from "./event-card";
-import EventCardCompact from "./event-card-compact";
-import EventFiltersComponent from "./event-filters";
 import LumaEmbed from "./luma-embed";
 
 export default function EventsSection() {
   const locale = useLocale();
   const t = useTranslations("Events");
-  const [filters, setFilters] = useState<EventFilters>({
-    status: EVENT_STATUS.ALL,
-    type: EVENT_TYPES.ALL,
-  });
-  const [showFilters, setShowFilters] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Separate events into upcoming and past
-  const { upcomingEvents, pastEvents } = useMemo(() => {
-    const upcoming: typeof events = [];
-    const past: typeof events = [];
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".event-card",
+        { y: 30, opacity: 0 },
+        {
+          scrollTrigger: {
+            trigger: ".event-cards-container",
+            start: "top 85%",
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power2.out",
+        }
+      );
+    }, containerRef);
 
-    events.forEach((event) => {
-      const dynamicStatus = getEventStatus(event.startDateTime, event.endDateTime);
-      if (dynamicStatus === EVENT_STATUS.UPCOMING || dynamicStatus === EVENT_STATUS.ONGOING) {
-        upcoming.push(event);
-      } else {
-        past.push(event);
-      }
-    });
-
-    return {
-      upcomingEvents: upcoming,
-      pastEvents: past,
-    };
+    return () => ctx.revert();
   }, []);
 
-  // Filter events based on selected filters with dynamic status calculation
-  const filteredUpcomingEvents = useMemo(() => {
-    return upcomingEvents.filter((event) => {
+  const upcomingEvents = useMemo(() => {
+    return events.filter((event) => {
       const dynamicStatus = getEventStatus(event.startDateTime, event.endDateTime);
-      const statusMatch = filters.status === EVENT_STATUS.ALL || dynamicStatus === filters.status;
-      const typeMatch = filters.type === EVENT_TYPES.ALL || event.type === filters.type;
-      return statusMatch && typeMatch;
+      return dynamicStatus === EVENT_STATUS.UPCOMING || dynamicStatus === EVENT_STATUS.ONGOING;
     });
-  }, [upcomingEvents, filters]);
-
-  const filteredPastEvents = useMemo(() => {
-    return pastEvents.filter((event) => {
-      const dynamicStatus = getEventStatus(event.startDateTime, event.endDateTime);
-      const statusMatch = filters.status === EVENT_STATUS.ALL || dynamicStatus === filters.status;
-      const typeMatch = filters.type === EVENT_TYPES.ALL || event.type === filters.type;
-      return statusMatch && typeMatch;
-    });
-  }, [pastEvents, filters]);
-
-  const updateFilter = (key: keyof EventFilters, value: string) => {
-    setFilters((prev) => ({ ...prev, [key]: value }));
-  };
-
-  const clearFilters = () => {
-    setFilters({ status: EVENT_STATUS.ALL, type: EVENT_TYPES.ALL });
-  };
+  }, []);
 
   return (
     <AnimatedSection className="relative">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="flex items-end justify-between">
-          <div>
-            <h2
-              className="text-3xl font-semibold tracking-tight sm:text-4xl"
-              style={{ fontFamily: "var(--font-poppins)" }}
-            >
-              {t("title")}
-            </h2>
-            <p className="mt-2 text-slate-300">{t("description")}</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setShowFilters(!showFilters)}
-              className="border-white/10 bg-white/5 text-slate-300 hover:bg-white/10"
-            >
-              <Filter className="mr-2 h-4 w-4" />
-              {t("filter")}
-            </Button>
-            <Link
-              href={`/${locale}/events`}
-              className="text-sm text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline"
-            >
-              {t("view_all_events")}
-            </Link>
-          </div>
+      <div className="absolute top-1/4 -right-20 -z-10 h-96 w-96 rounded-full bg-blue-600/10 blur-[120px]" />
+      <div className="absolute bottom-1/4 -left-20 -z-10 h-96 w-96 rounded-full bg-sky-500/10 blur-[120px]" />
+
+      <div
+        ref={containerRef}
+        className="relative mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8"
+      >
+        <div className="mx-auto mb-16 max-w-4xl text-center">
+          <h2 className="mb-8 text-5xl leading-[1.1] font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+            {t("title")}
+          </h2>
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed font-light text-slate-400 sm:text-xl">
+            {t("description")}
+          </p>
         </div>
 
-        {/* Filter Section */}
-        {showFilters && (
-          <EventFiltersComponent
-            filters={filters}
-            onUpdateFilter={updateFilter}
-            onClearFilters={clearFilters}
-            totalEvents={events.length}
-            filteredCount={filteredUpcomingEvents.length + filteredPastEvents.length}
-          />
-        )}
-
-        {/* Upcoming Events Section - Only show when not filtering for past events */}
-        {(filters.status === EVENT_STATUS.ALL ||
-          filters.status === EVENT_STATUS.UPCOMING ||
-          filters.status === EVENT_STATUS.ONGOING) && (
-          <section className="space-y-6">
-            <h3
-              className="text-2xl font-semibold tracking-tight"
-              style={{ fontFamily: "var(--font-poppins)" }}
-            >
+        <section className="space-y-8">
+          <div className="flex items-center gap-4">
+            <div className="h-px flex-1 bg-white/10" />
+            <h3 className="text-xs font-bold tracking-[0.3em] text-sky-400 uppercase">
               {t("upcoming_events")}
             </h3>
-
-            {/* Wireframe layout: Large upcoming event card + 2 smaller CFP/Champion cards */}
-            {filteredUpcomingEvents.length > 0 ? (
-              <div className="grid gap-6 lg:grid-cols-3 lg:items-start">
-                {/* Large upcoming event card - takes 2 columns */}
-                <div className="lg:col-span-2">
-                  {filteredUpcomingEvents
-                    .slice(0, 1)
-                    .map((event) =>
-                      event.id.startsWith("evt-") ? (
-                        <LumaEmbed key={event.id} eventId={event.id} />
-                      ) : (
-                        <EventCard key={event.id} event={event} />
-                      )
-                    )}
-                </div>
-
-                {/* CFP and Champion Cards - stacked vertically, matching left card height */}
-                <div className="flex flex-col gap-6 lg:h-full">
-                  <CfpCard />
-                  <ChampionCard />
-                </div>
-              </div>
-            ) : (
-              /* Show only Coming Soon card when no upcoming events */
-              <div className="grid gap-6 lg:grid-cols-3 lg:items-start">
-                <div className="lg:col-span-2">
-                  <ComingSoonCard />
-                </div>
-              </div>
-            )}
-          </section>
-        )}
-
-        {/* Past Events Section - Only show when not filtering for upcoming events */}
-        {(filters.status === EVENT_STATUS.ALL || filters.status === EVENT_STATUS.PAST) &&
-          filteredPastEvents.length > 0 && (
-            <section className="space-y-6">
-              <div className="flex items-center justify-between">
-                <h3
-                  className="text-2xl font-semibold tracking-tight"
-                  style={{ fontFamily: "var(--font-poppins)" }}
-                >
-                  {t("past_events")}
-                </h3>
-                <Link
-                  href={`/${locale}/events`}
-                  className="text-sm text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline"
-                >
-                  {t("view_all_past_events")}
-                </Link>
-              </div>
-
-              {/* Wireframe layout: Large past event card + 2 smaller compact past event cards stacked */}
-              <div className="grid gap-6 lg:grid-cols-3 lg:items-start">
-                {/* Large past event card - takes 2 columns */}
-                <div className="lg:col-span-2">
-                  {filteredPastEvents.slice(0, 1).map((event) => (
-                    <EventCard key={event.id} event={event} />
-                  ))}
-                </div>
-
-                {/* Two compact past event cards - stacked vertically, matching left card height */}
-                <div className="flex flex-col gap-6 lg:h-full">
-                  {filteredPastEvents.slice(1, 3).map((event) => (
-                    <EventCardCompact key={event.id} event={event} />
-                  ))}
-                </div>
-              </div>
-
-              {/* Show remaining past events if any (more than 3) */}
-              {filteredPastEvents.length > 3 && (
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {filteredPastEvents.slice(3).map((event) => (
-                    <EventCard key={event.id} event={event} />
-                  ))}
-                </div>
-              )}
-            </section>
-          )}
-
-        {/* No events message */}
-        {filteredUpcomingEvents.length === 0 && filteredPastEvents.length === 0 && (
-          <div className="py-12 text-center">
-            <p className="text-slate-300">No events found matching your filters.</p>
+            <div className="h-px flex-1 bg-white/10" />
           </div>
-        )}
+
+          {upcomingEvents.length > 0 ? (
+            <div
+              className={`event-cards-container grid gap-6 ${
+                upcomingEvents.length === 1
+                  ? "mx-auto w-full max-w-5xl"
+                  : upcomingEvents.length === 2
+                    ? "mx-auto w-full max-w-5xl sm:grid-cols-2"
+                    : "sm:grid-cols-2 lg:grid-cols-3"
+              }`}
+            >
+              {upcomingEvents.map((event) =>
+                event.id.startsWith("evt-") ? (
+                  <LumaEmbed key={event.id} eventId={event.id} />
+                ) : (
+                  <EventCard key={event.id} event={event} />
+                )
+              )}
+            </div>
+          ) : (
+            <div className="event-cards-container mx-auto grid w-full max-w-5xl gap-6">
+              <ComingSoonCard />
+            </div>
+          )}
+        </section>
+
+        <div className="mt-8 flex justify-center">
+          <Link
+            href={`/${locale}/events`}
+            className="group relative flex items-center justify-center gap-2 overflow-hidden rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-medium text-white transition-all hover:border-white/20 hover:bg-white/10"
+          >
+            {t("view_all_past_events")}
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </Link>
+        </div>
       </div>
     </AnimatedSection>
   );

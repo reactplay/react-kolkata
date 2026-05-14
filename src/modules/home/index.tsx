@@ -1,24 +1,21 @@
 import React from "react";
-import { getInitialBlogs } from "@/utils/blog";
 
 import ErrorBoundary from "@/components/common/error-boundary";
 
 import AboutSection from "./(sections)/about";
 import CoreTeam from "./(sections)/about/core-team";
-import BlogSection from "./(sections)/blogs";
 import ChampionSection from "./(sections)/champions";
 import CommunitySection from "./(sections)/community";
 import EventsSection from "./(sections)/event";
+import FaqSection from "./(sections)/faq";
 import HeroSection from "./(sections)/hero";
-import SponsorsSection from "./(sections)/sponsors";
+import TimelineSection from "./(sections)/timeline";
 
 const WithErrorBoundary = ({ children }: { children: React.ReactNode }) => (
   <ErrorBoundary>{children}</ErrorBoundary>
 );
 
 const LandingPage = async () => {
-  const { posts: initialBlogs, endCursor: initialEndCursor, error } = await getInitialBlogs();
-
   return (
     <>
       <WithErrorBoundary>
@@ -28,15 +25,18 @@ const LandingPage = async () => {
         <AboutSection />
       </WithErrorBoundary>
       <WithErrorBoundary>
-        <SponsorsSection />
+        <TimelineSection />
       </WithErrorBoundary>
+      {/* <WithErrorBoundary>
+        <SponsorsSection />
+      </WithErrorBoundary> */}
       <WithErrorBoundary>
         <EventsSection />
       </WithErrorBoundary>
       <WithErrorBoundary>
         <CommunitySection />
       </WithErrorBoundary>
-      <WithErrorBoundary>
+      {/* <WithErrorBoundary>
         {error ? (
           <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
             <p className="text-red-400">Failed to load blogs. Please try again later.</p>
@@ -48,12 +48,18 @@ const LandingPage = async () => {
             error={error}
           />
         )}
-      </WithErrorBoundary>
+      </WithErrorBoundary> */}
       <WithErrorBoundary>
         <CoreTeam />
       </WithErrorBoundary>
       <WithErrorBoundary>
         <ChampionSection />
+      </WithErrorBoundary>
+      {/* <WithErrorBoundary>
+        <GallerySection />
+      </WithErrorBoundary> */}
+      <WithErrorBoundary>
+        <FaqSection />
       </WithErrorBoundary>
     </>
   );

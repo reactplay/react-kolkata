@@ -27,15 +27,17 @@ export default function CfpCard() {
 
       <div className="flex flex-1 flex-col justify-between p-3">
         <div>
-          <h3 className="text-sm font-semibold text-sky-200">{t("call_for_speakers")}</h3>
+          <h3 className="text-sm font-bold text-white transition-colors group-hover:text-white">
+            {t("call_for_speakers")}
+          </h3>
 
-          <div className="mt-2 space-y-1 text-xs text-slate-300">
+          <div className="mt-2 space-y-1 text-xs text-slate-400">
             <div className="flex items-center gap-2">
-              <Megaphone className="h-3 w-3 text-sky-300" aria-hidden />
+              <Megaphone className="h-3 w-3 text-slate-500" aria-hidden />
               <span>Share your knowledge</span>
             </div>
             <div className="flex items-center gap-2">
-              <Users className="h-3 w-3 text-sky-300" aria-hidden />
+              <Users className="h-3 w-3 text-slate-500" aria-hidden />
               <span>Connect with community</span>
             </div>
           </div>
@@ -43,11 +45,7 @@ export default function CfpCard() {
 
         {/* Action Button */}
         <div className="mt-3">
-          <Button
-            asChild
-            size="sm"
-            className="w-full bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400"
-          >
+          <Button asChild size="sm" className="w-full bg-white text-slate-900 hover:bg-slate-200">
             <Link href="https://forms.gle/voWDew8cCKpxgPsm8" target="_blank" rel="noreferrer">
               <Send className="mr-2 h-3 w-3" />
               {t("call_for_speakers")}

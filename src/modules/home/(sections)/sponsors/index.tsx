@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/custom/animated-section";
+import { ArchitecturalCorner } from "@/components/custom/architectural-corner";
 
 const SponsorsSection = () => {
   const t = useTranslations("Sponsors");
@@ -12,12 +13,7 @@ const SponsorsSection = () => {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="mx-auto max-w-3xl text-center">
-          <h2
-            className="text-3xl font-semibold text-slate-100 sm:text-4xl"
-            style={{ fontFamily: "var(--font-poppins)" }}
-          >
-            {t("title")}
-          </h2>
+          <h2 className="text-3xl font-semibold text-slate-100 sm:text-4xl">{t("title")}</h2>
           <p className="mt-6 text-lg leading-relaxed font-light text-slate-300 sm:text-xl">
             {t("description")}
           </p>
@@ -28,8 +24,9 @@ const SponsorsSection = () => {
             href="https://tally.so/r/w8vGOz"
             target="_blank"
             rel="noopener noreferrer"
-            className="group block max-w-3xl rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-500/50 hover:from-sky-500/15 hover:to-purple-500/15"
+            className="group relative block max-w-3xl rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-500/50 hover:from-sky-500/15 hover:to-purple-500/15"
           >
+            <ArchitecturalCorner />
             <div className="flex items-center gap-3">
               <div className="rounded-lg bg-gradient-to-br from-blue-500/20 to-sky-400/20 p-2">
                 <svg
@@ -42,12 +39,7 @@ const SponsorsSection = () => {
                 </svg>
               </div>
 
-              <h4
-                className="font-medium text-slate-100"
-                style={{ fontFamily: "var(--font-poppins)" }}
-              >
-                {t("sample.name")}
-              </h4>
+              <h4 className="font-medium text-slate-100">{t("sample.name")}</h4>
             </div>
 
             <p className="mt-3 text-sm leading-relaxed font-light text-slate-300 sm:text-base">

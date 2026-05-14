@@ -9,13 +9,16 @@ export async function getInitialBlogs(): Promise<BlogFetchResponse> {
     // Fetch the first 5 blogs for the initial load
     const res = await fetch(HASHNODE_API_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "User-Agent": "React-Kolkata-Website (https://reactkolkata.org)",
+      },
       body: JSON.stringify({
         query: blogPostQuery,
         variables: { postCount: 5, cursor: null },
       }),
       // Use caching to revalidate data periodically
-      next: { revalidate: 3600 }, // Revalidate every hour
+      cache: "no-store",
     });
 
     if (!res.ok) {
@@ -38,14 +41,14 @@ export async function getInitialBlogs(): Promise<BlogFetchResponse> {
       }
       throw new Error(errorMessage);
     }
-    
+
     const { data }: HashnodeAPIResponse = await res.json();
-    
+
     // Validate API response structure
     if (!data || !data.publication || !data.publication.posts) {
       throw new Error("Invalid response structure from blog API");
     }
-    
+
     const { edges, pageInfo } = data.publication.posts;
     const posts: Blog[] = edges.map((edge) => edge.node);
     const endCursor = pageInfo.hasNextPage ? pageInfo.endCursor : null;

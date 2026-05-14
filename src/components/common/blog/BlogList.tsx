@@ -177,12 +177,7 @@ export default function BlogList({
         <>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h2
-                className="text-3xl font-semibold tracking-tight sm:text-4xl"
-                style={{ fontFamily: "var(--font-poppins)" }}
-              >
-                {t("title")}
-              </h2>
+              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{t("title")}</h2>
               <p className="mt-2 text-slate-300">{t("description")}</p>
             </div>
             <div className="flex items-center gap-4">

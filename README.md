@@ -87,19 +87,18 @@ To add a new language, we have to add the language JSON file to the content dire
 After that, we have to add the newly added language to the locales array in the navigation.ts file. Below is the content of the navigation.ts file, where we need to add the newly added language to the locales array:
 
 ```ts
-import {defineRouting} from 'next-intl/routing';
-import {createNavigation} from 'next-intl/navigation';
+import { createNavigation } from "next-intl/navigation";
+import { defineRouting } from "next-intl/routing";
 
 export const routing = defineRouting({
   // A list of all locales that are supported
-  locales: ['en', 'fr', 'newLanguage'], // Add the new language code here
+  locales: ["en", "fr", "newLanguage"], // Add the new language code here
 
   // Used when no locale matches
-  defaultLocale: 'en'
+  defaultLocale: "en",
 });
 
-export const {Link, redirect, usePathname, useRouter, getPathname} =
-  createNavigation(routing);
+export const { Link, redirect, usePathname, useRouter, getPathname } = createNavigation(routing);
 ```
 
 #### Using Strings from Language Files
@@ -177,7 +176,7 @@ pnpm test # or npm run test
 
 ---
 
-****test****: All tests (e2e, unit, integration)
+\***\*test\*\***: All tests (e2e, unit, integration)
 **public**: Static assets (images, icons, etc.)
 **src/components**: UI, common, and custom components
 **src/modules**: Feature modules/sections

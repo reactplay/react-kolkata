@@ -181,12 +181,13 @@ export function formatEventTimeRange(
   });
 
   // Get timezone abbreviation (e.g., "IST", "PST", "EST")
-  const timezoneAbbr = new Intl.DateTimeFormat("en-IN", {
-    timeZone,
-    timeZoneName: "short",
-  })
-    .formatToParts(start)
-    .find((part) => part.type === "timeZoneName")?.value || "";
+  const timezoneAbbr =
+    new Intl.DateTimeFormat("en-IN", {
+      timeZone,
+      timeZoneName: "short",
+    })
+      .formatToParts(start)
+      .find((part) => part.type === "timeZoneName")?.value || "";
 
   return `${startTime} – ${endTime} ${timezoneAbbr}`;
 }
