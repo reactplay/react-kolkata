@@ -17,7 +17,7 @@ const ChampionSection = () => {
             Community <span className="text-sky-500">Champions</span>
           </h2>
           <div className="mt-4 flex justify-center">
-            <div className="h-1.5 w-24 rounded-full bg-linear-to-r from-sky-500 to-blue-600" />
+            <div className="h-1.5 w-24 rounded-full bg-gradient-to-r from-sky-500 to-blue-600" />
           </div>
           <p className="mt-6 text-lg leading-relaxed text-slate-400">
             Meet the dedicated individuals who go above and beyond to support and grow the React

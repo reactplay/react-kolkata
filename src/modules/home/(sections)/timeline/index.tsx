@@ -62,7 +62,7 @@ const TimelineSection = () => {
                 >
                   <div className="absolute top-0 left-0 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm md:-top-8 md:left-1/2 md:-translate-x-1/2">
                     <ArchitecturalCorner />
-                    <div className="rounded-xl bg-linear-to-br from-blue-500/20 to-sky-400/20 p-2.5">
+                    <div className="rounded-xl bg-gradient-to-br from-blue-500/20 to-sky-400/20 p-2.5">
                       <Icon className="h-6 w-6 text-sky-400" />
                     </div>
                     <div className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-sky-500 text-[10px] font-bold text-white">

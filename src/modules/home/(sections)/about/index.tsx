@@ -84,7 +84,7 @@ const AboutSection = () => {
   return (
     <section className="relative" ref={containerRef}>
       <div className="no-scrollbar z-20 w-full overflow-hidden border-y border-white/5 bg-[#0B1220]/50 py-6 backdrop-blur-md">
-        <div className="absolute inset-y-0 left-0 z-10 w-32 bg-linear-to-r from-[#0B1220] to-transparent" />
+        <div className="absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-[#0B1220] to-transparent" />
         <div className="absolute inset-y-0 right-0 z-10 w-32 bg-linear-to-l from-[#0B1220] to-transparent" />
 
         <div className="marquee-inner flex w-max text-sm font-semibold tracking-wider whitespace-nowrap text-slate-300 uppercase">
@@ -138,7 +138,7 @@ const AboutSection = () => {
               >
                 <ArchitecturalCorner />
                 <div className="relative">
-                  <div className="mb-6 inline-flex rounded-xl bg-linear-to-br from-blue-500/10 to-sky-400/10 p-3 ring-1 ring-white/10">
+                  <div className="mb-6 inline-flex rounded-xl bg-gradient-to-br from-blue-500/10 to-sky-400/10 p-3 ring-1 ring-white/10">
                     <item.icon className="h-6 w-6 text-sky-400" />
                   </div>
                   <h3 className="mb-3 text-xl font-bold text-white">{item.title}</h3>
@@ -184,7 +184,7 @@ const AboutSection = () => {
                   >
                     <ArchitecturalCorner />
                     <div className="relative">
-                      <div className="mb-6 inline-flex rounded-xl bg-linear-to-br from-blue-500/10 to-sky-400/10 p-3 ring-1 ring-white/10">
+                      <div className="mb-6 inline-flex rounded-xl bg-gradient-to-br from-blue-500/10 to-sky-400/10 p-3 ring-1 ring-white/10">
                         <Icon className="h-6 w-6 text-sky-400" />
                       </div>
                       <h4 className="mb-3 text-xl font-bold text-white">
