@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">React Nexus</title>
+  <desc id="desc">React Nexus text logo</desc>
+  <rect width="512" height="512" rx="64" fill="#0B1220"/>
+  <circle cx="256" cy="256" r="96" fill="none" stroke="#38bdf8" stroke-width="14"/>
+  <ellipse cx="256" cy="256" rx="170" ry="68" fill="none" stroke="#38bdf8" stroke-width="10" transform="rotate(0 256 256)"/>
+  <ellipse cx="256" cy="256" rx="170" ry="68" fill="none" stroke="#38bdf8" stroke-width="10" transform="rotate(60 256 256)"/>
+  <ellipse cx="256" cy="256" rx="170" ry="68" fill="none" stroke="#38bdf8" stroke-width="10" transform="rotate(120 256 256)"/>
+</svg>
