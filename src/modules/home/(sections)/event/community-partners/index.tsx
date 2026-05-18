@@ -24,6 +24,13 @@ const partners: Partner[] = [
     description: "Learn, Create, and Share React projects",
   },
   {
+    name: "Digital Dominators",
+    url: "https://www.linkedin.com/company/digital-dominators-in/",
+    handle: "@digital-dominators",
+    imageSrc: "/partners/Digital_Dominators.jpg",
+    description: "Digital innovation and technology community",
+  },
+  {
     name: "React Nexus",
     url: "https://www.linkedin.com/search/results/companies/?keywords=React%20Nexus",
     handle: "@reactnexus",
