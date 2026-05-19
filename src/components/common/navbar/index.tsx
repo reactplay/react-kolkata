@@ -237,19 +237,35 @@ const Navbar = () => {
           >
             <nav className="flex flex-col gap-6">
               <ul className="grid gap-4">
-                {links.map((l) => (
-                  <li key={l.href}>
-                    <button
-                      onClick={() => {
-                        if (l.isHashLink) handleCoreTeamClick();
-                        setOpen(false);
-                      }}
-                      className="text-2xl font-bold text-white transition-colors hover:text-sky-400"
-                    >
-                      {l.label}
-                    </button>
-                  </li>
-                ))}
+                {links.map((l) => {
+                  const LinkComponent = l.external || l.isHashLink ? NextLink : Link;
+
+                  return (
+                    <li key={l.href}>
+                      {l.isHashLink ? (
+                        <button
+                          onClick={() => {
+                            handleCoreTeamClick();
+                            setOpen(false);
+                          }}
+                          className="text-left text-2xl font-bold text-white transition-colors hover:text-sky-400"
+                        >
+                          {l.label}
+                        </button>
+                      ) : (
+                        <LinkComponent
+                          href={l.href}
+                          target={l.external ? "_blank" : undefined}
+                          rel={l.external ? "noopener noreferrer" : undefined}
+                          onClick={() => setOpen(false)}
+                          className="block text-2xl font-bold text-white transition-colors hover:text-sky-400"
+                        >
+                          {l.label}
+                        </LinkComponent>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
               <div className="my-4 h-px w-full bg-white/10" />
               <div className="flex flex-col gap-6">

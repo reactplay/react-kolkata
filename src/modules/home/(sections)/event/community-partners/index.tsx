@@ -1,10 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 
-import { cn } from "@/lib/utils";
 import { ArchitecturalCorner } from "@/components/custom/architectural-corner";
 
 type Partner = {
@@ -31,31 +28,60 @@ const partners: Partner[] = [
     description: "Digital innovation and technology community",
   },
   {
-    name: "React Hyderabad",
-    url: "https://www.linkedin.com/company/reacthyderabad/",
-    handle: "@reacthyderabad",
-    imageSrc: "/partners/reacthyderabad_logo.jpeg",
-    description: "React community in Hyderabad",
+    name: "React Nexus",
+    url: "https://www.linkedin.com/search/results/companies/?keywords=React%20Nexus",
+    handle: "@reactnexus",
+    imageSrc: "/partners/react-nexus.webp",
+    description: "React-focused developer community",
   },
   {
-    name: "Hackspire",
-    url: "https://www.hackspire.tech/",
-    handle: "@hackspire",
-    imageSrc: "/partners/hackspire.jpg",
-    description: "Inspiring hackers and developers",
+    name: "OpenSourceCon INDIA",
+    url: "https://github.com/OpenSourceCon",
+    handle: "@opensourcecon",
+    imageSrc: "/partners/OSS_India.jpeg",
+    description: "Open-source conference and community network",
   },
   {
-    name: "Cityjs India",
-    url: "https://www.linkedin.com/company/cityjs-india/",
-    handle: "@CityJSIndia",
-    imageSrc: "/partners/cityjs.png",
-    description: "Indian chapter of CityJS Conferences",
+    name: "GDGoC MCKVIE",
+    url: "https://github.com/gdgocmckvie",
+    handle: "@gdgocmckvie",
+    imageSrc: "/partners/gdgmckv.png",
+    description: "Google Developer Groups on Campus at MCKVIE",
   },
   {
-    name: "The Helper",
-    url: "https://www.linkedin.com/company/the-helper-srmist/",
-    imageSrc: "/partners/helper.png",
-    description: "Academic support platform",
+    name: "INNOVATEX",
+    url: "https://github.com/InnovaTex",
+    handle: "@innovatex",
+    imageSrc: "/partners/InnovateX Engineers Community.png",
+    description: "Innovation-driven student tech community",
+  },
+  {
+    name: "DevPath",
+    url: "https://github.com/devpathindcommunity-india",
+    handle: "@devpath",
+    imageSrc: "/partners/devpath-new.jpg",
+    description: "Developer growth and learning community",
+  },
+  {
+    name: "CodeRush X",
+    url: "https://github.com/coderushx",
+    handle: "@coderushx",
+    imageSrc: "/partners/CodeRush X.png",
+    description: "Coding events and challenge-based community",
+  },
+  {
+    name: "BUG BUSTERS",
+    url: "https://github.com/wearebugbusters",
+    handle: "@bugbusters",
+    imageSrc: "/partners/BugBustersLogo.png",
+    description: "Bug-hunting and engineering collaboration community",
+  },
+  {
+    name: "MIRO MEETUPS",
+    url: "https://www.linkedin.com/search/results/companies/?keywords=MIRO%20MEETUPS",
+    handle: "@miromeetups",
+    imageSrc: "/partners/mmkolkata logo.png",
+    description: "Meetups and community collaboration network",
   },
 ];
 
@@ -81,56 +107,51 @@ export default function CommunityPartners() {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {partners.map((partner) => (
-            <Link
+            <article
               key={partner.name}
-              href={partner.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative block h-full"
+              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/5 bg-[#0B1220]/50 backdrop-blur-md transition-all hover:bg-white/5"
             >
-              <article
-                className={cn(
-                  "relative flex h-full flex-col gap-5 rounded-xl border border-white/5 bg-[#0B1220] p-6 transition-all duration-500",
-                  "hover:-translate-y-1 hover:border-white/10 hover:bg-white/[0.02] hover:shadow-2xl hover:shadow-sky-500/5"
-                )}
-              >
-                <ArchitecturalCorner />
+              <ArchitecturalCorner />
 
-                <div className="flex items-start justify-between">
-                  <div className="relative h-12 w-12 overflow-hidden rounded-lg bg-white/5 p-2 ring-1 ring-white/10 transition-all duration-500 group-hover:ring-sky-500/30">
-                    {partner.imageSrc ? (
-                      <Image
-                        src={partner.imageSrc}
-                        alt={partner.name}
-                        fill
-                        className="object-contain p-1.5 grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0"
-                      />
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center text-lg font-bold text-white/30">
-                        {partner.name.charAt(0)}
-                      </div>
+              {/* Logo Presentation Area */}
+              <div className="relative flex h-40 w-full shrink-0 items-center justify-center p-8">
+                {partner.imageSrc ? (
+                  <div className="relative h-full w-full transition-transform duration-700 group-hover:scale-105">
+                    <Image
+                      src={partner.imageSrc}
+                      alt={partner.name}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                ) : (
+                  <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white/5 text-4xl font-bold text-white/20 ring-1 ring-white/10 transition-transform duration-700 group-hover:scale-105 group-hover:bg-white/10 group-hover:text-white/40">
+                    {partner.name.charAt(0)}
+                  </div>
+                )}
+              </div>
+
+              {/* Content Area */}
+              <div className="relative flex flex-1 flex-col justify-between p-6 text-center">
+                <div className="space-y-3">
+                  <div className="space-y-1">
+                    <h4 className="text-xl font-bold tracking-tight text-white transition-colors">
+                      {partner.name}
+                    </h4>
+                    {partner.handle && (
+                      <p className="text-[11px] font-bold tracking-[0.2em] text-slate-500 uppercase transition-colors group-hover:text-slate-400">
+                        {partner.handle}
+                      </p>
                     )}
                   </div>
-                  <ArrowUpRight className="h-4 w-4 text-slate-600 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-sky-400" />
-                </div>
-
-                <div className="space-y-1.5">
-                  <h4 className="text-lg font-bold tracking-tight text-white transition-colors group-hover:text-sky-400">
-                    {partner.name}
-                  </h4>
-                  {partner.handle && (
-                    <p className="text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase transition-colors group-hover:text-slate-400">
-                      {partner.handle}
-                    </p>
-                  )}
                   {partner.description && (
-                    <p className="line-clamp-2 text-xs leading-relaxed font-medium text-slate-400">
+                    <p className="line-clamp-2 text-sm leading-relaxed text-slate-400">
                       {partner.description}
                     </p>
                   )}
                 </div>
-              </article>
-            </Link>
+              </div>
+            </article>
           ))}
         </div>
       </div>
