@@ -79,7 +79,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
             sizes={featured ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 33vw"}
           />
           {/* Image Overlay Gradient */}
-          <div className="absolute inset-0 bg-linear-to-t from-[#0B1220] via-transparent to-transparent opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-transparent to-transparent opacity-60" />
 
           {/* Featured Badge */}
           {featured && (

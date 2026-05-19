@@ -43,7 +43,7 @@ const ContributorsSection = () => {
             const rateLimitReset = response.headers.get("X-RateLimit-Reset");
 
             if (rateLimitRemaining === "0" && rateLimitReset) {
-              const resetTime = new Date(parseInt(rateLimitReset) * 1000);
+              const resetTime = new Date(Number.parseInt(rateLimitReset) * 1000);
               const resetTimeFormatted = resetTime.toLocaleTimeString("en-US", {
                 hour: "numeric",
                 minute: "2-digit",

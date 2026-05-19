@@ -30,7 +30,7 @@ const HeroSection = () => {
           className="object-cover opacity-80 brightness-90 transition-all duration-700"
           priority
         />
-        <div className="absolute inset-0 bg-linear-to-b from-[#0B1220]/70 via-transparent to-[#0B1220]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B1220]/70 via-transparent to-[#0B1220]" />
       </div>
 
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
