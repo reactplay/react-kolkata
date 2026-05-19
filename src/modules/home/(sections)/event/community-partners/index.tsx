@@ -24,7 +24,7 @@ const partners: Partner[] = [
     name: "Digital Dominators",
     url: "https://www.linkedin.com/company/digital-dominators-in/",
     handle: "@digital-dominators",
-    imageSrc: "/partners/Digital_Dominators.jpg",
+    imageSrc: "/partners/Digital-Dominators-logo-official.webp",
     description: "Digital innovation and technology community",
   },
   {
