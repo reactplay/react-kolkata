@@ -80,7 +80,7 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 z-50 flex w-full justify-center px-4 transition-all duration-300",
+        "fixed top-0 z-50 flex w-full justify-center px-4 transition-all duration-300 max-sm:pl-0",
         scrolled ? "pt-6" : "pt-0"
       )}
       role="banner"
@@ -90,7 +90,7 @@ const Navbar = () => {
           "mx-auto flex w-full items-center justify-between transition-all duration-500",
           scrolled
             ? "max-w-2xl rounded-full border border-white/10 bg-[#0B1220]/80 px-6 py-2 shadow-2xl backdrop-blur-xl"
-            : "h-20 max-w-7xl bg-transparent px-4 sm:h-24 sm:px-6 lg:px-8"
+            : "h-20 max-w-7xl bg-transparent px-4 max-sm:pr-4 max-sm:pl-0 sm:h-24 lg:px-8"
         )}
       >
         {/* Logo */}
@@ -98,7 +98,7 @@ const Navbar = () => {
           <div
             className={cn(
               "relative transition-all duration-500",
-              scrolled ? "h-10 w-28" : "h-16 w-48 sm:h-38 sm:w-56"
+              scrolled ? "h-10 w-28" : "h-40 w-58 max-sm:h-40 max-sm:w-48"
             )}
           >
             <Image
