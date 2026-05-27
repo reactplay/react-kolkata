@@ -23,7 +23,7 @@ const HeroSection = () => {
     <section className="relative flex min-h-screen items-center overflow-hidden pt-20">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/kolkata-hero.jpg"
+          src="/images/hero.jpeg"
           alt="Kolkata landmark background"
           fill
           sizes="100vw"
@@ -33,8 +33,8 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-[#0B1220]/70 via-transparent to-[#0B1220]" />
       </div>
 
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex max-w-4xl flex-col items-start text-left">
+      <div className="mx-auto flex h-[90vh] w-full max-w-7xl p-4 sm:px-6 md:h-auto lg:px-8">
+        <div className="mt-auto flex max-w-4xl flex-col items-start text-left md:mt-0">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -51,7 +51,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mb-6 text-6xl font-[530] tracking-tight text-white sm:text-7xl md:text-8xl lg:text-9xl"
+            className="mb-6 text-6xl font-[530] tracking-tight text-white shadow-lg sm:text-7xl md:text-8xl lg:text-9xl"
           >
             {t("title")}
           </motion.h1>
@@ -85,7 +85,7 @@ const HeroSection = () => {
               </Link>
             </Button>
 
-            <div className="absolute -bottom-10 -left-20 hidden lg:block">
+            <div className="absolute -bottom-5 -left-18 hidden lg:block">
               <svg
                 width="120"
                 height="60"
