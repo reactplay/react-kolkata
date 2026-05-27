@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 
 type GalleryImage = {
@@ -17,33 +19,30 @@ const Gallery = ({ sections }: { sections: GallerySection[] }) => {
         {/* Header */}
         <div className="mb-12 space-y-4 text-center sm:mb-16 lg:mb-24">
           <h2 className="text-2xl font-semibold md:text-3xl lg:text-4xl">
-            <span className="relative z-1">
-              Glimpse
-              <span
-                className="bg-primary absolute bottom-1 left-0 -z-1 h-px w-full"
-                aria-hidden="true"
-              ></span>
-            </span>{" "}
-            of our meetup
+            <span className="relative z-1">Glimpse</span> of our meetup
           </h2>
           <p className="text-muted-foreground text-xl">Some amazing & curated moments</p>
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid h-screen gap-6 md:grid-cols-2">
           {sections.map((section, sectionIndex) => (
             <div
               key={sectionIndex}
               className={cn({ "grid grid-cols-2 gap-6": section.type === "grid" })}
             >
               {section.images.map((image, imageIndex) => (
-                <img
-                  key={imageIndex}
-                  src={image.src}
-                  alt={image.alt}
-                  loading="lazy"
-                  className="h-full w-full rounded-lg object-cover"
-                />
+                <div key={imageIndex} className="relative flex h-full w-full">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="/gallary/959256_249.jpg"
+                    fill
+                    className="rounded-lg object-cover"
+                  />
+                </div>
               ))}
             </div>
           ))}

@@ -43,7 +43,7 @@ const HeroSection = () => {
           >
             <div className="flex items-center gap-3 text-slate-200">
               <MapPin className="h-5 w-5 text-sky-400" />
-              <span className="text-lg font-medium shadow-md">Kolkata, West Bengal</span>
+              <span className="text-lg font-medium">Kolkata, West Bengal</span>
             </div>
           </motion.div>
 
