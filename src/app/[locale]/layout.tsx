@@ -74,6 +74,12 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
             __html: JSON.stringify(organizationJsonLd),
           }}
         />
+        <Script
+          src="https://t.raah.dev/script.js"
+          data-pid="proj_o9zywklqce9tgqrm"
+          data-domain="reactkolkata.com"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
