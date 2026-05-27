@@ -67,13 +67,13 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 
         {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
 
-        <Script
+        {/* <Script
           id="organization-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationJsonLd),
           }}
-        />
+        /> */}
         <Script
           src="https://t.raah.dev/script.js"
           data-pid="proj_o9zywklqce9tgqrm"
