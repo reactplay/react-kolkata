@@ -1,6 +1,7 @@
 import React from "react";
 
 import ErrorBoundary from "@/components/common/error-boundary";
+import { GallarySection } from "@/base/data/gallary";
 
 import AboutSection from "./(sections)/about";
 import CoreTeam from "./(sections)/about/core-team";
@@ -9,6 +10,7 @@ import CommunitySection from "./(sections)/community";
 import EventsSection from "./(sections)/event";
 import FaqSection from "./(sections)/faq";
 import HeroSection from "./(sections)/hero";
+import Gallery from "./(sections)/img-gallary";
 import TimelineSection from "./(sections)/timeline";
 
 const WithErrorBoundary = ({ children }: { children: React.ReactNode }) => (
@@ -55,9 +57,9 @@ const LandingPage = async () => {
       <WithErrorBoundary>
         <ChampionSection />
       </WithErrorBoundary>
-      {/* <WithErrorBoundary>
-        <GallerySection />
-      </WithErrorBoundary> */}
+      <WithErrorBoundary>
+        <Gallery sections={GallarySection} />
+      </WithErrorBoundary>
       <WithErrorBoundary>
         <FaqSection />
       </WithErrorBoundary>
