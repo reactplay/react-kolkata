@@ -271,7 +271,7 @@ const Navbar = () => {
               <div className="flex flex-col gap-6">
                 <Button
                   asChild
-                  className="h-14 w-full rounded-2xl bg-indigo-600 text-lg"
+                  className="h-14 w-full rounded-2xl bg-indigo-600 text-lg text-white"
                   onClick={() => setOpen(false)}
                 >
                   <NextLink href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs" target="_blank">
