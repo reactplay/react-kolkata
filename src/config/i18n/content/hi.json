@@ -118,7 +118,8 @@
     "github": "गिटहब",
     "linkedin": "लिंक्डइन",
     "youtube": "यूट्यूब",
-    "discord": "डिस्कॉर्ड"
+    "discord": "डिस्कॉर्ड",
+    "whatsapp": "होयाटसअप"
   },
   "Footer": {
     "about_project_title": "प्लेटफ़ॉर्म के बारे में",
@@ -137,7 +138,8 @@
       "github": "गिटहब",
       "linkedin": "लिंक्डइन",
       "youtube": "यूट्यूब",
-      "discord": "डिस्कॉर्ड"
+      "discord": "डिस्कॉर्ड",
+      "whatsapp": "होयाटसअप"
     }
   },
   "LanguageSwitcher": {

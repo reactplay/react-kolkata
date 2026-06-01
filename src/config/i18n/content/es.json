@@ -118,7 +118,8 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "youtube": "YouTube",
-    "discord": "Discord"
+    "discord": "Discord",
+    "whatsapp": "Whatsapp"
   },
   "Footer": {
     "about_project_title": "Sobre la Plataforma",
@@ -137,7 +138,8 @@
       "github": "GitHub",
       "linkedin": "LinkedIn",
       "youtube": "YouTube",
-      "discord": "Discord"
+      "discord": "Discord",
+      "whatsapp": "Whatsapp"
     }
   },
   "LanguageSwitcher": {

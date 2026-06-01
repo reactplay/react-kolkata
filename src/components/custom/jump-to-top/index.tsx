@@ -9,25 +9,24 @@ import { cn } from "@/lib/utils";
 export const JumpToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
+  const getScrollY = () =>
+    window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+
   const toggleVisibility = () => {
-    if (window.scrollY > 300) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
+    setIsVisible(getScrollY() > 300);
   };
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    const el = document.getElementById("top_div");
+    console.log(el);
+    el?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", toggleVisibility);
+    toggleVisibility();
+    document.addEventListener("scroll", toggleVisibility, { passive: true, capture: true });
     return () => {
-      window.removeEventListener("scroll", toggleVisibility);
+      document.removeEventListener("scroll", toggleVisibility, { capture: true });
     };
   }, []);
 
@@ -41,7 +40,7 @@ export const JumpToTop = () => {
           transition={{ duration: 0.2 }}
           onClick={scrollToTop}
           className={cn(
-            "fixed right-8 bottom-8 z-50",
+            "fixed right-8 bottom-8 z-50 cursor-pointer",
             "flex h-12 w-12 items-center justify-center rounded-full shadow-lg",
             "bg-primary text-primary-foreground",
             "hover:bg-primary/90 transition-colors duration-200",

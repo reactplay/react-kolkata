@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Github, Linkedin, Menu, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import { FaWhatsapp } from "react-icons/fa";
 
 import { Link, usePathname } from "@/config/i18n/navigation"; // Use localized navigation for internal page routes
 import { cn } from "@/lib/utils";
@@ -43,10 +44,13 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const getScrollY = () =>
+      window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+
+    const onScroll = () => setScrolled(getScrollY() > 8);
     onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    document.addEventListener("scroll", onScroll, { passive: true, capture: true });
+    return () => document.removeEventListener("scroll", onScroll, { capture: true });
   }, []);
 
   useEffect(() => {
@@ -80,27 +84,17 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 z-50 flex w-full justify-center px-4 transition-all duration-300 max-sm:pl-0",
-        scrolled ? "pt-6" : "pt-0"
+        "fixed top-0 z-50 w-full transition-[background-color,box-shadow,border-color,backdrop-filter] duration-300 ease-out",
+        scrolled
+          ? "border-b border-white/10 bg-[#0B1220]/75 shadow-lg backdrop-blur-sm"
+          : "border-b border-transparent bg-transparent"
       )}
       role="banner"
     >
-      <div
-        className={cn(
-          "mx-auto flex w-full items-center justify-between transition-all duration-500",
-          scrolled
-            ? "max-w-2xl rounded-full border border-white/10 bg-[#0B1220]/80 px-6 py-2 shadow-2xl backdrop-blur-xl"
-            : "h-20 max-w-7xl bg-transparent px-4 max-sm:pr-4 max-sm:pl-0 sm:h-24 lg:px-8"
-        )}
-      >
+      <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 max-sm:pr-4 max-sm:pl-0 sm:h-24 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2" aria-label="React Kolkata Home">
-          <div
-            className={cn(
-              "relative transition-all duration-500",
-              scrolled ? "h-10 w-28" : "h-40 w-58 max-sm:h-40 max-sm:w-48"
-            )}
-          >
+          <div className="relative h-40 w-58 max-sm:h-40 max-sm:w-48">
             <Image
               alt="react kolkata brand logo"
               src="/images/React-Kolkata-Logo-new.png"
@@ -112,14 +106,8 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* Desktop Navigation Links (Hidden in Pill) */}
-        <nav
-          className={cn(
-            "hidden items-center overflow-hidden transition-all duration-300 lg:flex",
-            scrolled ? "pointer-events-none w-0 opacity-0" : "w-auto opacity-100"
-          )}
-          aria-label="Primary"
-        >
+        {/* Desktop Navigation Links */}
+        <nav className="hidden items-center lg:flex" aria-label="Primary">
           <ul className="flex items-center gap-1">
             {links.map((l) => {
               const checkPath = l.isHashLink ? l.href.split("#")[0] : l.href;
@@ -159,13 +147,8 @@ const Navbar = () => {
           </ul>
         </nav>
 
-        {/* Desktop Actions / Socials (Hidden in Pill) */}
-        <div
-          className={cn(
-            "hidden items-center gap-6 overflow-hidden transition-all duration-300 lg:flex",
-            scrolled ? "pointer-events-none w-0 opacity-0" : "w-auto opacity-100"
-          )}
-        >
+        {/* Desktop Actions / Socials */}
+        <div className="hidden items-center gap-6 lg:flex">
           <ul className="flex items-center gap-2">
             {[
               { icon: XLogo, href: "https://x.com/reactkolkata", label: t("x") },
@@ -178,6 +161,11 @@ const Navbar = () => {
                 icon: Linkedin,
                 href: "https://www.linkedin.com/showcase/react-kolkata",
                 label: t("linkedin"),
+              },
+              {
+                icon: FaWhatsapp,
+                href: "https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs",
+                label: t("whatsapp"),
               },
             ].map((social, i) => (
               <li key={i}>
@@ -206,16 +194,11 @@ const Navbar = () => {
           </Button> */}
         </div>
 
-        {/* Menu Button (Always visible in Pill, only mobile in full) */}
-        <div className="flex items-center gap-4">
+        {/* Mobile menu button */}
+        <div className="flex items-center gap-4 lg:hidden">
           <button
             ref={toggleButtonRef}
-            className={cn(
-              "inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-all focus:outline-none",
-              scrolled
-                ? "border border-white/10 bg-white/10 text-white hover:bg-white/20"
-                : "border border-white/5 bg-white/5 text-slate-200 lg:hidden"
-            )}
+            className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/20 focus:outline-none"
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
             aria-expanded={open}
@@ -279,20 +262,37 @@ const Navbar = () => {
                   </NextLink>
                 </Button>
                 <div className="flex justify-center gap-8">
-                  <a href="https://x.com/reactkolkata" className="text-slate-400 hover:text-white">
+                  <a
+                    href="https://x.com/reactkolkata"
+                    className="text-slate-400 hover:text-white"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <XLogo className="h-6 w-6" />
                   </a>
                   <a
                     href="https://github.com/reactplay/react-kolkata"
                     className="text-slate-400 hover:text-white"
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     <Github className="h-6 w-6" />
                   </a>
                   <a
                     href="https://www.linkedin.com/showcase/react-kolkata"
                     className="text-slate-400 hover:text-white"
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     <Linkedin className="h-6 w-6" />
+                  </a>
+                  <a
+                    href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs"
+                    className="text-slate-400 hover:text-white"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FaWhatsapp className="h-6 w-6" />
                   </a>
                 </div>
               </div>
