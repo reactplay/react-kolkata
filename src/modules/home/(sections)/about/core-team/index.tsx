@@ -48,6 +48,13 @@ const members = [
     twitter: "https://x.com/sujal_maiti",
     photo: "/images/sujal.jpeg",
   },
+  {
+    name: "Shyam Mahanta",
+    role: "Open Source Contributor",
+    linkedin: "https://www.linkedin.com/in/shyam-mahanta/",
+    twitter: "https://x.com/0xShyam0x",
+    photo: "/images/shyam.jpg",
+  },
 ];
 
 const CoreTeam = () => (

@@ -118,7 +118,8 @@
     "github": "গিটহাব",
     "linkedin": "লিঙ্কডইন",
     "youtube": "ইউটিউব",
-    "discord": "ডিসকর্ড"
+    "discord": "ডিসকর্ড",
+    "whatsapp": "হোয়াটসঅ্যাপ"
   },
   "Footer": {
     "about_project_title": "প্ল্যাটফর্ম সম্পর্কে",
@@ -137,7 +138,8 @@
       "github": "গিটহাব",
       "linkedin": "লিঙ্কডইন",
       "youtube": "ইউটিউব",
-      "discord": "ডিসকর্ড"
+      "discord": "ডিসকর্ড",
+      "whatsapp": "হোয়াটসঅ্যাপ"
     }
   },
   "LanguageSwitcher": {

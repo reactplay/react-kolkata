@@ -18,6 +18,8 @@ import { XLogo } from "../icons/XLogo";
 
 import "./footer.css";
 
+import { FaWhatsapp } from "react-icons/fa";
+
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -319,6 +321,15 @@ export default function Footer() {
             className="text-muted-foreground hover:text-foreground transition"
           >
             <Youtube className="h-5 w-5" />
+          </a>
+          <a
+            href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs"
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => handleSocialClick("YouTube")}
+            className="text-muted-foreground hover:text-foreground transition"
+          >
+            <FaWhatsapp className="h-5 w-5" />
           </a>
         </div>
       </div>

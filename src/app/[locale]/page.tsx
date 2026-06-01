@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     url: "/",
     images: [
       {
-        url: "/react-kolkata-meetup.png",
+        url: "/images/hero.jpeg",
         width: 1200,
         height: 630,
         alt: "React Kolkata Community Meetup",
