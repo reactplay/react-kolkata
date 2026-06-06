@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Heart } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { LuCalendar, LuHeart } from "react-icons/lu";
 
 import { Button } from "@/components/ui/button";
 
@@ -33,11 +33,11 @@ export default function ChampionCard() {
 
           <div className="mt-2 space-y-1 text-xs text-slate-400">
             <div className="flex items-center gap-2">
-              <Heart className="h-3 w-3 text-slate-500" aria-hidden />
+              <LuHeart className="h-3 w-3 text-slate-500" aria-hidden />
               <span>Make a difference</span>
             </div>
             <div className="flex items-center gap-2">
-              <Calendar className="h-3 w-3 text-slate-500" aria-hidden />
+              <LuCalendar className="h-3 w-3 text-slate-500" aria-hidden />
               <span>Help organize events</span>
             </div>
           </div>

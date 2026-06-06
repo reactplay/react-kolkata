@@ -5,9 +5,10 @@ import Image from "next/image";
 import NextLink from "next/link"; // Use NextLink for external links
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { Github, Linkedin, Menu, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { LuLinkedin, LuMenu, LuX } from "react-icons/lu";
+import { SiGithub } from "react-icons/si";
 
 import { Link, usePathname } from "@/config/i18n/navigation"; // Use localized navigation for internal page routes
 import { cn } from "@/lib/utils";
@@ -91,15 +92,20 @@ const Navbar = () => {
       )}
       role="banner"
     >
-      <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 max-sm:pr-4 max-sm:pl-0 sm:h-24 lg:px-8">
+      <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:h-24 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2" aria-label="React Kolkata Home">
-          <div className="relative h-40 w-58 max-sm:h-40 max-sm:w-48">
+          <div
+            className={cn(
+              "relative transition-all duration-500",
+              scrolled ? "h-8 w-8" : "h-12 w-12"
+            )}
+          >
             <Image
               alt="react kolkata brand logo"
-              src="/images/React-Kolkata-Logo-new.png"
+              src="/images/React_Kolkata_Logo.svg"
               fill
-              sizes="(max-width: 640px) 200px, 256px"
+              sizes="(max-width: 640px) 40px, 64px"
               className="object-contain"
               priority
             />
@@ -153,12 +159,12 @@ const Navbar = () => {
             {[
               { icon: XLogo, href: "https://x.com/reactkolkata", label: t("x") },
               {
-                icon: Github,
+                icon: SiGithub,
                 href: "https://github.com/reactplay/react-kolkata",
                 label: t("github"),
               },
               {
-                icon: Linkedin,
+                icon: LuLinkedin,
                 href: "https://www.linkedin.com/showcase/react-kolkata",
                 label: t("linkedin"),
               },
@@ -166,6 +172,11 @@ const Navbar = () => {
                 icon: FaWhatsapp,
                 href: "https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs",
                 label: t("whatsapp"),
+              },
+              {
+                icon: FaInstagram,
+                href: "https://www.instagram.com/reactkolkata",
+                label: "Instagram",
               },
             ].map((social, i) => (
               <li key={i}>
@@ -204,7 +215,7 @@ const Navbar = () => {
             aria-expanded={open}
           >
             <span className="mr-2 hidden sm:inline">{open ? "Close" : "Menu"}</span>
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {open ? <LuX className="h-5 w-5" /> : <LuMenu className="h-5 w-5" />}
           </button>
         </div>
       </div>
@@ -276,7 +287,7 @@ const Navbar = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Github className="h-6 w-6" />
+                    <SiGithub className="h-6 w-6" />
                   </a>
                   <a
                     href="https://www.linkedin.com/showcase/react-kolkata"
@@ -284,7 +295,7 @@ const Navbar = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Linkedin className="h-6 w-6" />
+                    <LuLinkedin className="h-6 w-6" />
                   </a>
                   <a
                     href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs"
@@ -293,6 +304,14 @@ const Navbar = () => {
                     rel="noreferrer"
                   >
                     <FaWhatsapp className="h-6 w-6" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/reactkolkata"
+                    className="text-slate-400 hover:text-white"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FaInstagram className="h-6 w-6" />
                   </a>
                 </div>
               </div>

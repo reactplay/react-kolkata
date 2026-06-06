@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, User } from "lucide-react";
+import { LuLinkedin, LuUser } from "react-icons/lu";
+import { SiGithub } from "react-icons/si";
 
 import { ArchitecturalCorner } from "@/components/custom/architectural-corner";
 
@@ -36,7 +37,7 @@ const ChampionCard = ({ champion }: ChampionCardProps) => {
         />
       ) : (
         <div className="flex h-full w-full items-center justify-center bg-slate-800 text-slate-400">
-          <User className="h-20 w-20" />
+          <LuUser className="h-20 w-20" />
         </div>
       )}
 
@@ -58,7 +59,7 @@ const ChampionCard = ({ champion }: ChampionCardProps) => {
               className="rounded-md bg-white/10 p-2 text-white backdrop-blur-md transition-colors hover:bg-white/20"
               aria-label="GitHub Profile"
             >
-              <Github className="h-4 w-4" />
+              <SiGithub className="h-4 w-4" />
             </Link>
           )}
           {champion.socials.linkedin && (
@@ -69,7 +70,7 @@ const ChampionCard = ({ champion }: ChampionCardProps) => {
               className="rounded-md bg-white/10 p-2 text-white backdrop-blur-md transition-colors hover:bg-white/20"
               aria-label="LinkedIn Profile"
             >
-              <Linkedin className="h-4 w-4" />
+              <LuLinkedin className="h-4 w-4" />
             </Link>
           )}
         </div>

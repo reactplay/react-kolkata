@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { LuChevronDown } from "react-icons/lu";
 
 import { cn } from "@/lib/utils";
 import AnimatedSection from "@/components/custom/animated-section";
@@ -100,7 +100,7 @@ const FaqSection = () => {
                       : "border-white/10 text-slate-500 group-hover:border-white/20 group-hover:text-slate-300"
                   )}
                 >
-                  <ChevronDown className="h-4 w-4" />
+                  <LuChevronDown className="h-4 w-4" />
                 </div>
               </button>
 

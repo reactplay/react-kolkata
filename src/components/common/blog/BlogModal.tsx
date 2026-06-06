@@ -1,7 +1,8 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
 import Image from "next/image";
 import { Blog } from "@/types/blog";
-import { Calendar, Clock, ExternalLink, Github, User } from "lucide-react";
+import { LuCalendar, LuClock, LuExternalLink, LuUser } from "react-icons/lu";
+import { SiGithub } from "react-icons/si";
 
 import { formatBlogDate, formatBlogRelativeTime } from "@/lib/date-utils";
 import { Badge } from "@/components/ui/badge";
@@ -76,13 +77,13 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
           )}
 
           {/* Article Meta */}
-          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
+          <div className="flex items-center gap-4 text-sm text-slate-400">
             <div className="flex items-center gap-1">
-              <Calendar className="h-4 w-4" />
+              <LuCalendar className="h-4 w-4" />
               <span>{formatBlogDate(blog.publishedAt)}</span>
             </div>
             <div className="flex items-center gap-1">
-              <Clock className="h-4 w-4" />
+              <LuClock className="h-4 w-4" />
               <span>{blog.readTimeInMinutes} min read</span>
             </div>
             <div className="text-slate-500">{formatBlogRelativeTime(blog.publishedAt)}</div>
@@ -107,7 +108,7 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
               <div className="relative h-12 w-12 overflow-hidden rounded-full">
                 {authorImageError ? (
                   <div className="flex h-full w-full items-center justify-center bg-slate-600">
-                    <User className="h-6 w-6 text-slate-400" />
+                    <LuUser className="h-6 w-6 text-slate-400" />
                   </div>
                 ) : (
                   <Image
@@ -131,7 +132,7 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
                       rel="noopener noreferrer"
                       className="text-slate-400 hover:text-slate-300"
                     >
-                      <Github className="h-4 w-4" />
+                      <SiGithub className="h-4 w-4" />
                     </a>
                   )}
                 </div>
@@ -161,7 +162,7 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
                 className="flex items-center gap-2"
               >
                 Read Full Article
-                <ExternalLink className="h-4 w-4" />
+                <LuExternalLink className="h-4 w-4" />
               </a>
             </Button>
           </div>

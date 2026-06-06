@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Megaphone, Send, Users } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { LuMegaphone, LuSend, LuUsers } from "react-icons/lu";
 
 import { Button } from "@/components/ui/button";
 
@@ -33,11 +33,11 @@ export default function CfpCard() {
 
           <div className="mt-2 space-y-1 text-xs text-slate-400">
             <div className="flex items-center gap-2">
-              <Megaphone className="h-3 w-3 text-slate-500" aria-hidden />
+              <LuMegaphone className="h-3 w-3 text-slate-500" aria-hidden />
               <span>Share your knowledge</span>
             </div>
             <div className="flex items-center gap-2">
-              <Users className="h-3 w-3 text-slate-500" aria-hidden />
+              <LuUsers className="h-3 w-3 text-slate-500" aria-hidden />
               <span>Connect with community</span>
             </div>
           </div>
@@ -47,7 +47,7 @@ export default function CfpCard() {
         <div className="mt-3">
           <Button asChild size="sm" className="w-full bg-white text-slate-900 hover:bg-slate-200">
             <Link href="https://forms.gle/voWDew8cCKpxgPsm8" target="_blank" rel="noreferrer">
-              <Send className="mr-2 h-3 w-3" />
+              <LuSend className="mr-2 h-3 w-3" />
               {t("call_for_speakers")}
             </Link>
           </Button>

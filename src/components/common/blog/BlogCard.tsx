@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Blog } from "@/types/blog";
-import { Clock, User } from "lucide-react";
+import { LuClock, LuUser } from "react-icons/lu";
 
 import { formatBlogDate } from "@/lib/date-utils";
 import { useDeviceDetail } from "@/hooks/use-device-detail";
@@ -126,7 +126,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
               <div className="relative h-8 w-8 overflow-hidden rounded-full ring-2 ring-white/10 transition-transform group-hover:scale-110">
                 {authorImageError ? (
                   <div className="flex h-full w-full items-center justify-center bg-slate-800">
-                    <User className="h-4 w-4 text-slate-400" />
+                    <LuUser className="h-4 w-4 text-slate-400" />
                   </div>
                 ) : (
                   <Image
@@ -146,7 +146,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
             </div>
 
             <div className="flex items-center gap-1.5 text-slate-500">
-              <Clock className="h-3.5 w-3.5" />
+              <LuClock className="h-3.5 w-3.5" />
               <span className="text-[11px] font-medium">{readTimeInMinutes}m read</span>
             </div>
           </div>

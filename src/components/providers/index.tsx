@@ -6,6 +6,17 @@ import { ThemeProvider } from "next-themes";
 import Footer from "@/components/common/footer";
 import Navbar from "@/components/common/navbar";
 
+// Suppress the React 19 warning caused by next-themes script injection
+if (typeof window !== "undefined" && process.env.NODE_ENV === "development") {
+  const origError = console.error;
+  console.error = (...args) => {
+    if (typeof args[0] === "string" && args[0].includes("Encountered a script tag")) {
+      return;
+    }
+    origError.apply(console, args);
+  };
+}
+
 interface AppProviderProps {
   children: React.ReactNode;
 }

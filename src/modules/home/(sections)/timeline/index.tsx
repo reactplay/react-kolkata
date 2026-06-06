@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Lightbulb, Rocket, Users, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { LuLightbulb, LuRocket, LuUsers, LuZap } from "react-icons/lu";
 
 import AnimatedSection from "@/components/custom/animated-section";
 import { ArchitecturalCorner } from "@/components/custom/architectural-corner";
@@ -10,22 +10,22 @@ import { ArchitecturalCorner } from "@/components/custom/architectural-corner";
 const steps = [
   {
     id: "step-1",
-    icon: Users,
+    icon: LuUsers,
     color: "blue",
   },
   {
     id: "step-2",
-    icon: Lightbulb,
+    icon: LuLightbulb,
     color: "sky",
   },
   {
     id: "step-3",
-    icon: Rocket,
+    icon: LuRocket,
     color: "purple",
   },
   {
     id: "step-4",
-    icon: Zap,
+    icon: LuZap,
     color: "amber",
   },
 ];

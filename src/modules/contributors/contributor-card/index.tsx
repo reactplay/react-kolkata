@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { GitCommit, Github } from "lucide-react";
+import { LuGitCommitHorizontal } from "react-icons/lu";
+import { SiGithub } from "react-icons/si";
 
 interface Contributor {
   id: number;
@@ -35,7 +36,7 @@ const ContributorCard = ({ contributor }: ContributorCardProps) => {
 
       {/* Contributions */}
       <div className="mb-4 flex items-center justify-center gap-2 text-sm text-slate-400">
-        <GitCommit className="h-4 w-4" />
+        <LuGitCommitHorizontal className="h-4 w-4" />
         <span>
           {contributor.contributions}{" "}
           {contributor.contributions === 1 ? "contribution" : "contributions"}
@@ -59,7 +60,7 @@ const ContributorCard = ({ contributor }: ContributorCardProps) => {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300 transition-colors hover:bg-white/10 hover:text-slate-100"
         >
-          <Github className="h-4 w-4" />
+          <SiGithub className="h-4 w-4" />
           View Profile
         </Link>
       </div>

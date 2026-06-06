@@ -3,17 +3,17 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  BadgeCheck,
-  BookOpen,
-  GitPullRequest,
-  Lightbulb,
-  MonitorPlay,
-  Target,
-  Users,
-  Zap,
-} from "lucide-react";
 import { useTranslations } from "next-intl";
+import {
+  LuBadgeCheck,
+  LuBookOpen,
+  LuGitPullRequest,
+  LuLightbulb,
+  LuMonitorPlay,
+  LuTarget,
+  LuUsers,
+  LuZap,
+} from "react-icons/lu";
 
 import AnimatedSection from "@/components/custom/animated-section";
 import { ArchitecturalCorner } from "@/components/custom/architectural-corner";
@@ -128,9 +128,9 @@ const AboutSection = () => {
 
           <div className="feature-cards-container grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { icon: Target, title: t("mission.title"), desc: t("mission.description") },
-              { icon: BadgeCheck, title: t("values.title"), desc: t("values.description") },
-              { icon: Zap, title: t("impact.title"), desc: t("impact.description") },
+              { icon: LuTarget, title: t("mission.title"), desc: t("mission.description") },
+              { icon: LuBadgeCheck, title: t("values.title"), desc: t("values.description") },
+              { icon: LuZap, title: t("impact.title"), desc: t("impact.description") },
             ].map((item) => (
               <div
                 key={item.title}
@@ -168,14 +168,14 @@ const AboutSection = () => {
                 "open_source",
               ].map((key) => {
                 const icons: Record<string, any> = {
-                  technical_workshops: Zap,
-                  community_meetups: Users,
-                  lightning_talks: Lightbulb,
-                  project_showcases: MonitorPlay,
-                  mentorship_program: BookOpen,
-                  open_source: GitPullRequest,
+                  technical_workshops: LuZap,
+                  community_meetups: LuUsers,
+                  lightning_talks: LuLightbulb,
+                  project_showcases: LuMonitorPlay,
+                  mentorship_program: LuBookOpen,
+                  open_source: LuGitPullRequest,
                 };
-                const Icon = icons[key] || Zap;
+                const Icon = icons[key] || LuZap;
 
                 return (
                   <div

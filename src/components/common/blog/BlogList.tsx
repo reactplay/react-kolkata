@@ -5,8 +5,8 @@ import { useCallback, useMemo, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import { loadMoreBlogs } from "@/store/blogActions";
 import { Blog, BlogResponse, BlogSectionProps, BlogTag } from "@/types/blog";
-import { Filter, Loader2, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import { LuFilter, LuLoader, LuX } from "react-icons/lu";
 
 import { useDeviceDetail } from "@/hooks/use-device-detail";
 import { Badge } from "@/components/ui/badge";
@@ -187,7 +187,7 @@ export default function BlogList({
                 onClick={() => setShowFilters(!showFilters)}
                 className="border-white/10 bg-white/5 text-slate-300 hover:bg-white/10"
               >
-                <Filter className="mr-2 h-4 w-4" />
+                <LuFilter className="mr-2 h-4 w-4" />
                 {t("filter")}
               </Button>
               {/* Show only when we are not pres */}
@@ -226,7 +226,7 @@ export default function BlogList({
                     onClick={clearFilters}
                     className="text-slate-400 hover:text-slate-300"
                   >
-                    <X className="mr-1 h-3 w-3" />
+                    <LuX className="mr-1 h-3 w-3" />
                     {t("clear")}
                   </Button>
                 )}
@@ -277,7 +277,7 @@ export default function BlogList({
             disabled={isPending}
             className="cursor-pointer bg-sky-500 text-white hover:bg-sky-600"
           >
-            {isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+            {isPending ? <LuLoader className="mr-2 h-4 w-4 animate-spin" /> : null}
             {isPending ? "Loading..." : "Load More"}
           </Button>
         </div>

@@ -1,5 +1,5 @@
 import { Event, EVENT_STATUS, EVENT_TYPES, EventStatus } from "@/types/event";
-import { Globe, Users } from "lucide-react";
+import { LuGlobe, LuUsers } from "react-icons/lu";
 
 import { Badge } from "@/components/ui/badge";
 
@@ -12,14 +12,14 @@ export default function EventBadges({ type, status }: EventBadgesProps) {
   const getEventTypeIcon = (eventType: Event["type"]) => {
     switch (eventType) {
       case EVENT_TYPES.ONLINE:
-        return <Globe className="h-3 w-3" />;
+        return <LuGlobe className="h-3 w-3" />;
       case EVENT_TYPES.OFFLINE:
-        return <Users className="h-3 w-3" />;
+        return <LuUsers className="h-3 w-3" />;
       case EVENT_TYPES.HYBRID:
         return (
           <>
-            <Globe className="h-3 w-3" />
-            <Users className="h-3 w-3" />
+            <LuGlobe className="h-3 w-3" />
+            <LuUsers className="h-3 w-3" />
           </>
         );
       default:
