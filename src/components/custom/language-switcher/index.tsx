@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { Languages } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import { LuLanguages } from "react-icons/lu";
 
 import { usePathname, useRouter } from "@/config/i18n/navigation";
 import { Button } from "@/components/ui/button";
@@ -40,7 +40,7 @@ export function LanguageSwitcher() {
   if (!mounted) {
     return (
       <Button variant="ghost" size="icon" disabled>
-        <Languages className="h-5 w-5 text-slate-400" />
+        <LuLanguages className="h-5 w-5 text-slate-400" />
       </Button>
     );
   }
@@ -49,7 +49,7 @@ export function LanguageSwitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" aria-label={t("label")}>
-          <Languages className="h-5 w-5 text-slate-400" />
+          <LuLanguages className="h-5 w-5 text-slate-400" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

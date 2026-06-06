@@ -4,8 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CalendarEvent, Event, EVENT_STATUS } from "@/types/event";
-import { CalendarDays, Clock3, FileText, MapPin, Youtube } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { LuCalendarDays, LuClock3, LuFileText, LuMapPin } from "react-icons/lu";
+import { SiYoutube } from "react-icons/si";
 
 import { getEventStatus } from "@/lib/calendar-utils";
 import { formatEventDate, formatEventTime } from "@/lib/date-utils";
@@ -57,15 +58,15 @@ export default function EventCard({ event }: EventCardProps) {
         </h3>
         <div className="mt-2 grid gap-1 text-sm text-slate-400">
           <div className="flex items-center gap-2">
-            <CalendarDays className="h-4 w-4 text-slate-500" aria-hidden />
+            <LuCalendarDays className="h-4 w-4 text-slate-500" aria-hidden />
             <span>{formatEventDate(event.startDateTime)}</span>
           </div>
           <div className="flex items-center gap-2">
-            <Clock3 className="h-4 w-4 text-slate-500" aria-hidden />
+            <LuClock3 className="h-4 w-4 text-slate-500" aria-hidden />
             <span>{formatEventTime(event.startDateTime, event.endDateTime)}</span>
           </div>
           <div className="flex items-center gap-2">
-            <MapPin className="h-4 w-4 text-slate-500" aria-hidden />
+            <LuMapPin className="h-4 w-4 text-slate-500" aria-hidden />
             <span className="line-clamp-1">{event.venue}</span>
           </div>
         </div>
@@ -86,7 +87,7 @@ export default function EventCard({ event }: EventCardProps) {
                       title={t("watch_recording")}
                     >
                       <Link href={event.recordingUrl} target="_blank" rel="noreferrer">
-                        <Youtube className="h-4 w-4 text-[#FF0000]" />
+                        <SiYoutube className="h-4 w-4 text-[#FF0000]" />
                       </Link>
                     </Button>
                   )}
@@ -99,7 +100,7 @@ export default function EventCard({ event }: EventCardProps) {
                       title={t("view_slides")}
                     >
                       <Link href={event.slidesUrl} target="_blank" rel="noreferrer">
-                        <FileText className="h-4 w-4" />
+                        <LuFileText className="h-4 w-4" />
                       </Link>
                     </Button>
                   )}

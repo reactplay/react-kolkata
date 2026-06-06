@@ -40,6 +40,7 @@ const Gallery = ({ sections }: { sections: GallerySection[] }) => {
                     placeholder="blur"
                     blurDataURL="/gallary/959256_249.jpg"
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="rounded-lg object-cover"
                   />
                 </div>

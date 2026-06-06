@@ -4,8 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Event } from "@/types/event";
-import { CalendarDays, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { LuCalendarDays, LuMapPin } from "react-icons/lu";
 
 import { getEventStatus } from "@/lib/calendar-utils";
 import { formatEventDate } from "@/lib/date-utils";
@@ -55,11 +55,11 @@ export default function EventCardCompact({ event, className }: EventCardCompactP
           <div className="mt-2 flex items-end justify-between gap-3">
             <div className="grid flex-1 gap-1 text-xs text-slate-400">
               <div className="flex items-center gap-1.5">
-                <CalendarDays className="h-3 w-3 flex-shrink-0 text-slate-500" aria-hidden />
+                <LuCalendarDays className="h-3 w-3 flex-shrink-0 text-slate-500" aria-hidden />
                 <span className="truncate">{formatEventDate(event.startDateTime)}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <MapPin className="h-3 w-3 flex-shrink-0 text-slate-500" aria-hidden />
+                <LuMapPin className="h-3 w-3 flex-shrink-0 text-slate-500" aria-hidden />
                 <span className="truncate">{event.venue}</span>
               </div>
             </div>

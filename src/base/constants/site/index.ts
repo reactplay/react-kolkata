@@ -1,36 +1,36 @@
-import { Code, Heart, Lightbulb, Rocket, Target, Users } from "lucide-react";
+import { LuCode, LuHeart, LuLightbulb, LuRocket, LuTarget, LuUsers } from "react-icons/lu";
 
 export const features = [
   {
-    icon: Code,
+    icon: LuCode,
     title: "Technical Workshops",
     description:
       "Hands-on coding sessions covering the latest React patterns, tools, and best practices.",
   },
   {
-    icon: Users,
+    icon: LuUsers,
     title: "Community Meetups",
     description:
       "Regular gatherings to network, share experiences, and learn from fellow developers.",
   },
   {
-    icon: Lightbulb,
+    icon: LuLightbulb,
     title: "Lightning Talks",
     description:
       "Quick, focused presentations on specific topics, tips, and emerging technologies.",
   },
   {
-    icon: Rocket,
+    icon: LuRocket,
     title: "Project Showcases",
     description: "Platform for members to demo their projects and get feedback from the community.",
   },
   {
-    icon: Heart,
+    icon: LuHeart,
     title: "Mentorship Program",
     description: "Connect experienced developers with newcomers for guidance and career support.",
   },
   {
-    icon: Target,
+    icon: LuTarget,
     title: "Open Source Contributions",
     description: "Collaborative projects and contributions to the broader React ecosystem.",
   },

@@ -1,7 +1,7 @@
 "use client";
 
-import { Calendar, Clock } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { LuCalendar, LuClock } from "react-icons/lu";
 
 import { Card } from "@/components/ui/card";
 import { ArchitecturalCorner } from "@/components/custom/architectural-corner";
@@ -18,10 +18,10 @@ export default function ComingSoonCard() {
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-4 right-4">
-            <Clock className="h-12 w-12 text-slate-400" />
+            <LuClock className="h-12 w-12 text-slate-400" />
           </div>
           <div className="absolute bottom-4 left-4">
-            <Calendar className="h-8 w-8 text-slate-400" />
+            <LuCalendar className="h-8 w-8 text-slate-400" />
           </div>
         </div>
       </div>
@@ -34,11 +34,11 @@ export default function ComingSoonCard() {
 
           <div className="mt-2 space-y-1 text-sm text-slate-400">
             <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4 text-slate-500" aria-hidden />
+              <LuClock className="h-4 w-4 text-slate-500" aria-hidden />
               <span>More events on the way</span>
             </div>
             <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4 text-slate-500" aria-hidden />
+              <LuCalendar className="h-4 w-4 text-slate-500" aria-hidden />
               <span>Stay tuned for updates</span>
             </div>
           </div>

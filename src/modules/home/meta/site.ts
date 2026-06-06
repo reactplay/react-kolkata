@@ -35,7 +35,7 @@ export const siteConfig: Metadata = {
     siteName: "React Kolkata",
     images: [
       {
-        url: "/react-kolkata-meetup.png",
+        url: "/images/hero.jpeg",
         width: 1200,
         height: 630,
         alt: "React Kolkata Community",
@@ -49,7 +49,7 @@ export const siteConfig: Metadata = {
     title: "React Kolkata — Community, Events, Resources",
     description:
       "Join React Kolkata for meetups, talks, workshops, and resources. A modern hub for React developers in Kolkata.",
-    images: ["/react-kolkata-meetup.png"],
+    images: ["/images/hero.jpeg"],
     site: "@ReactKolkata",
   },
   icons: {

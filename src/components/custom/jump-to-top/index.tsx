@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUp } from "lucide-react";
+import { LuArrowUp } from "react-icons/lu";
 
 import { cn } from "@/lib/utils";
 
@@ -48,7 +48,7 @@ export const JumpToTop = () => {
           )}
           aria-label="Scroll to top"
         >
-          <ArrowUp className="h-6 w-6" />
+          <LuArrowUp className="h-6 w-6" />
         </motion.button>
       )}
     </AnimatePresence>

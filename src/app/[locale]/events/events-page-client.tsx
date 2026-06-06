@@ -7,8 +7,8 @@ import EventCard from "@/modules/home/(sections)/event/event-card";
 import EventCardCompact from "@/modules/home/(sections)/event/event-card-compact";
 import { Event, EVENT_STATUS } from "@/types/event";
 import { motion, Variants } from "framer-motion";
-import { Calendar } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { LuCalendar } from "react-icons/lu";
 
 import { getEventStatus } from "@/lib/calendar-utils";
 
@@ -155,7 +155,7 @@ export default function EventsPageClient({ events }: EventsPageClientProps) {
               className="py-24 text-center"
             >
               <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/5">
-                <Calendar className="h-8 w-8 text-slate-600" />
+                <LuCalendar className="h-8 w-8 text-slate-600" />
               </div>
               <p className="text-xl font-medium text-slate-400">No events found at the moment.</p>
               <p className="mt-2 text-sm text-slate-500">Stay tuned for more updates!</p>

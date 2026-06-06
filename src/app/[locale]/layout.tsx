@@ -33,14 +33,34 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "React Kolkata",
+  alternateName: "ReactJS Kolkata",
   url: "https://reactkolkata.com",
-  logo: "https://reactkolkata.com/logo.svg",
+  logo: "https://reactkolkata.com/images/React_Kolkata_Logo.svg",
+  description:
+    "A modern hub for React developers in Kolkata. Join our meetups, talks, and workshops to grow your skills and network with the community.",
+  email: "reactkolkata@gmail.com",
   sameAs: [
     "https://x.com/reactkolkata",
     "https://github.com/reactplay/react-kolkata",
     "https://www.linkedin.com/showcase/react-kolkata",
     "https://www.youtube.com/@ReactPlayIO",
+    "https://www.instagram.com/reactkolkata",
   ],
+  location: {
+    "@type": "Place",
+    name: "Kolkata, West Bengal",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Kolkata",
+      addressRegion: "West Bengal",
+      addressCountry: "IN",
+    },
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "reactkolkata@gmail.com",
+    contactType: "Community Support",
+  },
 };
 
 export default async function RootLayout({ children, params }: RootLayoutProps) {
@@ -67,13 +87,13 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 
         {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
 
-        {/* <Script
+        <Script
           id="organization-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationJsonLd),
           }}
-        /> */}
+        />
         <Script
           src="https://t.raah.dev/script.js"
           data-pid="proj_o9zywklqce9tgqrm"

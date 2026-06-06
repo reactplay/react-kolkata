@@ -1,5 +1,5 @@
 import { Event, EVENT_STATUS, EVENT_TYPES, EventFilters } from "@/types/event";
-import { Globe, Users, X } from "lucide-react";
+import { LuGlobe, LuUsers, LuX } from "react-icons/lu";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -22,14 +22,14 @@ export default function EventFiltersComponent({
   const getEventTypeIcon = (type: Event["type"]) => {
     switch (type) {
       case EVENT_TYPES.ONLINE:
-        return <Globe className="h-3 w-3" />;
+        return <LuGlobe className="h-3 w-3" />;
       case EVENT_TYPES.OFFLINE:
-        return <Users className="h-3 w-3" />;
+        return <LuUsers className="h-3 w-3" />;
       case EVENT_TYPES.HYBRID:
         return (
           <>
-            <Globe className="h-3 w-3" />
-            <Users className="h-3 w-3" />
+            <LuGlobe className="h-3 w-3" />
+            <LuUsers className="h-3 w-3" />
           </>
         );
       default:
@@ -56,7 +56,7 @@ export default function EventFiltersComponent({
             onClick={onClearFilters}
             className="text-slate-400 hover:text-slate-300"
           >
-            <X className="h-3 w-3" />
+            <LuX className="h-3 w-3" />
             Clear
           </Button>
         )}

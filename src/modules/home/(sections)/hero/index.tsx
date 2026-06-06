@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { trackGAEvent } from "@/utils/analytics";
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { LuArrowRight, LuMapPin } from "react-icons/lu";
 
 import { Button } from "@/components/ui/button";
 
@@ -42,7 +42,7 @@ const HeroSection = () => {
             className="mb-6 flex flex-col gap-3"
           >
             <div className="flex items-center gap-3 text-slate-200">
-              <MapPin className="h-5 w-5 text-sky-400" />
+              <LuMapPin className="h-5 w-5 text-sky-400" />
               <span className="text-lg font-medium">Kolkata, West Bengal</span>
             </div>
           </motion.div>
@@ -80,7 +80,7 @@ const HeroSection = () => {
               <Link target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
                 <span className="flex items-center gap-3">
                   {t("join_community")}
-                  <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-1" />
+                  <LuArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
             </Button>

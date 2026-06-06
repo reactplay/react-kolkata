@@ -1,5 +1,5 @@
 import { CalendarEvent } from "@/types/event";
-import { Calendar, Download } from "lucide-react";
+import { LuCalendar, LuDownload } from "react-icons/lu";
 
 import {
   downloadICSFile,
@@ -21,7 +21,7 @@ export default function CalendarButtons({ event }: CalendarButtonsProps) {
         className="flex-1 border-white/10 bg-white/5 text-xs text-slate-300 hover:bg-white/10"
         onClick={() => window.open(generateGoogleCalendarUrl(event), "_blank")}
       >
-        <Calendar className="mr-1 h-3 w-3" />
+        <LuCalendar className="mr-1 h-3 w-3" />
         Google
       </Button>
       <Button
@@ -30,7 +30,7 @@ export default function CalendarButtons({ event }: CalendarButtonsProps) {
         className="flex-1 border-white/10 bg-white/5 text-xs text-slate-300 hover:bg-white/10"
         onClick={() => window.open(generateOutlookCalendarUrl(event), "_blank")}
       >
-        <Calendar className="mr-1 h-3 w-3" />
+        <LuCalendar className="mr-1 h-3 w-3" />
         Outlook
       </Button>
       <Button
@@ -40,7 +40,7 @@ export default function CalendarButtons({ event }: CalendarButtonsProps) {
         onClick={() => downloadICSFile(event)}
         title="Download ICS file"
       >
-        <Download className="h-3 w-3" />
+        <LuDownload className="h-3 w-3" />
       </Button>
     </div>
   );
