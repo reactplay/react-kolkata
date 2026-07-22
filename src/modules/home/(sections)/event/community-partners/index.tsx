@@ -12,7 +12,9 @@ type Partner = {
   description?: string;
 };
 
-const partners: Partner[] = [
+const partners: Partner[] = [];
+
+/*
   {
     name: "ReactPlay",
     url: "https://reactplay.io",
@@ -83,9 +85,11 @@ const partners: Partner[] = [
     imageSrc: "/partners/mmkolkata logo.png",
     description: "Meetups and community collaboration network",
   },
-];
+*/
 
 export default function CommunityPartners() {
+  const hasPartners = partners.length > 0;
+
   return (
     <section className="relative overflow-hidden py-12">
       {/* Subtle Background Glow */}
@@ -105,56 +109,62 @@ export default function CommunityPartners() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {partners.map((partner) => (
-            <article
-              key={partner.name}
-              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/5 bg-[#0B1220]/50 backdrop-blur-md transition-all hover:bg-white/5"
-            >
-              <ArchitecturalCorner />
+        {hasPartners ? (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {partners.map((partner) => (
+              <article
+                key={partner.name}
+                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/5 bg-[#0B1220]/50 backdrop-blur-md transition-all hover:bg-white/5"
+              >
+                <ArchitecturalCorner />
 
-              {/* Logo Presentation Area */}
-              <div className="relative flex h-40 w-full shrink-0 items-center justify-center p-8">
-                {partner.imageSrc ? (
-                  <div className="relative h-full w-full transition-transform duration-700 group-hover:scale-105">
-                    <Image
-                      src={partner.imageSrc}
-                      alt={partner.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-contain"
-                    />
-                  </div>
-                ) : (
-                  <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white/5 text-4xl font-bold text-white/20 ring-1 ring-white/10 transition-transform duration-700 group-hover:scale-105 group-hover:bg-white/10 group-hover:text-white/40">
-                    {partner.name.charAt(0)}
-                  </div>
-                )}
-              </div>
+                <div className="relative flex h-40 w-full shrink-0 items-center justify-center p-8">
+                  {partner.imageSrc ? (
+                    <div className="relative h-full w-full transition-transform duration-700 group-hover:scale-105">
+                      <Image
+                        src={partner.imageSrc}
+                        alt={partner.name}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white/5 text-4xl font-bold text-white/20 ring-1 ring-white/10 transition-transform duration-700 group-hover:scale-105 group-hover:bg-white/10 group-hover:text-white/40">
+                      {partner.name.charAt(0)}
+                    </div>
+                  )}
+                </div>
 
-              {/* Content Area */}
-              <div className="relative flex flex-1 flex-col justify-between p-6 text-center">
-                <div className="space-y-3">
-                  <div className="space-y-1">
-                    <h4 className="text-xl font-bold tracking-tight text-white transition-colors">
-                      {partner.name}
-                    </h4>
-                    {partner.handle && (
-                      <p className="text-[11px] font-bold tracking-[0.2em] text-slate-500 uppercase transition-colors group-hover:text-slate-400">
-                        {partner.handle}
+                <div className="relative flex flex-1 flex-col justify-between p-6 text-center">
+                  <div className="space-y-3">
+                    <div className="space-y-1">
+                      <h4 className="text-xl font-bold tracking-tight text-white transition-colors">
+                        {partner.name}
+                      </h4>
+                      {partner.handle && (
+                        <p className="text-[11px] font-bold tracking-[0.2em] text-slate-500 uppercase transition-colors group-hover:text-slate-400">
+                          {partner.handle}
+                        </p>
+                      )}
+                    </div>
+                    {partner.description && (
+                      <p className="line-clamp-2 text-sm leading-relaxed text-slate-400">
+                        {partner.description}
                       </p>
                     )}
                   </div>
-                  {partner.description && (
-                    <p className="line-clamp-2 text-sm leading-relaxed text-slate-400">
-                      {partner.description}
-                    </p>
-                  )}
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="flex min-h-[220px] items-center justify-center rounded-3xl border border-dashed border-white/10 bg-[#0B1220]/40 px-6 py-12 text-center">
+            <p className="text-lg font-medium text-slate-400">
+              Community partners will be updated soon.
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );
