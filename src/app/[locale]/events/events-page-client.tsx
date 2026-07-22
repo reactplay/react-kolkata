@@ -2,15 +2,16 @@
 
 import CfpCard from "@/modules/home/(sections)/event/cfp-card";
 import ChampionCard from "@/modules/home/(sections)/event/champion-card";
-import ComingSoonCard from "@/modules/home/(sections)/event/coming-soon-card";
 import EventCard from "@/modules/home/(sections)/event/event-card";
 import EventCardCompact from "@/modules/home/(sections)/event/event-card-compact";
+import LumaEmbed from "@/modules/home/(sections)/event/luma-embed";
 import { Event, EVENT_STATUS } from "@/types/event";
 import { motion, Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { LuCalendar } from "react-icons/lu";
 
 import { getEventStatus } from "@/lib/calendar-utils";
+import { FEATURED_LUMA_EVENT_ID } from "@/base/constants/event";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -97,9 +98,15 @@ export default function EventsPageClient({ events }: EventsPageClientProps) {
               {upcomingEvents.length > 0 ? (
                 <>
                   <motion.div variants={itemVariants} className="lg:col-span-2">
-                    {upcomingEvents.slice(0, 1).map((event) => (
-                      <EventCard key={event.id} event={event} />
-                    ))}
+                    {upcomingEvents
+                      .slice(0, 1)
+                      .map((event) =>
+                        event.id.startsWith("evt-") ? (
+                          <LumaEmbed key={event.id} eventId={event.id} />
+                        ) : (
+                          <EventCard key={event.id} event={event} />
+                        )
+                      )}
                   </motion.div>
 
                   <motion.div variants={itemVariants} className="flex flex-col gap-6">
@@ -109,13 +116,17 @@ export default function EventsPageClient({ events }: EventsPageClientProps) {
 
                   {upcomingEvents.slice(1).map((event) => (
                     <motion.div key={event.id} variants={itemVariants}>
-                      <EventCard event={event} />
+                      {event.id.startsWith("evt-") ? (
+                        <LumaEmbed eventId={event.id} />
+                      ) : (
+                        <EventCard event={event} />
+                      )}
                     </motion.div>
                   ))}
                 </>
               ) : (
                 <motion.div variants={itemVariants} className="lg:col-span-3">
-                  <ComingSoonCard />
+                  <LumaEmbed eventId={FEATURED_LUMA_EVENT_ID} />
                 </motion.div>
               )}
             </motion.div>

@@ -9,9 +9,9 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { getEventStatus } from "@/lib/calendar-utils";
 import AnimatedSection from "@/components/custom/animated-section";
+import { FEATURED_LUMA_EVENT_ID } from "@/base/constants/event";
 import { events } from "@/base/data/dummy";
 
-import ComingSoonCard from "./coming-soon-card";
 import EventCard from "./event-card";
 import LumaEmbed from "./luma-embed";
 
@@ -97,7 +97,7 @@ export default function EventsSection() {
             </div>
           ) : (
             <div className="event-cards-container mx-auto grid w-full max-w-5xl gap-6">
-              <ComingSoonCard />
+              <LumaEmbed eventId={FEATURED_LUMA_EVENT_ID} />
             </div>
           )}
         </section>
