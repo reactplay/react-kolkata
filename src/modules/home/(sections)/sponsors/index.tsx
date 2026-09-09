@@ -1,52 +1,65 @@
-import React from "react";
-import Link from "next/link";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/custom/animated-section";
-import { ArchitecturalCorner } from "@/components/custom/architectural-corner";
 
 const SponsorsSection = () => {
   const t = useTranslations("Sponsors");
 
   return (
-    <AnimatedSection className="relative">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        {/* Heading */}
+    <AnimatedSection id="sponsors" className="relative scroll-mt-24 bg-[#0B1220]">
+      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold text-slate-100 sm:text-4xl">{t("title")}</h2>
-          <p className="mt-6 text-lg leading-relaxed font-light text-slate-300 sm:text-xl">
+          <p className="text-xs font-semibold tracking-[0.3em] text-sky-400 uppercase">Sponsors</p>
+          <h2 className="font-display mt-4 text-5xl leading-[1.05] tracking-tight text-balance text-white sm:text-6xl">
+            Powered by <em className="text-sky-400 italic">generous</em> sponsors
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-slate-400 sm:text-xl">
             {t("description")}
           </p>
         </div>
 
-        <div className="mt-12 grid justify-center">
-          <Link
-            href="https://tally.so/r/w8vGOz"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative block max-w-3xl rounded-xl border border-white/5 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-500/50 hover:from-sky-500/15 hover:to-purple-500/15"
-          >
-            <ArchitecturalCorner />
-            <div className="flex items-center gap-3">
-              <div className="rounded-lg bg-gradient-to-br from-blue-500/20 to-sky-400/20 p-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-6 w-6 text-sky-300"
-                >
-                  <path d="M12 2a10 10 0 100 20 10 10 0 000-20zM8.5 11.5a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 3a3.5 3.5 0 10-7 0v1h7v-1z" />
-                </svg>
-              </div>
-
-              <h4 className="font-medium text-slate-100">{t("sample.name")}</h4>
-            </div>
-
-            <p className="mt-3 text-sm leading-relaxed font-light text-slate-300 sm:text-base">
-              {t("sample.description")}
-            </p>
-          </Link>
+        <div className="mt-14 flex flex-col items-center gap-8">
+          <p className="text-[11px] font-semibold tracking-[0.35em] text-slate-500 uppercase">
+            Previous Sponsors
+          </p>
+          <div className="flex flex-col items-center gap-10 sm:flex-row sm:justify-center sm:gap-16">
+            <a
+              href="https://miro.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit Miro"
+            >
+              <span className="relative block h-10 w-48 sm:h-12 sm:w-60">
+                <Image
+                  src="/sponsors/miro.svg"
+                  alt="Miro logo"
+                  fill
+                  sizes="240px"
+                  className="object-contain"
+                />
+              </span>
+            </a>
+            <a
+              href="https://www.mindwebs.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit Mind Webs Ventures"
+            >
+              <span className="relative block h-9 w-44 sm:h-10 sm:w-52">
+                <Image
+                  src="/sponsors/mindwebs.svg"
+                  alt="Mind Webs Ventures logo"
+                  fill
+                  sizes="208px"
+                  className="object-contain"
+                />
+              </span>
+            </a>
+          </div>
         </div>
+
+        <div className="mx-auto mt-12 h-px max-w-4xl bg-white/10" />
       </div>
     </AnimatedSection>
   );

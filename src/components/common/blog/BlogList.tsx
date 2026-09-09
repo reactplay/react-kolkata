@@ -1,13 +1,12 @@
 "use client";
 
-// since this component has interactivity added this component as client component
 import { useCallback, useMemo, useRef, useState, useTransition } from "react";
-import Link from "next/link";
 import { loadMoreBlogs } from "@/store/blogActions";
 import { Blog, BlogResponse, BlogSectionProps, BlogTag } from "@/types/blog";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { LuFilter, LuLoader, LuX } from "react-icons/lu";
 
+import { Link } from "@/config/i18n/navigation";
 import { useDeviceDetail } from "@/hooks/use-device-detail";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -25,7 +24,6 @@ export default function BlogList({
   showLoadMoreButton = false,
   error,
 }: BlogSectionProps & { showLoadMoreButton?: boolean }) {
-  // Validate and filter initial blogs
   const validatedBlogs = initialBlogs.filter((blog) => {
     if (
       !blog ||
@@ -51,9 +49,7 @@ export default function BlogList({
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
   const [isPending, startTransition] = useTransition();
-  const locale = useLocale();
 
-  // Ref to track if a fetch is currently in progress (prevents race conditions)
   const isFetchingRef = useRef(false);
 
   const t = useTranslations("Blog");
@@ -65,11 +61,9 @@ export default function BlogList({
     return FETCH_BLOGS_COUNT_DESKTOP;
   }, [isMobile, isPad]);
 
-  // Get all unique tags from articles
   const allTags = useMemo(() => {
     const tagMap = new Map<string, BlogTag>();
     if (blogsResponse.error) return [];
-    // get blogs from data property of blogsResponse
     const blogs = blogsResponse.data;
     blogs.forEach((article) => {
       article.tags.forEach((tag) => {
@@ -79,7 +73,6 @@ export default function BlogList({
     return Array.from(tagMap.values());
   }, [blogsResponse.data, blogsResponse.error]);
 
-  // Filter articles based on selected tags
   const filteredArticles = useMemo(() => {
     if (blogsResponse.error) return [];
     const blogs = blogsResponse.data;
@@ -100,12 +93,10 @@ export default function BlogList({
   const handleMoreBlogsCTA = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    // Prevent concurrent requests (race condition guard)
     if (isFetchingRef.current || isPending) {
       return;
     }
 
-    // Mark fetch as in progress
     isFetchingRef.current = true;
 
     loadMoreBlogs(cursor, blogsToShow())
@@ -116,7 +107,6 @@ export default function BlogList({
           });
           return;
         }
-        // Validate new blogs before adding
         const validNewBlogs = newBlogs.filter((blog) => {
           if (
             !blog ||
@@ -135,7 +125,6 @@ export default function BlogList({
 
         startTransition(() => {
           setBlogsResponse((prev) => {
-            // Additional safety: check for duplicate IDs before merging
             const existingIds = new Set(prev.data.map((b) => b.id));
             const uniqueNewBlogs = validNewBlogs.filter((blog) => !existingIds.has(blog.id));
 
@@ -156,7 +145,6 @@ export default function BlogList({
         });
       })
       .finally(() => {
-        // Always reset the fetch flag, even on error
         isFetchingRef.current = false;
       });
   };
@@ -164,11 +152,11 @@ export default function BlogList({
   return (
     <div className="mb-16 flex flex-col gap-8">
       {blogsResponse.error ? (
-        <div className="rounded-lg border border-red-500/20 bg-red-500/5 p-6 text-center">
+        <div className="rounded-none border border-red-500/20 bg-red-500/5 p-6 text-center">
           <p className="text-red-400">{blogsResponse.error}</p>
           <button
             onClick={() => setBlogsResponse((prev) => ({ ...prev, error: null }))}
-            className="mt-4 rounded-lg bg-sky-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-sky-600"
+            className="mt-4 rounded-none bg-sky-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-sky-600"
           >
             Dismiss
           </button>
@@ -190,10 +178,10 @@ export default function BlogList({
                 <LuFilter className="mr-2 h-4 w-4" />
                 {t("filter")}
               </Button>
-              {/* Show only when we are not pres */}
+
               {!showLoadMoreButton && (
                 <Link
-                  href={`/${locale}/blog`}
+                  href="/blog"
                   className="text-sm text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline"
                 >
                   {t("view_all_posts")}
@@ -202,9 +190,8 @@ export default function BlogList({
             </div>
           </div>
 
-          {/* Filter Section */}
           {showFilters && (
-            <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-4">
+            <div className="flex flex-col gap-2 rounded-none border border-white/10 bg-white/5 p-4">
               <div className="flex h-6 items-center justify-between">
                 <div className="flex items-center justify-center gap-2">
                   <h3 className="text-sm font-medium text-slate-300">Filter by tags</h3>

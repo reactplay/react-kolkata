@@ -5,7 +5,6 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import EventCard from "../event-card";
 
-// Mock the calendar and date utils
 vi.mock("@/lib/calendar-utils", () => ({
   getEventStatus: vi.fn(() => "upcoming"),
 }));
@@ -15,12 +14,10 @@ vi.mock("@/lib/date-utils", () => ({
   formatEventTime: vi.fn(() => "6:00 PM – 8:00 PM IST"),
 }));
 
-// Mock Next.js Image component
 vi.mock("next/image", () => ({
   default: ({ src, alt, ...props }: any) => <img src={src} alt={alt} {...props} />,
 }));
 
-// Mock child components
 vi.mock("../event-badges", () => ({
   default: ({ type, status }: any) => (
     <div data-testid="event-badges">
@@ -172,7 +169,6 @@ describe("EventCard", () => {
       </TestWrapper>
     );
 
-    // The calendar buttons should receive the transformed event data
     expect(screen.getByTestId("calendar-buttons")).toBeInTheDocument();
   });
 
@@ -184,7 +180,7 @@ describe("EventCard", () => {
     );
 
     const article = screen.getByRole("article");
-    expect(article).toHaveClass("group", "relative", "overflow-hidden", "rounded-xl");
+    expect(article).toHaveClass("group", "relative", "overflow-hidden", "rounded-none");
   });
 
   it("should handle events with location object", () => {
@@ -194,7 +190,6 @@ describe("EventCard", () => {
       </TestWrapper>
     );
 
-    // Should pass the location address to calendar buttons
     expect(screen.getByTestId("calendar-buttons")).toBeInTheDocument();
   });
 
@@ -206,7 +201,6 @@ describe("EventCard", () => {
       </TestWrapper>
     );
 
-    // Should still render and pass venue as location
     expect(screen.getByTestId("calendar-buttons")).toBeInTheDocument();
   });
 
@@ -228,10 +222,8 @@ describe("EventCard", () => {
         </TestWrapper>
       );
 
-      // Check for buttons with title attributes (tooltips)
       expect(screen.getByTitle("Watch Recording")).toBeInTheDocument();
       expect(screen.getByTitle("View Slides")).toBeInTheDocument();
-      // Should not show register button for past events with recordings
       expect(screen.queryByText("Register")).not.toBeInTheDocument();
     });
 

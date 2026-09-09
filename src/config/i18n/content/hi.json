@@ -71,7 +71,19 @@
     "community_partners_description": "हम शानदार कम्युनिटीज़ के साथ मिलकर आपके लिए अधिक मूल्य लाते हैं।",
     "become_partner_cta": "पार्टनर बनें",
     "partner_visit_label": "विज़िट करें",
-    "partner_visit_cta": "खोलें"
+    "partner_visit_cta": "खोलें",
+    "page_subtitle": "React Kolkata के प्रोग्राम और इसे जीवंत बनाने वाली कम्युनिटी को जानें।",
+    "follow_luma": "Luma कैलेंडर फॉलो करें",
+    "registrations_open": "रजिस्ट्रेशन खुले हैं",
+    "registrations_closed": "रजिस्ट्रेशन बंद हैं",
+    "no_events_title": "कोई इवेंट नहीं मिला",
+    "page_eyebrow": "React Kolkata · इवेंट्स",
+    "page_title": "मीटअप, वर्कशॉप और कम्युनिटी इवेंट्स",
+    "join_community": "कम्युनिटी से जुड़ें",
+    "pagination_prev": "पिछला पेज",
+    "pagination_next": "अगला पेज",
+    "pagination_page": "पेज {page}",
+    "check_all_past_events": "पिछले सभी इवेंट्स देखें"
   },
   "Blog": {
     "title": "ब्लॉग से नवीनतम",
@@ -169,7 +181,10 @@
       "title": "Build",
       "description": "Collaborate on community projects and open-source."
     },
-    "step-4": { "title": "Impact", "description": "Become a speaker and mentor others." }
+    "step-4": {
+      "title": "Impact",
+      "description": "Become a speaker and mentor others."
+    }
   },
   "Gallery": {
     "title": "Moments to Remember",

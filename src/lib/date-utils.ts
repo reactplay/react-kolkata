@@ -1,40 +1,24 @@
-/**
- * Date format constants
- */
 export const DATE_FORMATS = {
-  // Date only formats
-  // We can extend this to any other format we want to use in the future
   BLOG_DATE: "blog-date", // "Aug 2, 2025"
   SHORT_DATE: "short-date", // "8/2/25"
   LONG_DATE: "long-date", // "August 2, 2025"
 
-  // Date with time formats
   BLOG_DATETIME: "blog-datetime", // "Aug 2, 2025 at 10:30 AM"
   SHORT_DATETIME: "short-datetime", // "8/2/25, 10:30 AM"
 
-  // Time only formats
   TIME_12H: "time-12h", // "10:30 AM"
   TIME_24H: "time-24h", // "10:30"
 
-  // Event specific formats
   EVENT_TIME_RANGE: "event-time-range", // "11:00 AM – 1:00 PM IST"
 
-  // Relative time
   RELATIVE: "relative", // "2 days ago"
 } as const;
 
 export type DateFormat = (typeof DATE_FORMATS)[keyof typeof DATE_FORMATS];
 
-/**
- * Format an ISO date string to the specified format
- * @param isoDateString - ISO date string (e.g., "2025-08-02T10:30:00+05:30")
- * @param format - Date format constant
- * @returns Formatted date string
- */
 export function formatDate(isoDateString: string, format: DateFormat): string {
   const date = new Date(isoDateString);
 
-  // Check if date is valid
   if (isNaN(date.getTime())) {
     return "Invalid date";
   }
@@ -96,7 +80,6 @@ export function formatDate(isoDateString: string, format: DateFormat): string {
       });
 
     case DATE_FORMATS.EVENT_TIME_RANGE:
-      // This format expects two dates, so we'll handle it differently
       throw new Error(
         "EVENT_TIME_RANGE format requires start and end dates. Use formatEventTimeRange() instead."
       );
@@ -109,22 +92,13 @@ export function formatDate(isoDateString: string, format: DateFormat): string {
   }
 }
 
-/**
- * Get relative time string using native Intl.RelativeTimeFormat API
- * Based on: https://www.builder.io/blog/relative-time
- * @param date - Date object
- * @returns Relative time string (e.g., "2 days ago", "tomorrow", "in 3 hours")
- */
 function getRelativeTime(date: Date): string {
   const timeMs = date.getTime();
 
-  // Get the amount of seconds between the given date and now
   const deltaSeconds = Math.round((timeMs - Date.now()) / 1000);
 
-  // Array representing one minute, hour, day, week, month, etc in seconds
   const cutoffs = [60, 3600, 86400, 86400 * 7, 86400 * 30, 86400 * 365, Infinity];
 
-  // Array equivalent to the above but in the string representation of the units
   const units: Intl.RelativeTimeFormatUnit[] = [
     "second",
     "minute",
@@ -135,25 +109,14 @@ function getRelativeTime(date: Date): string {
     "year",
   ];
 
-  // Grab the ideal cutoff unit
   const unitIndex = cutoffs.findIndex((cutoff) => cutoff > Math.abs(deltaSeconds));
 
-  // Get the divisor to divide from the seconds. E.g. if our unit is "day" our divisor
-  // is one day in seconds, so we can divide our seconds by this to get the # of days
   const divisor = unitIndex ? cutoffs[unitIndex - 1] : 1;
 
-  // Use Intl.RelativeTimeFormat to do the heavy lifting
   const rtf = new Intl.RelativeTimeFormat("en-US", { numeric: "auto" });
   return rtf.format(Math.floor(deltaSeconds / divisor), units[unitIndex]);
 }
 
-/**
- * Format event time range from two ISO datetime strings
- * @param startDateTime - ISO datetime string
- * @param endDateTime - ISO datetime string
- * @param timezone - Optional timezone (e.g., "Asia/Kolkata"). If not provided, uses user's local timezone
- * @returns Formatted time range (e.g., "11:00 AM – 1:00 PM IST")
- */
 export function formatEventTimeRange(
   startDateTime: string,
   endDateTime: string,
@@ -162,10 +125,8 @@ export function formatEventTimeRange(
   const start = new Date(startDateTime);
   const end = new Date(endDateTime);
 
-  // Determine which timezone to use
   const timeZone = timezone || Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-  // Format times in the specified timezone
   const startTime = start.toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
@@ -180,7 +141,6 @@ export function formatEventTimeRange(
     timeZone,
   });
 
-  // Get timezone abbreviation (e.g., "IST", "PST", "EST")
   const timezoneAbbr =
     new Intl.DateTimeFormat("en-IN", {
       timeZone,
@@ -192,7 +152,6 @@ export function formatEventTimeRange(
   return `${startTime} – ${endTime} ${timezoneAbbr}`;
 }
 
-// Convenience functions for common use cases
 export const formatBlogDate = (isoDateString: string) =>
   formatDate(isoDateString, DATE_FORMATS.BLOG_DATE);
 export const formatBlogDateTime = (isoDateString: string) =>
@@ -200,7 +159,6 @@ export const formatBlogDateTime = (isoDateString: string) =>
 export const formatBlogRelativeTime = (isoDateString: string) =>
   formatDate(isoDateString, DATE_FORMATS.RELATIVE);
 
-// Event-specific convenience functions
 export const formatEventDate = (isoDateString: string) =>
   formatDate(isoDateString, DATE_FORMATS.BLOG_DATE);
 export const formatEventTime = (startDateTime: string, endDateTime: string, timezone?: string) =>

@@ -36,9 +36,7 @@ const ContributorsSection = () => {
         );
 
         if (!response.ok) {
-          // Handle specific HTTP error codes with meaningful messages
           if (response.status === 403) {
-            // Check if it's a rate limit error
             const rateLimitRemaining = response.headers.get("X-RateLimit-Remaining");
             const rateLimitReset = response.headers.get("X-RateLimit-Reset");
 
@@ -71,12 +69,10 @@ const ContributorsSection = () => {
 
         const data = await response.json();
 
-        // Validate response data
         if (!Array.isArray(data)) {
           throw new Error("Invalid response format from GitHub API");
         }
 
-        // filter the bot contributors
         const userContributors = data.filter(
           (contributor: Contributor) =>
             contributor &&
@@ -97,13 +93,12 @@ const ContributorsSection = () => {
     fetchContributors();
   }, []);
 
-  // Prevent hydration mismatch by not rendering until mounted
   if (!mounted) {
     return (
       <AnimatedSection className="relative">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-sky-500 border-t-transparent"></div>
+            <div className="mx-auto h-8 w-8 animate-spin rounded-none border-4 border-sky-500 border-t-transparent"></div>
             <p className="mt-4 text-slate-300">{t("loading")}</p>
           </div>
         </div>
@@ -116,7 +111,7 @@ const ContributorsSection = () => {
       <AnimatedSection className="relative">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-sky-500 border-t-transparent"></div>
+            <div className="mx-auto h-8 w-8 animate-spin rounded-none border-4 border-sky-500 border-t-transparent"></div>
             <p className="mt-4 text-slate-300">{t("loading")}</p>
           </div>
         </div>
@@ -128,13 +123,13 @@ const ContributorsSection = () => {
     return (
       <AnimatedSection className="relative">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="rounded-lg border border-red-500/20 bg-red-500/5 p-8 text-center">
+          <div className="rounded-none border border-red-500/20 bg-red-500/5 p-8 text-center">
             <div className="mb-4 text-4xl">⚠️</div>
             <h3 className="mb-2 text-lg font-semibold text-red-400">{t("error")}</h3>
             <p className="text-sm text-slate-400">{error}</p>
             <button
               onClick={() => window.location.reload()}
-              className="mt-4 rounded-lg bg-sky-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-sky-600"
+              className="mt-4 rounded-none bg-sky-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-sky-600"
             >
               Try Again
             </button>
@@ -147,7 +142,6 @@ const ContributorsSection = () => {
   return (
     <AnimatedSection className="relative">
       <div className="mx-auto max-w-7xl px-4 pt-32 pb-16 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-4xl leading-tight font-bold tracking-tight text-slate-100 sm:text-5xl">
             {t("title")}
@@ -160,7 +154,6 @@ const ContributorsSection = () => {
           </p>
         </div>
 
-        {/* Contributors Grid */}
         <div className="mt-16">
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {contributors.map((contributor) => (
@@ -169,7 +162,6 @@ const ContributorsSection = () => {
           </div>
         </div>
 
-        {/* Footer Note */}
         <div className="mt-16 text-center">
           <p className="text-sm text-slate-400">{t("footer_note")}</p>
         </div>

@@ -1,10 +1,5 @@
 import { CalendarEvent, EVENT_STATUS } from "@/types/event";
 
-/**
- * Generate Google Calendar URL for adding an event
- * @param event - Calendar event data
- * @returns Google Calendar URL
- */
 export function generateGoogleCalendarUrl(event: CalendarEvent): string {
   const baseUrl = "https://calendar.google.com/calendar/render";
 
@@ -19,11 +14,6 @@ export function generateGoogleCalendarUrl(event: CalendarEvent): string {
   return `${baseUrl}?${params.toString()}`;
 }
 
-/**
- * Generate Outlook Calendar URL for adding an event
- * @param event - Calendar event data
- * @returns Outlook Calendar URL
- */
 export function generateOutlookCalendarUrl(event: CalendarEvent): string {
   const baseUrl = "https://outlook.live.com/calendar/0/deeplink/compose";
 
@@ -38,19 +28,11 @@ export function generateOutlookCalendarUrl(event: CalendarEvent): string {
   return `${baseUrl}?${params.toString()}`;
 }
 
-/**
- * Generate a globally unique identifier for calendar events
- * Uses crypto.randomUUID() for guaranteed uniqueness
- * @returns UUID string
- */
 function generateEventUID(): string {
-  // Use Web Crypto API for cryptographically secure UUID
-  // Fallback to timestamp-based UUID if crypto is not available (older browsers)
   if (typeof crypto !== "undefined" && crypto.randomUUID) {
     return crypto.randomUUID();
   }
 
-  // Fallback: Generate RFC 4122 version 4 UUID manually
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     const r = (Math.random() * 16) | 0;
     const v = c === "x" ? r : (r & 0x3) | 0x8;
@@ -58,17 +40,11 @@ function generateEventUID(): string {
   });
 }
 
-/**
- * Generate ICS (iCalendar) file content for download
- * @param event - Calendar event data
- * @returns ICS file content as string
- */
 export function generateICSContent(event: CalendarEvent): string {
   const now = new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
   const startDate = formatDateForCalendar(event.startDateTime);
   const endDate = formatDateForCalendar(event.endDateTime);
 
-  // Generate a globally unique UID to prevent calendar collisions
   const uniqueUID = generateEventUID();
 
   return [
@@ -89,10 +65,6 @@ export function generateICSContent(event: CalendarEvent): string {
   ].join("\r\n");
 }
 
-/**
- * Download ICS file for the event
- * @param event - Calendar event data
- */
 export function downloadICSFile(event: CalendarEvent): void {
   const icsContent = generateICSContent(event);
   const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
@@ -107,22 +79,11 @@ export function downloadICSFile(event: CalendarEvent): void {
   URL.revokeObjectURL(url);
 }
 
-/**
- * Format ISO datetime for calendar URLs (YYYYMMDDTHHMMSSZ format)
- * @param isoDateTime - ISO datetime string
- * @returns Formatted datetime for calendar services
- */
 function formatDateForCalendar(isoDateTime: string): string {
   const date = new Date(isoDateTime);
   return date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
 }
 
-/**
- * Get dynamic event status based on current time
- * @param startDateTime - ISO datetime string
- * @param endDateTime - ISO datetime string
- * @returns Event status (upcoming, ongoing, or past)
- */
 export function getEventStatus(
   startDateTime: string,
   endDateTime: string

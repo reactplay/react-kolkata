@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { CalendarEvent, Event, EVENT_STATUS } from "@/types/event";
 import { useTranslations } from "next-intl";
@@ -16,6 +14,7 @@ import { ArchitecturalCorner } from "@/components/custom/architectural-corner";
 
 import CalendarButtons from "../calendar-buttons";
 import EventBadges from "../event-badges";
+import EventMedia from "../event-media";
 
 interface EventCardProps {
   event: Event;
@@ -24,7 +23,6 @@ interface EventCardProps {
 export default function EventCard({ event }: EventCardProps) {
   const t = useTranslations("Events");
   const dynamicStatus = getEventStatus(event.startDateTime, event.endDateTime);
-  const [imgSrc, setImgSrc] = useState(event.image ?? "/images/kolkata-hero.jpg");
 
   const calendarEvent: CalendarEvent = {
     title: event.title,
@@ -35,17 +33,15 @@ export default function EventCard({ event }: EventCardProps) {
   };
 
   return (
-    <Card className="event-card group relative h-full gap-0 overflow-hidden rounded-2xl border border-white/5 bg-[#0B1220]/50 py-0 shadow-none backdrop-blur-md transition-all hover:bg-white/5">
+    <Card className="event-card group relative h-full gap-0 overflow-hidden rounded-none border border-white/5 bg-[#0B1220]/50 py-0 shadow-none backdrop-blur-md transition-all hover:bg-white/5">
       <ArchitecturalCorner />
 
       <div className="relative h-44 w-full flex-shrink-0 overflow-hidden">
-        <Image
-          src={imgSrc}
+        <EventMedia
+          src={event.image}
           alt={event.title}
-          fill
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 67vw, 800px"
-          className="object-cover transition duration-500 group-hover:scale-105"
-          onError={() => setImgSrc("/images/kolkata-hero.jpg")}
+          className="transition duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] to-transparent opacity-80" />
 

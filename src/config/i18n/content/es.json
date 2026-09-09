@@ -71,7 +71,19 @@
     "community_partners_description": "Colaboramos con comunidades increíbles para brindarte más valor.",
     "become_partner_cta": "Conviértete en socio",
     "partner_visit_label": "Visitar",
-    "partner_visit_cta": "Abrir"
+    "partner_visit_cta": "Abrir",
+    "page_subtitle": "Explora el programa de React Kolkata y la comunidad que le da vida.",
+    "follow_luma": "Seguir calendario de Luma",
+    "registrations_open": "Inscripciones abiertas",
+    "registrations_closed": "Inscripciones cerradas",
+    "no_events_title": "No se encontraron eventos",
+    "page_eyebrow": "React Kolkata · Eventos",
+    "page_title": "Meetups, talleres y eventos comunitarios",
+    "join_community": "Únete a la comunidad",
+    "pagination_prev": "Página anterior",
+    "pagination_next": "Página siguiente",
+    "pagination_page": "Página {page}",
+    "check_all_past_events": "Ver todos los eventos pasados"
   },
   "Blog": {
     "title": "Último del Blog",

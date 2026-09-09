@@ -51,7 +51,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       }
 
       return (
-        <div className="flex min-h-[400px] items-center justify-center rounded-lg border border-red-500/20 bg-red-500/5 p-8">
+        <div className="flex min-h-[400px] items-center justify-center rounded-none border border-red-500/20 bg-red-500/5 p-8">
           <div className="max-w-md text-center">
             <div className="mb-4 text-4xl">⚠️</div>
             <h2 className="mb-2 text-xl font-semibold text-red-400">Something went wrong</h2>
@@ -60,7 +60,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
             </p>
             <button
               onClick={this.resetErrorBoundary}
-              className="rounded-lg bg-sky-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-sky-600"
+              className="rounded-none bg-sky-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-sky-600"
             >
               Try again
             </button>

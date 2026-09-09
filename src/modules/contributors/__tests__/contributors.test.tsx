@@ -4,7 +4,6 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import ContributorsSection from "../index";
 
-// Mock fetch
 const mockFetch = vi.fn();
 global.fetch = mockFetch;
 

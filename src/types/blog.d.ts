@@ -35,7 +35,6 @@ interface APIResponse<T> {
   error: string | null;
 }
 
-// Type for Hashnode API response starts
 export interface HashnodePostEdge {
   node: Blog;
 }
@@ -69,7 +68,6 @@ export interface BlogSectionProps {
   initialEndCursor: string | null;
   error: string | null;
 }
-// Type for Hashnode API response ends
 
 export type BlogResponse = APIResponse<Blog>;
 export type { BlogSectionProps };

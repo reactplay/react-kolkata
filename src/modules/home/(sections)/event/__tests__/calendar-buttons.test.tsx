@@ -3,14 +3,12 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import CalendarButtons from "../calendar-buttons";
 
-// Mock the calendar utils
 vi.mock("@/lib/calendar-utils", () => ({
   generateGoogleCalendarUrl: vi.fn(() => "https://calendar.google.com/mock-url"),
   generateOutlookCalendarUrl: vi.fn(() => "https://outlook.live.com/mock-url"),
   downloadICSFile: vi.fn(),
 }));
 
-// Mock window.open
 const mockWindowOpen = vi.fn();
 Object.defineProperty(window, "open", {
   value: mockWindowOpen,
@@ -90,7 +88,6 @@ describe("CalendarButtons", () => {
     const outlookButton = screen.getByText("Outlook");
     const downloadButton = screen.getByTitle("Download ICS file");
 
-    // Check if buttons have the expected classes
     expect(googleButton).toHaveClass("flex-1", "border-white/10", "bg-white/5");
     expect(outlookButton).toHaveClass("flex-1", "border-white/10", "bg-white/5");
     expect(downloadButton).toHaveClass("border-white/10", "bg-white/5");
@@ -103,7 +100,6 @@ describe("CalendarButtons", () => {
     const outlookButton = screen.getByText("Outlook").closest("button");
     const downloadButton = screen.getByTitle("Download ICS file");
 
-    // Check for SVG icons (lucide-react renders as svg elements)
     expect(googleButton?.querySelector("svg")).toBeInTheDocument();
     expect(outlookButton?.querySelector("svg")).toBeInTheDocument();
     expect(downloadButton?.querySelector("svg")).toBeInTheDocument();

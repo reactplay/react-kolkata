@@ -1,4 +1,3 @@
-// Event type constants
 export const EVENT_TYPES = {
   ALL: "all",
   ONLINE: "online",
@@ -9,7 +8,6 @@ export const EVENT_TYPES = {
 
 export type EventType = (typeof EVENT_TYPES)[keyof typeof EVENT_TYPES];
 
-// Event status constants
 export const EVENT_STATUS = {
   ALL: "all",
   UPCOMING: "upcoming",
@@ -37,7 +35,6 @@ export interface Event {
       lng: number;
     };
   };
-  // Recording and slide links for past events
   recordingUrl?: string;
   slidesUrl?: string;
   isFeatured?: boolean;

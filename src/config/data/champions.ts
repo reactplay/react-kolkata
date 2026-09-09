@@ -1,28 +1,4 @@
 export const championsData = [
-  /*
-  {
-    "id": 4,
-    "name": "Arpan Kumar De",
-    "role": "Event Organization",
-    "bio": "Making events fun!",
-    "photo": "https://github.com/arpankumarde.png",
-    "socials": {
-      "github": "https://github.com/arpankumarde",
-      "linkedin": "https://www.linkedin.com/in/arpankumarde"
-    }
-  },
-  {
-    "id": 5,
-    "name": "Priya Mahato",
-    "role": "Event Organization",
-    "bio": "Smoothness Controller",
-    "photo": "https://wsrv.nl/?url=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D14tTMrfH7pOyv_naSi_9f5LVV1dnUvV-k&w=250&h=250",
-    "socials": {
-      "github": "https://github.com/priyamahato86",
-      "linkedin": "https://www.linkedin.com/in/priyamahato86"
-    }
-  },
-  */
   {
     id: 6,
     name: "Titash Shil",
@@ -34,30 +10,6 @@ export const championsData = [
       linkedin: "https://www.linkedin.com/in/titash-shil-844857292/",
     },
   },
-  /*
-  {
-    "id": 7,
-    "name": "Koustav Singh",
-    "role": "Event Organizing Team",
-    "bio": "Contributing to planning, coordination, and execution of community-driven tech events.",
-    "photo": "https://github.com/koustavx08.png",
-    "socials": {
-      "github": "https://github.com/koustavx08",
-      "linkedin": "https://linkedin.com/in/koustavx08"
-    }
-  },
-  {
-    "id": 8,
-    "name": "Hiya Sarkar",
-    "role": "Event organisation Team, Github & Website maintain Team",
-    "bio": "In React Kolkata for event organisation and github & website maintain.",
-    "photo": "https://github.com/hiyasarkar.png",
-    "socials": {
-      "github": "https://github.com/hiyasarkar",
-      "linkedin": "https://linkedin.com/in/hiyasarkar"
-    }
-  },
-  */
   {
     id: 9,
     name: "Rishita Kundu",
@@ -69,19 +21,6 @@ export const championsData = [
       linkedin: "https://www.linkedin.com/in/rishita-kundu",
     },
   },
-  /*
-  {
-    "id": 10,
-    "name": "Arup Matabber",
-    "role": "Design Team",
-    "bio": "I draw shapes using the Pen Tool",
-    "photo": "https://avatars.githubusercontent.com/u/146101983?v=4",
-    "socials": {
-      "github": "https://github.com/arup-matabber.png",
-      "linkedin": "https://www.linkedin.com/in/arup-matabber/"
-    }
-  },
-  */
   {
     id: 11,
     name: "Chandika Sarkar",
@@ -93,21 +32,6 @@ export const championsData = [
       linkedin: "https://www.linkedin.com/in/chandika-sarkar-059853254/",
     },
   },
-  /*
-  {
-    "id": 12,
-    "name": "Soumyodeep Dey",
-    "role": "Tech and Content Team",
-    "bio": "with react Kolkata because personally I got many things and support from the community so want to give it back and love working with these amazing people",
-    "photo": "https://soumyodeep-dey.vercel.app/Images/LOGO.webp",
-    "socials": {
-      "github": "https://github.com/Soumyodeep-Dey",
-      "linkedin": "https://www.linkedin.com/in/soumyodeep-dey/",
-      "twitter": "https://twitter.com/Soumyodeep2003",
-      "portfolio": "https://soumyodeep-dey.vercel.app/"
-    }
-  },
-  */
   {
     id: 13,
     name: "MD NAYAJ MONDAL",
@@ -121,18 +45,4 @@ export const championsData = [
       portfolio: "https://my-portfolio-website-eight-pi.vercel.app/index.html",
     },
   },
-  /*
-  {
-    "id": 14,
-    "name": "Mohammad Shahzeb Alam",
-    "role": "Event Organizing Team",
-    "bio": "Frontend developer & React Kolkata organizer, building community and contributing to open source.",
-    "photo": "https://github.com/Shahzebdevv.png",
-    "socials": {
-      "github": "https://github.com/Shahzebdevv",
-      "linkedin": "https://www.linkedin.com/in/mohammad-shahzeb-alam-3029a82b9/",
-      "twitter": "https://x.com/MdShahzebAlam"
-    }
-  }
-  */
 ];

@@ -21,10 +21,8 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
 
   const defaultCoverImage = "/images/tech-events-1.jpg";
 
-  // Validate blog object
   if (!blog) return null;
 
-  // Validate required properties
   if (
     !blog.title ||
     !blog.author ||
@@ -60,9 +58,8 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
         </DialogHeader>
 
         <div className="space-y-6">
-          {/* Cover Image */}
           {(blog.coverImage?.url || !coverImageError) && (
-            <div className="relative h-48 w-full overflow-hidden rounded-lg">
+            <div className="relative h-48 w-full overflow-hidden rounded-none">
               <Image
                 src={
                   coverImageError ? defaultCoverImage : blog.coverImage?.url || defaultCoverImage
@@ -76,7 +73,6 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
             </div>
           )}
 
-          {/* Article Meta */}
           <div className="flex items-center gap-4 text-sm text-slate-400">
             <div className="flex items-center gap-1">
               <LuCalendar className="h-4 w-4" />
@@ -89,7 +85,6 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
             <div className="text-slate-500">{formatBlogRelativeTime(blog.publishedAt)}</div>
           </div>
 
-          {/* Tags */}
           <div className="flex flex-wrap gap-2">
             {blog.tags.map((tag) => (
               <Badge
@@ -102,10 +97,9 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
             ))}
           </div>
 
-          {/* Author Section */}
-          <div className="rounded-lg border border-white/10 bg-white/5 p-4">
+          <div className="rounded-none border border-white/10 bg-white/5 p-4">
             <div className="flex items-start gap-4">
-              <div className="relative h-12 w-12 overflow-hidden rounded-full">
+              <div className="relative h-12 w-12 overflow-hidden rounded-none">
                 {authorImageError ? (
                   <div className="flex h-full w-full items-center justify-center bg-slate-600">
                     <LuUser className="h-6 w-6 text-slate-400" />
@@ -124,7 +118,7 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
               <div className="flex-1">
                 <div className="flex items-center gap-2">
                   <h4 className="font-medium text-slate-200">{blog.author.name}</h4>
-                  {/* Assuming profileUrl might be added to author object later */}
+
                   {blog.author.profileUrl && (
                     <a
                       href={blog.author.profileUrl}
@@ -148,7 +142,7 @@ export default function BlogModal({ blog, modalOpen, setModalOpen }: BlogModalPr
           <div className="prose prose-invert max-w-none">
             <p className="leading-relaxed text-slate-300">{blog.brief}</p>
           </div>
-          {/* End of hard-coded part */}
+
           <div className="flex items-center justify-between gap-2 border-t border-white/10 pt-4">
             <div className="text-xs text-slate-500">Published by React Kolkata Community</div>
             <Button

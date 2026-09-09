@@ -91,7 +91,7 @@ const AboutSection = () => {
           <div className="flex gap-16 pr-16">
             {tags.map((tag) => (
               <span key={tag} className="flex items-center gap-3">
-                <span className="h-2 w-2 rounded-full bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.6)]" />
+                <span className="h-2 w-2 rounded-none bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.6)]" />
                 {tag}
               </span>
             ))}
@@ -99,7 +99,7 @@ const AboutSection = () => {
           <div className="flex gap-16 pr-16">
             {tags.map((tag) => (
               <span key={tag + "-dup"} className="flex items-center gap-3">
-                <span className="h-2 w-2 rounded-full bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.6)]" />
+                <span className="h-2 w-2 rounded-none bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.6)]" />
                 {tag}
               </span>
             ))}
@@ -108,8 +108,8 @@ const AboutSection = () => {
       </div>
 
       <AnimatedSection className="relative py-16">
-        <div className="absolute top-1/4 -left-20 -z-10 h-96 w-96 rounded-full bg-blue-600/10 blur-[120px]" />
-        <div className="absolute -right-20 bottom-1/4 -z-10 h-96 w-96 rounded-full bg-sky-500/10 blur-[120px]" />
+        <div className="absolute top-1/4 -left-20 -z-10 h-96 w-96 rounded-none bg-blue-600/10 blur-[120px]" />
+        <div className="absolute -right-20 bottom-1/4 -z-10 h-96 w-96 rounded-none bg-sky-500/10 blur-[120px]" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto mb-16 max-w-4xl text-center">
@@ -134,11 +134,11 @@ const AboutSection = () => {
             ].map((item) => (
               <div
                 key={item.title}
-                className="feature-card relative overflow-hidden rounded-2xl border border-white/5 bg-[#0B1220]/50 p-8 backdrop-blur-md"
+                className="feature-card relative overflow-hidden rounded-none border border-white/5 bg-[#0B1220]/50 p-8 backdrop-blur-md"
               >
                 <ArchitecturalCorner />
                 <div className="relative">
-                  <div className="mb-6 inline-flex rounded-xl bg-gradient-to-br from-blue-500/10 to-sky-400/10 p-3 ring-1 ring-white/10">
+                  <div className="mb-6 inline-flex rounded-none bg-gradient-to-br from-blue-500/10 to-sky-400/10 p-3 ring-1 ring-white/10">
                     <item.icon className="h-6 w-6 text-sky-400" />
                   </div>
                   <h3 className="mb-3 text-xl font-bold text-white">{item.title}</h3>
@@ -180,11 +180,11 @@ const AboutSection = () => {
                 return (
                   <div
                     key={key}
-                    className="bottom-card relative overflow-hidden rounded-2xl border border-white/5 bg-[#0B1220]/50 p-8 backdrop-blur-md"
+                    className="bottom-card relative overflow-hidden rounded-none border border-white/5 bg-[#0B1220]/50 p-8 backdrop-blur-md"
                   >
                     <ArchitecturalCorner />
                     <div className="relative">
-                      <div className="mb-6 inline-flex rounded-xl bg-gradient-to-br from-blue-500/10 to-sky-400/10 p-3 ring-1 ring-white/10">
+                      <div className="mb-6 inline-flex rounded-none bg-gradient-to-br from-blue-500/10 to-sky-400/10 p-3 ring-1 ring-white/10">
                         <Icon className="h-6 w-6 text-sky-400" />
                       </div>
                       <h4 className="mb-3 text-xl font-bold text-white">

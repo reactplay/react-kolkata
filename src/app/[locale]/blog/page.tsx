@@ -4,6 +4,7 @@ import Script from "next/script";
 import { getInitialBlogs } from "@/utils/blog";
 import { getTranslations } from "next-intl/server";
 
+import { getLocalizedPath } from "@/config/i18n/navigation";
 import BlogList from "@/components/common/blog/BlogList";
 import ErrorBoundary from "@/components/common/error-boundary";
 
@@ -22,9 +23,9 @@ export async function generateMetadata({
     title: pageTitle,
     description: pageDescription,
     alternates: {
-      canonical: `/${locale}/blog`,
+      canonical: getLocalizedPath("/blog", locale),
       languages: {
-        en: "/en/blog",
+        en: "/blog",
         bn: "/bn/blog",
         hi: "/hi/blog",
         es: "/es/blog",
@@ -33,7 +34,7 @@ export async function generateMetadata({
     openGraph: {
       title: pageTitle,
       description: pageDescription,
-      url: `/${locale}/blog`,
+      url: getLocalizedPath("/blog", locale),
       siteName: "React Kolkata",
       locale: locale,
       type: "website",

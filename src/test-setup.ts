@@ -1,6 +1,5 @@
 import "@testing-library/jest-dom";
 
-// Mock IntersectionObserver
 global.IntersectionObserver = class IntersectionObserver {
   root = null;
   rootMargin = "";

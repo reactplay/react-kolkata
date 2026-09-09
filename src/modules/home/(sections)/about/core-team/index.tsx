@@ -74,7 +74,7 @@ const CoreTeam = () => (
         {members.map((member) => (
           <div
             key={member.name}
-            className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-slate-800 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-500/10"
+            className="group relative aspect-[3/4] overflow-hidden rounded-none bg-slate-800 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10"
           >
             <ArchitecturalCorner />
             <Image
@@ -82,13 +82,11 @@ const CoreTeam = () => (
               alt={member.name}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0"
+              className="object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
             />
 
-            {/* Dark Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
 
-            {/* Info at bottom left */}
             <div className="absolute bottom-0 left-0 w-full p-6 text-left">
               <h3 className="mb-1 text-xl font-bold text-white">{member.name}</h3>
               <p className="mb-4 text-sm text-slate-300">{member.role}</p>
@@ -98,7 +96,7 @@ const CoreTeam = () => (
                   href={member.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-md bg-white/10 p-2 text-white backdrop-blur-md transition-colors hover:bg-white/20"
+                  className="rounded-none bg-white/10 p-2 text-white backdrop-blur-md transition-colors hover:bg-white/20"
                 >
                   <LuLinkedin className="h-4 w-4" />
                 </a>
@@ -106,7 +104,7 @@ const CoreTeam = () => (
                   href={member.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-md bg-white/10 p-2 text-white backdrop-blur-md transition-colors hover:bg-white/20"
+                  className="rounded-none bg-white/10 p-2 text-white backdrop-blur-md transition-colors hover:bg-white/20"
                 >
                   <XLogo className="h-4 w-4" />
                 </a>

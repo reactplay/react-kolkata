@@ -8,7 +8,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
 import { routing } from "@/config/i18n/navigation";
-import { GeistMono, GeistSans } from "@/lib/fonts";
+import { GeistMono, GeistSans, InstrumentSerif, InterSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { JumpToTop } from "@/components/custom/jump-to-top";
 import AppProvider from "@/components/providers";
@@ -75,7 +75,9 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
         className={cn(
           "min-h-dvh bg-[#0B1220] text-slate-100 antialiased",
           GeistSans.variable,
-          GeistMono.variable
+          GeistMono.variable,
+          InstrumentSerif.variable,
+          InterSans.variable
         )}
       >
         <NextIntlClientProvider messages={messages}>

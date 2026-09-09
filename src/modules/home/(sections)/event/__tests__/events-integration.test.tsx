@@ -1,11 +1,10 @@
 import { TestWrapper } from "@/test-utils";
-import { EVENT_STATUS, EVENT_TYPES } from "@/types/event";
+import { EVENT_STATUS } from "@/types/event";
 import { cleanup, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import EventsSection from "../index";
 
-// Mock the dummy data with realistic events
 vi.mock("@/base/data/dummy", () => ({
   events: [
     {
@@ -31,32 +30,15 @@ vi.mock("@/base/data/dummy", () => ({
   ],
 }));
 
-// Mock calendar utils to return predictable status
 vi.mock("@/lib/calendar-utils", () => ({
   getEventStatus: vi.fn(() => EVENT_STATUS.UPCOMING),
 }));
 
-// Mock child components for simpler testing
 vi.mock("../event-card", () => ({
   default: ({ event }: any) => (
     <div data-testid={`event-card-${event.id}`}>
       <h3>{event.title}</h3>
       <p>{event.type}</p>
-    </div>
-  ),
-}));
-
-vi.mock("../event-filters", () => ({
-  default: ({ filters, onUpdateFilter, onClearFilters }: any) => (
-    <div data-testid="event-filters">
-      <button onClick={() => onUpdateFilter("status", EVENT_STATUS.UPCOMING)}>
-        Filter Upcoming
-      </button>
-      <button onClick={() => onUpdateFilter("type", EVENT_TYPES.ONLINE)}>Filter Online</button>
-      <button onClick={onClearFilters}>Clear All</button>
-      <div data-testid="current-filters">
-        Status: {filters.status}, Type: {filters.type}
-      </div>
     </div>
   ),
 }));
@@ -96,16 +78,19 @@ describe("EventsSection Integration", () => {
     expect(screen.queryByText("Online Meetup")).not.toBeInTheDocument();
   });
 
-  it("should render View all past events link", () => {
+  it("should render Check all past events link", () => {
     render(
       <TestWrapper>
         <EventsSection />
       </TestWrapper>
     );
 
-    const viewAllLink = screen.getByText("View All Past Events");
+    const viewAllLink = screen.getByText("Check all past events");
     expect(viewAllLink).toBeInTheDocument();
-    expect(viewAllLink.closest("a")).toHaveAttribute("href", "/en/events");
+    expect(viewAllLink.closest("a")).toHaveAttribute(
+      "href",
+      "https://luma.com/reactkolkata?period=past"
+    );
   });
 
   it("should have proper component structure", () => {
@@ -115,11 +100,9 @@ describe("EventsSection Integration", () => {
       </TestWrapper>
     );
 
-    // Should have main container
     const container = screen.getByText("Events").closest("div");
     expect(container).toBeInTheDocument();
 
-    // Should have event cards grid
     expect(screen.getByTestId("event-card-e-001")).toBeInTheDocument();
     expect(screen.queryByTestId("event-card-e-002")).not.toBeInTheDocument();
   });
@@ -131,7 +114,6 @@ describe("EventsSection Integration", () => {
       </TestWrapper>
     );
 
-    // Check that event data is passed correctly for the first event
     expect(screen.getByText("React Workshop")).toBeInTheDocument();
     expect(screen.getByText("offline")).toBeInTheDocument(); // Event type
   });

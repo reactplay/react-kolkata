@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import { NextIntlClientProvider } from "next-intl";
 
-// Mock translations for testing
 const mockMessages = {
   Hero: {
     badge: "Community • Events • Learning",
@@ -68,8 +67,8 @@ const mockMessages = {
     past_events: "Past Events",
     call_for_speakers: "Call for Speakers",
     call_for_champions: "Call for Champions",
-    // view_all_events: "View All Events",
     view_all_past_events: "View All Past Events",
+    check_all_past_events: "Check all past events",
     coming_soon: "Coming Soon",
   },
   Blog: {
@@ -91,7 +90,6 @@ const mockMessages = {
   },
 };
 
-// Test wrapper with NextIntl context
 export const TestWrapper = ({ children }: { children: ReactElement }) => (
   <NextIntlClientProvider locale="en" messages={mockMessages}>
     {children}
