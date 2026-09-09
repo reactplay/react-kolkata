@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import EventCard from "@/modules/home/(sections)/event/event-card";
-import EventListRow from "@/modules/home/(sections)/event/event-list-row";
 import LumaEmbed from "@/modules/home/(sections)/event/luma-embed";
 import { Event, EVENT_STATUS } from "@/types/event";
 import { useTranslations } from "next-intl";
@@ -113,28 +112,18 @@ function Pagination({
 export default function EventsPageClient({ events }: EventsPageClientProps) {
   const t = useTranslations("Events");
   const [upcomingPage, setUpcomingPage] = useState(1);
-  const [pastPage, setPastPage] = useState(1);
 
   const upcomingEvents = useMemo(
     () =>
       events.filter(isLive).sort((a, b) => +new Date(a.startDateTime) - +new Date(b.startDateTime)),
     [events]
   );
-  const pastEvents = useMemo(
-    () =>
-      events
-        .filter((event) => !isLive(event))
-        .sort((a, b) => +new Date(b.startDateTime) - +new Date(a.startDateTime)),
-    [events]
-  );
 
   const upcomingTotalPages = Math.max(1, Math.ceil(upcomingEvents.length / PAGE_SIZE));
-  const pastTotalPages = Math.max(1, Math.ceil(pastEvents.length / PAGE_SIZE));
   const visibleUpcoming = upcomingEvents.slice(
     (upcomingPage - 1) * PAGE_SIZE,
     upcomingPage * PAGE_SIZE
   );
-  const visiblePast = pastEvents.slice((pastPage - 1) * PAGE_SIZE, pastPage * PAGE_SIZE);
 
   return (
     <main className="min-h-screen bg-[#0B1220] pb-24">
@@ -204,38 +193,6 @@ export default function EventsPageClient({ events }: EventsPageClientProps) {
               totalPages={upcomingTotalPages}
               sectionId="upcoming-events"
               onChange={setUpcomingPage}
-              prevLabel={t("pagination_prev")}
-              nextLabel={t("pagination_next")}
-              pageLabel={(pageNumber) => t("pagination_page", { page: pageNumber })}
-            />
-          </section>
-        )}
-
-        {pastEvents.length > 0 && (
-          <section
-            id="past-events"
-            className="mt-20 scroll-mt-24 space-y-8"
-            aria-labelledby="past-heading"
-          >
-            <div className="flex items-center gap-4">
-              <h2
-                id="past-heading"
-                className="shrink-0 text-xs font-bold tracking-[0.3em] text-slate-500 uppercase"
-              >
-                {t("past_events")} · {pastEvents.length}
-              </h2>
-              <div className="h-px flex-1 bg-white/10" />
-            </div>
-            <div className="flex flex-col gap-5">
-              {visiblePast.map((event) => (
-                <EventListRow key={event.id} event={event} />
-              ))}
-            </div>
-            <Pagination
-              page={Math.min(pastPage, pastTotalPages)}
-              totalPages={pastTotalPages}
-              sectionId="past-events"
-              onChange={setPastPage}
               prevLabel={t("pagination_prev")}
               nextLabel={t("pagination_next")}
               pageLabel={(pageNumber) => t("pagination_page", { page: pageNumber })}

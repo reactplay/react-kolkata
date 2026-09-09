@@ -108,20 +108,6 @@ export const bundledMentions: Mention[] = [
   },
 ];
 
-const isValidMention = (item: unknown): item is Mention => {
-  if (typeof item !== "object" || item === null) return false;
-  const m = item as Record<string, unknown>;
-  return (
-    typeof m.quote === "string" &&
-    typeof m.name === "string" &&
-    typeof m.href === "string" &&
-    (m.platform === undefined ||
-      m.platform === "LinkedIn" ||
-      m.platform === "X" ||
-      m.platform === "Instagram")
-  );
-};
-
 const normalize = (item: Mention): Mention => ({
   quote: item.quote,
   name: item.name,
@@ -134,7 +120,7 @@ const normalize = (item: Mention): Mention => ({
   avatar: typeof item.avatar === "string" ? item.avatar : undefined,
 });
 
-export function mergeMentions(remote: unknown): Mention[] {
+export function mergeMentions(): Mention[] {
   const seen = new Set<string>();
   const merged: Mention[] = [];
 
@@ -145,20 +131,7 @@ export function mergeMentions(remote: unknown): Mention[] {
     merged.push(normalize(item));
   };
 
-  if (Array.isArray(remote)) {
-    for (const item of remote) {
-      if (isValidMention(item)) push(item as Mention);
-    }
-  }
   for (const item of bundledMentions) push(item);
 
   return merged.sort((a, b) => (b.postedAt ?? "").localeCompare(a.postedAt ?? ""));
-}
-
-export async function fetchRemoteMentions(signal: AbortSignal): Promise<unknown> {
-  const url = process.env.NEXT_PUBLIC_MENTIONS_FEED_URL;
-  if (!url) return null;
-  const res = await fetch(url, { signal });
-  if (!res.ok) throw new Error(`Mentions feed responded ${res.status}`);
-  return res.json();
 }

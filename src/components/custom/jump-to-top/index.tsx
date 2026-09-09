@@ -18,7 +18,6 @@ export const JumpToTop = () => {
 
   const scrollToTop = () => {
     const el = document.getElementById("top_div");
-    console.log(el);
     el?.scrollIntoView({ behavior: "smooth" });
   };
 

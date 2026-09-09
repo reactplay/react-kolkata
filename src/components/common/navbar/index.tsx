@@ -6,7 +6,7 @@ import NextLink from "next/link"; // Use NextLink for external links
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
-import { LuLinkedin, LuMegaphone, LuMenu, LuX } from "react-icons/lu";
+import { LuLinkedin, LuMenu, LuX } from "react-icons/lu";
 import { SiGithub } from "react-icons/si";
 
 import { Link, usePathname, useRouter } from "@/config/i18n/navigation"; // Use localized navigation for internal page routes
@@ -23,7 +23,6 @@ type NavLink =
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [showCfpBanner, setShowCfpBanner] = useState(true);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -94,21 +93,6 @@ const Navbar = () => {
       )}
       role="banner"
     >
-      {showCfpBanner && (
-        <div className="relative flex items-center justify-center bg-gradient-to-r from-indigo-700 via-sky-600 to-indigo-700 px-10 py-2">
-          <p className="flex items-center gap-2 text-center text-xs font-semibold tracking-wide text-white sm:text-[13px]">
-            <LuMegaphone className="h-3.5 w-3.5 shrink-0" aria-hidden />
-            <span>CFP is open for React Kolkata. This is a test notification for development.</span>
-          </p>
-          <button
-            onClick={() => setShowCfpBanner(false)}
-            aria-label="Dismiss announcement"
-            className="absolute right-3 rounded-none p-1 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
-          >
-            <LuX className="h-4 w-4" />
-          </button>
-        </div>
-      )}
       <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:h-24 lg:px-8">
         <Link href="/" className="flex items-center gap-3" aria-label="React Kolkata Home">
           <div

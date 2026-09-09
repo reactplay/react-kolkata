@@ -4,30 +4,13 @@ import { useEffect, useRef, useState } from "react";
 
 import AnimatedSection from "@/components/custom/animated-section";
 import { MentionCard } from "@/components/custom/mention-card";
-import { fetchRemoteMentions, mergeMentions, type Mention } from "@/base/data/social-posts";
+import { mergeMentions } from "@/base/data/social-posts";
 
 const AUTOPLAY_MS = 4000;
 const ReviewsSection = () => {
-  const [mentions, setMentions] = useState<Mention[]>(() => mergeMentions(null));
+  const [mentions] = useState(() => mergeMentions());
   const [paused, setPaused] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 8000);
-
-    fetchRemoteMentions(controller.signal)
-      .then((remote) => {
-        if (remote) setMentions(mergeMentions(remote));
-      })
-      .catch(() => {})
-      .finally(() => clearTimeout(timer));
-
-    return () => {
-      clearTimeout(timer);
-      controller.abort();
-    };
-  }, []);
 
   useEffect(() => {
     if (paused || mentions.length < 2) return;
