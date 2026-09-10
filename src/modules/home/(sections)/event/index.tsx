@@ -1,11 +1,10 @@
 "use client";
 
 import { useLayoutEffect, useMemo, useRef } from "react";
-import Link from "next/link";
 import { EVENT_STATUS } from "@/types/event";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
 import { getEventStatus } from "@/lib/calendar-utils";
 import AnimatedSection from "@/components/custom/animated-section";
@@ -16,7 +15,6 @@ import EventCard from "./event-card";
 import LumaEmbed from "./luma-embed";
 
 export default function EventsSection() {
-  const locale = useLocale();
   const t = useTranslations("Events");
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -51,19 +49,22 @@ export default function EventsSection() {
   }, []);
 
   return (
-    <AnimatedSection className="relative">
-      <div className="absolute top-1/4 -right-20 -z-10 h-96 w-96 rounded-full bg-blue-600/10 blur-[120px]" />
-      <div className="absolute bottom-1/4 -left-20 -z-10 h-96 w-96 rounded-full bg-sky-500/10 blur-[120px]" />
+    <AnimatedSection id="events" className="relative scroll-mt-24">
+      <div className="absolute top-1/4 -right-20 -z-10 h-96 w-96 rounded-none bg-blue-600/10 blur-[120px]" />
+      <div className="absolute bottom-1/4 -left-20 -z-10 h-96 w-96 rounded-none bg-sky-500/10 blur-[120px]" />
 
       <div
         ref={containerRef}
         className="relative mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8"
       >
         <div className="mx-auto mb-16 max-w-4xl text-center">
-          <h2 className="mb-8 text-5xl leading-[1.1] font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
-            {t("title")}
+          <p className="text-xs font-semibold tracking-[0.3em] text-sky-400 uppercase">
+            {t("upcoming_events")}
+          </p>
+          <h2 className="font-display mt-4 text-5xl leading-[1.05] tracking-tight text-balance text-white sm:text-6xl lg:text-7xl">
+            Meetups, workshops & <span className="text-sky-400">community events</span>
           </h2>
-          <p className="mx-auto max-w-2xl text-lg leading-relaxed font-light text-slate-400 sm:text-xl">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-slate-400 sm:text-xl">
             {t("description")}
           </p>
         </div>
@@ -103,13 +104,15 @@ export default function EventsSection() {
         </section>
 
         <div className="mt-8 flex justify-center">
-          <Link
-            href={`/${locale}/events`}
-            className="group relative flex items-center justify-center gap-2 overflow-hidden rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-medium text-white transition-all hover:border-white/20 hover:bg-white/10"
+          <a
+            href="https://luma.com/reactkolkata?period=past"
+            target="_blank"
+            rel="noreferrer"
+            className="group relative flex items-center justify-center gap-2 overflow-hidden rounded-none border border-white/10 bg-white/5 px-8 py-4 text-sm font-medium text-white transition-all hover:border-white/20 hover:bg-white/10"
           >
-            {t("view_all_past_events")}
-            <span className="transition-transform group-hover:translate-x-1">→</span>
-          </Link>
+            {t("check_all_past_events")}
+            <span>→</span>
+          </a>
         </div>
       </div>
     </AnimatedSection>

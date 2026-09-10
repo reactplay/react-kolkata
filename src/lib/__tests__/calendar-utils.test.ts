@@ -110,12 +110,8 @@ describe("calendar-utils", () => {
     });
   });
 
-  // Note: isEventUpcoming and isEventToday functions were removed from calendar-utils
-  // as they were not being used in the current implementation
-
   describe("downloadICSFile", () => {
     it("should create and trigger download", () => {
-      // Mock DOM and URL APIs
       const mockLink = {
         href: "",
         download: "",
@@ -130,7 +126,6 @@ describe("calendar-utils", () => {
         .spyOn(document.body, "removeChild")
         .mockImplementation(() => mockLink as any);
 
-      // Mock URL methods
       global.URL.createObjectURL = vi.fn(() => "blob:mock-url");
       global.URL.revokeObjectURL = vi.fn();
 
@@ -143,7 +138,6 @@ describe("calendar-utils", () => {
       expect(removeChildSpy).toHaveBeenCalledWith(mockLink);
       expect(global.URL.revokeObjectURL).toHaveBeenCalled();
 
-      // Cleanup
       createElementSpy.mockRestore();
       appendChildSpy.mockRestore();
       removeChildSpy.mockRestore();

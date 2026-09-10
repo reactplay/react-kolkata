@@ -1,25 +1,23 @@
 import { MetadataRoute } from "next";
 
-import { routing } from "@/config/i18n/navigation";
+import { getLocalizedPath, routing } from "@/config/i18n/navigation";
 
 const host = "https://reactkolkata.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/events", "/contributors", "/blog"];
+  const routes = ["", "/events", "/contributors", "/blog", "/code-of-conduct", "/media-kit"];
 
   return routes.map((route) => {
     const alternates: { languages: Record<string, string> } = {
       languages: {},
     };
 
-    // Generate alternates for all supported locales
     routing.locales.forEach((locale) => {
-      alternates.languages[locale] = `${host}/${locale}${route}`;
+      alternates.languages[locale] = `${host}${getLocalizedPath(route, locale)}`;
     });
 
     return {
-      // We use the default locale for the primary URL of the sitemap entry
-      url: `${host}/${routing.defaultLocale}${route}`,
+      url: `${host}${getLocalizedPath(route, routing.defaultLocale)}`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: route === "" ? 1 : 0.8,

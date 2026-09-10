@@ -18,7 +18,6 @@ export const JumpToTop = () => {
 
   const scrollToTop = () => {
     const el = document.getElementById("top_div");
-    console.log(el);
     el?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -41,7 +40,7 @@ export const JumpToTop = () => {
           onClick={scrollToTop}
           className={cn(
             "fixed right-8 bottom-8 z-50 cursor-pointer",
-            "flex h-12 w-12 items-center justify-center rounded-full shadow-lg",
+            "flex h-12 w-12 items-center justify-center rounded-none shadow-lg",
             "bg-primary text-primary-foreground",
             "hover:bg-primary/90 transition-colors duration-200",
             "focus:ring-ring focus:ring-2 focus:ring-offset-2 focus:outline-none"

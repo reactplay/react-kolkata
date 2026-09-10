@@ -3,19 +3,22 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import NextLink from "next/link"; // Use NextLink for external links
-import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { useLocale, useTranslations } from "next-intl";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { useTranslations } from "next-intl";
+import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { LuLinkedin, LuMenu, LuX } from "react-icons/lu";
 import { SiGithub } from "react-icons/si";
 
-import { Link, usePathname } from "@/config/i18n/navigation"; // Use localized navigation for internal page routes
+import { Link, usePathname, useRouter } from "@/config/i18n/navigation"; // Use localized navigation for internal page routes
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/custom/language-switcher";
 
 import { XLogo } from "../icons/XLogo";
+
+type NavLink =
+  | { href: string; label: string; isHashLink: false }
+  | { href: string; hash: string; label: string; isHashLink: true };
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -25,24 +28,22 @@ const Navbar = () => {
 
   const router = useRouter();
   const pathname = usePathname();
-  const locale = useLocale();
   const t = useTranslations("Navbar");
 
-  const handleCoreTeamClick = () => {
+  const links: NavLink[] = [
+    { href: "/", hash: "events", label: t("events"), isHashLink: true },
+    { href: "/", hash: "sponsors", label: "Sponsors", isHashLink: true },
+    { href: "/", hash: "faq", label: "FAQ", isHashLink: true },
+  ];
+
+  const handleHashClick = (hash: string) => {
     if (pathname === "/") {
-      const el = document.getElementById("core-team");
+      const el = document.getElementById(hash);
       if (el) el.scrollIntoView({ behavior: "smooth" });
     } else {
-      router.push(`/${locale}/#core-team`);
+      router.push(`/#${hash}`);
     }
   };
-
-  const links = [
-    { href: "/", label: t("home"), external: false, isHashLink: false },
-    { href: "/#core-team", label: t("core_team"), external: false, isHashLink: true },
-    { href: "/contributors", label: t("contributors"), external: false, isHashLink: false },
-    { href: "/events", label: t("events"), external: false, isHashLink: false },
-  ];
 
   useEffect(() => {
     const getScrollY = () =>
@@ -93,8 +94,7 @@ const Navbar = () => {
       role="banner"
     >
       <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:h-24 lg:px-8">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2" aria-label="React Kolkata Home">
+        <Link href="/" className="flex items-center gap-3" aria-label="React Kolkata Home">
           <div
             className={cn(
               "relative transition-all duration-500",
@@ -110,42 +110,42 @@ const Navbar = () => {
               priority
             />
           </div>
+          <span className="font-display hidden flex-col leading-none min-[400px]:flex">
+            <span className="text-[22px] tracking-tight text-white">React</span>
+            <span className="text-[22px] tracking-tight text-sky-400 italic">Kolkata</span>
+          </span>
         </Link>
 
-        {/* Desktop Navigation Links */}
         <nav className="hidden items-center lg:flex" aria-label="Primary">
           <ul className="flex items-center gap-1">
             {links.map((l) => {
-              const checkPath = l.isHashLink ? l.href.split("#")[0] : l.href;
+              const key = l.isHashLink ? `${l.href}#${l.hash}` : l.href;
               const active =
-                checkPath === "/" ? pathname === checkPath : pathname.startsWith(checkPath);
-              const LinkComponent = l.external || l.isHashLink ? NextLink : Link;
+                !l.isHashLink && (l.href === "/" ? pathname === "/" : pathname.startsWith(l.href));
 
               return (
-                <li key={l.href}>
+                <li key={key}>
                   {l.isHashLink ? (
                     <button
-                      onClick={handleCoreTeamClick}
+                      onClick={() => handleHashClick(l.hash)}
                       className={cn(
-                        "cursor-pointer rounded-md px-3 py-2 text-sm font-medium transition-colors focus:outline-none",
+                        "cursor-pointer rounded-none px-3 py-2 text-sm font-medium transition-colors focus:outline-none",
                         "text-slate-300 hover:text-white"
                       )}
                     >
                       {l.label}
                     </button>
                   ) : (
-                    <LinkComponent
+                    <Link
                       href={l.href}
-                      target={l.external ? "_blank" : undefined}
-                      rel={l.external ? "noopener noreferrer" : undefined}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                        "rounded-none px-3 py-2 text-sm font-medium transition-colors",
                         active ? "text-sky-300" : "text-slate-300 hover:text-white"
                       )}
                     >
                       {l.label}
-                    </LinkComponent>
+                    </Link>
                   )}
                 </li>
               );
@@ -153,7 +153,6 @@ const Navbar = () => {
           </ul>
         </nav>
 
-        {/* Desktop Actions / Socials */}
         <div className="hidden items-center gap-6 lg:flex">
           <ul className="flex items-center gap-2">
             {[
@@ -164,7 +163,7 @@ const Navbar = () => {
                 label: t("github"),
               },
               {
-                icon: LuLinkedin,
+                icon: FaLinkedin,
                 href: "https://www.linkedin.com/showcase/react-kolkata",
                 label: t("linkedin"),
               },
@@ -193,23 +192,12 @@ const Navbar = () => {
             ))}
           </ul>
           <LanguageSwitcher />
-          {/* <Button
-            asChild
-            size="sm"
-            className="rounded-full bg-indigo-600 hover:bg-indigo-500"
-            onClick={handleJoinClick}
-          >
-            <NextLink href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs" target="_blank">
-              {t("join_community")}
-            </NextLink>
-          </Button> */}
         </div>
 
-        {/* Mobile menu button */}
         <div className="flex items-center gap-4 lg:hidden">
           <button
             ref={toggleButtonRef}
-            className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/20 focus:outline-none"
+            className="inline-flex items-center justify-center rounded-none border border-white/10 bg-white/10 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/20 focus:outline-none"
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
             aria-expanded={open}
@@ -220,26 +208,24 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile / Full Menu Overlay */}
       <AnimatePresence>
         {open && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-24 right-4 left-4 z-50 rounded-3xl border border-white/10 bg-[#0B1220]/95 p-8 shadow-2xl backdrop-blur-2xl lg:hidden"
+            className="absolute top-24 right-4 left-4 z-50 rounded-none border border-white/10 bg-[#0B1220]/95 p-8 shadow-2xl backdrop-blur-2xl lg:hidden"
           >
             <nav className="flex flex-col gap-6">
               <ul className="grid gap-4">
                 {links.map((l) => {
-                  const LinkComponent = l.external || l.isHashLink ? NextLink : Link;
-
+                  const key = l.isHashLink ? `${l.href}#${l.hash}` : l.href;
                   return (
-                    <li key={l.href}>
+                    <li key={key}>
                       {l.isHashLink ? (
                         <button
                           onClick={() => {
-                            handleCoreTeamClick();
+                            handleHashClick(l.hash);
                             setOpen(false);
                           }}
                           className="text-left text-2xl font-bold text-white transition-colors hover:text-sky-400"
@@ -247,15 +233,13 @@ const Navbar = () => {
                           {l.label}
                         </button>
                       ) : (
-                        <LinkComponent
+                        <Link
                           href={l.href}
-                          target={l.external ? "_blank" : undefined}
-                          rel={l.external ? "noopener noreferrer" : undefined}
                           onClick={() => setOpen(false)}
                           className="block text-2xl font-bold text-white transition-colors hover:text-sky-400"
                         >
                           {l.label}
-                        </LinkComponent>
+                        </Link>
                       )}
                     </li>
                   );
@@ -265,7 +249,7 @@ const Navbar = () => {
               <div className="flex flex-col gap-6">
                 <Button
                   asChild
-                  className="h-14 w-full rounded-2xl bg-indigo-600 text-lg text-white"
+                  className="h-14 w-full rounded-none bg-indigo-600 text-lg text-white"
                   onClick={() => setOpen(false)}
                 >
                   <NextLink href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs" target="_blank">

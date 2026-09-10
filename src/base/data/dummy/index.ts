@@ -8,63 +8,11 @@ export const events = [
     description:
       "Join us at the first-ever in-person meetup of React Kolkata. Calling out all the React and AI developers from the City of Joy and beyond to gather and make this event successful with learning and sharing.",
     registrationUrl: "https://luma.com/event/evt-39ktH71VIdB6ynb",
-    image:
-      "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,background=white,quality=75,width=400,height=400/event-covers/z2/8226021e-7f61-4c12-a7d1-e633d7b87163.jpg",
+    image: "/video/poster.mp4",
     type: EVENT_TYPES.IN_PERSON,
     startDateTime: "2026-05-24T10:00:00+05:30",
     endDateTime: "2026-05-24T14:00:00+05:30",
     isFeatured: true,
-  },
-  {
-    id: "rk-nov-2025",
-    title: "Building Together: The React Kolkata Chapter by ReactPlay",
-    venue: "Virtual",
-    description:
-      "​If you’re passionate about React or any other exciting technology — whether it’s web development, cloud computing, AI, mobile apps, or something else — we invite you to be a speaker at our upcoming tech meetups!​This event is open to everyone, whether you're just starting out or already deep into tech. Come by, learn something new, and be part of the conversation.",
-    registrationUrl: "https://luma.com/eq8ntf1n",
-    image:
-      "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,background=white,quality=75,width=400,height=400/event-covers/ma/ddb6a2c2-1af8-4e94-9d56-fd978b95ad39.png",
-    type: EVENT_TYPES.ONLINE,
-    startDateTime: "2025-11-29T19:00:00+05:30",
-    endDateTime: "2025-11-29T21:30:00+05:30",
-  },
-  {
-    id: "ze3qavyg",
-    title: "CTRL + React: Join the React Kolkata Chapter by ReactPlay",
-    venue: "Virtual",
-    description:
-      "In this event, our speakers will share insights on topics like React, AI, and other emerging tech. Expect practical takeaways, real-world examples, and fresh perspectives from folks working hands-on in the field. Event Schedule: Welcome Notes, Intro to Web3: Bringing Blockchain to Your React App - Aditya Singh, Context is All You Need - Akash Nath, React Router v7 Is Not as Scary as You Think - Elijah Asaolu, AI is easy only if you know how to crack it - Arindam Majumdar.",
-    registrationUrl: "https://luma.com/ze3qavyg",
-    image: "/images/tech-events-1.jpg",
-    type: EVENT_TYPES.ONLINE,
-    startDateTime: "2025-08-30T19:00:00+05:30",
-    endDateTime: "2025-08-30T21:00:00+05:30",
-    recordingUrl: "https://www.youtube.com/watch?v=Zvyc3UaTCxw",
-  },
-  {
-    id: "sup8dxf3",
-    title: "Speak Up, Tech Up! Join the React Kolkata Chapter by ReactPlay",
-    venue: "Virtual",
-    description:
-      "In this event, our speakers will share insights on topics like React, AI, and other emerging tech. Expect practical takeaways, real-world examples, and fresh perspectives from folks working hands-on in the field. Event Schedule: Welcome notes, What is serverless inferencing in AI? - Haimantika Mitra, From JSX to the Cosmos: Navigating the React Ecosystem - Rohit Debnath, WebRTC for Frontend Devs Who've Suffered Enough Already - Sumanth, Break Time – Quick Quiz Inside, Bringing AI to your React Apps - Wadad Parker, Vibe Smart, Code Better: Things every react developer should know before vibe coding - Sayak Saha.",
-    registrationUrl: "https://luma.com/sup8dxf3",
-    image: "/images/tech-events-2.jpg",
-    type: EVENT_TYPES.ONLINE,
-    startDateTime: "2025-07-26T19:00:00+05:30",
-    endDateTime: "2025-07-26T21:00:00+05:30",
-    recordingUrl: "https://www.youtube.com/watch?v=mK2DNgrK21E",
-  },
-  {
-    id: "9g6knhqp",
-    title: "Hacktoberfest Special : Join the React Kolkata Chapter by ReactPlay",
-    venue: "Virtual",
-    description:
-      "Join React Kolkata for an engaging panel discussion with open source maintainers and contributors as we gear up for Hacktoberfest. We'll talk about the realities of maintaining projects, the challenges of contribution, and how developers of all levels can meaningfully get involved in open source. Expect candid insights from experienced maintainers, practical tips for first-time contributors, and a chance to connect with the community that powers so much of the web. Whether you're curious about making your first PR or eager to share your journey, this is your space to learn, discuss, and be inspired.",
-    registrationUrl: "https://luma.com/9g6knhqp",
-    image: "/images/tech-events-3.jpg",
-    type: EVENT_TYPES.ONLINE,
-    startDateTime: "2025-10-11T19:00:00+05:30",
-    endDateTime: "2025-10-11T21:00:00+05:30",
   },
 ];
 

@@ -32,11 +32,10 @@ const BlogCard: React.FC<BlogCardProps> = ({
   const [modalOpen, setModalOpen] = useState(false);
   const { isPad, isDesktop } = useDeviceDetail();
 
-  // Validate required properties
   if (!title || !publishedAt || !author || !author.name) {
     console.error("BlogCard: Missing required properties", { title, publishedAt, author });
     return (
-      <article className="flex cursor-not-allowed flex-col rounded-xl border border-red-500/20 bg-red-500/5 p-5">
+      <article className="flex cursor-not-allowed flex-col rounded-none border border-red-500/20 bg-red-500/5 p-5">
         <p className="text-sm text-red-400">Invalid blog data</p>
       </article>
     );
@@ -58,13 +57,13 @@ const BlogCard: React.FC<BlogCardProps> = ({
   return (
     <>
       <article
-        className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/5 bg-[#0B1220]/50 backdrop-blur-md transition-all duration-500 hover:border-sky-500/30 hover:bg-[#0B1220]/80 ${
+        className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-none border border-white/5 bg-[#0B1220]/50 backdrop-blur-md transition-all duration-500 hover:border-sky-500/30 hover:bg-[#0B1220]/80 ${
           featured ? "md:col-span-2 md:row-span-2" : ""
         }`}
         onClick={() => setModalOpen(true)}
       >
         <ArchitecturalCorner />
-        {/* Cover Image */}
+
         <div
           className={`relative w-full overflow-hidden ${
             featured ? "aspect-video md:aspect-[16/10]" : "aspect-video"
@@ -74,22 +73,20 @@ const BlogCard: React.FC<BlogCardProps> = ({
             src={coverImageError ? defaultCoverImage : coverImage?.url || defaultCoverImage}
             alt={title}
             fill
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
+            className="object-cover"
             onError={() => setCoverImageError(true)}
             sizes={featured ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 33vw"}
           />
-          {/* Image Overlay Gradient */}
+
           <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-transparent to-transparent opacity-60" />
 
-          {/* Featured Badge */}
           {featured && (
-            <div className="absolute top-4 left-4 z-10 rounded-full bg-sky-500 px-3 py-1 text-[10px] font-bold tracking-widest text-white uppercase shadow-lg">
+            <div className="absolute top-4 left-4 z-10 rounded-none bg-sky-500 px-3 py-1 text-[10px] font-bold tracking-widest text-white uppercase shadow-lg">
               Featured Post
             </div>
           )}
         </div>
 
-        {/* Content */}
         <div className="flex flex-1 flex-col p-6">
           <div className="mb-4 flex flex-wrap gap-2">
             {tags &&
@@ -123,7 +120,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
 
           <div className="mt-auto flex items-center justify-between pt-6">
             <div className="flex items-center gap-3">
-              <div className="relative h-8 w-8 overflow-hidden rounded-full ring-2 ring-white/10 transition-transform group-hover:scale-110">
+              <div className="relative h-8 w-8 overflow-hidden rounded-none ring-2 ring-white/10">
                 {authorImageError ? (
                   <div className="flex h-full w-full items-center justify-center bg-slate-800">
                     <LuUser className="h-4 w-4 text-slate-400" />
@@ -153,7 +150,6 @@ const BlogCard: React.FC<BlogCardProps> = ({
         </div>
       </article>
 
-      {/* Blog Modal */}
       <BlogModal
         key={id}
         modalOpen={modalOpen}

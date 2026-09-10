@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Script from "next/script";
 import { getTranslations } from "next-intl/server";
 
+import { getLocalizedPath } from "@/config/i18n/navigation";
 import { events } from "@/base/data/dummy";
 
 import EventsPageClient from "./events-page-client";
@@ -21,9 +22,9 @@ export async function generateMetadata({
     title: pageTitle,
     description: pageDescription,
     alternates: {
-      canonical: `/${locale}/events`,
+      canonical: getLocalizedPath("/events", locale),
       languages: {
-        en: "/en/events",
+        en: "/events",
         bn: "/bn/events",
         hi: "/hi/events",
         es: "/es/events",
@@ -32,7 +33,7 @@ export async function generateMetadata({
     openGraph: {
       title: pageTitle,
       description: pageDescription,
-      url: `/${locale}/events`,
+      url: getLocalizedPath("/events", locale),
       siteName: "React Kolkata",
       locale: locale,
       type: "website",
@@ -46,7 +47,6 @@ export async function generateMetadata({
 }
 
 export default function EventsPage() {
-  // Generate Event Schema dynamically
   const eventSchemas = events.map((event) => ({
     "@context": "https://schema.org",
     "@type": "Event",

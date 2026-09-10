@@ -58,20 +58,28 @@
     "view_all": "সব দেখুন",
     "register": "নিবন্ধন",
     "details": "বিস্তারিত",
-    "watch_recording": "রেকর্ডিং দেখুন",
-    "view_slides": "স্লাইড দেখুন",
     "upcoming_events": "আসন্ন ইভেন্ট",
-    "past_events": "অতীত ইভেন্ট",
     "call_for_speakers": "স্পিকারদের জন্য আহ্বান",
     "call_for_champions": "চ্যাম্পিয়নদের জন্য আহ্বান",
     "view_all_events": "সব ইভেন্ট দেখুন",
-    "view_all_past_events": "সব অতীত ইভেন্ট দেখুন",
+    "page_subtitle": "রিয়্যাক্ট কলকাতার প্রোগ্রাম এবং যে কমিউনিটি এটিকে প্রাণবন্ত করে তা অন্বেষণ করুন।",
+    "follow_luma": "Luma ক্যালেন্ডার অনুসরণ করুন",
+    "registrations_open": "নিবন্ধন খোলা আছে",
+    "registrations_closed": "নিবন্ধন বন্ধ",
+    "no_events_title": "কোনো ইভেন্ট পাওয়া যায়নি",
     "coming_soon": "শীঘ্রই আসছে",
     "community_partners_title": "কমিউনিটি পার্টনার",
     "community_partners_description": "আমরা দুর্দান্ত কমিউনিটিগুলোর সাথে কাজ করি আপনাদের আরও মূল্য দিতে।",
     "become_partner_cta": "পার্টনার হোন",
     "partner_visit_label": "ভিজিট",
-    "partner_visit_cta": "ওপেন"
+    "partner_visit_cta": "ওপেন",
+    "page_eyebrow": "রিয়্যাক্ট কলকাতা · ইভেন্ট",
+    "page_title": "মিটআপ, কর্মশালা ও কমিউনিটি ইভেন্ট",
+    "join_community": "কমিউনিটিতে যোগ দিন",
+    "pagination_prev": "পূর্ববর্তী পৃষ্ঠা",
+    "pagination_next": "পরবর্তী পৃষ্ঠা",
+    "pagination_page": "পৃষ্ঠা {page}",
+    "check_all_past_events": "আগের সব ইভেন্ট দেখুন"
   },
   "Blog": {
     "title": "ব্লগ থেকে সর্বশেষ",
@@ -169,7 +177,10 @@
       "title": "Build",
       "description": "Collaborate on community projects and open-source."
     },
-    "step-4": { "title": "Impact", "description": "Become a speaker and mentor others." }
+    "step-4": {
+      "title": "Impact",
+      "description": "Become a speaker and mentor others."
+    }
   },
   "Gallery": {
     "title": "Moments to Remember",

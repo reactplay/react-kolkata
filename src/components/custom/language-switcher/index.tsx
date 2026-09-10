@@ -13,7 +13,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-// Define your supported languages with their native names
 const LANGUAGES = [
   { code: "en", nativeName: "English" },
   { code: "bn", nativeName: "বাংলা" },
@@ -33,7 +32,6 @@ export function LanguageSwitcher() {
   }, []);
 
   const onSelectLanguage = (newLocale: string) => {
-    // This function replaces the pathname with the new locale
     router.replace(pathname, { locale: newLocale });
   };
 
@@ -57,7 +55,6 @@ export function LanguageSwitcher() {
           <DropdownMenuItem
             key={lang.code}
             onClick={() => onSelectLanguage(lang.code)}
-            // Optionally, highlight the current language
             className={locale === lang.code ? "font-bold" : ""}
           >
             {lang.nativeName}

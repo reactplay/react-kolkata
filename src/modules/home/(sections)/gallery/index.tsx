@@ -34,14 +34,14 @@ const GallerySection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/5"
+              className="group relative cursor-pointer overflow-hidden rounded-none border border-white/5"
             >
               <Image
                 src={image.src}
                 alt={image.alt}
                 width={800}
                 height={600}
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                className="object-cover"
               />
               <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 via-transparent to-transparent p-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <p className="font-medium text-white">{image.alt}</p>

@@ -1,12 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { CalendarEvent, Event, EVENT_STATUS } from "@/types/event";
+import { CalendarEvent, Event } from "@/types/event";
 import { useTranslations } from "next-intl";
-import { LuCalendarDays, LuClock3, LuFileText, LuMapPin } from "react-icons/lu";
-import { SiYoutube } from "react-icons/si";
+import { LuCalendarDays, LuClock3, LuMapPin } from "react-icons/lu";
 
 import { getEventStatus } from "@/lib/calendar-utils";
 import { formatEventDate, formatEventTime } from "@/lib/date-utils";
@@ -16,6 +13,7 @@ import { ArchitecturalCorner } from "@/components/custom/architectural-corner";
 
 import CalendarButtons from "../calendar-buttons";
 import EventBadges from "../event-badges";
+import EventMedia from "../event-media";
 
 interface EventCardProps {
   event: Event;
@@ -24,7 +22,6 @@ interface EventCardProps {
 export default function EventCard({ event }: EventCardProps) {
   const t = useTranslations("Events");
   const dynamicStatus = getEventStatus(event.startDateTime, event.endDateTime);
-  const [imgSrc, setImgSrc] = useState(event.image ?? "/images/kolkata-hero.jpg");
 
   const calendarEvent: CalendarEvent = {
     title: event.title,
@@ -35,17 +32,15 @@ export default function EventCard({ event }: EventCardProps) {
   };
 
   return (
-    <Card className="event-card group relative h-full gap-0 overflow-hidden rounded-2xl border border-white/5 bg-[#0B1220]/50 py-0 shadow-none backdrop-blur-md transition-all hover:bg-white/5">
+    <Card className="event-card group relative h-full gap-0 overflow-hidden rounded-none border border-white/5 bg-[#0B1220]/50 py-0 shadow-none backdrop-blur-md transition-all hover:bg-white/5">
       <ArchitecturalCorner />
 
       <div className="relative h-44 w-full flex-shrink-0 overflow-hidden">
-        <Image
-          src={imgSrc}
+        <EventMedia
+          src={event.image}
           alt={event.title}
-          fill
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 67vw, 800px"
-          className="object-cover transition duration-500 group-hover:scale-105"
-          onError={() => setImgSrc("/images/kolkata-hero.jpg")}
+          className="transition duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] to-transparent opacity-80" />
 
@@ -75,47 +70,15 @@ export default function EventCard({ event }: EventCardProps) {
         <div className="mt-auto space-y-2 pt-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              {dynamicStatus === EVENT_STATUS.PAST && (event.recordingUrl || event.slidesUrl) ? (
-                <>
-                  {event.recordingUrl && (
-                    <Button
-                      asChild
-                      size="icon"
-                      variant="outline"
-                      className="border-white/10 hover:bg-white"
-                      style={{ backgroundColor: "white" }}
-                      title={t("watch_recording")}
-                    >
-                      <Link href={event.recordingUrl} target="_blank" rel="noreferrer">
-                        <SiYoutube className="h-4 w-4 text-[#FF0000]" />
-                      </Link>
-                    </Button>
-                  )}
-                  {event.slidesUrl && (
-                    <Button
-                      asChild
-                      size="icon"
-                      variant="outline"
-                      className="border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white"
-                      title={t("view_slides")}
-                    >
-                      <Link href={event.slidesUrl} target="_blank" rel="noreferrer">
-                        <LuFileText className="h-4 w-4" />
-                      </Link>
-                    </Button>
-                  )}
-                </>
-              ) : (
-                <Button
-                  asChild
-                  size="sm"
-                  className="flex-1 bg-white text-slate-900 hover:bg-slate-200"
-                >
-                  <Link href={event.registrationUrl} target="_blank" rel="noreferrer">
-                    {t("register")}
-                  </Link>
-                </Button>
-              )}
+              <Button
+                asChild
+                size="sm"
+                className="flex-1 bg-white text-slate-900 hover:bg-slate-200"
+              >
+                <Link href={event.registrationUrl} target="_blank" rel="noreferrer">
+                  {t("register")}
+                </Link>
+              </Button>
             </div>
             <Link
               href={event.registrationUrl}
@@ -127,7 +90,7 @@ export default function EventCard({ event }: EventCardProps) {
             </Link>
           </div>
 
-          {dynamicStatus !== EVENT_STATUS.PAST && <CalendarButtons event={calendarEvent} />}
+          <CalendarButtons event={calendarEvent} />
         </div>
       </CardContent>
     </Card>

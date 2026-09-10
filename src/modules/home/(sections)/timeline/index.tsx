@@ -35,7 +35,7 @@ const TimelineSection = () => {
 
   return (
     <AnimatedSection className="relative overflow-hidden py-12">
-      <div className="absolute top-1/2 left-1/2 -z-10 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/5 blur-[120px]" />
+      <div className="absolute top-1/2 left-1/2 -z-10 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-none bg-blue-500/5 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-20 text-center">
@@ -60,12 +60,12 @@ const TimelineSection = () => {
                   transition={{ delay: index * 0.1 }}
                   className="relative pl-20 md:pl-0 md:text-center"
                 >
-                  <div className="absolute top-0 left-0 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm md:-top-8 md:left-1/2 md:-translate-x-1/2">
+                  <div className="absolute top-0 left-0 flex h-16 w-16 items-center justify-center rounded-none border border-white/10 bg-white/5 backdrop-blur-sm md:-top-8 md:left-1/2 md:-translate-x-1/2">
                     <ArchitecturalCorner />
-                    <div className="rounded-xl bg-gradient-to-br from-blue-500/20 to-sky-400/20 p-2.5">
+                    <div className="rounded-none bg-gradient-to-br from-blue-500/20 to-sky-400/20 p-2.5">
                       <Icon className="h-6 w-6 text-sky-400" />
                     </div>
-                    <div className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-sky-500 text-[10px] font-bold text-white">
+                    <div className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-none bg-sky-500 text-[10px] font-bold text-white">
                       {index + 1}
                     </div>
                   </div>

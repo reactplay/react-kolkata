@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import LandingPage from "@/modules/home";
 
+import { getLocalizedPath } from "@/config/i18n/navigation";
+
 type Props = {
   params: Promise<{ locale: string }>;
 };
@@ -13,9 +15,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description:
       "Join React Kolkata, the hub for React developers in Kolkata. Participate in meetups, workshops, and connect with the community to build, learn, and grow.",
     alternates: {
-      canonical: `/${locale}`,
+      canonical: getLocalizedPath("", locale),
       languages: {
-        en: "/en",
+        en: "/",
         bn: "/bn",
         hi: "/hi",
         es: "/es",
@@ -25,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: "React Kolkata Community | Meetups, Events & Learning",
       description:
         "Connect with React developers in Kolkata. Join events, learn, and grow together.",
-      url: `/${locale}`,
+      url: getLocalizedPath("", locale),
       images: [
         {
           url: "/images/hero.jpeg",

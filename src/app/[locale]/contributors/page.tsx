@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import ContributorsSection from "@/modules/contributors";
 import { getTranslations } from "next-intl/server";
 
+import { getLocalizedPath } from "@/config/i18n/navigation";
 import ErrorBoundary from "@/components/common/error-boundary";
 
 export async function generateMetadata({
@@ -21,19 +22,15 @@ export async function generateMetadata({
     openGraph: {
       title: pageTitle,
       description: pageDescription,
-      url: `/${locale}/contributors`,
+      url: getLocalizedPath("/contributors", locale),
       siteName: "React Kolkata",
       locale: locale,
       type: "website",
-      // Optional: can add a specific image
-      // images: ['/images/contributors-og.jpg'],
     },
     twitter: {
       card: "summary_large_image",
       title: pageTitle,
       description: pageDescription,
-      // Optional: can add a specific image
-      // images: ['/images/contributors-twitter.jpg'],
     },
   };
 }

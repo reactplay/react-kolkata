@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { LuChevronDown } from "react-icons/lu";
+import { LuMinus, LuPlus } from "react-icons/lu";
 
 import { cn } from "@/lib/utils";
 import AnimatedSection from "@/components/custom/animated-section";
-import { ArchitecturalCorner } from "@/components/custom/architectural-corner";
 
 const faqs = [
   {
@@ -25,25 +24,25 @@ const faqs = [
     id: "faq-3",
     question: "How can I speak at a React Kolkata meetup?",
     answer:
-      "We are always looking for passionate speakers! You can submit your talk proposal through our 'Call for Speakers' form available in the Events section or reach out to us on our community channels like WhatsApp or Discord.",
+      "We are always looking for passionate speakers! Submit your talk through our Call for Speakers form in the Events section, or reach out to us on WhatsApp or Discord.",
   },
   {
     id: "faq-4",
     question: "Who can join the community?",
     answer:
-      "Anyone interested in React, JavaScript, or Frontend development can join! Whether you're a student, a professional developer, or just starting your coding journey, you are welcome at React Kolkata.",
+      "Anyone interested in React, JavaScript, or frontend development students, professionals, and complete beginners are all welcome at React Kolkata.",
   },
   {
     id: "faq-5",
     question: "How can I stay updated about upcoming events?",
     answer:
-      "The best way to stay updated is by joining our WhatsApp community or following us on X (formerly Twitter) and LinkedIn. We also post all our events on our official website and Lu.ma page.",
+      "Join our WhatsApp community or follow us on X and LinkedIn. We also post every event on this website and our Lu.ma page.",
   },
   {
     id: "faq-6",
-    question: "Can I contribute to the React Kolkata website?",
+    question: "How can I sponsor or partner with React Kolkata?",
     answer:
-      "Yes! Our website is open-source. You can find our repository on GitHub and contribute by fixing bugs, adding features, or improving documentation.",
+      "Write to reactkolkata@gmail.com with the subject “Sponsorship” or “Partnership”. Sponsors get visibility across our events, socials, and this website and keep our meetups free for everyone.",
   },
 ];
 
@@ -51,77 +50,71 @@ const FaqSection = () => {
   const [openId, setOpenId] = useState<string | null>(null);
 
   return (
-    <AnimatedSection id="faq" className="relative overflow-hidden bg-[#0B1220] py-20">
-      <div className="pointer-events-none absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle_at_50%_50%,rgba(14,165,233,0.05),transparent_70%)]" />
+    <AnimatedSection
+      id="faq"
+      className="relative scroll-mt-24 overflow-hidden bg-[#0B1220] py-20 sm:py-24"
+    >
+      <div className="pointer-events-none absolute top-1/3 -left-24 h-96 w-96 rounded-none bg-sky-500/10 blur-[140px]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-20 flex flex-col items-start">
-          <h2 className="mb-6 text-5xl font-black tracking-tight text-white md:text-7xl">
-            Questions Answered
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_1.4fr] lg:gap-16 lg:px-8">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <p className="text-xs font-semibold tracking-[0.3em] text-sky-400 uppercase">FAQ</p>
+          <h2 className="font-display mt-4 text-5xl leading-[1.05] tracking-tight text-balance text-white sm:text-6xl">
+            Questions, <em className="text-sky-400 italic">answered.</em>
           </h2>
-          <p className="max-w-2xl text-xl text-slate-400">
-            Everything you need to know about the community, events, and how to get involved.
+          <p className="mt-5 max-w-md text-base leading-relaxed text-slate-400 sm:text-lg">
+            Everything you need to know about the community, events, and how to get involved. Still
+            stuck? Ask us directly.
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={faq.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className={cn(
-                "group relative overflow-hidden transition-all duration-500",
-                "border border-white/5 bg-white/[0.02] hover:bg-white/[0.04]",
-                openId === faq.id ? "border-white/10 bg-white/[0.05]" : ""
-              )}
-            >
-              <ArchitecturalCorner />
-
-              <button
-                onClick={() => setOpenId(openId === faq.id ? null : faq.id)}
-                className="flex w-full items-center justify-between p-6 text-left focus:outline-none"
-              >
-                <span
-                  className={cn(
-                    "text-lg font-bold transition-colors duration-300",
-                    openId === faq.id ? "text-white" : "text-slate-300 group-hover:text-white"
-                  )}
+        <div className="divide-y divide-white/10 rounded-none border border-white/10 bg-white/[0.02] px-6 backdrop-blur-sm sm:px-8">
+          {faqs.map((faq) => {
+            const open = openId === faq.id;
+            return (
+              <div key={faq.id}>
+                <button
+                  onClick={() => setOpenId(open ? null : faq.id)}
+                  aria-expanded={open}
+                  className="flex w-full items-center justify-between gap-6 py-5 text-left focus:outline-none"
                 >
-                  {faq.question}
-                </span>
-                <div
-                  className={cn(
-                    "flex h-8 w-8 items-center justify-center rounded-full border transition-all duration-300",
-                    openId === faq.id
-                      ? "rotate-180 border-sky-500 bg-sky-500 text-white"
-                      : "border-white/10 text-slate-500 group-hover:border-white/20 group-hover:text-slate-300"
-                  )}
-                >
-                  <LuChevronDown className="h-4 w-4" />
-                </div>
-              </button>
-
-              <AnimatePresence>
-                {openId === faq.id && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden"
+                  <span
+                    className={cn(
+                      "font-display text-xl transition-colors sm:text-2xl",
+                      open ? "text-white italic" : "text-slate-200"
+                    )}
                   >
-                    <div className="px-6 pt-2 pb-6">
-                      <div className="mb-4 h-px w-12 bg-sky-500/50" />
-                      <p className="text-base leading-relaxed text-slate-400">{faq.answer}</p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+                    {faq.question}
+                  </span>
+                  <span
+                    className={cn(
+                      "flex h-9 w-9 shrink-0 items-center justify-center rounded-none border transition-all duration-300",
+                      open
+                        ? "border-indigo-500 bg-indigo-600 text-white"
+                        : "border-white/15 text-slate-400"
+                    )}
+                  >
+                    {open ? <LuMinus className="h-4 w-4" /> : <LuPlus className="h-4 w-4" />}
+                  </span>
+                </button>
+                <AnimatePresence initial={false}>
+                  {open && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <p className="max-w-2xl pb-6 text-[15px] leading-relaxed text-slate-400">
+                        {faq.answer}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
       </div>
     </AnimatedSection>

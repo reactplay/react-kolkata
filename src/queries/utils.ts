@@ -1,4 +1,3 @@
-// blogPostQuery is the
 const blogPostQuery = `
     query Publication($postCount: Int!, $cursor: String) {
         publication(host: "reactplay.io") {

@@ -1,11 +1,10 @@
 import { TestWrapper } from "@/test-utils";
-import { EVENT_STATUS, EVENT_TYPES } from "@/types/event";
+import { EVENT_TYPES } from "@/types/event";
 import { cleanup, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import EventCard from "../event-card";
 
-// Mock the calendar and date utils
 vi.mock("@/lib/calendar-utils", () => ({
   getEventStatus: vi.fn(() => "upcoming"),
 }));
@@ -15,12 +14,10 @@ vi.mock("@/lib/date-utils", () => ({
   formatEventTime: vi.fn(() => "6:00 PM – 8:00 PM IST"),
 }));
 
-// Mock Next.js Image component
 vi.mock("next/image", () => ({
   default: ({ src, alt, ...props }: any) => <img src={src} alt={alt} {...props} />,
 }));
 
-// Mock child components
 vi.mock("../event-badges", () => ({
   default: ({ type, status }: any) => (
     <div data-testid="event-badges">
@@ -172,7 +169,6 @@ describe("EventCard", () => {
       </TestWrapper>
     );
 
-    // The calendar buttons should receive the transformed event data
     expect(screen.getByTestId("calendar-buttons")).toBeInTheDocument();
   });
 
@@ -184,7 +180,7 @@ describe("EventCard", () => {
     );
 
     const article = screen.getByRole("article");
-    expect(article).toHaveClass("group", "relative", "overflow-hidden", "rounded-xl");
+    expect(article).toHaveClass("group", "relative", "overflow-hidden", "rounded-none");
   });
 
   it("should handle events with location object", () => {
@@ -194,7 +190,6 @@ describe("EventCard", () => {
       </TestWrapper>
     );
 
-    // Should pass the location address to calendar buttons
     expect(screen.getByTestId("calendar-buttons")).toBeInTheDocument();
   });
 
@@ -206,139 +201,6 @@ describe("EventCard", () => {
       </TestWrapper>
     );
 
-    // Should still render and pass venue as location
     expect(screen.getByTestId("calendar-buttons")).toBeInTheDocument();
-  });
-
-  describe("Recording and Slides functionality", () => {
-    it("should show recording and slides icon buttons for past events with links", async () => {
-      const { getEventStatus } =
-        await vi.importMock<typeof import("@/lib/calendar-utils")>("@/lib/calendar-utils");
-      getEventStatus.mockReturnValue(EVENT_STATUS.PAST);
-
-      const pastEventWithLinks = {
-        ...mockEvent,
-        recordingUrl: "https://youtube.com/watch?v=test",
-        slidesUrl: "https://docs.google.com/presentation/test",
-      };
-
-      render(
-        <TestWrapper>
-          <EventCard event={pastEventWithLinks} />
-        </TestWrapper>
-      );
-
-      // Check for buttons with title attributes (tooltips)
-      expect(screen.getByTitle("Watch Recording")).toBeInTheDocument();
-      expect(screen.getByTitle("View Slides")).toBeInTheDocument();
-      // Should not show register button for past events with recordings
-      expect(screen.queryByText("Register")).not.toBeInTheDocument();
-    });
-
-    it("should show only recording icon button when only recording URL is available", async () => {
-      const { getEventStatus } =
-        await vi.importMock<typeof import("@/lib/calendar-utils")>("@/lib/calendar-utils");
-      getEventStatus.mockReturnValue(EVENT_STATUS.PAST);
-
-      const pastEventWithRecording = {
-        ...mockEvent,
-        recordingUrl: "https://youtube.com/watch?v=test",
-      };
-
-      render(
-        <TestWrapper>
-          <EventCard event={pastEventWithRecording} />
-        </TestWrapper>
-      );
-
-      expect(screen.getByTitle("Watch Recording")).toBeInTheDocument();
-      expect(screen.queryByTitle("View Slides")).not.toBeInTheDocument();
-      expect(screen.queryByText("Register")).not.toBeInTheDocument();
-    });
-
-    it("should show only slides icon button when only slides URL is available", async () => {
-      const { getEventStatus } =
-        await vi.importMock<typeof import("@/lib/calendar-utils")>("@/lib/calendar-utils");
-      getEventStatus.mockReturnValue(EVENT_STATUS.PAST);
-
-      const pastEventWithSlides = {
-        ...mockEvent,
-        slidesUrl: "https://docs.google.com/presentation/test",
-      };
-
-      render(
-        <TestWrapper>
-          <EventCard event={pastEventWithSlides} />
-        </TestWrapper>
-      );
-
-      expect(screen.getByTitle("View Slides")).toBeInTheDocument();
-      expect(screen.queryByTitle("Watch Recording")).not.toBeInTheDocument();
-      expect(screen.queryByText("Register")).not.toBeInTheDocument();
-    });
-
-    it("should show register button for upcoming events even with recording links", async () => {
-      const { getEventStatus } =
-        await vi.importMock<typeof import("@/lib/calendar-utils")>("@/lib/calendar-utils");
-      getEventStatus.mockReturnValue(EVENT_STATUS.UPCOMING);
-
-      const upcomingEventWithLinks = {
-        ...mockEvent,
-        recordingUrl: "https://youtube.com/watch?v=test",
-        slidesUrl: "https://docs.google.com/presentation/test",
-      };
-
-      render(
-        <TestWrapper>
-          <EventCard event={upcomingEventWithLinks} />
-        </TestWrapper>
-      );
-
-      expect(screen.getByText("Register")).toBeInTheDocument();
-      expect(screen.queryByTitle("Watch Recording")).not.toBeInTheDocument();
-      expect(screen.queryByTitle("View Slides")).not.toBeInTheDocument();
-    });
-
-    it("should show register button for past events without recording/slides links", async () => {
-      const { getEventStatus } =
-        await vi.importMock<typeof import("@/lib/calendar-utils")>("@/lib/calendar-utils");
-      getEventStatus.mockReturnValue(EVENT_STATUS.PAST);
-
-      render(
-        <TestWrapper>
-          <EventCard event={mockEvent} />
-        </TestWrapper>
-      );
-
-      expect(screen.getByText("Register")).toBeInTheDocument();
-      expect(screen.queryByTitle("Watch Recording")).not.toBeInTheDocument();
-      expect(screen.queryByTitle("View Slides")).not.toBeInTheDocument();
-    });
-
-    it("should have correct links for recording and slides icon buttons", async () => {
-      const { getEventStatus } =
-        await vi.importMock<typeof import("@/lib/calendar-utils")>("@/lib/calendar-utils");
-      getEventStatus.mockReturnValue(EVENT_STATUS.PAST);
-
-      const pastEventWithLinks = {
-        ...mockEvent,
-        recordingUrl: "https://youtube.com/watch?v=test123",
-        slidesUrl: "https://docs.google.com/presentation/test456",
-      };
-
-      render(
-        <TestWrapper>
-          <EventCard event={pastEventWithLinks} />
-        </TestWrapper>
-      );
-
-      const recordingLink = screen.getByTitle("Watch Recording").closest("a");
-      const slidesLink = screen.getByTitle("View Slides").closest("a");
-
-      expect(recordingLink).toHaveAttribute("href", "https://youtube.com/watch?v=test123");
-      expect(recordingLink).toHaveAttribute("target", "_blank");
-      expect(slidesLink).toHaveAttribute("href", "https://docs.google.com/presentation/test456");
-      expect(slidesLink).toHaveAttribute("target", "_blank");
-    });
   });
 });

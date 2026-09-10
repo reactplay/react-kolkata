@@ -8,8 +8,8 @@ import ChampionCard, { Champion } from "./champion-card";
 const ChampionSection = () => {
   return (
     <AnimatedSection id="champions" className="relative overflow-hidden py-16">
-      <div className="absolute top-0 right-0 h-96 w-96 translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-500/10 blur-[128px]" />
-      <div className="absolute bottom-0 left-0 h-96 w-96 -translate-x-1/2 translate-y-1/2 rounded-full bg-blue-500/10 blur-[128px]" />
+      <div className="absolute top-0 right-0 h-96 w-96 translate-x-1/2 -translate-y-1/2 rounded-none bg-sky-500/10 blur-[128px]" />
+      <div className="absolute bottom-0 left-0 h-96 w-96 -translate-x-1/2 translate-y-1/2 rounded-none bg-blue-500/10 blur-[128px]" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-20 max-w-3xl text-center">
@@ -17,7 +17,7 @@ const ChampionSection = () => {
             Community <span className="text-sky-500">Champions</span>
           </h2>
           <div className="mt-4 flex justify-center">
-            <div className="h-1.5 w-24 rounded-full bg-gradient-to-r from-sky-500 to-blue-600" />
+            <div className="h-1.5 w-24 rounded-none bg-gradient-to-r from-sky-500 to-blue-600" />
           </div>
           <p className="mt-6 text-lg leading-relaxed text-slate-400">
             Meet the dedicated individuals who go above and beyond to support and grow the React
