@@ -80,7 +80,7 @@ export default function Footer() {
             <span className="relative h-11 w-11">
               <Image
                 alt="React Kolkata brand logo"
-                src="/images/React_Kolkata_Logo.svg"
+                src="/images/react_kolkata_logo.svg"
                 fill
                 sizes="44px"
                 className="object-contain"

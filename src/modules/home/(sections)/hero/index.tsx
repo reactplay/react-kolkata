@@ -31,7 +31,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 hidden sm:block" aria-hidden="true">
         <div className="absolute inset-0">
           <Image
-            src="/images/header.png"
+            src="/images/header.webp"
             alt=""
             fill
             sizes="100vw"
@@ -131,7 +131,7 @@ const HeroSection = () => {
       <div className="relative mx-auto w-full max-w-7xl px-4 pb-6 sm:hidden">
         <div className="relative h-52 w-full overflow-hidden rounded-none">
           <Image
-            src="/images/header.png"
+            src="/images/header.webp"
             alt=""
             fill
             sizes="100vw"
