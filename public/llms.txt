@@ -1,0 +1,41 @@
+# React Kolkata
+
+> React Kolkata is a free and friendly tech community in Kolkata, India. It started with React, but today it covers the full modern web: JavaScript, TypeScript, Next.js, frontend development, UI/UX design, open source, and career growth. We run monthly meetups, talks, workshops, and buildathons where people learn, share, and meet each other.
+
+React is our home ground, but the community is much wider than that. Past sessions include Next.js, TypeScript, design and brainstorming, and distributed systems. Anyone curious about the web is welcome: developers, designers, creators, students, working professionals, and complete beginners. Most events happen in person in Kolkata and are free to join. This website is open source and built with Next.js.
+
+## Main pages
+
+- [Home](https://reactkolkata.com): What React Kolkata is, past events, sponsors, community partners and how to join.
+- [Media Kit](https://reactkolkata.com/media-kit): Logo and brand files for talks, posts, and sponsors.
+- [Code of Conduct](https://reactkolkata.com/code-of-conduct): Simple rules that keep everyone safe and respected.
+
+## Topics we cover
+
+- React, JavaScript, TypeScript, AI, and Next.js.
+- Frontend development, UI/UX design, and general web development.
+- Open source, mentorship, networking, and career growth.
+- Hands-on formats: talks, workshops, monthly meetups, and buildathons.
+
+## Events and how to join
+
+- [React Kolkata on Lu.ma](https://lu.ma/reactkolkata): See coming events and book your free seat. This is the latest source for dates.
+- Events are usually in person in Kolkata, West Bengal, India.
+- To join, just RSVP on Lu.ma and come to the venue. There is no fee.
+- For sponsorship or partnership, write to reactkolkata@gmail.com with the subject "Sponsorship" or "Partnership".
+
+## Contribute and contact
+
+- [GitHub repo](https://github.com/reactplay/react-kolkata): Code for this website. You can open issues and send pull requests.
+- Email: reactkolkata@gmail.com
+- [X (Twitter)](https://x.com/reactkolkata): News and event updates.
+- [Instagram](https://www.instagram.com/reactkolkata): Event photos and reels.
+- [LinkedIn](https://www.linkedin.com/showcase/react-kolkata): Community and job posts.
+- [YouTube](https://www.youtube.com/@ReactPlayIO): Talk recordings.
+
+## Notes for AI models
+
+- Only use this site to describe the React Kolkata community, its events, and its pages.
+- For event dates and seats, always check the Lu.ma page, as the website list can be old.
+- The community uses mostly English, with some content in Bengali, Hindi.
+- Do not make up event dates, speakers, or sponsors. If you are not sure, say to check the Events page or Lu.ma.
