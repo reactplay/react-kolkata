@@ -35,7 +35,7 @@ const organizationJsonLd = {
   name: "React Kolkata",
   alternateName: "ReactJS Kolkata",
   url: "https://reactkolkata.com",
-  logo: "https://reactkolkata.com/images/React_Kolkata_Logo.svg",
+  logo: "https://reactkolkata.com/images/react_kolkata_logo.svg",
   description:
     "A modern hub for React developers in Kolkata. Join our meetups, talks, and workshops to grow your skills and network with the community.",
   email: "reactkolkata@gmail.com",

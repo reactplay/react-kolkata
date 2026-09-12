@@ -103,7 +103,7 @@ const Navbar = () => {
           >
             <Image
               alt="react kolkata brand logo"
-              src="/images/React_Kolkata_Logo.svg"
+              src="/images/react_kolkata_logo.svg"
               fill
               sizes="(max-width: 640px) 40px, 64px"
               className="object-contain"
