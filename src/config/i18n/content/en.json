@@ -79,7 +79,10 @@
     "pagination_prev": "Previous page",
     "pagination_next": "Next page",
     "pagination_page": "Page {page}",
-    "check_all_past_events": "Check all past events"
+    "check_all_past_events": "Check all past events",
+    "empty_title": "That edition's a wrap — the next one's brewing",
+    "empty_description": "We're lining up speakers, venue and dates for the next meetup. Follow the calendar so you don't miss the announcement, or relive the last edition with the community.",
+    "notify_cta": "Notify me on Luma"
   },
   "Blog": {
     "title": "Latest from the Blog",

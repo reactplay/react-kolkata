@@ -4,8 +4,6 @@
 
 ---
 
-![React Kolkata Banner](public/react-kolkata-meetup.png)
-
 Welcome to **React Kolkata**! This project provides a robust foundation for Next.js applications, featuring TypeScript, Tailwind CSS, i18n, testing, and more. Whether you're building a personal project or a production-grade app, React Kolkata helps you get started quickly and maintain code quality with ease.
 
 **Join our community events:** [React Kolkata on lu.ma](https://lu.ma/reactkolkata)

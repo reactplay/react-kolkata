@@ -8,11 +8,13 @@ import { useTranslations } from "next-intl";
 
 import { getEventStatus } from "@/lib/calendar-utils";
 import AnimatedSection from "@/components/custom/animated-section";
-import { FEATURED_LUMA_EVENT_ID } from "@/base/constants/event";
 import { events } from "@/base/data/dummy";
 
 import EventCard from "./event-card";
+import FeaturedLumaEvent from "./featured-luma";
 import LumaEmbed from "./luma-embed";
+
+const isLumaEvent = (id: string) => id.startsWith("evt-");
 
 export default function EventsSection() {
   const t = useTranslations("Events");
@@ -43,10 +45,15 @@ export default function EventsSection() {
 
   const upcomingEvents = useMemo(() => {
     return events.filter((event) => {
-      const dynamicStatus = getEventStatus(event.startDateTime, event.endDateTime);
-      return dynamicStatus === EVENT_STATUS.UPCOMING || dynamicStatus === EVENT_STATUS.ONGOING;
+      const status = getEventStatus(event.startDateTime, event.endDateTime);
+      return status === EVENT_STATUS.UPCOMING || status === EVENT_STATUS.ONGOING;
     });
   }, []);
+
+  const gridClassName =
+    upcomingEvents.length <= 2
+      ? "mx-auto w-full max-w-5xl sm:grid-cols-2"
+      : "sm:grid-cols-2 lg:grid-cols-3";
 
   return (
     <AnimatedSection id="events" className="relative scroll-mt-24">
@@ -79,17 +86,9 @@ export default function EventsSection() {
           </div>
 
           {upcomingEvents.length > 0 ? (
-            <div
-              className={`event-cards-container grid gap-6 ${
-                upcomingEvents.length === 1
-                  ? "mx-auto w-full max-w-5xl"
-                  : upcomingEvents.length === 2
-                    ? "mx-auto w-full max-w-5xl sm:grid-cols-2"
-                    : "sm:grid-cols-2 lg:grid-cols-3"
-              }`}
-            >
+            <div className={`event-cards-container grid gap-6 ${gridClassName}`}>
               {upcomingEvents.map((event) =>
-                event.id.startsWith("evt-") ? (
+                isLumaEvent(event.id) ? (
                   <LumaEmbed key={event.id} eventId={event.id} />
                 ) : (
                   <EventCard key={event.id} event={event} />
@@ -97,23 +96,9 @@ export default function EventsSection() {
               )}
             </div>
           ) : (
-            <div className="event-cards-container mx-auto grid w-full max-w-5xl gap-6">
-              <LumaEmbed eventId={FEATURED_LUMA_EVENT_ID} />
-            </div>
+            <FeaturedLumaEvent />
           )}
         </section>
-
-        <div className="mt-8 flex justify-center">
-          <a
-            href="https://luma.com/reactkolkata?period=past"
-            target="_blank"
-            rel="noreferrer"
-            className="group relative flex items-center justify-center gap-2 overflow-hidden rounded-none border border-white/10 bg-white/5 px-8 py-4 text-sm font-medium text-white transition-all hover:border-white/20 hover:bg-white/10"
-          >
-            {t("check_all_past_events")}
-            <span>→</span>
-          </a>
-        </div>
       </div>
     </AnimatedSection>
   );

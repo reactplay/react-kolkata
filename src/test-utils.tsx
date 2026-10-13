@@ -66,6 +66,10 @@ const mockMessages = {
     call_for_champions: "Call for Champions",
     check_all_past_events: "Check all past events",
     coming_soon: "Coming Soon",
+    empty_title: "That edition's a wrap — the next one's brewing",
+    empty_description: "We're lining up speakers, venue and dates for the next meetup.",
+    notify_cta: "Notify me on Luma",
+    join_community: "Join the Community",
   },
   Blog: {
     title: "Latest from the Blog",
