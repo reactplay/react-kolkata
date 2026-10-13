@@ -79,7 +79,10 @@
     "pagination_prev": "Página anterior",
     "pagination_next": "Página siguiente",
     "pagination_page": "Página {page}",
-    "check_all_past_events": "Ver todos los eventos pasados"
+    "check_all_past_events": "Ver todos los eventos pasados",
+    "empty_title": "Esa edición terminó — la próxima ya se está preparando",
+    "empty_description": "Estamos preparando ponentes, sede y fechas para el próximo meetup. Sigue el calendario para no perderte el anuncio o revive la última edición con la comunidad.",
+    "notify_cta": "Avísame en Luma"
   },
   "Blog": {
     "title": "Último del Blog",
