@@ -3,10 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import NextLink from "next/link"; // Use NextLink for external links
+
+import { getActiveCfpLink } from "@/queries/cfp";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
-import { LuLinkedin, LuMenu, LuX } from "react-icons/lu";
+import { LuArrowRight, LuLinkedin, LuMenu, LuX } from "react-icons/lu";
 import { SiGithub } from "react-icons/si";
 
 import { Link, usePathname, useRouter } from "@/config/i18n/navigation"; // Use localized navigation for internal page routes
@@ -23,6 +25,7 @@ type NavLink =
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [cfpLink, setCfpLink] = useState<string | null>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -34,6 +37,13 @@ const Navbar = () => {
     { href: "/", hash: "events", label: t("events"), isHashLink: true },
     { href: "/", hash: "sponsors", label: "Sponsors", isHashLink: true },
     { href: "/", hash: "faq", label: "FAQ", isHashLink: true },
+  ];
+
+  const announcementItems = [
+    "CFP is now open, share your ideas with React Kolkata",
+    "Submit your talk or workshop for the next meetup",
+    "Limited slots, propose your session today",
+    "Speakers get support, visibility & community love",
   ];
 
   const handleHashClick = (hash: string) => {
@@ -58,6 +68,22 @@ const Navbar = () => {
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    getActiveCfpLink()
+      .then((link) => {
+        if (isMounted) setCfpLink(link);
+      })
+      .catch(() => {
+        if (isMounted) setCfpLink(null);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -93,6 +119,33 @@ const Navbar = () => {
       )}
       role="banner"
     >
+      {cfpLink && (
+        <div className="relative w-full overflow-hidden border-b border-sky-400/20 bg-gradient-to-r from-sky-500/15 via-indigo-500/15 to-sky-500/15 backdrop-blur-sm">
+          <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-2 sm:gap-4 sm:px-6 lg:px-8">
+            <div className="marquee-paused min-w-0 flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+              <div className="animate-marquee flex w-max items-center gap-10 py-1 text-sm whitespace-nowrap text-sky-100">
+                {[...announcementItems, ...announcementItems].map((message, index) => (
+                  <span key={index} className="flex items-center gap-3">
+                    <span className="font-medium">{message}</span>
+                    <a
+                      href={cfpLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex shrink-0 items-center gap-1 rounded-none border border-sky-300/40 px-2.5 py-0.5 text-xs font-semibold tracking-wide text-sky-200 uppercase transition-colors hover:bg-sky-400/20"
+                    >
+                      Submit
+                      <LuArrowRight className="h-3 w-3" />
+                    </a>
+                    <span aria-hidden="true" className="text-sky-400/40">
+                      •
+                    </span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:h-24 lg:px-8">
         <Link href="/" className="flex items-center gap-3" aria-label="React Kolkata Home">
           <div
