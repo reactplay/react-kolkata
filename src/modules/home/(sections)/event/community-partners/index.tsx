@@ -1,53 +1,46 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-
-type Partner = {
-  name: string;
-  imageSrc?: string;
-};
-
-const partners: Partner[] = [
-  {
-    name: "ReactPlay",
-    imageSrc: "/partners/reactplay.png",
-  },
-  {
-    name: "Digital Dominators",
-    imageSrc: "/partners/Digital-Dominators-logo-official.webp",
-  },
-  {
-    name: "React Nexus",
-    imageSrc: "/partners/react-nexus.webp",
-  },
-  {
-    name: "OpenSourceCon INDIA",
-    imageSrc: "/partners/OSS_India.jpeg",
-  },
-  {
-    name: "GDGoC MCKVIE",
-    imageSrc: "/partners/gdgmckv.png",
-  },
-  {
-    name: "INNOVATEX",
-    imageSrc: "/partners/InnovateX Engineers Community.png",
-  },
-  {
-    name: "DevPath",
-    imageSrc: "/partners/devpath-new.jpg",
-  },
-  {
-    name: "CodeRush X",
-    imageSrc: "/partners/CodeRush X.png",
-  },
-  {
-    name: "BUG BUSTERS",
-    imageSrc: "/partners/BugBustersLogo.png",
-  },
-];
+import { getCommunityPartners } from "@/queries/community-partners";
+import type { CommunityPartner } from "@/queries/community-partners";
 
 export default function CommunityPartners() {
+  const [partners, setPartners] = useState<CommunityPartner[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    getCommunityPartners()
+      .then((data) => {
+        if (isMounted) setPartners(data);
+      })
+      .catch(() => {
+        if (isMounted) setPartners([]);
+      })
+      .finally(() => {
+        if (isMounted) setIsLoading(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   const hasPartners = partners.length > 0;
+
+  if (isLoading) {
+    return (
+      <div
+        aria-busy="true"
+        aria-label="Loading community partners"
+        className="flex min-h-[120px] items-center justify-center"
+      >
+        <div className="h-6 w-6 animate-spin rounded-none border-2 border-sky-500 border-t-transparent" />
+      </div>
+    );
+  }
 
   return (
     <section id="partners" className="relative scroll-mt-24 overflow-hidden bg-[#0B1220] py-8">
@@ -69,11 +62,10 @@ export default function CommunityPartners() {
         {hasPartners ? (
           <div className="marquee-paused mt-6 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
             <div className="animate-marquee flex w-max items-center gap-3">
-              {[...partners, ...partners].map((partner, index) => (
+              {partners.map((partner, index) => (
                 <div
                   key={`${partner.name}-${index}`}
                   title={partner.name}
-                  aria-hidden={index >= partners.length || undefined}
                   className="flex shrink-0 flex-col items-center gap-2"
                 >
                   {partner.imageSrc ? (
