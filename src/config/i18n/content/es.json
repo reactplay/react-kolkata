@@ -104,6 +104,9 @@
   "Sponsors": {
     "title": "Nuestros Patrocinadores",
     "description": "React Kolkata es impulsado por patrocinadores generosos que apoyan nuestros eventos y talleres.",
+    "current_label": "Nuestros Patrocinadores",
+    "previous_label": "Patrocinadores Anteriores",
+    "empty": "Los patrocinadores se anunciarán pronto.",
     "card": {
       "title": "Conviértete en Patrocinador",
       "description": "Apoya a la comunidad patrocinando un evento o contribuyendo recursos.",
