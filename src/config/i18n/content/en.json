@@ -104,6 +104,9 @@
   "Sponsors": {
     "title": "Our Sponsors",
     "description": "React Kolkata is powered by generous sponsors who help us run events, workshops, and community initiatives. Interested in sponsoring us? Get in touch!",
+    "current_label": "Our Sponsors",
+    "previous_label": "Previous Sponsors",
+    "empty": "Sponsors will be announced soon.",
     "card": {
       "title": "Become a Sponsor",
       "description": "Support the community by sponsoring an event or contributing resources. Sponsors gain visibility among developers and help keep our activities accessible.",
