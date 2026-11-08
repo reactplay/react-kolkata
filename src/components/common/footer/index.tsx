@@ -37,7 +37,7 @@ const socials = [
   { icon: SiYoutube, href: "https://www.youtube.com/@Reactkolkata", label: "YouTube" },
   {
     icon: FaWhatsapp,
-    href: "https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs",
+    href: "https://chat.whatsapp.com/DLQdHLazbQNFUGw2ViwHlg?mode=gi_t",
     label: "WhatsApp",
   },
   { icon: FaInstagram, href: "https://www.instagram.com/reactkolkata", label: "Instagram" },

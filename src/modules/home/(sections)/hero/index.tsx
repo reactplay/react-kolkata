@@ -102,7 +102,7 @@ const HeroSection = () => {
               className="group h-14 rounded-none bg-indigo-600 px-8 text-base font-semibold text-white shadow-2xl shadow-indigo-500/25 transition-colors hover:bg-indigo-500"
               onClick={handleJoinClick}
             >
-              <Link target="_blank" href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs">
+              <Link target="_blank" href="https://chat.whatsapp.com/DLQdHLazbQNFUGw2ViwHlg?mode=gi_t">
                 <span className="flex items-center gap-2">
                   {t("join_community")}
                   <LuArrowRight className="h-5 w-5" aria-hidden="true" />
