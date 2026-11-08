@@ -222,7 +222,7 @@ const Navbar = () => {
               },
               {
                 icon: FaWhatsapp,
-                href: "https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs",
+                href: "https://chat.whatsapp.com/DLQdHLazbQNFUGw2ViwHlg?mode=gi_t",
                 label: t("whatsapp"),
               },
               {
@@ -305,7 +305,10 @@ const Navbar = () => {
                   className="h-14 w-full rounded-none bg-indigo-600 text-lg text-white"
                   onClick={() => setOpen(false)}
                 >
-                  <NextLink href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs" target="_blank">
+                  <NextLink
+                    href="https://chat.whatsapp.com/DLQdHLazbQNFUGw2ViwHlg?mode=gi_t"
+                    target="_blank"
+                  >
                     {t("join_community")}
                   </NextLink>
                 </Button>
@@ -335,7 +338,7 @@ const Navbar = () => {
                     <LuLinkedin className="h-6 w-6" />
                   </a>
                   <a
-                    href="https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs"
+                    href="https://chat.whatsapp.com/DLQdHLazbQNFUGw2ViwHlg?mode=gi_t"
                     className="text-slate-400 hover:text-white"
                     target="_blank"
                     rel="noreferrer"

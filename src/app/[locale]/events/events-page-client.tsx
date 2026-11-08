@@ -15,7 +15,7 @@ interface EventsPageClientProps {
   events: Event[];
 }
 
-const WHATSAPP_URL = "https://chat.whatsapp.com/JmCp4Za9ap0DpER0Gd4hAs";
+const WHATSAPP_URL = "https://chat.whatsapp.com/DLQdHLazbQNFUGw2ViwHlg?mode=gi_t";
 const LUMA_URL = "https://lu.ma/reactkolkata";
 const PAGE_SIZE = 6;
 
